@@ -1,0 +1,105 @@
+<map proto="1.4.0">
+<name>Key</name>
+<version>1.0.0</version>
+<objective>Leak the other team's core to win!</objective>
+<authors>
+    <author uuid="f665ab66-24d9-472e-ad5b-fb1a167b34aa"/>
+    <author uuid="a9c6c041-386b-4d56-ab30-104eb8b5f319"/>
+</authors>
+<contributors>
+    <contributor uuid="2958ea4c-3501-404e-88cc-12e8632f68cc" contribution="XML"/>
+    <contributor uuid="aa4b525d-e0ad-4847-bb18-2a6f3a2d6a13" contribution="Chests and Layout Improvements"/>
+</contributors>
+<broadcasts>
+    <tip after="1s">The monument does not help win, but does increase the enemies' spawn timer!</tip>
+</broadcasts>
+<destroyables name="Monument" required="false" materials="emerald block" completion="100%">
+    <destroyable id="blue-monument" owner="blue">
+       <region><cuboid min="-51,11,-13" max="-53,9,-15"/></region>
+    </destroyable>
+    <destroyable id="red-monument" owner="red">
+       <region><cuboid min="-53,9,-47" max="-51,11,-49"/></region>
+    </destroyable>
+</destroyables>
+<cores material="obsidian" leak="2">
+    <core team="blue" region="blue-core"/>
+    <core team="red" region="red-core"/>
+</cores>
+<teams>
+   <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+   <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn">
+        <item slot="2" material="diamond pickaxe"/>
+        <potion duration="5" amplifier="1">saturation</potion>
+    </kit>
+</kits>
+<toolrepair>
+    <tool>diamond pickaxe</tool>
+</toolrepair>
+<itemremove>
+    <item>obsidian</item>
+    <item>emerald block</item>
+</itemremove>
+<filters>
+    <not id="not-red">
+        <objective>red-monument</objective>
+    </not>
+    <not id="not-blue">
+        <objective>blue-monument</objective>
+    </not>
+    <objective id="redmonument">red-monument</objective>
+    <objective id="bluemonument">blue-monument</objective>
+    <not id="no-void">
+        <void/>
+    </not>
+</filters>
+<regions>
+    <rectangle id="void-gap" min="-67,-77" max="-1,15"/>
+    <cuboid id="red-core" min="-28,8,-49" max="-23,11,-52"/>
+    <cuboid id="blue-core" min="-23,8,-13" max="-28,11,-10"/>
+    <cuboid id="red-spawn" min="-22,12,-77" max="-29,58,-72"/>
+    <cuboid id="blue-spawn" min="-22,58,10" max="-29,12,15"/>
+    <apply block="never" region="red-spawn"/>
+    <apply block="never" region="blue-spawn"/>
+    <apply block="always" region="void-gap" message="You may not place blocks in the void area!"/>
+    <apply block="no-void"/>
+</regions>
+<spawns>
+    <spawn team="red" kit="spawn" filter="not-red">
+        <regions yaw="0">
+            <point>-25.5,54,-94.5</point>
+        </regions>
+    </spawn>
+    <spawn team="red" kit="spawn" filter="redmonument">
+        <regions yaw="0">
+            <point>-25.5,54,-139.5</point>
+        </regions>
+    </spawn>
+    <spawn team="blue" kit="spawn" filter="not-blue">
+        <regions yaw="180">
+            <point>-25.5,54,32.5</point>
+        </regions>
+    </spawn>
+    <spawn team="blue" kit="spawn" filter="bluemonument">
+        <regions yaw="180">
+            <point>-25.5,54,77.5</point>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="180">
+            <cuboid min="-19,19,-1" max="-32,19,-7"/>
+        </regions>
+    </default>
+</spawns>
+<maxbuildheight>30</maxbuildheight>
+<time result="objectives">30m</time>
+<crafting> 
+    <disable>redstone torch on</disable>
+    <disable>redstone torch on</disable>
+    <disable>diode block on</disable>
+    <disable>diode block off</disable>
+    <disable>dispenser</disable>
+</crafting>
+</map>
