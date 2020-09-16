@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+    <name>Cuckoo TE</name>
+    <version>1.5.3</version>
+    <objective>Destroy the enemy's monuments</objective>
+    <authors>
+        <author uuid="f926e3b1-ce9c-4269-a5e8-e339d5056480"/> <!-- Matilaina -->
+        <author uuid="5eed208d-de58-4022-9ba7-6ccb5ea7e92a"/> <!-- Selfie -->
+    </authors>
+    <contributors>
+        <contributor uuid="6e347123-c684-4d7e-996c-44d4924ff172" contribution="XML Fixes"/> <!-- SantaSoco -->
+    </contributors>
+    <destroyables completion="100%">
+        <destroyables owner="blueTeam" materials="coal block">
+            <destroyable id="blue-low-monument" name="Low Monument">
+                <region>
+                    <cuboid min="-2,33,26" max="1,36,29"/>
+                </region>
+            </destroyable>
+            <destroyable id="blue-high-monument" name="High Monument">
+                <region>
+                    <cuboid min="-2,42,-20" max="1,45,-17"/>
+                </region>
+            </destroyable>
+        </destroyables>
+        <destroyables owner="redTeam" materials="coal block">
+            <destroyable id="red-low-monument" name="Low Monument">
+                <region>
+                    <cuboid min="-54,33,-20" max="-51,36,-17"/>
+                </region>
+            </destroyable>
+            <destroyable id="red-high-monument" name="High Monument">
+                <region>
+                    <cuboid min="-54,42,26" max="-51,45,29"/>
+                </region>
+            </destroyable>
+        </destroyables>
+    </destroyables>
+    <teams>
+        <team id="redTeam" color="dark red" max="5">Red</team>
+        <team id="blueTeam" color="blue" max="5">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn" force="true">
+            <item slot="0" material="iron sword"/>
+            <item slot="1" material="bow"/>
+            <item slot="2" material="diamond pickaxe"/>
+            <item slot="3" material="diamond axe"/>
+            <item slot="4" amount="64" material="log"/>
+            <item slot="5" amount="64" material="glass"/>
+            <item slot="6" amount="64" material="cobblestone"/>
+            <item slot="8" amount="32" material="bread"/>
+            <item slot="19" amount="64" material="arrow"/>
+            <item slot="28" amount="64" material="arrow"/>
+        </kit>
+    </kits>
+    <spawns>
+        <spawn team="redTeam" kit="spawn">
+            <regions yaw="-90">
+                <block>-89.5,76,4.5</block>
+            </regions>
+        </spawn>
+        <spawn team="blueTeam" kit="spawn">
+            <regions yaw="90">
+                <block>35.5,76,4.5</block>
+            </regions>
+        </spawn>
+        <default>
+            <regions yaw="0">
+                <block>-26.5,76,-62.5</block>
+            </regions>
+        </default>
+    </spawns>
+    <filters>
+        <!-- Void Filter -->
+        <not id="no-void">
+            <void/>
+        </not>
+        <!-- Dispenser Filter -->
+        <not id="deny-dispensers">
+            <any>
+                <material>dispenser</material>
+            </any>
+        </not>
+    </filters>
+    <regions>
+        <!-- Applies -->
+        <apply block="no-void" message="You may not modify the void area!">
+            <region>
+                <negative>
+                    <rectangle min="-69,-50" max="16,59"/>
+                </negative>
+            </region>
+        </apply>
+        <apply block="never" message="You may not edit the spawn area!">
+            <region>
+                <region id="spawns"/>
+            </region>
+        </apply>
+        <apply block="deny-dispensers" use="deny-dispensers">
+            <region>
+                <everywhere/>
+            </region>
+        </apply>
+        <!-- Regions -->
+        <union id="spawns">
+            <cuboid id="redSpawn" min="-63,43,3" max="-66,39,6"/>
+            <cuboid id="blueSpawn" min="13,43,3" max="10,39,6"/>
+        </union>
+    </regions>
+    <itemremove>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>diamond axe</item>
+        <item>log</item>
+        <item>glass</item>
+        <item>bread</item>
+        <item>cobblestone</item>
+        <item>coal block</item>
+        <item>obsidian</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>diamond axe</tool>
+    </toolrepair>
+    <maxbuildheight>56</maxbuildheight>
+    <time>30m</time>
+    <respawn delay="7s" blackout="true"/> <!-- Delay -->
+    <timelock>on</timelock>
+</map>
