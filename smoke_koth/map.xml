@@ -1,0 +1,115 @@
+<map proto="1.4.3">
+<name>Smoke KOTH</name>
+<version>1.0.3</version>
+<objective>Be the first team to gain 2500 points.</objective>
+<gamemode>koth</gamemode>
+<authors>
+    <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
+    <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!--  Claf  -->
+</authors>
+<contributors>
+    <contributor uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/> <!-- triplezko -->
+</contributors>
+<teams>
+    <team id="red-team" color="dark red" max="7" max-overfill="7">Red</team>
+    <team id="yellow-team" color="yellow" max="7" max-overfill="7">Yellow</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" locked="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" locked="true" material="bow">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="2" amount="32" material="cooked beef"/>
+        <item slot="28" material="arrow"/>
+        <leggings unbreakable="true" locked="true" material="iron leggings">
+            <enchantment>projectile_protection</enchantment>
+            <enchantment>fire_protection</enchantment>
+        </leggings>
+    </kit>
+    <kit id="red-kit" parents="spawn-kit">
+        <helmet color="cd0000" unbreakable="true" locked="true" material="leather helmet"/>
+        <chestplate color="cd0000" unbreakable="true" locked="true" material="leather chestplate"/>
+        <boots color="cd0000" unbreakable="true" locked="true" material="leather boots"/>
+    </kit>
+    <kit id="yellow-kit" parents="spawn-kit">
+        <helmet color="E5E533" unbreakable="true" locked="true" material="leather helmet"/>
+        <chestplate color="E5E533" unbreakable="true" locked="true" material="leather chestplate"/>
+        <boots color="E5E533" unbreakable="true" locked="true" material="leather boots"/>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="red-team" kit="red-kit">
+        <regions yaw="-90">
+            <cylinder base="49.5,22,-265.5" radius="1" height="1"/>
+        </regions>
+    </spawn>
+    <spawn team="yellow-team" kit="yellow-kit">
+        <regions yaw="0">
+            <cylinder base="107.5,22,-323.5" radius="1" height="1"/>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="135">
+            <cylinder base="81.5,14.5,-291.5" radius="2" height="1"/>
+        </regions>
+    </default>
+</spawns>
+<regions>
+    <apply block="never"/>
+</regions>
+<control-points capture-time="5s" neutral-state="true" show-progress="true" time-multiplier="0.75" points="3.5"  incremental="true" required="false" decay="0" recovery="1">
+    <control-point name="Top">
+        <capture>
+            <cuboid min="60,20,-313" max="67,26,-306"/>
+        </capture>
+        <progress>
+            <cuboid min="60,20,-313" max="67,26,-306"/>
+        </progress>
+        <captured>
+            <cuboid min="60,20,-313" max="67,26,-306"/>
+        </captured>
+    </control-point>
+    <control-point name="Bottom">
+        <capture>
+            <cuboid min="77,13,-296" max="84,19,-289"/>
+        </capture>
+        <progress>
+            <cuboid min="77,13,-296" max="84,19,-289"/>
+        </progress>
+        <captured>
+            <cuboid min="77,13,-296" max="84,19,-289"/>
+        </captured>
+    </control-point>
+    <control-point name="Cave">
+        <capture>
+            <cuboid min="61,8,-312" max="68,14,-305"/>
+        </capture>
+        <progress>
+            <cuboid min="61,8,-312" max="68,14,-305"/>
+        </progress>
+        <captured>
+            <cuboid min="61,8,-312" max="68,14,-305"/>
+        </captured>
+    </control-point>
+</control-points>
+<score>
+    <limit>2500</limit>
+</score>
+<itemremove>
+    <item>cooked beef</item>
+    <item>arrow</item>
+</itemremove>
+<timelock>on</timelock>
+<kill-reward>
+    <item material="golden apple"/>
+</kill-reward>
+<gamerules>
+    <doDaylightCycle>false</doDaylightCycle>
+</gamerules>
+<!--<itemkeep>-->
+<!--    <item>golden apple</item>-->
+<!--</itemkeep>-->
+<respawn delay="5s"/>
+</map>

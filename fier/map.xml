@@ -1,0 +1,69 @@
+<map proto="1.4.0">
+<name>Fier</name>
+<version>1.0.0</version>
+<objective>Leak the other team's core to win!</objective>
+<authors>
+    <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/>
+    <author uuid="aa4b525d-e0ad-4847-bb18-2a6f3a2d6a13"/>
+</authors>
+<cores material="obsidian" leak="2">
+    <core team="blue" region="blue-core"/>
+    <core team="red" region="red-core"/>
+</cores>
+<teams>
+   <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+   <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn">
+        <item slot="8" amount="64" material="cooked beef"/>
+        <potion duration="5" amplifier="1">saturation</potion>
+    </kit>
+</kits>
+<itemremove>
+    <item>obsidian</item>
+</itemremove>
+<filters>
+    <not id="no-void">
+        <void/>
+    </not>
+</filters>
+<regions>
+    <rectangle id="void-gap" min="47,68" max="-7,-25"/>
+    <cuboid id="red-core" min="9,6,-11" max="12,8,-8"/>
+    <cuboid id="blue-core" min="9,6,51" max="12,8,54"/>
+    <rectangle id="red-spawn" min="42,-23" max="45,-20"/>
+    <rectangle id="blue-spawn" min="42,63" max="45,66"/>
+    <apply block="never" region="red-spawn"/>
+    <apply block="never" region="blue-spawn"/>
+    <apply block="always" region="void-gap" message="You may not place blocks in the void area!"/>
+    <apply block="no-void"/>
+</regions>
+<spawns>
+    <spawn team="red" kit="spawn">
+        <regions yaw="0">
+            <point>43.5,52,-24.5</point>
+        </regions>
+    </spawn>
+    <spawn team="blue" kit="spawn">
+        <regions yaw="180">
+            <point>43.5,52,67.5</point>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="120">
+            <cuboid min="32,13,58" max="9,13,47"/>
+        </regions>
+    </default>
+</spawns>
+<maxbuildheight>25</maxbuildheight>
+<time result="objectives">30m</time>
+<crafting> 
+    <disable>redstone torch on</disable>
+    <disable>redstone torch on</disable>
+    <disable>diode block on</disable>
+    <disable>diode block off</disable>
+    <disable>dispenser</disable>
+</crafting>
+<respawn delay="7s"/>
+</map>
