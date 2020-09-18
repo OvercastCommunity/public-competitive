@@ -18,8 +18,8 @@
 <respawn delay="7s"/>
 <time result="objectives">20m</time>
 <teams>
-	<team id="red" color="dark red" min="7" max="7" max-overfill="7">Red Team</team>
-	<team id="blue" color="blue" min="7" max="7" max-overfill="7">Blue Team</team>
+	<team id="red" color="dark red" max="7" max-overfill="7">Red Team</team>
+	<team id="blue" color="blue" max="7" max-overfill="7">Blue Team</team>
 </teams>
 <kits>
 	<kit id="spawn" force="true">
