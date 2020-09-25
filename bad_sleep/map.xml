@@ -1,0 +1,142 @@
+<map proto="1.4.2">
+<name>Bad Sleep</name>
+<version>1.0.0</version>
+<objective>Capture the enemy flag.</objective>
+<gamemode>ctf</gamemode>
+<authors>
+    <author uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!-- Jexel -->
+    <author uuid="a6955518-97b8-4c1d-8e76-e641b8f8822c"/> <!-- Qwuiblington -->
+</authors>
+<contributors>
+    <contributor uuid="7475c44e-3066-468f-a4c6-488fe9612097"/> <!-- JCNumbers -->
+</contributors>
+<teams>
+    <team id="red"    color="dark red" max="7" max-overfill="7" min="6">Red</team>
+    <team id="blue" color="blue"    max="7" max-overfill="7" min="6">Blue</team>
+</teams>
+<filters>
+    <team id="red-only">red</team>
+    <team id="blue-only">blue</team>
+    <time id="flag-respawns">0</time>
+    <any id="has-flag">
+        <carrying-flag>red-flag</carrying-flag>
+        <carrying-flag>lime-flag</carrying-flag>
+        <carrying-flag>orange-flag</carrying-flag>
+        <carrying-flag>blue-flag</carrying-flag>
+    </any>
+</filters>
+<spawns>
+    <default region="spawn-obs" yaw="0"/>
+    <spawn team="red"    kit="red-kit"    region="spawn-red"  yaw="90"/>
+    <spawn team="blue" kit="blue-kit" region="spawn-blue" yaw="-90"/>
+</spawns>
+<respawn delay="6s" auto="true" blackout="true"/>
+<kits>
+    <kit id="spawn-Kit">
+        <clear/>
+        <game-mode>adventure</game-mode>
+        <item slot="0" unbreakable="true">stone sword</item>
+        <item slot="1" unbreakable="true">bow</item>
+        <item slot="2" amount="1">golden apple</item>
+        <item slot="8" amount="24">arrow</item>
+        <leggings enchantment="protection projectile:2" unbreakable="true">iron leggings</leggings>
+    </kit>
+    <kit id="blue-kit" parents="spawn-Kit">
+        <helmet color="334CB2" unbreakable="true" locked="true" material="leather helmet"/>
+        <chestplate color="334CB2" unbreakable="true" locked="true" material="leather chestplate"/>
+        <boots color="334CB2" unbreakable="true" locked="true" material="leather boots"/>
+    </kit>
+    <kit id="red-kit" parents="spawn-Kit">
+        <helmet color="cd0000" unbreakable="true" locked="true" material="leather helmet"/>
+        <chestplate color="cd0000" unbreakable="true" locked="true" material="leather chestplate"/>
+        <boots color="cd0000" unbreakable="true" locked="true" material="leather boots"/>
+    </kit>
+    <kit id="red-flag-kit">
+        <effect duration="oo">slowness</effect>
+        <effect duration="oo" amplifier="-2">health boost</effect>
+    </kit>
+    <kit id="blue-flag-kit">
+        <effect duration="oo">slowness</effect>
+        <effect duration="oo" amplifier="-2">health boost</effect>
+    </kit>
+    <kit id="reset-kit" force="true">
+        <effect duration="0" amplifier="10">slowness</effect>
+        <effect duration="0" amplifier="0">health boost</effect>
+    </kit>
+    <kit id="capped-flag" force="true">
+        <effect duration="1" amplifier="1">heal</effect>
+        <effect duration="1" amplifier="4">regeneration</effect>
+    </kit>
+</kits>
+<regions>
+    <apply block="never"/>
+    <apply kit="capped-flag" filter="has-flag" region="nets"/>
+    <apply enter="blue-only" region="blue-spawns"/>
+    <apply enter="red-only" region="red-spawns"/>
+    <cylinder id="spawn-obs"       base="0.5,34,-55.5"   radius="2" height="0.1"/>
+    <cylinder id="spawn-red"     base="52.5,9.1,0.5"   radius="1"   height="0.1"/>
+    <cylinder id="spawn-blue"    base="-51.5,9.1,0.5"  radius="1"   height="0.1"/>
+    <union id="nets">
+        <cuboid id="blue-net" min="-31,10,-3" max="-35,12,4"/>
+        <cuboid id="red-net"  min="32,10,-3" max="36,12,4"/>
+    </union>
+    <union id="blue-spawns">
+        <cuboid id="blue-spawn" min="-28,3,-4" max="-35,oo,5"/>
+        <cuboid id="blue-tunns" min="-44,3,-22" max="-35,14,23"/>
+    </union>
+    <union id="red-spawns">
+        <cuboid id="red-spawn" min="29,3,-4" max="36,oo,5"/>
+        <cuboid id="red-tunns" min="45,3,-22" max="36,14,23"/>
+    </union>
+</regions>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<flags>
+    <flag id="red-flag" name="Red Flag" color="red"  owner="red"  pickup-kit="red-flag-kit"  drop-kit="reset-kit" capture-filter="blue-only">
+        <post pickup-filter="blue-only" recover-time="15s" respawn-time="10s">37,12,28</post>
+    </flag>
+    <flag id="orange-flag" name="Orange Flag" color="orange" owner="red"  pickup-kit="red-flag-kit"  drop-kit="reset-kit" capture-filter="blue-only">
+        <post pickup-filter="blue-only" recover-time="15s" respawn-time="10s">37,12,-28</post>
+    </flag>
+    <flag id="blue-flag" name="Blue Flag" color="blue" owner="blue" pickup-kit="blue-flag-kit" drop-kit="reset-kit" capture-filter="red-only">
+        <post pickup-filter="red-only" recover-time="15s" respawn-time="10s">-37,12,-28</post>
+    </flag>
+    <flag id="lime-flag" name="Lime Flag" color="lime" owner="blue" pickup-kit="blue-flag-kit" drop-kit="reset-kit" capture-filter="red-only">
+        <post pickup-filter="red-only" recover-time="15s" respawn-time="10s">-37,12,28</post>
+    </flag>
+    <flags points="1">
+        <net region="red-net"  flag="blue-flag"   respawn-filter="flag-respawns"/>
+        <net region="red-net"  flag="lime-flag"   respawn-filter="flag-respawns"/>
+        <net region="blue-net" flag="red-flag"    respawn-filter="flag-respawns"/>
+        <net region="blue-net" flag="orange-flag" respawn-filter="flag-respawns"/>
+    </flags>
+</flags>
+<time>12m</time>
+<score>
+    <kills>0</kills>
+    <deaths>0</deaths>
+</score>
+<killreward>
+    <item amount="12">arrow</item>
+    <item>golden apple</item>
+</killreward>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather boots</item>
+    <item>iron helmet</item>
+    <item>iron chestplate</item>
+    <item>iron leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<timelock>on</timelock>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>
