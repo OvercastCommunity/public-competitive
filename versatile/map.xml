@@ -33,6 +33,7 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true">bow</item>
         <item slot="2" amount="16">arrow</item>
+        <item slot="3" amount="1">golden apple</item>
         <potion duration="oo">night vision</potion>
         <potion duration="3s">resistance</potion>
     </kit>

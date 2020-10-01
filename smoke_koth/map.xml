@@ -22,6 +22,7 @@
             <enchantment>infinity</enchantment>
         </item>
         <item slot="2" amount="32" material="cooked beef"/>
+        <item slot="3" amount="1">golden apple</item>
         <item slot="28" material="arrow"/>
         <leggings unbreakable="true" locked="true" material="iron leggings">
             <enchantment>projectile_protection</enchantment>
