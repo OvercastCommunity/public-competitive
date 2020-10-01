@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Versatile</name>
-<version>1.0.3</version>
+<version>1.0.4</version>
 <objective>Capture the enemy flag 3 times.</objective>
 <edition>tournament</edition>
 <gamemode>ctf</gamemode>
