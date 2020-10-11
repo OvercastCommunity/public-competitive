@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Badlands</name>
-<version>1.1.1</version>
+<version>1.1.2</version>
 <objective>Be the first team to gain 2500 points.</objective>
 <gamemode>koth</gamemode>
 <authors>
@@ -105,5 +105,5 @@
 <gamerules>
     <doDaylightCycle>false</doDaylightCycle>
 </gamerules>
-<respawn delay="5s"/>
+<respawn delay="5s" auto="true"/>
 </map>
