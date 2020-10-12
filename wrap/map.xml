@@ -5,7 +5,6 @@
 <authors>
     <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/> <!--  DoomyBoy  -->
 </authors>
-<game>Capture the Wool</game>
 <teams>
     <team name="red" color="dark red" max="5">Red</team>
     <team name="blue" color="blue" max="5">Blue</team>
