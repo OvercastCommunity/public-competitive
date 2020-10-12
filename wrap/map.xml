@@ -5,9 +5,10 @@
 <authors>
     <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/> <!--  DoomyBoy  -->
 </authors>
+<game>Capture the Wool</game>
 <teams>
-    <team id="red" color="dark red" max="5">Red</team>
-    <team id="blue" color="blue" max="5">Blue</team>
+    <team name="red" color="dark red" max="5">Red</team>
+    <team name="blue" color="blue" max="5">Blue</team>
 </teams>
 <spawns>
     <spawn team="red" kit="red-kit">
@@ -27,7 +28,7 @@
     </default>
 </spawns>
 <kits>
-    <kit id="spawn" force="true">
+    <kit name="spawn" force="true">
         <item slot="0" unbreakable="true">iron sword</item>
         <item slot="1" unbreakable="true">bow</item>
         <item slot="2" unbreakable="true">iron pickaxe</item>
@@ -38,12 +39,12 @@
         <item slot="7" amount="24">arrow</item>
         <leggings unbreakable="true">chainmail leggings</leggings>
     </kit>
-    <kit id="red-kit" parents="spawn">
+    <kit name="red-kit" parents="spawn">
         <helmet unbreakable="true" color="993333">leather helmet</helmet>
         <chestplate unbreakable="true" enchantment="protection projectile:1" color="993333">leather chestplate</chestplate>
         <boots unbreakable="true" color="993333">leather boots</boots>
     </kit>
-    <kit id="blue-kit" parents="spawn">
+    <kit name="blue-kit" parents="spawn">
         <helmet unbreakable="true" color="334CB2">leather helmet</helmet>
         <chestplate unbreakable="true" color="334CB2" enchantment="protection projectile:1">leather chestplate</chestplate>
         <boots unbreakable="true" color="334CB2">leather boots</boots>
@@ -55,13 +56,13 @@
     <item>golden apple</item>
 </killreward>
 <filters>
-    <filter id="only-red">
+    <filter name="only-red">
         <team>red</team>
     </filter>
-    <filter id="only-blue">
+    <filter name="only-blue">
         <team>blue</team>
     </filter>
-    <filter id="in-cyan-wool">
+    <filter name="in-cyan-wool">
         <any>
             <not>
                 <any>
@@ -80,7 +81,7 @@
             </not>
         </any>
     </filter>
-    <filter id="in-orange-wool">
+    <filter name="in-orange-wool">
         <any>
             <not>
                 <any>
@@ -99,7 +100,7 @@
             </not>
         </any>
     </filter>
-    <filter id="no-spawners">
+    <filter name="no-spawners">
         <not>
             <any>
                 <block>mob spawner</block>
@@ -108,15 +109,15 @@
             </any>
         </not>
     </filter>
-    <filter id="no-void">
+    <filter name="no-void">
         <not>
             <void/>
         </not>
     </filter>
 </filters>
 <regions>
-    <rectangle id="everywhere" min="oo,oo" max="-oo,-oo"/>
-    <union id="build-region">
+    <rectangle name="everywhere" min="oo,oo" max="-oo,-oo"/>
+    <union name="build-region">
         <rectangle min="-21,-78" max="-26,-71"/>
         <rectangle min="-21,-78" max="-14,-85"/>
         <rectangle min="-23,-85" max="-41,-92"/>
@@ -130,27 +131,27 @@
         <rectangle min="-84,-57" max="-79,-64"/>
         <cuboid min="-16,7,-49" max="-17,9,-48"/>
         <cuboid min="-88,7,-86" max="-89,9,-87"/>
-        <cuboid id="orange-wool" min="-9,0,-69" max="-1,12,-80"/>
-        <cuboid id="cyan-wool" min="-96,0,-66" max="-103,12,-55"/>
-        <rectangle id="red-spawn-exit" min="-2,-52" max="-9,-59"/>
-        <rectangle id="blue-spawn-exit" min="-103,-83" max="-96,-76"/>
-        <cuboid id="red-spawn" min="-96,9,-54" max="-103,20,-70"/>
-        <cuboid id="blue-spawn" min="-9,9,-81" max="-2,20,-65"/>
+        <cuboid name="orange-wool" min="-9,0,-69" max="-1,12,-80"/>
+        <cuboid name="cyan-wool" min="-96,0,-66" max="-103,12,-55"/>
+        <rectangle name="red-spawn-exit" min="-2,-52" max="-9,-59"/>
+        <rectangle name="blue-spawn-exit" min="-103,-83" max="-96,-76"/>
+        <cuboid name="red-spawn" min="-96,9,-54" max="-103,20,-70"/>
+        <cuboid name="blue-spawn" min="-9,9,-81" max="-2,20,-65"/>
     </union>
     <!-- Applied -->
     <apply enter="only-red" region="cyan-wool" message="Only Red may enter this wool room!"/>
     <apply enter="only-blue" region="orange-wool" message="Only Blue may enter this wool room!"/>
     <apply block="deny-all" message="You may not modify the spawn exits.">
-        <region id="red-spawn-exit"/>
-        <region id="blue-spawn-exit"/>
-        <region id="red-spawn"/>
-        <region id="blue-spawn"/>
+        <region name="red-spawn-exit"/>
+        <region name="blue-spawn-exit"/>
+        <region name="red-spawn"/>
+        <region name="blue-spawn"/>
     </apply>
     <apply block="in-cyan-wool" region="cyan-wool" message="Only Red can modify nether brick fences or spruce wood here."/>
     <apply block="in-orange-wool" region="orange-wool" message="Only Blue can modify nether brick fences or spruce wood here."/>
     <apply block="no-void" message="You may not modify blocks outside the playing area.">
         <negative>
-            <region id="build-region"/>
+            <region name="build-region"/>
         </negative>
     </apply>
     <apply block="no-spawners" region="everywhere" message="You may not edit spawners"/>
