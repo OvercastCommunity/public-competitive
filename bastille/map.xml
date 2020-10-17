@@ -62,7 +62,6 @@
 </respawns>
 <kits>
     <kit id="spawn-Kit">
-        <clear/>
         <game-mode>adventure</game-mode>
         <item slot="0" unbreakable="true">stone sword</item>
         <item slot="1" unbreakable="true">bow</item>
@@ -72,13 +71,11 @@
         <effect duration="oo">night vision</effect>
     </kit>
     <kit id="blue-kit" parents="spawn-Kit">
-        <clear-items/>
         <helmet     color="0066cc" unbreakable="true">leather helmet</helmet>
         <chestplate color="0066cc" unbreakable="true">leather chestplate</chestplate>
         <boots      color="0066cc" unbreakable="true">leather boots</boots>
     </kit>
     <kit id="red-kit" parents="spawn-Kit">
-        <clear-items/>
         <helmet     color="cd0000" unbreakable="true">leather helmet</helmet>
         <chestplate color="cd0000" unbreakable="true">leather chestplate</chestplate>
         <boots      color="cd0000" unbreakable="true">leather boots</boots>
