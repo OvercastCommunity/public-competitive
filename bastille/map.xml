@@ -123,6 +123,8 @@
     <item>golden apple</item>
 </killreward>
 <itemremove>
+    <item>golden apple</item>	
+    <item>arrow</item>	
     <item>leather helmet</item>
     <item>leather chestplate</item>
     <item>leather boots</item>
@@ -131,10 +133,6 @@
     <item>iron leggings</item>
     <item>iron boots</item>
 </itemremove>
-<itemkeep>
-    <item>golden apple</item>
-    <item>arrow</item>
-</itemkeep>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
