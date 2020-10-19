@@ -133,9 +133,9 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
-	<item>golden apple</item>
-	<item>arrow</item>
-</itemkeep>		
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
