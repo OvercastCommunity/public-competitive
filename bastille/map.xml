@@ -68,7 +68,7 @@
         <item slot="1" unbreakable="true">bow</item>
         <item slot="2" amount="20">arrow</item>
         <item slot="8" amount="1">golden apple</item>
-	<leggings unbreakable="true">iron leggings</leggings>
+        <leggings unbreakable="true">iron leggings</leggings>
         <effect duration="oo">night vision</effect>
     </kit>
     <kit id="blue-kit" parents="spawn-Kit">
