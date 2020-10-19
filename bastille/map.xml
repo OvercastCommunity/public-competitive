@@ -62,7 +62,7 @@
 </respawns>
 <kits>
     <kit id="spawn-Kit">
-    	<clear/>
+        <clear/>
         <game-mode>adventure</game-mode>
         <item slot="0" unbreakable="true">stone sword</item>
         <item slot="1" unbreakable="true">bow</item>
