@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Metropolis</name>
-<version>1.0.0</version>
+<version>1.0.1</version>
 <objective>Capture the most flags in 12 minutes.</objective>
 <authors>
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -53,7 +53,7 @@
     </spawn>
     <spawn team="blue-team" kit="blue-kit">
         <regions yaw="-135">
-            <point>137.5,114,213.5</point>
+            <point>137.5,144,213.5</point>
         </regions>
     </spawn>
     <default>
@@ -98,8 +98,8 @@
     <union id="flags-regions">
         <rectangle id="yellow-flag-region" min="244,159" max="239,164"/>
         <rectangle id="orange-flag-region" min="187,107" max="192,112"/>
-        <rectangle id="purple-flag-region" min="131,168" max="136,163"/>
-        <rectangle id="purple-flag-region" min="188,220" max="183,215"/>
+        <rectangle id="magenta-flag-region" min="131,168" max="136,163"/>
+        <rectangle id="lime-flag-region" min="188,220" max="183,215"/>
     </union>
     <union id="playable-region">
         <cuboid min="239,134,112" max="136,150,192"/>
