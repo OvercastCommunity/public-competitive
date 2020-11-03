@@ -1,6 +1,6 @@
 <map proto="1.4.3">
 <name>Avenue</name>
-<version>1.3.5</version>
+<version>1.3.6</version>
 <objective>Capture all five control points.</objective>
 <authors>
   	<author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -15,7 +15,12 @@
     <team id="red-team" color="dark red" max="7" max-overfill="7">Red</team>
     <team id="blue-team" color="blue" max="7" max-overfill="7">Blue</team>
 </teams>
-<time>12m</time>
+<!--<time>12m</time>-->
+<score>
+    <kills>0</kills>
+    <deaths>0</deaths>
+    <limit>400</limit>
+</score>
 <respawn delay="6s" auto="true"/>
 <kits>
     <kit id="spawn-kit">
@@ -184,6 +189,32 @@
     <all id="spawn6">
         <time>10m</time>
     </all>
+    <not id="BL-point">
+        <any>
+            <objective team="blue-team">blue-last</objective>
+            <objective team="red-team" id="red-mercy">blue-last</objective>
+        </any>
+    </not>
+    <not id="RL-point">
+        <any>
+            <objective id="blue-mercy" team="blue-team">red-last</objective>
+            <objective team="red-team">red-last</objective>
+        </any>
+    </not>
+    <any id="filter-last-point-red">
+        <objective>blue-last</objective>
+        <all>
+            <filter id="only-blue"/>
+            <filter id="BL-point"/>
+        </all>
+    </any>
+    <any id="filter-last-point-blue">
+        <objective>red-last</objective>
+        <all>
+            <filter id="only-red"/>
+            <filter id="RL-point"/>
+        </all>
+    </any>
 </filters>
 <damage>
     <deny>
@@ -202,7 +233,7 @@
     <rectangle id="blue-drop" min="-27,121" max="-24,118"/>
 </regions>
 <control-points incremental="true" neutral-state="true" show-progress="true" scaled-time="true" time-multiplier="0.25" capture-time="5s">
-    <control-point initial-owner="red-team" id="red-last" name="Red Last">
+    <control-point initial-owner="red-team" id="red-last" name="Red Last" points="0" required="false">
         <capture-region>
             <cuboid min="-27,19,-74" max="-19,21,-66"/>
         </capture-region>
@@ -216,7 +247,7 @@
             </any>
         </player-filter>
     </control-point>
-    <control-point initial-owner="red-team" id="red-2nd" name="Red 2nd">
+    <control-point initial-owner="red-team" id="red-2nd" name="Red 2nd" points="0" required="false">
         <capture-region>
             <cuboid min="-19,11,-32" max="-12,18,-25"/>
         </capture-region>
@@ -233,7 +264,7 @@
             </any>
         </player-filter>
     </control-point>
-    <control-point id="mid" name="Mid">
+    <control-point id="mid" name="Mid" points="1" required="false">
         <capture-region>
             <cuboid min="-13,8,13" max="-6,16,20"/>
         </capture-region>
@@ -247,7 +278,7 @@
             </any>
         </player-filter>
     </control-point>
-    <control-point initial-owner="blue-team" id="blue-2nd" name="Blue 2nd">
+    <control-point initial-owner="blue-team" id="blue-2nd" name="Blue 2nd" points="0" required="false">
         <capture-region>
             <cuboid min="0,11,65" max="-7,13,58"/>
         </capture-region>
@@ -264,7 +295,7 @@
             </any>
         </player-filter>
     </control-point>
-    <control-point initial-owner="blue-team" id="blue-last" name="Blue Last">
+    <control-point initial-owner="blue-team" id="blue-last" name="Blue Last" points="0" required="false">
         <capture-region>
             <cuboid min="8,19,107" max="0,26,99"/>
         </capture-region>
@@ -278,6 +309,9 @@
             </any>
         </player-filter>
     </control-point>
+    <!--Point Givers-->
+    <control-point id="red-last-point" show="false" points="10000" decay="9999" name="RL Point" capture-time="0s" capture="everywhere" capture-filter="only-blue" player-filter="filter-last-point-blue"/>
+    <control-point id="blue-last-point" show="false" points="10000" decay="9999" name="BL Point" capture-time="0s" capture="everywhere" capture-filter="only-red" player-filter="filter-last-point-red"/>
 </control-points>
 <portals>
     <!-- Red Portals -->
