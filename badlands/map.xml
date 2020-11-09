@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Badlands</name>
-<version>1.2.0</version>
+<version>1.1.2</version>
 <objective>Be the first team to gain 2500 points.</objective>
 <gamemode>koth</gamemode>
 <authors>
@@ -11,7 +11,6 @@
     <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!--  Strangey  -->
     <contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!--  Jexel  -->
     <contributor uuid="a6955518-97b8-4c1d-8e76-e641b8f8822c"/> <!--  Qwuiblington  -->
-	<contributor uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!--  teagod  -->
 </contributors>
 <teams>
     <team id="red-team" color="dark red" max="7" max-overfill="7">Red</team>
@@ -50,7 +49,7 @@
     </spawn>
     <default>
         <regions yaw="135">
-            <cylinder base="-159.5,28,103.5" radius="1" height="1"/>
+            <cylinder base="-168.5,28,94.5" radius="1" height="1"/>
         </regions>
     </default>
 </spawns>
@@ -71,24 +70,24 @@
     </control-point>
     <control-point name="Cliff">
         <capture>
-            <cuboid min="-192,26,71" max="-185,32,78"/>
+            <cuboid min="-196,24,67" max="-189,30,74"/>
         </capture>
         <progress>
-            <cuboid min="-192,26,71" max="-185,32,78"/>
+            <cuboid min="-196,24,67" max="-189,30,74"/>
         </progress>
         <captured>
-            <cuboid min="-192,26,71" max="-185,32,78"/>
+            <cuboid min="-196,24,67" max="-189,30,74"/>
         </captured>
     </control-point>
     <control-point name="Cave">
         <capture>
-            <cuboid min="-222,19,41" max="-215,25,48"/>
+            <cuboid min="-220,18,43" max="-213,24,50"/>
         </capture>
         <progress>
-            <cuboid min="-222,19,41" max="-215,25,48"/>
+            <cuboid min="-220,18,43" max="-213,24,50"/>
         </progress>
         <captured>
-            <cuboid min="-222,19,41" max="-215,25,48"/>
+            <cuboid min="-220,18,43" max="-213,24,50"/>
         </captured>
     </control-point>
 </control-points>
@@ -106,5 +105,5 @@
 <gamerules>
     <doDaylightCycle>false</doDaylightCycle>
 </gamerules>
-<respawn delay="5s"/>
+<respawn delay="5s" auto="true"/>
 </map>
