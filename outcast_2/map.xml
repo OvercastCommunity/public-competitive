@@ -8,6 +8,11 @@
 <contributors>
     <contributor contribution="Aesthetic help" uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
 </contributors>
+<rules>
+   <rule>
+      Flag carriers are not allowed to go to the bottom of the map or into their own spawn.
+   </rule>
+</rules>
 <teams>
     <team color="blue" max="7" max-overfill="7">Blue</team>
     <team color="dark red" max="7" max-overfill="7">Red</team>
