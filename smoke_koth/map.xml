@@ -101,6 +101,10 @@
 <itemremove>
     <item>cooked beef</item>
     <item>arrow</item>
+    <item>iron leggings</item>
+    <item>leather helmet</item>
+    <item>leather boots</item>
+    <item>leather chestplate</item>    
 </itemremove>
 <timelock>on</timelock>
 <kill-reward>

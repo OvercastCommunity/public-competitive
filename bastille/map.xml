@@ -68,17 +68,15 @@
         <item slot="1" unbreakable="true">bow</item>
         <item slot="2" amount="20">arrow</item>
         <item slot="8" amount="1">golden apple</item>
-		<leggings unbreakable="true">iron leggings</leggings>
+        <leggings unbreakable="true">iron leggings</leggings>
         <effect duration="oo">night vision</effect>
     </kit>
     <kit id="blue-kit" parents="spawn-Kit">
-        <clear-items/>
         <helmet     color="0066cc" unbreakable="true">leather helmet</helmet>
         <chestplate color="0066cc" unbreakable="true">leather chestplate</chestplate>
         <boots      color="0066cc" unbreakable="true">leather boots</boots>
     </kit>
     <kit id="red-kit" parents="spawn-Kit">
-        <clear-items/>
         <helmet     color="cd0000" unbreakable="true">leather helmet</helmet>
         <chestplate color="cd0000" unbreakable="true">leather chestplate</chestplate>
         <boots      color="cd0000" unbreakable="true">leather boots</boots>
