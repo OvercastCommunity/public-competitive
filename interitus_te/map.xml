@@ -168,9 +168,6 @@
     <dispenser-tnt-limit>0</dispenser-tnt-limit>
     <dispenser-tnt-multiplier>0</dispenser-tnt-multiplier>
 </tnt>
-<crafting>
-    <disable>shield</disable>
-</crafting>
 <maxbuildheight>40</maxbuildheight>
 <respawn delay="4s"/>
 <autorespawn/>
