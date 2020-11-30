@@ -1,0 +1,145 @@
+<map proto="1.4.0">
+<name>Cyanide</name>
+<version>2.5.0</version>
+<objective>Destroy the enemy team's monuments!</objective>
+<authors>
+	<author uuid="61f8e9dd-62ab-453a-b7ef-83ce8a383fe8"/> <!-- Campeh -->
+	<author uuid="dd43251f-f339-4b28-ac3e-fd12f79d8151"/> <!-- Laeh -->
+	<author uuid="e79aa605-fcac-44e2-86eb-30dfc08657d3"/> <!-- Ralloi -->
+</authors>
+<contributors>
+	<contributor uuid="e82603df-417d-4a95-bd1f-1720648be0b4" contribution="XML"/> <!-- Pablete1234 -->
+	<contributor uuid="eaf0ae5a-e001-47a6-85d0-003eb9e82b4c" contribution="Building help"/> <!-- Ronaa -->
+	<contributor uuid="65ffe1e4-d09e-4835-85d3-bfa6972b8a25" contribution="Building help"/> <!-- Pibo -->
+	<contributor uuid="377e44ba-8c33-47bd-8c07-1ca03635e90c" contribution="Building help"/> <!-- lPoloBlash -->
+	<contributor uuid="b20e68ac-3700-45c6-a53f-5fec0eb2aaa1" contribution="Building help"/> <!-- Pedrah -->
+</contributors>
+<teams>
+	<team id="blue-team" color="blue" max="8">Blue</team>
+	<team id="red-team" color="dark red" max="8">Red</team>
+</teams>
+<kits>
+	  <kit id="res-kit">
+			  <effect duration="5" amplifier="9999">damage resistance</effect>
+		</kit>
+    <kit id="kit-spawn">
+		  	<item slot="0"  unbreakable="true"                       >diamond sword</item>
+		  	<item slot="1"  unbreakable="true" enchantment="infinity">bow</item>
+		    <item slot="2"  unbreakable="true"                       >diamond pickaxe</item>
+		  	<item slot="3"  unbreakable="true"                       >diamond axe</item>
+			  <item slot="4"  amount="64"                              >golden carrot</item>
+		  	<item slot="5"  amount="16"                              >wood</item>
+		  	<item slot="6"  amount="16"                              >glass</item>
+		  	<item slot="8"  amount="16"                              >ladder</item>
+		  	<item slot="28"                                          >arrow</item>
+    </kit>
+</kits>
+<spawns>
+    <!-- initial spawns -->
+    <spawn team="red-team" kit="kit-spawn" yaw="0" filter="red-obsidian-monument-not-completed">
+        <region>
+            <point>-51.5,53.5,-122.5</point>
+        </region>
+    </spawn>
+    <spawn team="blue-team" kit="kit-spawn" yaw="180" filter="blue-obsidian-monument-not-completed">
+        <region>
+            <point>-51.5,53,11.5</point>
+        </region>
+    </spawn>
+    <!-- spawns with broken obsidian monuments -->
+	<spawn team="red-team" kit="kit-spawn" yaw="90" filter="red-obsidian-monument-completed">
+		<region>
+			<point>-5.5,53.5,-122.5</point>
+		</region>
+	</spawn>
+	<spawn team="blue-team" kit="kit-spawn" yaw="90" filter="blue-obsidian-monument-completed">
+		<region>
+			<point>-5.5,53,11.5</point>
+		</region>
+	</spawn>
+	<default yaw="90">
+		<region>
+			<point>17.5,53,-55.5</point>
+		</region>
+	</default>
+</spawns>
+<time result="objectives">45m</time>
+<destroyables>
+    <destroyable region="red-endstone-monument-region" id="red-endstone-monument" name="Endstone Monument" materials="ender stone" owner="red-team"/>
+    <destroyable region="blue-endstone-monument-region" id="blue-endstone-monument" name="Endstone Monument" materials="ender stone" owner="blue-team"/>
+    <destroyable region="red-emerald-monument-region" id="red-emerald-monument" name="Emerald Monument" materials="emerald block;beacon" owner="red-team"/>
+    <destroyable region="blue-emerald-monument-region" id="blue-emerald-monument" name="Emerald Monument" materials="emerald block;beacon" owner="blue-team"/>
+    <destroyable region="red-obsidian-monument-region" id="red-obsidian-monument" name="Obsidian Monument" show="false" materials="obsidian;beacon" owner="red-team" required="false"/>
+    <destroyable region="blue-obsidian-monument-region" id="blue-obsidian-monument" name="Obsidian Monument" show="false" materials="obsidian;beacon" owner="blue-team" required="false"/>
+</destroyables>
+<filters>
+	<not id="red-obsidian-monument-not-completed">
+		<objective id="red-obsidian-monument-completed">red-obsidian-monument</objective>
+	</not>
+	<not id="blue-obsidian-monument-not-completed">
+		<objective id="blue-obsidian-monument-completed">blue-obsidian-monument</objective>
+	</not>
+    <deny id="deny-spawner">
+        <material>mob spawner</material>
+    </deny>
+</filters>
+<regions>
+    <cuboid id="red-endstone-monument-region" min="-106,18,-91" max="-103,25,-88"/>
+    <cuboid id="blue-endstone-monument-region" min="-106,18,-23" max="-103,25,-20"/>
+    <cuboid id="red-emerald-monument-region" min="-67,26,-99" max="-62,33,-94"/>
+    <cuboid id="blue-emerald-monument-region" min="-67,26,-17" max="-62,33,-12"/>
+    <cuboid id="red-obsidian-monument-region" min="-28,19,-90" max="-27,22,-89"/>
+    <cuboid id="blue-obsidian-monument-region" min="-28,19,-22" max="-27,22,-21"/>
+	<union id="water-drops">
+		<rectangle id="red-water-drop" min="-55,-93" max="-48,-86"/>
+		<rectangle id="blue-water-drop" min="-55,-25" max="-48,-18"/>
+	</union>
+    <negative id="not-spawn-areas">
+        <union id="spawn-areas">
+            <cuboid id="red-tunnel" min="-54,52,-125" max="-3,57,-87"/>
+            <cuboid id="blue-tunnel" min="-54,52,-24" max="-3,57,14"/>
+            <cuboid id="obs-spawn" min="7,48,-60" max="14,55,-51"/>
+        </union>
+    </negative>
+    <negative id="not-playingfield">
+        <union id="playingfield">
+            <cuboid min="-140,0,-68" max="10,41,-43"/> <!-- mid -->
+            <cuboid min="-140,0,-43" max="10,41,-2"/> <!-- blue side -->
+            <cuboid min="-140,0,-109" max="10,41,-68"/> <!-- red side -->
+            <cuboid min="-107,0,-2" max="-85,41,20"/> <!-- blue island -->
+            <cuboid min="-107,0,-131" max="-85,41,-109"/> <!-- red island -->
+        </union>
+    </negative>
+    <!-- applicators -->
+    <apply region="everywhere" block-break="deny-spawner" message="You may not edit the spawner!"/>
+	  <apply region="water-drops" block="never" message="You may not edit the water drop!"/>
+  	<apply region="not-playingfield" block="never" message="You may not edit outside the playingfield!"/>
+    <apply region="not-spawn-areas" kit="res-kit"/>
+</regions>
+<itemremove>
+	<item>prismarine crystals</item>
+	<item>emerald block</item>
+	<item>gold block</item>
+	<item>cobblestone</item>
+	<item>obsidian</item>
+	<item>ender stone</item>
+	<item>wood</item>
+	<item>glass</item>
+	<item>smooth brick</item>
+	<item>diamond pickaxe</item>
+	<item>diamond axe</item>
+	<item>diamond sword</item>
+	<item>golden carrot</item>
+	<item>bow</item>
+	<item>arrow</item>
+	<item>ladder</item>
+</itemremove>
+<broadcasts>
+    <alert after="0.1s">`5The Obsidian Monument `8doesn't count as an objective for the final score.</alert>
+    <alert after="3s">`8Breaking the `5`lObsidian Monument `r`8will increase the enemy's respawn timer.</alert>
+</broadcasts>
+<disable-water-sources>true</disable-water-sources>
+<kill-reward>
+    <item material="golden apple"/>
+</kill-reward>
+</map>
