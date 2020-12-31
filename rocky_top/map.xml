@@ -4,6 +4,7 @@
 	<version>1.0.0</version>
 	<objective>Capture both of the enemy team's wools</objective>
 	<gamemode>ctw</gamemode>
+	<time result="objectives">45m</time>
 	<authors>
 		<author uuid="cef67055-9c27-4b58-a16f-278d793ff6bc">mrcookie_13</author>
 		<author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f">teagod</author>
