@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Quickwater Harbor</name>
-<version>1.0.0</version>
+<version>1.0.1</version>
 <objective>Control the mid point and capture the wool to win!</objective>
 <authors>
   <author uuid="97d1cc45-0f69-482b-9974-09351aef9dfa"/> <!-- _lunaceee -->
@@ -14,9 +14,8 @@
 <game>CTW and KotH</game>
 <maxbuildheight>33</maxbuildheight>
 <broadcasts>
-  <tip after="1s">To win you must first capture the mid-point.</tip>
-  <tip after="2s">You will then have access to the woolroom.</tip>
-  <tip after="3s">Capture the wool to win!</tip>
+  <tip after="1s">Control the mid point to Capture the Wool to win!</tip>
+  <tip after="2s">You may only enter the woolroom whilst you have control of mid</tip>
 </broadcasts>
 <teams>
     <team id="red-team" color="red" min="2" max="5">Red</team>
@@ -65,6 +64,11 @@
   <kit id="red-kit" parent="spawn">
     <helmet color="993333" material="leather helmet"/>
     <leggings color="993333" material="leather leggings"/>
+  </kit>
+  <kit id="woolroom-kit" force="true">
+    <chestplate material="iron chestplate">
+      <enchantment level="1">protection</enchantment>
+    </chestplate>
   </kit>
 </kits>
 <filters>
@@ -129,12 +133,12 @@
   <apply enter="only-red" region="red-entry" message="You may not enter the enemy team's base!"/>
   <block id="spawner-block-1">-37,32,2</block>
   <cuboid id="spawner-block-reg-1" min="-38,31,1" max="-35,33,4"/>
-  <block id="spawner-block-2">37,32,2</block>
+  <block id="spawner-block-2">37,32,-2</block>
   <cuboid id="spawner-block-reg-2" min="39,31,0" max="36,33,-3"/>
-  <block id="spawner-arrow-1">5,27,15</block>
-  <cuboid id="spawner-arrow-reg-1" min="4,26,17" max="7,28,14"/>
-  <block id="spawner-arrow-2">-5,27,-15</block>
-  <cuboid id="spawner-arrow-reg-2" min="-3,26,-16" max="-6,28,-13"/>
+  <block id="spawner-arrow-1">-8,34,-19</block>
+  <cuboid id="spawner-arrow-reg-1" min="-9,33,-17" max="-6,36,-21"/>
+  <block id="spawner-arrow-2">8,34,19</block>
+  <cuboid id="spawner-arrow-reg-2" min="7,33,18" max="10,36,22"/>
 </regions>
 <spawners>
   <spawner spawn-region="spawner-block-1" player-region="spawner-block-reg-1" min-delay="2s" max-delay="5s">
@@ -169,15 +173,13 @@
   <item>leather helmet</item>
   <item>chainmail chestplate</item>
   <item>leather leggings</item>
+  <item>iron chestplate</item>
   <item>chainmail boots</item>
+  <item>leaves</item>
+  <item>wool</item>
 </itemremove>
 <kill-rewards>
   <kill-reward>
-    <filter>
-      <all>
-        <kill-streak count="2"/>
-      </all>
-    </filter>
     <item material="golden apple"/>
   </kill-reward>
 </kill-rewards>
