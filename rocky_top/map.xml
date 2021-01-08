@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+	<name>Rocky Top</name>
+	<version>1.0.1</version>
+	<objective>Capture both of the enemy team's wools</objective>
+	<gamemode>ctw</gamemode>
+	<time overtime="1m" max-overtime="45m">45m</time>
+	<authors>
+		<author uuid="cef67055-9c27-4b58-a16f-278d793ff6bc">mrcookie_13</author>
+		<author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f">teagod</author>
+	</authors>
+	<contributors>
+		<contribuor uuid="510cf71c-0f8a-44b6-87c2-b1ed9c197040">finshu</contribuor>
+	</contributors>
+	<teams>
+    	<team color="blue" max="8" id="blue-team">Blue Team</team>
+    	<team color="dark red" max="8" id="red-team">Red Team</team>
+	</teams>
+    <timelock>on</timelock>
+	<kits>
+	</kits>
+	<wools>
+		<wool team="blue-team" color="PURPLE" location="-48.5,9.5,-8.5">
+			<monument>
+				<block>-99.5,7.5,161.5</block>
+			</monument>
+		</wool>
+		<wool team="blue-team" color="ORANGE" location="-133.5,14.5,-21.5">
+			<monument>
+				<block>-107.5,7.5,161.5</block>
+			</monument>
+		</wool>
+		<wool team="red-team" color="YELLOW" location="-133.5,14.5,168.5">
+			<monument>
+				<block>-107.5,7.5,-14.5</block>
+			</monument>
+		</wool>
+		<wool team="red-team" color="MAGENTA" location="-48.5,9.5,155.5">
+			<monument>
+				<block>-99.5,7.5,-14.5</block>
+			</monument>
+		</wool>
+	</wools>
+	<spawns>
+		<spawn team="blue-team" kit="blue-kit">
+			<region yaw="180">
+				<cuboid min="-104.5,8,165.5" max="-102.5,8,167.5"/>
+			</region>
+		</spawn>
+		<spawn team="red-team" kit="red-kit">
+			<region yaw="0">
+				<cuboid min="-104.5,8,-20.5" max="-102.5,8,-18.5"/>
+			</region>
+		</spawn>
+        <default>
+            <region yaw="90">
+            <point>-83.5,7,73.5</point>
+        </region>
+        </default>
+	</spawns>
+	<respawn delay="7s"/>
+	<kits>
+    	<kit id="spawn-kit">
+        	<item slot="0" unbreakable="true">iron sword</item>
+        	<item slot="1" unbreakable="true" enchantment="arrow infinite">bow</item>
+        	<item slot="2" unbreakable="true" enchantment="dig speed">diamond pickaxe</item>
+        	<item slot="3" unbreakable="true" enchantment="dig speed">iron axe</item>
+        	<item slot="4" amount="64" damage="1">wood</item>
+        	<item slot="5" amount="32">glass</item>
+        	<item slot="7" amount="64">golden carrot</item>
+        	<item slot="8">golden apple</item>
+        	<item slot="28">arrow</item>
+        	<item slot="31" amount="64" damage="1">wood</item>
+    	</kit>
+    	<kit id="red-kit" parents="spawn-kit">
+        	<chestplate material="leather chestplate" enchantment="protection projectile:1" unbreakable="true" color="993333"/>
+    	</kit>
+    	<kit id="blue-kit" parents="spawn-kit">
+        	<chestplate material="leather chestplate" enchantment="protection projectile:1" unbreakable="true" color="334CB2"/>
+    	</kit>
+    </kits>
+    <filters>
+    	<team id="only-red">red-team</team>
+    	<team id="only-blue">blue-team</team>
+        <not id="no-chests">
+            <material>chest</material>
+        </not>
+    	<all id="limit-red">
+            <filter id="no-chests"/>
+            <team>red-team</team>
+        </all>
+        <all id="limit-blue">
+            <filter id="no-chests"/>
+            <team>blue-team</team>
+        </all>
+    	<not id="no-void">
+        	<void/>
+    	</not>
+    	<material id="only-iron">iron block</material>
+    </filters>
+    <regions>
+    	<apply enter="only-red" message = "You may not enter red spawn!">
+    		<region>
+    			<cuboid id="red-spawn" min="-108.5,1,-25.5" max="-98.5,13,-9.5"/>
+    		</region>
+    	</apply>
+    	<apply enter="only-blue" message = "You may not enter blue spawn!">
+    		<region>
+    			<cuboid id="blue-spawn" min="-108.5,13,156.5" max="-98.5,1,172.5"/>
+    		</region>
+    	</apply>
+    	<apply block="only-iron" message="You may only break iron in spawn!">
+    		<region>
+    			<region id="red-spawn"/>
+    			<region id="blue-spawn"/>
+    		</region>>
+    	</apply>
+    	<apply block="limit-red" enter="only-red" message="You may not modify your own wool room!">
+    		<region>
+    			<cuboid id="magenta-wool" min="-54.5,9,150.5" max="-43.5,100,161.5"/>
+    			<cuboid id="yellow-wool" min="-136.5,13,163.5" max="-128.5,100,172.5"/>
+    		</region>
+    	</apply>
+    	<apply block="limit-blue" enter="only-blue" message="You may not modify your own wool room!">
+    		<region>
+    			<cuboid id="orange-wool" min="-136.5,13,-25.5" max="-128.5,100,-16.5"/>
+    			<cuboid id="purple-wool" min="-54.5,9,-14.5" max="-43.5,100,-3.5"/>
+    		</region>
+    	</apply>
+        <apply block="no-chests" message="You may not break chests in the woolroom">
+            <region>
+                <region id="magenta-wool"/>
+                <region id="yellow-wool"/>
+                <region id="orange-wool"/>
+                <region id="yellow-wool"/>
+            </region>
+        </apply>
+        <apply block="no-void" message="You may not modify the void area!">
+        <region>
+            <everywhere/>
+        </region>
+    </apply>
+    </regions>
+    <renewables>
+    	<renewable interval="15" grow="true" particles="true" sound="false" avoid-players="2">
+    	    <region>
+    	        <region id="red-spawn"/>
+    	        <region id="blue-spawn"/>
+    	    </region>
+    	    <renew-filter>
+    	        <material>iron block</material>
+    	    </renew-filter>
+    	    <replace-filter>
+    	        <material>air</material>
+    	    </replace-filter>
+    </renewable>
+</renewables>
+<crafting>
+    <disable>boat</disable>
+	<disable>minecart</disable>
+</crafting>
+<itemremove>
+    <item>redstone</item>
+    <item>seeds</item>
+    <item>sapling</item>
+    <item>apple</item>
+    <item>golden carrot</item>>
+    <item>glass</item>
+    <item>string</item>
+    <item>leather chestplate</item>
+    <item>sandstone</item>
+    <item>wood</item>
+    <item>arrow</item>
+</itemremove>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>iron axe</tool>
+</toolrepair>
+<kill-rewards>
+    <kill-reward>
+        <item>golden apple</item>>
+    </kill-reward>
+    <kill-reward>
+        <item amount="16" damage="1">wood</item>
+    </kill-reward>
+</kill-rewards>
+<maxbuildheight>24</maxbuildheight>
+</map>
