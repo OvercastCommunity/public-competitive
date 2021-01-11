@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
     <name>Rocky Top</name>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <objective>Capture both of the enemy team's wools</objective>
     <gamemode>ctw</gamemode>
     <time overtime="1m" max-overtime="45m">45m</time>
@@ -178,6 +178,7 @@
     <tool>bow</tool>
     <tool>diamond pickaxe</tool>
     <tool>iron axe</tool>
+    <tool>iron spade</tool>
 </toolrepair>
 <kill-rewards>
     <kill-reward>
