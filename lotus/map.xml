@@ -157,16 +157,16 @@
 </renewables>
 <wools>
 	<wool team="red-team" color="yellow" location="-7.5,13,-318.5">
-		<monument><block>34.5,17,-112.5</block></monument>
+		<monument><block>34.5,17,-108.5</block></monument>
 	</wool>
 	<wool team="red-team" color="orange" location="76.5,13,-306.5">
-		<monument><block>38.5,17,-112.5</block></monument>
+		<monument><block>38.5,17,-108.5</block></monument>
 	</wool>
   <wool team="blue-team" color="cyan" location="-7.5,13,-68.5">
-    <monument><block>34.5,17,-274.5</block></monument>
+    <monument><block>34.5,17,-278.5</block></monument>
   </wool>
   <wool team="blue-team" color="purple" location="7.5,13,-80.5">
-    <monument><block>38.5,17,-274.5</block></monument>
+    <monument><block>38.5,17,-278.5</block></monument>
   </wool>
 </wools>
 <toolrepair>
