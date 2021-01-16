@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Lotus</name>
-<version>1.1.1</version>
+<version>1.1.2</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!-- teagod -->
@@ -84,10 +84,10 @@
 <regions>
     <union id="spawns">
         <union id="red-spawn">
-	        	<rectangle min="48,-88" max="25,-69"/>
+	        	<rectangle min="48,-84" max="25,-65"/>
 	      </union>
         <union id="blue-spawn">
-            <rectangle min="25,-299" max="48,-318"/>
+            <rectangle min="25,-303" max="48,-322"/>
       	</union>
     </union>
     <union id="woolrooms">
