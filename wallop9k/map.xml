@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+<name>Wallop 9000</name>
+<version>1.1</version>
+<objective>Destory the enemy team's monuments.</objective>
+<authors>
+    <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
+    <author uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/> <!-- triplezko -->
+</authors>
+<contributors>
+    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
+    <contributor uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
+</contributors>
+<teams>
+    <team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
+    <team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>
+</teams>
+<kits>
+    <kit id="kit-default">
+        <item slot="0"  unbreakable="true"                       >diamond sword</item>
+        <item slot="1"  unbreakable="true" enchantment="infinity">bow</item>
+        <item slot="2"  unbreakable="true"                       >diamond pickaxe</item>
+        <item slot="3"  unbreakable="true"                       >diamond axe</item>
+        <item slot="5"  amount="64"                    damage="5">wood</item>
+        <item slot="6"  amount="64"                              >glass</item>
+        <item slot="8"  amount="64"                              >golden carrot</item>
+        <item slot="28"                                          >arrow</item>
+        <item slot="32" amount="32"                    damage="5">wood</item>
+        <chestplate     unbreakable="true"                       >chainmail chestplate</chestplate>
+    </kit>
+    <kit id="kit-red" parents="kit-default">
+        <boots unbreakable="true" color="cd0000">leather boots</boots>
+    </kit>
+    <kit id="kit-blue" parents="kit-default">
+        <boots unbreakable="true" color="0066cc">leather boots</boots>
+    </kit>
+</kits>
+<destroyables materials="ender stone">
+    <destroyable owner="blue-team" name="Core">
+        <region>
+            <cuboid min="-82,47,84" max="-85,54,81"/>
+        </region>
+    </destroyable>
+    <destroyable owner="blue-team" name="E G G ?">
+        <region>
+            <cuboid min="-79,30,67" max="-82,37,64"/>
+        </region>
+    </destroyable>
+    <destroyable owner="red-team" name="Core">
+        <region>
+            <cuboid min="-15,47,81" max="-12,54,84"/>
+        </region>
+    </destroyable>
+    <destroyable owner="red-team" name="E G G ?">
+        <region>
+            <cuboid min="-18,30,64" max="-15,37,67"/>
+        </region>
+    </destroyable>
+</destroyables>
+<spawns>
+    <spawn team="red-team" kit="kit-red">
+        <regions yaw="0">
+            <point>-17.5,23,-16.5</point>
+        </regions>
+    </spawn>
+    <spawn team="blue-team" kit="kit-blue">
+        <regions yaw="0">
+            <point>-79.5,23,-16.5</point>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="0">
+            <point>-48.5,67,-16.5</point>
+        </regions>
+    </default>
+</spawns>
+<filters>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+</filters>
+<regions>
+    <apply block="never" message="You may not build outside of the playable region!">
+        <region>
+            <negative>
+                <rectangle min="-107,19" max="10,152"/>
+            </negative>
+        </region>
+    </apply>
+    <apply enter="only-blue" message="You may not enter Blue Team's spawn!">
+        <region>
+            <cuboid min="-82,27,-19" max="-77,27,27"/>
+        </region>
+    </apply>
+    <apply enter="only-red" message="You may not enter Red Team's spawn!">
+        <region>
+            <cuboid min="-20,27,-19" max="-15,27,27"/>
+        </region>
+    </apply>
+</regions>
+<crafting>
+    <disable>iron fence</disable>
+    <disable>anvil</disable>
+    <disable>iron trapdoor</disable>
+</crafting>
+<toolrepair>
+    <tool>diamond sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>diamond axe</tool>
+</toolrepair>
+<itemremove>
+    <item>arrow</item>
+    <item>obsidian</item>
+    <item>anvil</item>
+    <item>iron fence</item>
+    <item>iron trapdoor</item>
+    <item>ender stone</item>
+    <item>gold block</item>
+    <item>packed ice</item>
+    <item>glowstone dust</item>
+    <item>cooked_fish:1</item>
+    <item>leather boots</item>
+    <item>chainmail chestplate</item>
+</itemremove>
+<kill-rewards>
+    <kill-reward>
+        <item amount="1" material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
+<timelock>on</timelock>
+<maxbuildheight>58</maxbuildheight>
+<time result="objectives">45m</time>
+</map>

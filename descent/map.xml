@@ -1,0 +1,211 @@
+<map proto="1.4.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noidspaceSchemaLocation="https://raw.githubusercontent.com/PGMTools/PGMSchema/master/map.xsd">
+<name>Descent</name>
+<version>1.2.1</version>
+<objective>Break both monuments to win!</objective>
+<authors>
+    <author uuid="61f8e9dd-62ab-453a-b7ef-83ce8a383fe8"/> <!-- Campeh -->
+	<author uuid="dd43251f-f339-4b28-ac3e-fd12f79d8151"/> <!-- Laeh -->
+	<author uuid="e79aa605-fcac-44e2-86eb-30dfc08657d3"/> <!-- Ralloi -->
+	<author uuid="4d8f0e4c-4da0-4749-96be-72b1430551a8"/> <!-- Dakiuu -->
+	<author uuid="377e44ba-8c33-47bd-8c07-1ca03635e90c"/> <!-- PoIo_ -->
+</authors>
+<contributors>
+	<contributor uuid="e06460ea-60b1-41ec-8986-16c0039ad5f9" contribution="Building help"/> <!-- Pesergio21 -->
+	<contributor uuid="52939190-afb4-4e5c-bfad-cd225030b4b2" contribution="Building help"/> <!-- Jnd_ -->
+	<contributor uuid="65ffe1e4-d09e-4835-85d3-bfa6972b8a25" contribution="Building help"/> <!-- Pibo -->
+</contributors>
+<teams>
+	<team id="blue-team" color="blue" max="8">Blue</team>
+	<team id="red-team" color="dark red" max="8">Red</team>
+</teams>
+<!--
+<modes>
+    <mode after="0s" material="air" show-before="0"/>
+</modes>
+-->
+<filters>
+    <not id="no-void">
+        <void/>
+    </not>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+    <all id="blue-portal-filter">
+        <filter id="only-blue"/>
+        <objective id="red-obsidian-monument-completed">red-obsidian-monument</objective>
+    </all>
+    <all id="red-portal-filter">
+        <filter id="only-red"/>
+        <objective id="blue-obsidian-monument-completed">blue-obsidian-monument</objective>
+    </all>
+    <not id="deny-spawner">
+        <material>mob spawner</material>
+    </not>
+	<not id="initial-spawn">
+        <time>15m</time>
+    </not>
+    <all id="15-minutes-spawn">
+        <time>15m</time>
+        <not><time>30m</time></not>
+    </all>
+    <all id="30-minutes-spawn">
+        <time>30m</time>
+        <not><time>45m</time></not>
+    </all>
+</filters>
+<regions>
+    <cuboid id="blue-obsidian-core" min="-106,14,71" max="-104,21,69"/>
+    <cuboid id="red-obsidian-core" min="-104,14,129" max="-106,21,131"/>
+    <cuboid id="blue-left-monument-region" min="-69,16,70" max="-64,27,65"/>
+    <cuboid id="red-left-monument-region" min="-136,12,130" max="-131,23,135"/>
+    <cuboid id="blue-right-monument-region" min="-131,12,71" max="-136,23,66"/>
+    <cuboid id="red-right-monument-region" min="-69,16,131" max="-64,27,136"/>
+    <cuboid id="portal-blue" min="-30,28,102" max="-29,31,99"/>
+    <cuboid id="portal-red" min="-30,28,102" max="-29,31,99"/>
+    <cuboid id="return-blue-region" min="-7,68,47" max="-6,71,50"/>
+    <cuboid id="return-red-region" min="-7,68,151" max="-6,71,154"/>
+    <cuboid id="portal-blue-2" min="-108,19,180" max="-103,23,181"/>
+    <cuboid id="portal-red-2" min="-108,19,21" max="-103,23,20"/>
+    <cuboid id="return-blue-region-2" min="-107,19,185" max="-104,22,184"/>
+    <cuboid id="return-red-region-2" min="-107,19,16" max="-104,22,17"/>
+    <union id="portal-rooms">
+        <cuboid min="-101,17,18" max="-110,25,8"/>
+        <cuboid min="-101,17,183" max="-110,25,193"/>
+        <cuboid min="-16,64,43" max="-4,77,56"/>
+        <cuboid min="-16,64,158" max="-4,77,145"/>
+    </union>
+    <negative id="not-spawn-areas">
+        <union id="spawn-areas">
+            <cuboid id="blue-spawn" min="-88,17,39" max="-121,81,8"/>
+            <cuboid id="red-spawn" min="-122,17,162" max="-88,81,206"/>
+            <cuboid id="obs-spawn" min="-9,45,100" max="0,51,110"/>
+        </union>
+    </negative>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the opponent's spawn!"/>
+    <apply enter="only-blue" region="blue-spawn" message="You may not enter the opponent's spawn!"/>
+    <apply block="never" region="portal-rooms" message="You may not edit the portal rooms!"/>
+    <apply block="never" region="spawn-areas" message="You may not edit the spawns!"/>
+    <apply block-break="deny-spawner" message="You may not edit the spawner!"/>
+    <apply block-place="no-void" message="You may not edit the void!"/>
+</regions>
+<kits>
+  <kit id="kit-default">
+      <item slot="0"  unbreakable="true"                       >iron sword</item>
+      <item slot="1"  unbreakable="true" enchantment="infinity">bow</item>
+      <item slot="2"  unbreakable="true"                       >diamond pickaxe</item>
+      <item slot="3"  unbreakable="true"                       >iron axe</item>
+      <item slot="4"  amount="64"                              >log</item>
+      <item slot="5"  amount="64"                              >glass</item>
+      <item slot="6"  amount="16"                              >ladder</item>
+      <item slot="7"                                           >web</item>
+      <item slot="8"  amount="64"                              >golden carrot</item>
+      <item slot="28"                                          >arrow</item>
+      <potion duration="7" amplifier="255">resistance</potion>
+      <chestplate     unbreakable="true"                       >chainmail chestplate</chestplate>
+  </kit>
+  <kit id="kit-red" parents="kit-default">
+      <boots unbreakable="true" color="cd0000">leather boots</boots>
+  </kit>
+  <kit id="kit-blue" parents="kit-default">
+      <boots unbreakable="true" color="0066cc">leather boots</boots>
+  </kit>
+</kits>
+<spawns>
+    <default><regions yaw="90"><cylinder base="-4,49,105" radius="1" height="1"/></regions></default>
+        <spawn team="blue-team" filter="initial-spawn" kit="kit-blue"><regions yaw="0"><cylinder base="-105.5,26,27.5" radius=".3" height="0.1"/></regions></spawn>
+        <spawn team="blue-team" filter="30-minutes-spawn" kit="kit-blue"><regions yaw="0"><cylinder base="-105.5,50,27.5" radius=".3" height="0.1"/></regions></spawn>
+		    <spawn team="blue-team" filter="15-minutes-spawn" kit="kit-blue"><regions yaw="0"><cylinder base="-105.5,74,27.5" radius=".3" height="0.1"/></regions></spawn>
+        <spawn team="red-team" filter="initial-spawn" kit="kit-red"><regions yaw="180"><cylinder base="-105.5,26,173.5" radius=".3" height="0.1"/></regions></spawn>
+        <spawn team="red-team" filter="30-minutes-spawn" kit="kit-red"><regions yaw="180"><cylinder base="-105.5,50,173.5" radius=".3" height="0.1"/></regions></spawn>
+      	<spawn team="red-team" filter="15-minutes-spawn" kit="kit-red"><regions yaw="180"><cylinder base="-105.5,74,173.5" radius=".3" height="0.1"/></regions></spawn>
+</spawns>
+<portals>
+    <portal id="blue-portal" region="portal-blue" filter="red-portal-filter" x="@-14.5" y="@68" z="@48.5" yaw="@-90"/>
+    <portal id="red-portal" region="portal-red" filter="blue-portal-filter" x="@-14.5" y="@68" z="@152.5" yaw="@-90"/>
+    <portal id="red-return" region="return-red-region" x="@-30.5" y="@28.5" z="@100.5" yaw="@90"/>
+    <portal id="blue-return" region="return-blue-region" x="@-30.5" y="@28.5" z="@100.5" yaw="@90"/>
+    <!-- These were the four portals added later in edits, relating to the back supply room -->
+    <portal id="blue-portal-2" region="portal-blue-2" filter="red-portal-filter" x="@-105.5" y="@19.5" z="@185.5" yaw="@0"/>
+    <portal id="red-portal-2" region="portal-red-2" filter="blue-portal-filter" x="@-105.5" y="@19.5" z="@15.5" yaw="@180"/>
+    <portal id="red-return-2" region="return-red-region-2" x="@-105.5" y="@19" z="@21.5" yaw="@90"/>
+    <portal id="blue-return-2" region="return-blue-region-2" x="@-105.5" y="@19" z="@179.5" yaw="@180"/>
+</portals>
+<destroyables>
+    <destroyable region="blue-left-monument-region" id="blue-left-monument" name="Left Monument" materials="ender stone" owner="blue-team"/>
+    <destroyable region="red-left-monument-region" id="red-left-monument" name="Left Monument" materials="ender stone" owner="red-team"/>
+    <destroyable region="blue-right-monument-region" id="blue-right-monument" name="Right Monument" materials="ender stone" owner="blue-team"/>
+    <destroyable region="red-right-monument-region" id="red-right-monument" name="Right Monument" materials="ender stone" owner="red-team"/>
+    <destroyable region="blue-obsidian-core" id="blue-obsidian-monument" name="Obsidian Monument" show="false" materials="obsidian;beacon" owner="blue-team" required="false" mode-changes="true"/>
+    <destroyable region="red-obsidian-core" id="red-obsidian-monument" name="Obsidian Monument" show="false" materials="obsidian;beacon" owner="red-team" required="false" mode-changes="true"/>
+</destroyables>
+<modes>
+    <mode after="15m" material="emerald block" name="Emerald Monument Mode"/>
+    <mode after="30m" material="packed ice" name="Glass Monument Mode"/>
+</modes>
+<!--
+<destroyables materials="95:6" completion="0%" required="false" show="false" mode-changes="true">
+    <destroyable name="regions" owner="red-team">
+       <region>
+           <cuboid min="-200,0,200" max="200,28,-200"/>
+       </region>
+    </destroyable>
+    <destroyable name="regions" owner="blue-team">
+       <region>
+           <cuboid min="-41,0,179" max="-182,1,27"/>
+       </region>
+    </destroyable>
+    <destroyable name="red-bridge-region" owner="red-team">
+       <region>
+           <cuboid min="-32,27,45" max="-42,28,42"/>
+       </region>
+    </destroyable>
+    <destroyable name="blue-bridge-region" owner="blue-team">
+       <region>
+           <cuboid min="-32,27,165" max="-41,28,168"/>
+       </region>
+    </destroyable>
+</destroyables>
+-->
+<itemremove>
+    <item>glowstone dust</item>
+    <item>obsidian</item>
+    <item>beacon</item>
+    <item>ender stone</item>
+    <item>golden carrot</item>
+    <item>web</item>
+    <item>string</item>
+    <item>ladder</item>
+    <item>98</item>
+    <item>glass</item>
+    <item>log</item>
+    <item>wood</item>
+    <item>nether brick</item>
+    <item>quartz block</item>
+    <item>chainmail chestplate</item>
+    <item>leather boots</item>
+    <item>arrow</item>
+    <item>6</item>
+    <item>emerald block</item>
+    <item>bow</item>
+    <item>iron sword</item>
+    <item>iron axe</item>
+    <item>diamond pickaxe</item>
+</itemremove>
+<broadcasts>
+    <alert after="0.1s">`5The Obsidian Monument `8doesn't count as an objective for the final score.</alert>
+    <alert after="3s">`8Breaking the `5`lObsidian Monument `r`8will enable the Base Portal and the enemy's Side Portal.</alert>
+    <alert after="6s">`8The enemy's Side Portal will teleport you to a `e`lSponge Spawner.</alert>
+    <alert after="6s">`8The Base Portal will teleport you to a `9`lSupplies Room.</alert>
+</broadcasts>
+<kill-rewards>
+    <kill-reward>
+        <item amount="16"            material="tnt"/>
+        <item amount="8"             material="log"/>
+        <item amount="1"             material="golden apple"/>
+    </kill-reward>
+</kill-rewards>
+<time result="objectives">45m</time>
+<maxbuildheight>45</maxbuildheight>
+<disable-water-sources>true</disable-water-sources>
+</map>
