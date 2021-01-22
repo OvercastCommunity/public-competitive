@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
     <name>Rocky Top</name>
-    <version>1.1.2</version>
+    <version>1.2.0</version>
     <objective>Capture both of the enemy team's wools</objective>
     <gamemode>ctw</gamemode>
     <time overtime="1m" max-overtime="45m">45m</time>
@@ -54,7 +54,7 @@
         </spawn>
         <default>
             <region yaw="90">
-            <point>-78.5,7,73.5</point>
+            <point>-68.5,7,73.5</point>
         </region>
         </default>
     </spawns>
@@ -118,14 +118,14 @@
         </apply>
         <apply block="limit-red" enter="only-red" message="You may not modify your own wool room!">
             <region>
-                <cuboid id="lime-wool" min="-141.5,13,-29.5" max="-133.5,100,-20.5"/>
-                <cuboid id="yellow-wool" min="-49.5,9,-19.5" max="-38.5,100,-6.5"/>
+                <cuboid id="lime-wool" min="-151.5,13,-29.5" max="-143.5,100,-20.5"/>
+                <cuboid id="yellow-wool" min="-39.5,9,-19.5" max="-28.5,100,-6.5"/>
             </region>
         </apply>
         <apply block="limit-blue" enter="only-blue" message="You may not modify your own wool room!">
             <region>
-                <cuboid id="pink-wool" min="-49.5,9,153.5" max="-38.5,100,166.5"/>
-                <cuboid id="light-blue-wool" min="-141.5,13,167.5" max="-133.5,100,176.5"/>
+                <cuboid id="pink-wool" min="-39.5,9,153.5" max="-28.5,100,166.5"/>
+                <cuboid id="light-blue-wool" min="-151.5,13,167.5" max="-143.5,100,176.5"/>
             </region>
         </apply>
         <apply block="no-chests" message="You may not break chests in the woolroom">
