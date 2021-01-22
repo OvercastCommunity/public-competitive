@@ -1,6 +1,8 @@
+<?xml version="1.0"?>
 <map proto="1.4.0">
+<time overtime="1m" max-overtime="15m">45m</time>
 <name>Normandy</name>
-<version>1.2.0</version>
+<version>1.2.1</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="cef67055-9c27-4b58-a16f-278d793ff6bc"/> <!-- mrcookie_13 -->
@@ -119,7 +121,7 @@
         </renew-filter>
     </renewable>
 </renewables>
-<wools>
+<wools wool-proximity-metric="none">
   	<wool team="red-team" color="purple" location="485,18,-37">
 	    	<monument><block>274.5,11,0.5</block></monument>
   	</wool>
@@ -178,6 +180,5 @@
 </killreward>
 <timelock>on</timelock>
 <maxbuildheight>27</maxbuildheight>
-<time results="objective">45m</time>
 <respawn delay="4s" blackout="true"/>
 </map>

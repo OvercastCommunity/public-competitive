@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
     <name>Rocky Top</name>
-    <version>1.1.1</version>
+    <version>1.1.2</version>
     <objective>Capture both of the enemy team's wools</objective>
     <gamemode>ctw</gamemode>
     <time overtime="1m" max-overtime="45m">45m</time>
@@ -19,7 +19,7 @@
     <timelock>on</timelock>
     <kits>
     </kits>
-    <wools>
+    <wools wool-proximity-metric="none">
         <wool team="blue-team" color="PINK" location="-43.5,9.5,159.5">
             <monument>
                 <block>-99.5,7.5,-18.5</block>

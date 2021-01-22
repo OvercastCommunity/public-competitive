@@ -1,9 +1,10 @@
+<?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Gobi</name>
-<version>1.2.4</version>
+<version>1.2.5</version>
 <objective>Capture the enemy team's wools.</objective>
 <gamemode>CTW</gamemode>
-<time result="objectives">45m</time>
+<time overtime="1m" max-overtime="15m">45m</time>
 <authors>
     <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/>
 </authors>
@@ -32,7 +33,7 @@
         <chestplate material="leather chestplate" enchantment="protection projectile:1" unbreakable="true" color="334CB2"/>
     </kit>
 </kits>
-<wools>
+<wools wool-proximity-metric="none">
     <wool team="red-team" color="lime" location="273.5,17,-144">
         <monument>
             <block>90.5,10,-116.5</block>

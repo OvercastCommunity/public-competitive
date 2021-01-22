@@ -1,9 +1,10 @@
+<?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Wallop Too</name>
-<version>1.9.0</version>
+<version>1.9.1</version>
 <objective>Capture the enemy team's wools.</objective>
 <gamemode>CTW</gamemode>
-<time result="objectives">45m</time>
+<time overtime="1m" max-overtime="15m">45m</time>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/>
     <author uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/>
@@ -30,7 +31,7 @@
         <item slot="31" amount="64" damage="5">wood</item>
     </kit>
 </kits>
-<wools>
+<wools wool-proximity-metric="none">
     <wool team="red-team" color="light blue" location="-142,14,-216">
         <monument>
             <block>-96,15,-3</block>
