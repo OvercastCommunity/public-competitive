@@ -1,4 +1,3 @@
-<?xml version="1.0"?>
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Lotus</name>
@@ -95,11 +94,11 @@
     <union id="woolrooms">
         <union id="red-woolrooms">
           <rectangle min="-1,-72" max="-14,-59"/> <!-- Cyan -->
-          <rectangle min="70,-79" max="83,-65"/> <!-- Purple -->
+          <rectangle min="70,-74" max="83,-60"/> <!-- Purple -->
         </union>
     	  <union id="blue-woolrooms">
 		        <rectangle min="-14,-327" max="-1,-315"/> <!-- Yellow -->
-		        <rectangle min="70,-322" max="83,-308"/> <!-- Orange -->
+		        <rectangle min="70,-327" max="83,-313"/> <!-- Orange -->
 	      </union>
     </union>
     <union id="spawners">
@@ -116,9 +115,9 @@
     </union>
     <union id="spawner-stuff">
         <union id="top-spawner-stuff">
-            <cuboid id="top-spawner" min="83,17,-193" max="82,19,-194"/>
-            <cuboid id="top-spawn-drop" min="82.4,19,-193.4" max="82.6,19,-193.6"/>
-            <cuboid id="top-spawn-activation" min="76,11,-200" max="89,27,-187"/>
+            <cuboid id="top-spawner" min="76,15,-193" max="77,17,-194"/>
+            <cuboid id="top-spawn-drop" min="76.4,17,-193.4" max="76.6,17,-193.6"/>
+            <cuboid id="top-spawn-activation" min="70,11,-200" max="83,27,-187"/>
         </union>
         <union id="bot-spawner-stuff">
             <cuboid id="bot-spawner" min="6,7,-193" max="5,9,-194"/>
