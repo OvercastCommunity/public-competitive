@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<map proto="1.4.2"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/PGMTools/PGMSchema/master/map.xsd">
+<include src="disable-boat-crafting.xml"/>
+<name>New Mexico</name>
+<version>1.0.0</version>
+<objective>Capture the enemy team's wools.</objective>
+<authors>
+    <author uuid="5198dc37-537f-4ea5-8ee8-1e0952d4a36b"/> <!-- _3Each -->
+</authors>
+<contributors>
+    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
+    <contributor uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
+    <contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!-- Jexel -->
+</contributors>
+<teams>
+    <team id="red-team"  color="dark red" min="6" max="8" max-overfill="8">Red</team>
+    <team id="blue-team" color="blue"     min="6" max="8" max-overfill="8">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" material="iron sword" unbreakable="true"/>
+        <item slot="1" material="bow"/>
+        <item slot="2" material="diamond pickaxe" enchantment="efficiency" unbreakable="true"/>
+        <item slot="3" material="iron axe" unbreakable="true"/>
+        <item slot="8" amount="64" material="golden carrot"/>
+		<item slot="7" material="golden apple"/>
+        <item slot="6" amount="64" damage="2" material="wood"/>
+        <item slot="5" amount="64" damage="2" material="wood"/>
+		<item slot="4" amount="64" material="glass"/>
+        <item slot="28" material="arrow"/>
+        <effect amplifier="20" duration="7s">resistance</effect>
+        <effect amplifier="5" duration="8s">strength</effect>
+    </kit>
+</kits>
+<wools>
+    <wool team="red-team" color="orange" location="-1.5,14,-276.5">
+        <monument>
+            <block>167,11,-114</block>
+        </monument>
+    </wool>
+    <wool team="red-team" color="pink" location="3.5,14,-281.5">
+        <monument>
+            <block>166,11,-113</block>
+        </monument>
+    </wool>
+    <wool team="blue-team" color="cyan" location="190.5,14,-94.5">
+        <monument>
+            <block>21,11,-258</block>
+        </monument>
+    </wool>
+    <wool team="blue-team" color="green" location="185.5,14,-89.5">
+        <monument>
+            <block>22,11,-259</block>
+        </monument>
+    </wool>
+</wools>
+<spawns>
+    <spawn team="blue-team" kit="spawn-kit">
+        <regions angle="94,21,-186">
+            <point>24,255.5,-256</point>
+        </regions>
+    </spawn>
+    <spawn team="red-team" kit="spawn-kit">
+        <regions angle="94,21,-186">
+            <point>165,255.5,-115</point>
+        </regions>
+    </spawn>
+    <default region="spawn-obs"/>
+</spawns>
+<filters>
+    <team id="only-red-team">red-team</team>
+    <team id="only-blue-team">blue-team</team>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+    <all id="only-red-wool">
+        <team>red-team</team>
+        <any>
+            <material>web</material>
+        </any>
+        <not>
+            <team>blue-team</team>
+        </not>
+    </all>
+    <all id="only-blue-wool">
+        <team>blue-team</team>
+        <any>
+            <material>web</material>
+        </any>
+        <not>
+            <team>red-team</team>
+        </not>
+    </all>
+    <not id="deny-void">
+        <void/>
+    </not>
+    <material id="only-iron-break">iron block</material>
+    <not id="deny-player-place">
+        <any>
+            <team>red-team</team>
+            <team>blue-team</team>
+        </any>
+    </not>
+</filters>
+<regions>
+    <union id="spawn-obs">
+        <point yaw="0">94,21,-186</point>
+    </union>
+    <union id="iron-regions">
+        <cuboid id="iron-regions-blue" min="32,10,-248" max="37,14,-243"/>
+        <cuboid id="iron-regions-red" min="157,10,-123" max="152,14,-128"/>
+    </union>
+    <union id="spawns">
+        <cuboid id="spawn-red" min="158,10,-122" max="173,12,-107"/> <!-- red -->
+        <cuboid id="spawn-blue" min="31,10,-249" max="16,12,-264"/> <!-- blue -->
+    </union>
+    <apply block-place="deny-player-place" region="iron-regions"/>
+    <apply block="always" region="iron-regions"/>
+    <apply block="only-blue-wool" enter="only-blue" message="You may not enter or modify your own wool room!">
+        <region>
+            <rectangle min="184,-100" max="197,-83"/> <!-- green -->
+            <rectangle min="180,-96" max="197,-83"/> <!-- cyan -->
+        </region>
+    </apply>
+    <apply block="only-red-wool" enter="only-red" message="You may not enter or modify your own wool room!">
+        <region>
+            <rectangle min="5,-271" max="-8,-288"/> <!-- orange -->
+            <rectangle min="9,-275" max="-8,-288"/> <!-- pink -->
+        </region>
+    </apply>
+    <apply block="never" message="This region is disabled.">
+        <region>
+            <union>
+                <block>94,20,-186</block>
+                <block>94,21,-186</block>
+            </union>
+        </region>
+    </apply>
+    <apply block="deny-void" message="This region is disabled."/>
+</regions>
+<renewables>
+    <renewable interval="5s" grow="true" avoid-players="1" region="iron-regions">
+        <renew-filter>
+            <material>iron block</material>
+        </renew-filter>
+        <replace-filter>
+            <material>air</material>
+        </replace-filter>
+    </renewable>
+</renewables>
+<time results="objective">45m</time>
+<timelock>on</timelock>
+<maxbuildheight>26</maxbuildheight>
+<crafting>
+    <disable>shield</disable>
+</crafting>
+<damage>
+    <deny>
+        <any>
+            <all>
+                <region id="spawn-red"/>
+                <filter id="only-red"/>
+            </all>
+            <all>
+                <region id="spawn-blue"/>
+                <filter id="only-blue"/>
+            </all>
+        </any>
+    </deny>
+</damage>
+<item-mods>
+    <rule>
+        <match><material>bow</material></match>
+        <modify><enchantment>infinity</enchantment></modify>
+    </rule>
+</item-mods>
+<kill-reward>
+    <item>golden apple</item>
+    <item amount="32" damage="2" material="wood"/>
+    <item amount="16" material="glass"/>
+</kill-reward>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>iron axe</tool>
+    <tool>arrow</tool>
+</toolrepair>
+<itemremove>
+    <item>smooth brick</item>
+    <item>wood</item>
+    <item>log</item>
+    <item>162</item>
+    <item>golden carrot</item>
+    <item>stone</item>
+    <item>cobblestone</item>
+    <item>glowstone dust</item>
+    <item>sapling</item>
+    <item>double step</item>
+    <item>apple</item>
+    <item>leaves</item>
+    <item>stained clay</item>
+    <item>seeds</item>
+    <item>38</item> <!-- flower -->
+    <item>flower_pot_item</item>
+    <item>mossy_cobblestone</item>
+    <item>glass</item>
+    <item>carpet</item>
+    <item>string</item>
+    <item>sand</item>
+    <item>redstone</item>
+    <item>wool:8</item> <!-- gray -->
+    <item>wool:1</item> <!-- orange -->
+    <item>wool:14</item> <!-- red -->
+    <item>wool:0</item> <!-- white -->
+    <item>water lily</item>
+    <item>brick stairs</item>
+    <item>brick</item>
+    <item>44:4</item> <!-- brick stairs -->
+    <item>ladder</item>
+    <item>trap door</item>
+    <item>126</item> <!-- wooden slab -->
+    <item>sandstone stairs</item>
+    <item>cobble wall</item>
+    <item>44:1</item> <!-- sandstone slab -->
+    <item>sandstone</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+</itemkeep>
+<respawn auto="true" blackout="true" delay="7s"/>
+</map>
