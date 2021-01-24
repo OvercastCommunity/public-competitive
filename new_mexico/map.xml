@@ -105,9 +105,7 @@
     </not>
 </filters>
 <regions>
-    <union id="spawn-obs">
-        <point yaw="0">94,21,-186</point>
-    </union>
+    <point id="spawn-obs" yaw="0">94,21,-186</point>
     <union id="iron-regions">
         <cuboid id="iron-regions-blue" min="32,10,-248" max="37,14,-243"/>
         <cuboid id="iron-regions-red" min="157,10,-123" max="152,14,-128"/>
