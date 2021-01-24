@@ -153,9 +153,6 @@
 <time results="objective">45m</time>
 <timelock>on</timelock>
 <maxbuildheight>26</maxbuildheight>
-<crafting>
-    <disable>shield</disable>
-</crafting>
 <damage>
     <deny>
         <any>
