@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Quickwater Harbor</name>
-<version>1.0.1</version>
+<version>1.0.2</version>
 <objective>Control the mid point and capture the wool to win!</objective>
 <authors>
   <author uuid="97d1cc45-0f69-482b-9974-09351aef9dfa"/> <!-- _lunaceee -->
@@ -175,7 +175,6 @@
   <item>leather leggings</item>
   <item>iron chestplate</item>
   <item>chainmail boots</item>
-  <item>leaves</item>
   <item>wool</item>
 </itemremove>
 <kill-rewards>
