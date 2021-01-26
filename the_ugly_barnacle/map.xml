@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
+<time overtime="1m" max-overtime="15m">45m</time>
 <name>The Ugly Barnacle</name>
-<version>1.0.0</version>
+<version>1.0.1</version>
 <objective>Capture the enemy team's two wools.</objective>
 <authors>
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -41,7 +42,7 @@
             <block>-647,10,-61</block>
         </monument>
     </wool>
-    <wool team="blue-team" color="green" location="-630.5,14.5,-10.5">
+    <wool team="blue-team" color="lime" location="-630.5,14.5,-10.5">
         <monument>
             <block>-391,10,-61</block>
         </monument>
@@ -167,7 +168,6 @@
         </replace-filter>
     </renewable>
 </renewables>
-<time results="objective">45m</time>
 <gamerules>
     <doDaylightCycle>false</doDaylightCycle>
 </gamerules>
