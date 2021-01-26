@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
-<map proto="1.4.2"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/PGMTools/PGMSchema/master/map.xsd">
-<include src="disable-boat-crafting.xml"/>
+<map proto="1.4.2">
+<time overtime="1m" max-overtime="15m">45m</time>
 <name>New Mexico</name>
-<version>1.0.0</version>
+<version>1.0.1</version>
 <objective>Capture the enemy team's wools.</objective>
 <authors>
     <author uuid="5198dc37-537f-4ea5-8ee8-1e0952d4a36b"/> <!-- _3Each -->
@@ -35,7 +33,7 @@
         <effect amplifier="5" duration="8s">strength</effect>
     </kit>
 </kits>
-<wools>
+<wools wool-proximity-metric="none">
     <wool team="red-team" color="orange" location="-1.5,14,-276.5">
         <monument>
             <block>167,11,-114</block>
@@ -148,7 +146,6 @@
         </replace-filter>
     </renewable>
 </renewables>
-<time results="objective">45m</time>
 <timelock>on</timelock>
 <maxbuildheight>26</maxbuildheight>
 <damage>
