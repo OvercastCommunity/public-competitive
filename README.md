@@ -6,6 +6,7 @@ If you want a map (or your map) to be added, ask in get in touch with us on disc
 The maps will be mantained to keep working on upstream PGMDev/PGM.
 
 The authors for all maps had either released their maps on mcresourcepile, or have given explicit permission to make them publicly available in this repository.
+There are no specific guarantees about commercial availability, you may contact authors to check on it if you wish to use commercially.
 
 # Usage
 
