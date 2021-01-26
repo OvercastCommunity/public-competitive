@@ -120,9 +120,9 @@
             <cuboid id="top-spawn-activation" min="70,11,-200" max="83,27,-187"/>
         </union>
         <union id="bot-spawner-stuff">
-            <cuboid id="bot-spawner" min="6,7,-193" max="5,9,-194"/>
-            <cuboid id="bot-spawn-drop" min="5.4,9,-193.4" max="5.6,9,-193.6"/>
-            <cuboid id="bot-spawn-activation" min="-2,1,-187" max="9,16,-200"/>
+            <cuboid id="bot-spawner" min="6,9,-193" max="5,11,-194"/>
+            <cuboid id="bot-spawn-drop" min="5.4,11,-193.4" max="5.6,11,-193.6"/>
+            <cuboid id="bot-spawn-activation" min="-2,1,-187" max="9,19,-200"/>
         </union>
     </union>
     <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
@@ -142,7 +142,7 @@
 	  <apply block-place="no-void" message="You may not edit the void!"/>
 </regions>
 <spawners>
-    <spawner id="top-gapple-spawner" spawn-region="top-spawn-drop" player-region="top-spawn-activation" max-entities="9999" delay="7s">
+    <spawner id="top-gapple-spawner" spawn-region="top-spawn-drop" player-region="top-spawn-activation" max-entities="9999" delay="8s">
         <item amount="1" material="golden apple"/>
     </spawner>
     <spawner id="bot-gapple-spawner" spawn-region="bot-spawn-drop" player-region="bot-spawn-activation" max-entities="9999" delay="7s">
@@ -190,12 +190,19 @@
     <item>31</item>
     <item>37</item>
     <item>38</item>
-    <item>338</item>
+	<item>175</item>
+	<item>338</item>
+	<item>wool:7</item>
+    <item>wool:8</item>
+	<item>171:8</item>
+	<item>171:6</item>
+	<item>171:3</item>
     <item>apple</item>
     <item>flint</item>
     <item>redstone</item>
     <item>redstone torch on</item>
     <item>seeds</item>
+	<item>clay ball</item>
 </itemremove>
 <killreward>
 	  <item>golden apple</item>
@@ -208,5 +215,5 @@
 </crafting>
 <respawn delay="7s" blackout="true"/>
 <timelock>on</timelock>
-<maxbuildheight>26</maxbuildheight>
+<maxbuildheight>24</maxbuildheight>
 </map>
