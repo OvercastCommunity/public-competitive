@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Lotus</name>
-<version>1.1.3</version>
+<version>1.2.0</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!-- teagod -->
@@ -48,12 +48,12 @@
     </spawn>
     <spawn team="blue-team" kit="blue-kit">
         <regions yaw="0">
-            <point>36.5,10,-311.5</point>
+            <point>36.5,10,-259.5</point>
         </regions>
     </spawn>
     <default>
         <regions yaw="-90">
-            <cuboid min="30.5,67,-194.5" max="32.5,67,-192.5"/>
+            <cuboid min="-22.5,47,-167.5" max="-24.5,48,-165.5"/>
         </regions>
     </default>
 </spawns>
@@ -88,17 +88,17 @@
 	        	<rectangle min="48,-84" max="25,-65"/>
 	      </union>
         <union id="blue-spawn">
-            <rectangle min="25,-303" max="48,-322"/>
+            <rectangle min="25,-251" max="48,-270"/>
       	</union>
     </union>
     <union id="woolrooms">
         <union id="red-woolrooms">
-          <rectangle min="-1,-72" max="-14,-59"/> <!-- Cyan -->
-          <rectangle min="70,-74" max="83,-60"/> <!-- Purple -->
+          <rectangle min="6,-67" max="-7,-54"/> <!-- Cyan -->
+          <rectangle min="81,-69" max="68,-55"/> <!-- Purple -->
         </union>
     	  <union id="blue-woolrooms">
-		        <rectangle min="-14,-327" max="-1,-315"/> <!-- Yellow -->
-		        <rectangle min="70,-327" max="83,-313"/> <!-- Orange -->
+		        <rectangle min="6,-281" max="-7,-268"/> <!-- Yellow -->
+		        <rectangle min="81,-266" max="68,-280"/> <!-- Orange -->
 	      </union>
     </union>
     <union id="spawners">
@@ -108,21 +108,21 @@
         <cuboid min="-452,4,71" max="-451,6,72"/>
     </union>
     <union id="wool-mons">
-        <cuboid min="38,18,-275" max="39,19,-274"/>
-        <cuboid min="35,18,-275" max="34,19,-274"/>
-        <cuboid min="35,18,-112" max="34,19,-113"/>
-        <cuboid min="38,18,-112" max="39,19,-113"/>
+        <cuboid min="38,18,-232" max="39,19,-231"/>
+        <cuboid min="35,18,-232" max="34,19,-2"/>
+        <cuboid min="35,18,-103" max="34,19,-104"/>
+        <cuboid min="38,18,-103" max="39,19,-104"/>
     </union>
     <union id="spawner-stuff">
-        <union id="top-spawner-stuff">
-            <cuboid id="top-spawner" min="76,15,-193" max="77,17,-194"/>
-            <cuboid id="top-spawn-drop" min="76.4,17,-193.4" max="76.6,17,-193.6"/>
-            <cuboid id="top-spawn-activation" min="70,11,-200" max="83,27,-187"/>
+        <union id="east-spawner-stuff">
+            <cuboid id="east-spawner" min="69,11,-168" max="68,13,-167"/>
+            <cuboid id="east-spawn-drop" min="68.4,13,-167.4" max="68.6,13,-167.6"/>
+            <cuboid id="east-spawn-activation" min="74,11,-162" max="63,27,-173"/>
         </union>
-        <union id="bot-spawner-stuff">
-            <cuboid id="bot-spawner" min="6,9,-193" max="5,11,-194"/>
-            <cuboid id="bot-spawn-drop" min="5.4,11,-193.4" max="5.6,11,-193.6"/>
-            <cuboid id="bot-spawn-activation" min="-2,1,-187" max="9,19,-200"/>
+        <union id="west-spawner-stuff">
+            <cuboid id="west-spawner" min="10,8,-168" max="11,10,-167"/>
+            <cuboid id="west-spawn-drop" min="10.4,10,-167.4" max="10.6,10,-167.6"/>
+            <cuboid id="west-spawn-activation" min="4,1,-162" max="14,19,-173"/>
         </union>
     </union>
     <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
@@ -142,10 +142,10 @@
 	  <apply block-place="no-void" message="You may not edit the void!"/>
 </regions>
 <spawners>
-    <spawner id="top-gapple-spawner" spawn-region="top-spawn-drop" player-region="top-spawn-activation" max-entities="9999" delay="8s">
+    <spawner id="east-gapple-spawner" spawn-region="east-spawn-drop" player-region="east-spawn-activation" max-entities="9999" delay="8s">
         <item amount="1" material="golden apple"/>
     </spawner>
-    <spawner id="bot-gapple-spawner" spawn-region="bot-spawn-drop" player-region="bot-spawn-activation" max-entities="9999" delay="7s">
+    <spawner id="west-gapple-spawner" spawn-region="west-spawn-drop" player-region="west-spawn-activation" max-entities="9999" delay="7s">
         <item amount="1" material="golden apple"/>
     </spawner>
 </spawners>
@@ -158,16 +158,16 @@
 </renewables>
 <wools wool-proximity-metric="none">
 	<wool team="red-team" color="yellow" location="-7.5,13,-318.5">
-		<monument><block>34.5,17,-108.5</block></monument>
+		<monument><block>34.5,17,-103.5</block></monument>
 	</wool>
 	<wool team="red-team" color="orange" location="76.5,13,-306.5">
-		<monument><block>38.5,17,-108.5</block></monument>
+		<monument><block>38.5,17,-103.5</block></monument>
 	</wool>
   <wool team="blue-team" color="cyan" location="-7.5,13,-68.5">
-    <monument><block>34.5,17,-278.5</block></monument>
+    <monument><block>34.5,17,-231.5</block></monument>
   </wool>
   <wool team="blue-team" color="purple" location="7.5,13,-80.5">
-    <monument><block>38.5,17,-278.5</block></monument>
+    <monument><block>38.5,17,-231.5</block></monument>
   </wool>
 </wools>
 <toolrepair>
@@ -215,5 +215,5 @@
 </crafting>
 <respawn delay="7s" blackout="true"/>
 <timelock>on</timelock>
-<maxbuildheight>24</maxbuildheight>
+<maxbuildheight>26</maxbuildheight>
 </map>
