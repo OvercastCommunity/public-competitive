@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Gobi</name>
-<version>1.3</version>
+<version>1.3.1</version>
 <objective>Capture the enemy team's wools.</objective>
 <gamemode>CTW</gamemode>
 <time overtime="1m" max-overtime="15m">45m</time>
@@ -39,7 +39,7 @@
             <block>90.5,10,-116.5</block>
         </monument>
     </wool>
-    <wool team="red-team" color="yellow" location="280.5,25,-63">
+    <wool team="red-team" color="yellow" location="275.5,25,-63">
         <monument>
             <block>90.5,10,-90.5</block>
         </monument>
@@ -49,7 +49,7 @@
             <block>280.5,10,-116.5</block>
         </monument>
     </wool>
-    <wool team="blue-team" color="pink" location="90.5,25,-63">
+    <wool team="blue-team" color="pink" location="95.5,25,-63">
         <monument>
             <block>280.5,10,-90.5</block>
         </monument>
@@ -91,7 +91,7 @@
     <apply enter="only-blue" message="You may not modify or enter your own wool room!">
         <region>
             <union id="red-side-woolrooms">
-                <rectangle id="pink-wool" min="85,-70" max="98,-56"/>
+                <rectangle id="pink-wool" min="90,-70" max="103,-56"/>
                 <rectangle id="light-blue-wool" min="103,-151" max="90,-137"/>
             </union>            
         </region>
@@ -100,7 +100,7 @@
         <region>
             <union id="blue-side-woolrooms">
                 <rectangle id="lime-wool" min="268,-137" max="281,-151"/>
-                <rectangle id="yellow-wool" min="273,-70" max="286,-56"/>
+                <rectangle id="yellow-wool" min="268,-70" max="281,-56"/>
             </union>            
         </region>
     </apply>
