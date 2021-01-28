@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Lotus</name>
-<version>1.2.0</version>
+<version>1.2.1</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!-- teagod -->
@@ -142,10 +142,10 @@
 	  <apply block-place="no-void" message="You may not edit the void!"/>
 </regions>
 <spawners>
-    <spawner id="east-gapple-spawner" spawn-region="east-spawn-drop" player-region="east-spawn-activation" max-entities="9999" delay="8s">
+    <spawner id="east-gapple-spawner" spawn-region="east-spawn-drop" player-region="east-spawn-activation" max-entities="9999" delay="10s">
         <item amount="1" material="golden apple"/>
     </spawner>
-    <spawner id="west-gapple-spawner" spawn-region="west-spawn-drop" player-region="west-spawn-activation" max-entities="9999" delay="7s">
+    <spawner id="west-gapple-spawner" spawn-region="west-spawn-drop" player-region="west-spawn-activation" max-entities="9999" delay="8s">
         <item amount="1" material="golden apple"/>
     </spawner>
 </spawners>
