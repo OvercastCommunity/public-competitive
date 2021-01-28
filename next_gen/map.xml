@@ -2,7 +2,7 @@
 <map proto="1.3.5">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>NextGen</name>
-<version>3.3.1</version>
+<version>3.4</version>
 <objective>Take the enemy's wool located to either side of the enemy's base and place it in your victory monument.</objective>
 <authors>
     <author uuid="dad8b95c-cf6a-44df-982e-8c8dd70201e0" contribution="reinventing the map"/> <!-- ElectroidFilms -->
@@ -111,10 +111,10 @@
     <!-- Region Definitions -->
     <rectangle name="all" min="-oo,-oo" max="oo,oo"/>
     <union name="void-exemptions">
-        <rectangle min="-118,70" max="-133,-43"/>
-        <rectangle min="-184,70" max="-199,-43"/>
-        <rectangle min="-184,31" max="-163,-4"/>
-        <rectangle min="-133,-4" max="-154,31"/>
+        <rectangle min="-115,70" max="-130,-43"/>
+        <rectangle min="-187,70" max="-202,-43"/>
+        <rectangle min="-187,31" max="-163,-4"/>
+        <rectangle min="-130,-4" max="-154,31"/>
         <rectangle min="-163,7" max="-154,20"/>
         <rectangle min="-163,-28" max="-154,-21"/>
         <rectangle min="-163,48" max="-154,55"/>
@@ -126,34 +126,34 @@
     <union name="wool-rooms">
         <union name="blue-rooms">
             <union name="yellow-room">
-                <rectangle min="-132,96" max="-118,86"/>
-                <rectangle min="-131,85" max="-118,86"/>
-                <rectangle min="-130,84" max="-118,86"/>
-                <rectangle min="-129,83" max="-118,86"/>
-                <rectangle min="-128,82" max="-118,86"/>
+                <rectangle min="-129,96" max="-115,86"/>
+                <rectangle min="-128,85" max="-115,86"/>
+                <rectangle min="-127,84" max="-115,86"/>
+                <rectangle min="-126,83" max="-115,86"/>
+                <rectangle min="-125,82" max="-115,86"/>
             </union>
             <union name="purple-room">
-                <rectangle min="-185,96" max="-199,86"/>
-                <rectangle min="-186,85" max="-199,86"/>
-                <rectangle min="-187,84" max="-199,86"/>
-                <rectangle min="-188,83" max="-199,86"/>
-                <rectangle min="-189,82" max="-199,86"/>
+                <rectangle min="-188,96" max="-202,86"/>
+                <rectangle min="-189,85" max="-202,86"/>
+                <rectangle min="-190,84" max="-202,86"/>
+                <rectangle min="-191,83" max="-202,86"/>
+                <rectangle min="-192,82" max="-202,86"/>
             </union>
         </union>
         <union name="red-rooms">
             <union name="orange-room">
-                <rectangle min="-185,-69" max="-199,-59"/>
-                <rectangle min="-186,-58" max="-199,-59"/>
-                <rectangle min="-187,-57" max="-199,-59"/>
-                <rectangle min="-188,-56" max="-199,-59"/>
-                <rectangle min="-189,-55" max="-199,-59"/>
+                <rectangle min="-188,-69" max="-202,-59"/>
+                <rectangle min="-189,-58" max="-202,-59"/>
+                <rectangle min="-190,-57" max="-202,-59"/>
+                <rectangle min="-191,-56" max="-202,-59"/>
+                <rectangle min="-192,-55" max="-202,-59"/>
             </union>
             <union name="lime-room">
-                <rectangle min="-132,-69" max="-118,-59"/>
-                <rectangle min="-131,-58" max="-118,-59"/>
-                <rectangle min="-130,-57" max="-118,-59"/>
-                <rectangle min="-129,-56" max="-118,-59"/>
-                <rectangle min="-128,-55" max="-118,-59"/>
+                <rectangle min="-129,-69" max="-115,-59"/>
+                <rectangle min="-128,-58" max="-115,-59"/>
+                <rectangle min="-127,-57" max="-115,-59"/>
+                <rectangle min="-126,-56" max="-115,-59"/>
+                <rectangle min="-125,-55" max="-115,-59"/>
             </union>
         </union>
     </union>
@@ -165,8 +165,8 @@
     </union>
     <!-- Block Rules -->
     <apply block-place="not-glass" message="You may not place glass in the side lanes!">
-        <rectangle min="-118,70" max="-133,-43"/>
-        <rectangle min="-184,70" max="-199,-43"/>
+        <rectangle min="-115,70" max="-130,-43"/>
+        <rectangle min="-187,70" max="-202,-43"/>
     </apply>
     <apply block="deny-all" message="You may not edit the spawn area!">
         <region name="spawns"/>
@@ -198,16 +198,16 @@
     </apply>
 </regions>
 <wools craftable="false" wool-proximity-metric="none">
-    <wool team="blue" color="purple" location="-193.5,14.5,90.5">
+    <wool team="blue" color="purple" location="-196.5,14.5,90.5">
         <region name="purple-wool"/>
     </wool>
-    <wool team="blue" color="yellow" location="-123.5,14.5,90.5">
+    <wool team="blue" color="yellow" location="-120.5,14.5,90.5">
         <region name="yellow-wool"/>
     </wool>
-    <wool team="red" color="lime" location="-123.5,14.5,-63.5">
+    <wool team="red" color="lime" location="-120.5,14.5,-63.5">
         <region name="lime-wool"/>
     </wool>
-    <wool team="red" color="orange" location="-193.5,14.5,-63.5">
+    <wool team="red" color="orange" location="-196.5,14.5,-63.5">
         <region name="orange-wool"/>
     </wool>
 </wools>
