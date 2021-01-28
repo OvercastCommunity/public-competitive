@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
     <name>Rocky Top</name>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <objective>Capture both of the enemy team's wools</objective>
     <gamemode>ctw</gamemode>
     <time overtime="1m" max-overtime="45m">45m</time>
