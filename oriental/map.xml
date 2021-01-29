@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Oriental</name>
-<version>1.0.0</version>
+<version>1.0.1</version>
 <objective>Capture both of the enemy team's wools.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -152,6 +152,9 @@
 <renewables>
     <renewable region="spawns" renew-filter="only-iron"/>
 </renewables>
+<tnt>
+  <instantignite>on</instantignite>
+</tnt>
 <gamerules>
     <doDaylightCycle>false</doDaylightCycle>
 </gamerules>
