@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Tuscany</name>
-<version>2.0.0</version>
+<version>2.1.0</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="a970545c-45e4-4745-a952-d4b8343f149d"/> <!--  Magnace  -->
@@ -32,12 +32,12 @@
 <spawns>
     <spawn team="blue-team" kit="spawn-kit">
         <regions yaw="-90">
-            <point>-242.5,9,10.5</point>
+            <point>-251.5,9,10.5</point>
         </regions>
     </spawn>
     <spawn team="red-team" kit="spawn-kit">
         <regions yaw="90">
-            <point>-12.5,9,10.5</point>
+            <point>-3.5,9,10.5</point>
         </regions>
     </spawn>
     <default>
@@ -72,43 +72,26 @@
     </any>
 </filters>
 <regions>
-    <union id="buildable">
-        <rectangle min="-246,21" max="-9,0"/>
-        <rectangle min="-42,93" max="-56,-72"/>
-        <rectangle min="-199,-72" max="-213,93"/>
-        <rectangle min="-42,56" max="-213,-35"/>
-    </union>
-    <union id="not-buildable">
-        <negative>
-            <rectangle min="-246,21" max="-9,0"/>
-            <rectangle min="-42,93" max="-56,-72"/>
-            <rectangle min="-199,-72" max="-213,93"/>
-            <rectangle min="-42,56" max="-213,-35"/>
-        </negative>
-    </union>
-    <union id="not-buildable-2">
-        <rectangle min="-138,-17" max="-117,38"/>
-    </union>
+    <complement id="buildable">
+        <rectangle min="-222.0,-40.0" max=" -33.0, 61.0"/> <!-- main playable area -->
+        <rectangle min="-138.0,-17.0" max="-117.0,-38.0"/> <!-- mid void gap -->
+    </complement>
     <union id="spawns">
-        <union id="red-spawn">
-	        	<rectangle min="-42,0" max="-9,21"/>
-	      </union>
-        <union id="blue-spawn">
-            <rectangle min="-213,21" max="-246,0"/>
-      	</union>
+        <rectangle id="red-spawn"  min=" -33.0,0.0" max="   0.0,21.0"/>
+        <rectangle id="blue-spawn" min="-225.0,0.0" max="-222.0,21.0"/>
     </union>
     <union id="woolrooms">
     	  <union id="blue-woolrooms">
-		        <rectangle min="-213,80" max="-199,93"/> <!-- Light Blue -->
-		        <rectangle min="-199,-59" max="-213,-72"/> <!-- Yellow -->
+		        <rectangle min="-222.0, 84.0" max="-208.0, 97.0"/> <!-- Light Blue -->
+		        <rectangle min="-222.0,-63.0" max="-208.0,-76.0"/> <!-- Yellow -->
 	      </union>
 	      <union id="red-woolrooms">
-	        	<rectangle min="-42,-59" max="-56,-72"/> <!-- Pink -->
-		        <rectangle min="-56,80" max="-42,93"/> <!-- Lime -->
+	        	<rectangle min="-47.0,-76.0" max="-33.0,-63.0"/> <!-- Pink -->
+		        <rectangle min="-47.0, 84.0" max="-33.0, 97.0"/> <!-- Lime -->
 	      </union>
     </union>
     <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
-	  <apply enter="only-blue" region="blue-spawn" message="You may not enter the opponent's spawn!"/>
+	<apply enter="only-blue" region="blue-spawn" message="You may not enter the opponent's spawn!"/>
     <apply enter="only-red" region="red-spawn" message="You may not enter the opponent's spawn!"/>
     <apply block="deny-blue-woolrooms" region="blue-woolrooms"/>
     <apply block="deny-red-woolrooms" region="red-woolrooms"/>
@@ -118,10 +101,8 @@
     <apply use="only-blue" region="red-woolrooms"/>
   	<apply enter="only-red" region="blue-woolrooms" message="You may not enter your own wool room!"/>
     <apply enter="only-blue" region="red-woolrooms" message="You may not enter your own wool room!"/>
-    <apply block-place="never" region="not-buildable-2" message="You may not edit the void!"/>
     <apply block="always" region="buildable"/>
-    <apply block-place="never" region="not-buildable" message="You may not edit the void!"/>
-	  <apply block-place="no-void" message="You may not edit the void!"/>
+    <apply block="no-void" message="You may not edit the void!"/>
 </regions>
 <renewables>
     <renewable rate="3" grow="false" particles="true" sound="true" avoid-entities="true" region="spawns">
@@ -132,16 +113,16 @@
 </renewables>
 <wools wool-proximity-metric="none">
 	<wool team="red-team" color="light_blue" location="204,13,88">
-		<monument><block>-37.5,10,14.5</block></monument>
+		<monument><block>-28.5,10,14.5</block></monument>
 	</wool>
 	<wool team="red-team" color="yellow" location="-204,13,-67">
-		<monument><block>-37.5,10,6.5</block></monument>
+		<monument><block>-28.5,10,6.5</block></monument>
 	</wool>
 	<wool team="blue-team" color="pink" location="-51,13,-67">
-		<monument><block>-217.5,10,6.5</block></monument>
+		<monument><block>-226.5,10,6.5</block></monument>
 	</wool>
 	<wool team="blue-team" color="lime" location="-51,13,88">
-		<monument><block>-217.5,10,14.5</block></monument>
+		<monument><block>-226.5,10,14.5</block></monument>
 	</wool>
 </wools>
 <toolrepair>
