@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Tuscany</name>
-<version>2.1.0</version>
+<version>2.1.1</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="a970545c-45e4-4745-a952-d4b8343f149d"/> <!--  Magnace  -->
@@ -73,12 +73,12 @@
 </filters>
 <regions>
     <complement id="buildable">
-        <rectangle min="-222.0,-40.0" max=" -33.0, 61.0"/> <!-- main playable area -->
-        <rectangle min="-138.0,-17.0" max="-117.0,-38.0"/> <!-- mid void gap -->
+        <rectangle min="-222.0,-40.0" max=" -33.0,61.0"/> <!-- main playable area -->
+        <rectangle min="-138.0,-17.0" max="-117.0,38.0"/> <!-- mid void gap -->
     </complement>
     <union id="spawns">
         <rectangle id="red-spawn"  min=" -33.0,0.0" max="   0.0,21.0"/>
-        <rectangle id="blue-spawn" min="-225.0,0.0" max="-222.0,21.0"/>
+        <rectangle id="blue-spawn" min="-255.0,0.0" max="-222.0,21.0"/>
     </union>
     <union id="woolrooms">
     	  <union id="blue-woolrooms">
@@ -95,10 +95,8 @@
     <apply enter="only-red" region="red-spawn" message="You may not enter the opponent's spawn!"/>
     <apply block="deny-blue-woolrooms" region="blue-woolrooms"/>
     <apply block="deny-red-woolrooms" region="red-woolrooms"/>
-    <apply block="only-red" region="blue-woolrooms"/>
-    <apply block="only-blue" region="red-woolrooms"/>
-    <apply use="only-red" region="blue-woolrooms"/>
-    <apply use="only-blue" region="red-woolrooms"/>
+    <apply block="only-red" use="only-red"  region="blue-woolrooms"/>
+    <apply block="only-blue" use="only-blue" region="red-woolrooms"/>
   	<apply enter="only-red" region="blue-woolrooms" message="You may not enter your own wool room!"/>
     <apply enter="only-blue" region="red-woolrooms" message="You may not enter your own wool room!"/>
     <apply block="always" region="buildable"/>
