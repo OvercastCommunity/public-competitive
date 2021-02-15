@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Tuscany</name>
-<version>2.2.0</version>
+<version>2.2.1</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="a970545c-45e4-4745-a952-d4b8343f149d"/> <!--  Magnace  -->
@@ -112,17 +112,17 @@
     </renewable>
 </renewables>
 <wools wool-proximity-metric="none">
-	<wool team="red-team" color="light_blue" location="204,13,88">
-		<monument><block>-28.5,10,14.5</block></monument>
+	<wool team="red-team" color="light_blue" location="-212,10,92">
+		<monument><block>-31.5,10,14.5</block></monument>
 	</wool>
-	<wool team="red-team" color="yellow" location="-204,13,-67">
-		<monument><block>-28.5,10,6.5</block></monument>
+	<wool team="red-team" color="yellow" location="-212,10,-71">
+		<monument><block>-31.5,10,9.5</block></monument>
 	</wool>
-	<wool team="blue-team" color="pink" location="-51,13,-67">
-		<monument><block>-226.5,10,6.5</block></monument>
+	<wool team="blue-team" color="pink" location="-42,10,-71">
+		<monument><block>-223.5,7,9.5</block></monument>
 	</wool>
-	<wool team="blue-team" color="lime" location="-51,13,88">
-		<monument><block>-226.5,10,14.5</block></monument>
+	<wool team="blue-team" color="lime" location="-42,10,92">
+		<monument><block>-223.5,7,11.5</block></monument>
 	</wool>
 </wools>
 <toolrepair>
@@ -148,6 +148,6 @@
     <item amount="16" damage="1">wood</item>
 </killreward>
 <timelock>on</timelock>
-<maxbuildheight>24</maxbuildheight>
+<maxbuildheight>20</maxbuildheight>
 <respawn delay="5s" blackout="true"/>
 </map>
