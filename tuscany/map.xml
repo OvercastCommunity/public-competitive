@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Tuscany</name>
-<version>2.1.1</version>
+<version>2.2.0</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="a970545c-45e4-4745-a952-d4b8343f149d"/> <!--  Magnace  -->
@@ -75,10 +75,12 @@
     <complement id="buildable">
         <rectangle min="-222.0,-40.0" max=" -33.0,61.0"/> <!-- main playable area -->
         <rectangle min="-138.0,-17.0" max="-117.0,38.0"/> <!-- mid void gap -->
+        <rectangle min=" -72.0,5.0" max=" -33.0,16.0"/> <!-- red spawn void gap -->
+        <rectangle min="-222.0,5.0" max="-184.0,16.0"/> <!-- blue spawn void gap -->
     </complement>
     <union id="spawns">
-        <rectangle id="red-spawn"  min=" -33.0,0.0" max="   0.0,21.0"/>
-        <rectangle id="blue-spawn" min="-255.0,0.0" max="-222.0,21.0"/>
+        <rectangle id="red-spawn"  min=" -33.0,-7.0" max="   0.0,28.0"/>
+        <rectangle id="blue-spawn" min="-255.0,-7.0" max="-222.0,28.0"/>
     </union>
     <union id="woolrooms">
     	  <union id="blue-woolrooms">
