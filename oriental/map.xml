@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Oriental</name>
-<version>1.0.1</version>
+<version>2.0.0</version>
 <objective>Capture both of the enemy team's wools.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -11,6 +11,8 @@
 <contributors>
     <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
     <contributor uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
+    <contributor uuid="a6955518-97b8-4c1d-8e76-e641b8f8822c"/> <!-- Qwuiblington -->
+    <contributor uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
 </contributors>
 <time overtime="1m" max-overtime="15m">45m</time>
 <teams>
@@ -33,27 +35,28 @@
         <item slot="8" material="golden apple"/>
         <item slot="28" material="arrow"/>
         <item slot="32" amount="64" damage="5" material="wood"/>
+        <item slot="17" amount="4" material="water lily"/>
     </kit>
 </kits>
 <wools craftable="false" wool-proximity-metric="none">
-    <wool team="red-team" color="green" location="98.5,17.5,-51.5">
+    <wool team="red-team" color="green" location="121.5,17.5,-40.5">
         <monument>
-            <block>-108,15,-4</block>
+            <block>-118,16,-2</block>
         </monument>
     </wool>
-    <wool team="red-team" color="purple" location="98.5,17.5,52.5">
+    <wool team="red-team" color="purple" location="121.5,17.5,41.5">
         <monument>
-            <block>-108,15,4</block>
+            <block>-118,16,2</block>
         </monument>
     </wool>
-    <wool team="blue-team" color="light blue" location="-99.5,17.5,52.5">
+    <wool team="blue-team" color="light blue" location="-120.5,17.5,41.5">
         <monument>
-            <block>106,15,4</block>
+            <block>118,16,2</block>
         </monument>
     </wool>
-    <wool team="blue-team" color="yellow" location="-99.5,17.5,-51.5">
+    <wool team="blue-team" color="yellow" location="-120.5,17.5,-40.5">
         <monument>
-            <block>106,15,-4</block>
+            <block>118,16,-2</block>
         </monument>
     </wool>
 </wools>
@@ -87,65 +90,75 @@
     </all>
 </filters>
 <regions>
+    <union id="nobuild-woolrooms">
+        <rectangle id="lightblue-right" min="-109,36" max="-126,39"/>
+        <rectangle id="lightblue-left" min="-109,52" max="-126,55"/>
+        <rectangle id="yellow-right" min="-109,51" max="-126,-54"/>
+        <rectangle id="yellow-left" min="-109,-35" max="-126,-38"/>
+        <rectangle id="red-shrine-right" min="-83,-5" max="-95,-7"/>
+        <rectangle id="red-shrine-left" min="-83,6" max="-95,8"/>
+
+        <rectangle id="green-right" min="110,-35" max="127,-38"/>
+        <rectangle id="green-left" min="110,-51" max="127,-54"/>
+        <rectangle id="purple-right" min="110,55" max="127,52"/>
+        <rectangle id="purple-left" min="127,36" max="110,39"/>
+        <rectangle id="blue-shrine-right" min="84,8" max="96,6"/>
+        <rectangle id="blue-shrine-left" min="84,-5" max="96,-7"/>
+    </union>
     <union id="red-woolrooms"> <!-- red can enter -->
-        <rectangle id="green-woolroom" min="90,-43" max="103,-56"/>
-        <rectangle id="purple-woolroom" min="90,44" max="103,57"/>
-        <rectangle id="red-shrine" min="91,5" max="100,-4"/>
+        <rectangle id="green-woolroom" min="110,-35" max="127,-54"/>
+        <rectangle id="purple-woolroom" min="110,55" max="127,36"/>
+        <rectangle id="red-shrine" min="84,8" max="96,-7"/>
     </union>
     <union id="blue-woolrooms"> <!-- blue can enter -->
-        <rectangle id="lightblue-woolroom" min="-91,44" max="-104,57"/>
-        <rectangle id="yellow-woolroom" min="-91,-43" max="-104,-56"/>
-        <rectangle id="blue-shrine" min="-92,-4" max="-101,5"/>
+        <rectangle id="lightblue-woolroom" min="-109,36" max="-126,55"/>
+        <rectangle id="yellow-woolroom" min="-109,-54" max="-126,-35"/>
+        <rectangle id="blue-shrine" min="-83,-7" max="-95,8"/>
     </union>
     <union id="spawns">
-        <rectangle id="red-spawn" min="-153,18" max="-118,-17"/>
-        <rectangle id="blue-spawn" min="152,-17" max="117,18"/>
+        <rectangle id="red-spawn" min="-97,-17" max="-135,18"/>
+        <rectangle id="blue-spawn" min="98,18" max="136,-17"/>
     </union>
     <union id="gapple-spawners">
-        <cuboid min="0,7,-46" max="-1,10,-45"/>
-        <cuboid min="-1,7,47" max="0,10,46"/>
-        <cuboid min="-96,13,0" max="-97,15,1"/>
-        <cuboid min="95,13,1" max="96,15,0"/>
-    </union>
-    <union id="wool-monuments">
-        <cuboid min="-106,13,-5" max="-109,17,-2"/> <!-- green -->
-        <cuboid min="-106,13,3" max="-109,17,6"/> <!-- purple -->
-        <cuboid min="105,13,6" max="108,17,3"/> <!-- light blue -->
-        <cuboid min="105,13,-2" max="108,17,-5"/> <!-- yellow -->
+        <cuboid min="0,5,1" max="1,7,0"/> <!-- middle -->
+        <cuboid min="92,13,-3" max="93,15,-4"/>
+        <cuboid min="-91,13,4" max="-92,15,5"/>
     </union>
     <negative id="not-void-region">
-        <union>
-            <rectangle min="59,-44" max="-60,45"/>
-            <rectangle min="-39,55" max="38,45"/>
-            <rectangle min="-39,-44" max="38,-54"/>
-            <rectangle min="111,-34" max="101,-21"/>
-            <rectangle min="111,22" max="101,35"/>
-            <rectangle min="-112,35" max="-102,22"/>
-            <rectangle min="-112,-21" max="-102,-34"/>
-        </union>
+        <complement>
+            <rectangle min="-77,52" max="78,-51"/>
+            <union>
+                <rectangle min="-69,39" max="-54,28"/>
+                <rectangle min="-69,-27" max="-54,-38"/>
+                <rectangle min="70,-38" max="55,-27"/>
+                <rectangle min="70,28" max="55,39"/>
+            </union>
+        </complement>
     </negative>
     <apply block="never" region="gapple-spawners" message="You may not break the spawner!"/>
+    <apply block="never" region="nobuild-woolrooms" message="You may not build in the void!!"/>
     <apply block="only-red-wool" enter="only-red" use="only-red" region="red-woolrooms" message="You may not enter or modify the enemy team's wool room/shrine!"/>
     <apply block="only-blue-wool" enter="only-blue" use="only-blue" region="blue-woolrooms" message="You may not enter or modify the enemy team's wool room/shrine!"/>
     <apply block-break="only-iron" block-place="not-player" region="spawns" message="You may only break iron blocks in spawn!"/>
-    <apply block="never" region="wool-monuments"/>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the enemy team's spawn!"/>
+    <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy team's spawn!"/>
     <apply block="deny-void" region="not-void-region" message="You may not build in the void!"/>
 </regions>
-<respawn delay="7"/>
+<respawn delay="6"/>
 <spawns>
     <spawn team="red-team" kit="spawn-kit">
         <regions yaw="-90">
-            <cylinder base="-150.5,17.1,0.5" radius="1" height="0"/>
+            <cylinder base="-129.5,15.1,0.5" radius="1" height="0"/>
         </regions>
     </spawn>
     <spawn team="blue-team" kit="spawn-kit">
         <regions yaw="90">
-            <cylinder base="149.5,17.1,0.5" radius="1" height="0"/>
+            <cylinder base="130.5,15.1,0.5" radius="1" height="0"/>
         </regions>
     </spawn>
     <default>
         <regions yaw="90">
-            <point>8.5,54.0,98.5</point>
+            <point>6.0,53.5,98.5</point>
         </regions>
     </default>
 </spawns>
@@ -158,7 +171,7 @@
 <gamerules>
     <doDaylightCycle>false</doDaylightCycle>
 </gamerules>
-<maxbuildheight>29</maxbuildheight>
+<maxbuildheight>28</maxbuildheight>
 <kill-reward>
     <item>golden apple</item>
 </kill-reward>
@@ -176,5 +189,12 @@
     <item>string</item>
     <item>stone:3</item>
     <item>stone:4</item>
+    <item>stone:5</item>
+    <item>water lily</item>
+    <item>redstone torch on</item>
+    <item>carpet</item>
+    <item>sapling</item>
+    <item>apple</item>
+    <item>redstone block</item>
 </itemremove>
 </map>
