@@ -1,13 +1,13 @@
 <map proto="1.4.0">
 <name>Appalachia</name>
-<version>1.0.1</version>
+<version>1.0.2</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!--  Blazy36  -->
 </authors>
 <teams>
-	<team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
-	<team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>
+    <team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
+    <team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -78,21 +78,21 @@
 <regions>
     <union id="spawns">
         <union id="red-spawn">
-	        <rectangle min="492,192" max="527,211"/>
-	      </union>
+            <rectangle min="492,192" max="527,211"/>
+          </union>
         <union id="blue-spawn">
             <rectangle min="347,211" max="312,192"/>
-      	</union>
+          </union>
     </union>
     <union id="woolrooms">
-        <union id="red-woolrooms">
-          <rectangle min="337,234" max="327,247"/> <!-- Orange -->
-          <rectangle min="329,156" max="320,169"/> <!-- Yellow -->
+        <union id="blue-woolrooms">
+            <rectangle min="337,234" max="327,247"/> <!-- Orange -->
+            <rectangle min="329,156" max="320,169"/> <!-- Yellow -->
         </union>
-    	  <union id="blue-woolrooms">
-		        <rectangle min="502,169" max="512,156"/> <!-- Pink -->
-		        <rectangle min="510,247" max="519,234"/> <!-- Purple -->
-	     </union>
+            <union id="red-woolrooms">
+                <rectangle min="502,169" max="512,156"/> <!-- Pink -->
+                <rectangle min="510,247" max="519,234"/> <!-- Purple -->
+           </union>
     </union>
     <union id="spawner-stuff">
         <cuboid id="spawner" min="419,9,202" max="420,12,201"/>
@@ -100,7 +100,7 @@
         <cuboid id="mid-spawn-activation" min="425,6,206" max="414,15,197"/>
     </union>
     <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
-	  <apply enter="only-red" region="red-spawn" message="You may not enter the opponent's spawn!"/>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the opponent's spawn!"/>
     <apply enter="only-blue" region="blue-spawn" message="You may not enter the opponent's spawn!"/>
     <apply block="deny-red-woolrooms" region="red-woolrooms"/>
     <apply block="deny-blue-woolrooms" region="blue-woolrooms"/>
@@ -108,10 +108,10 @@
     <apply block="only-red" region="blue-woolrooms"/>
     <apply use="only-blue" region="red-woolrooms"/>
     <apply use="only-red" region="blue-woolrooms"/>
-  	<apply enter="only-blue" region="red-woolrooms" message="You may not enter your own wool room!"/>
+    <apply enter="only-blue" region="red-woolrooms" message="You may not enter your own wool room!"/>
     <apply enter="only-red" region="blue-woolrooms" message="You may not enter your own wool room!"/>
     <apply block="never" region="spawner" message="You may not destroy the spawner!"/>
-	  <apply block-place="no-void" message="You may not edit the void!"/>
+    <apply block-place="no-void" message="You may not edit the void!"/>
 </regions>
 <renewables>
     <renewable rate="2" grow="false" particles="true" sound="true" avoid-entities="true" region="spawns">
@@ -126,18 +126,18 @@
     </spawner>
 </spawners>
 <wools>
-	<wool team="red-team" color="pink" location="507.5,18,162.5">
-		<monument><block>323.5,7,198.5</block></monument>
-	</wool>
-	<wool team="red-team" color="purple" location="514.5,17.5,240.5">
-		<monument><block>323.5,7,204.5</block></monument>
-	</wool>
-	<wool team="blue-team" color="yellow" location="324.5,17.5,162.5">
-		<monument><block>515.5,7,198.5</block></monument>
-	</wool>
-	<wool team="blue-team" color="orange" location="331.5,18,240.5">
-		<monument><block>515.5,7,204.5</block></monument>
-	</wool>
+    <wool team="blue-team" color="pink" location="507.5,18,162.5">
+        <monument><block>323.5,7,198.5</block></monument>
+    </wool>
+    <wool team="blue-team" color="purple" location="514.5,17.5,240.5">
+        <monument><block>323.5,7,204.5</block></monument>
+    </wool>
+    <wool team="red-team" color="yellow" location="324.5,17.5,162.5">
+        <monument><block>515.5,7,198.5</block></monument>
+    </wool>
+    <wool team="red-team" color="orange" location="331.5,18,240.5">
+        <monument><block>515.5,7,204.5</block></monument>
+    </wool>
 </wools>
 <toolrepair>
     <tool>iron sword</tool>
@@ -148,9 +148,9 @@
 <itemremove>
     <item>arrow</item>
     <item>golden carrot</item>
-  	<item>wood</item>
-  	<item>glass</item>
-  	<item>string</item>
+    <item>wood</item>
+    <item>glass</item>
+    <item>string</item>
     <item>sapling</item>
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
@@ -167,16 +167,16 @@
     <item>clay</item>
 </itemremove>
 <killreward>
-	  <item>golden apple</item>
+    <item>golden apple</item>
     <item amount="16">wood</item>
     <item amount="8">glass</item>
 </killreward>
 <crafting>
-  	<disable>iron trapdoor</disable>
+      <disable>iron trapdoor</disable>
     <disable>boat</disable>
 </crafting>
 <timelock>on</timelock>
 <maxbuildheight>23</maxbuildheight>
-<time results="objective">45m</time>
+<time overtime="1m" max-overtime="15m">45m</time>
 <respawn delay="7s" blackout="true"/>
 </map>
