@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Appalachia</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!--  Blazy36  -->
@@ -125,7 +125,7 @@
         <item amount="1" material="golden apple"/>
     </spawner>
 </spawners>
-<wools>
+<wools wool-proximity-metric="none">
     <wool team="blue-team" color="pink" location="507.5,18,162.5">
         <monument><block>323.5,7,198.5</block></monument>
     </wool>
