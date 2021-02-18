@@ -32,12 +32,12 @@
 <spawns>
     <spawn team="blue-team" kit="spawn-kit">
         <regions yaw="-90">
-            <point>-251.5,9,10.5</point>
+            <point>-251.5,6,10.5</point>
         </regions>
     </spawn>
     <spawn team="red-team" kit="spawn-kit">
         <regions yaw="90">
-            <point>-3.5,9,10.5</point>
+            <point>-3.5,6,10.5</point>
         </regions>
     </spawn>
     <default>
@@ -73,7 +73,7 @@
 </filters>
 <regions>
     <complement id="buildable">
-        <rectangle min="-222.0,-40.0" max=" -33.0,61.0"/> <!-- main playable area -->
+        <rectangle min="-222.0,-37.0" max=" -33.0,58.0"/> <!-- main playable area -->
         <rectangle min="-138.0,-17.0" max="-117.0,38.0"/> <!-- mid void gap -->
         <rectangle min=" -72.0,5.0" max=" -33.0,16.0"/> <!-- red spawn void gap -->
         <rectangle min="-222.0,5.0" max="-184.0,16.0"/> <!-- blue spawn void gap -->
@@ -84,12 +84,12 @@
     </union>
     <union id="woolrooms">
     	  <union id="blue-woolrooms">
-		        <rectangle min="-222.0, 84.0" max="-208.0, 97.0"/> <!-- Light Blue -->
-		        <rectangle min="-222.0,-63.0" max="-208.0,-76.0"/> <!-- Yellow -->
+		        <rectangle min="-222.0, 81.0" max="-208.0, 94.0"/> <!-- Light Blue -->
+		        <rectangle min="-222.0,-60.0" max="-208.0,-73.0"/> <!-- Yellow -->
 	      </union>
 	      <union id="red-woolrooms">
-	        	<rectangle min="-47.0,-76.0" max="-33.0,-63.0"/> <!-- Pink -->
-		        <rectangle min="-47.0, 84.0" max="-33.0, 97.0"/> <!-- Lime -->
+	        	<rectangle min="-47.0,-72.0" max="-33.0,-60.0"/> <!-- Pink -->
+		        <rectangle min="-47.0, 81.0" max="-33.0, 94.0"/> <!-- Lime -->
 	      </union>
     </union>
     <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
@@ -113,10 +113,10 @@
 </renewables>
 <wools wool-proximity-metric="none">
 	<wool team="red-team" color="light_blue" location="-212,10,92">
-        <monument><block>-31.5,10,11.5</block></monument>
+        <monument><block>-31.5,7,11.5</block></monument>
 	</wool>
 	<wool team="red-team" color="yellow" location="-212,10,-71">
-		<monument><block>-31.5,10,9.5</block></monument>
+		<monument><block>-31.5,7,9.5</block></monument>
 	</wool>
 	<wool team="blue-team" color="pink" location="-42,10,-71">
 		<monument><block>-223.5,7,9.5</block></monument>
