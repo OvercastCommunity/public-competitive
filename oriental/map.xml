@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Oriental</name>
-<version>2.0.0</version>
+<version>2.0.1</version>
 <objective>Capture both of the enemy team's wools.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -63,57 +63,43 @@
 <filters>
     <team id="only-red">red-team</team>
     <team id="only-blue">blue-team</team>
+    <all id="not-explosions-red">
+        <any>
+            <filter id="only-red"/>
+            <never/>
+        </any>
+        <filter id="deny-void"/>
+        <not id="not-explosion">
+            <any>
+                <cause id="explosion">explosion</cause>
+                <cause id="combustion">combustion</cause>
+            </any>
+        </not>
+    </all>
+    <all id="not-explosions-blue">
+        <any>
+            <filter id="only-blue"/>
+            <never/>
+        </any>
+        <filter id="deny-void"/>
+        <filter id="not-explosion"/>
+    </all>
     <not id="deny-void">
         <void/>
     </not>
     <material id="only-iron">iron block</material>
-    <not id="not-player">
-        <participating/>
-    </not>
-    <all id="only-red-wool">
-        <team>red-team</team>
-        <not>
-            <team>blue-team</team>
-        </not>
-        <not>
-            <cause>COMBUSTION</cause>
-        </not>
-    </all>
-    <all id="only-blue-wool">
-        <team>blue-team</team>
-        <not>
-            <team>red-team</team>
-        </not>
-        <not>
-            <cause>COMBUSTION</cause>
-        </not>
-    </all>
+    <cause id="only-renew">world</cause>
 </filters>
 <regions>
-    <union id="nobuild-woolrooms">
-        <rectangle id="lightblue-right" min="-109,36" max="-126,39"/>
-        <rectangle id="lightblue-left" min="-109,52" max="-126,55"/>
-        <rectangle id="yellow-right" min="-109,51" max="-126,-54"/>
-        <rectangle id="yellow-left" min="-109,-35" max="-126,-38"/>
-        <rectangle id="red-shrine-right" min="-83,-5" max="-95,-7"/>
-        <rectangle id="red-shrine-left" min="-83,6" max="-95,8"/>
-
-        <rectangle id="green-right" min="110,-35" max="127,-38"/>
-        <rectangle id="green-left" min="110,-51" max="127,-54"/>
-        <rectangle id="purple-right" min="110,55" max="127,52"/>
-        <rectangle id="purple-left" min="127,36" max="110,39"/>
-        <rectangle id="blue-shrine-right" min="84,8" max="96,6"/>
-        <rectangle id="blue-shrine-left" min="84,-5" max="96,-7"/>
-    </union>
     <union id="red-woolrooms"> <!-- red can enter -->
-        <rectangle id="green-woolroom" min="110,-35" max="127,-54"/>
-        <rectangle id="purple-woolroom" min="110,55" max="127,36"/>
-        <rectangle id="red-shrine" min="84,8" max="96,-7"/>
+        <cuboid id="green-woolroom" min="110,oo,-35" max="127,0,-54"/>
+        <cuboid id="purple-woolroom" min="110,oo,55" max="127,0,36"/>
+        <cuboid id="red-shrine" min="84,oo,8" max="96,0,-7"/>
     </union>
     <union id="blue-woolrooms"> <!-- blue can enter -->
-        <rectangle id="lightblue-woolroom" min="-109,36" max="-126,55"/>
-        <rectangle id="yellow-woolroom" min="-109,-54" max="-126,-35"/>
-        <rectangle id="blue-shrine" min="-83,-7" max="-95,8"/>
+        <cuboid id="lightblue-woolroom" min="-109,oo,36" max="-126,0,55"/>
+        <cuboid id="yellow-woolroom" min="-109,oo,-54" max="-126,0,-35"/>
+        <cuboid id="blue-shrine" min="-83,oo,-7" max="-95,0,8"/>
     </union>
     <union id="spawns">
         <rectangle id="red-spawn" min="-97,-17" max="-135,18"/>
@@ -123,6 +109,11 @@
         <cuboid min="0,5,1" max="1,7,0"/> <!-- middle -->
         <cuboid min="92,13,-3" max="93,15,-4"/>
         <cuboid min="-91,13,4" max="-92,15,5"/>
+        <!-- wool room chests -->
+        <block>121,17,41</block>
+        <block>121,17,-41</block>
+        <block>-121,17,41</block>
+        <block>-121,17,-41</block>
     </union>
     <negative id="not-void-region">
         <complement>
@@ -135,14 +126,15 @@
             </union>
         </complement>
     </negative>
-    <apply block="never" region="gapple-spawners" message="You may not break the spawner!"/>
-    <apply block="never" region="nobuild-woolrooms" message="You may not build in the void!!"/>
-    <apply block="only-red-wool" enter="only-red" use="only-red" region="red-woolrooms" message="You may not enter or modify the enemy team's wool room/shrine!"/>
-    <apply block="only-blue-wool" enter="only-blue" use="only-blue" region="blue-woolrooms" message="You may not enter or modify the enemy team's wool room/shrine!"/>
-    <apply block-break="only-iron" block-place="not-player" region="spawns" message="You may only break iron blocks in spawn!"/>
-    <apply enter="only-red" region="red-spawn" message="You may not enter the enemy team's spawn!"/>
-    <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy team's spawn!"/>
-    <apply block="deny-void" region="not-void-region" message="You may not build in the void!"/>
+    <apply block="never" region="gapple-spawners" message="`7This block is disabled!"/>
+    <apply use="only-red" region="red-woolrooms"/>
+    <apply use="only-blue" region="blue-woolrooms"/>
+    <apply block="not-explosions-red" enter="only-red" region="red-woolrooms" message="`7This is a `cRED TEAM `7only wool room! You cannot enter, modify this area, or build in the void."/>
+    <apply block="not-explosions-blue" enter="only-blue" region="blue-woolrooms" message="`7This is a `9BLUE TEAM `7only wool room! You cannot enter, modify this area, or build in the void."/>
+    <apply block-break="only-iron" block-place="only-renew" region="spawns" message="`7You may only break iron in the base!"/>
+    <apply enter="only-red" region="red-spawn" message="`7You may not enter the `cRED TEAM`7's spawn!"/>
+    <apply enter="only-blue" region="blue-spawn" message="`7You may not enter the `9BLUE TEAM`7's spawn!"/>
+    <apply block="deny-void" region="not-void-region" message="`7Don't edit the void areas!"/>
 </regions>
 <respawn delay="6"/>
 <spawns>
