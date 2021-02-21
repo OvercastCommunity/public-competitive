@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Oriental</name>
-<version>2.0.1</version>
+<version>2.1.0</version>
 <objective>Capture both of the enemy team's wools.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -39,24 +39,24 @@
     </kit>
 </kits>
 <wools craftable="false" wool-proximity-metric="none">
-    <wool team="red-team" color="green" location="121.5,17.5,-40.5">
+    <wool team="red-team" color="green" location="121.5,19.5,-40.5">
         <monument>
-            <block>-118,16,-2</block>
+            <block>-118,18,-2</block>
         </monument>
     </wool>
-    <wool team="red-team" color="purple" location="121.5,17.5,41.5">
+    <wool team="red-team" color="purple" location="121.5,19.5,41.5">
         <monument>
-            <block>-118,16,2</block>
+            <block>-118,18,2</block>
         </monument>
     </wool>
-    <wool team="blue-team" color="light blue" location="-120.5,17.5,41.5">
+    <wool team="blue-team" color="light blue" location="-120.5,19.5,41.5">
         <monument>
-            <block>118,16,2</block>
+            <block>118,18,2</block>
         </monument>
     </wool>
-    <wool team="blue-team" color="yellow" location="-120.5,17.5,-40.5">
+    <wool team="blue-team" color="yellow" location="-120.5,19.5,-40.5">
         <monument>
-            <block>118,16,-2</block>
+            <block>118,18,-2</block>
         </monument>
     </wool>
 </wools>
@@ -92,13 +92,13 @@
 </filters>
 <regions>
     <union id="red-woolrooms"> <!-- red can enter -->
-        <cuboid id="green-woolroom" min="110,oo,-35" max="127,0,-54"/>
-        <cuboid id="purple-woolroom" min="110,oo,55" max="127,0,36"/>
+        <cuboid id="green-woolroom" min="122,oo,-35" max="139,0,-54"/>
+        <cuboid id="purple-woolroom" min="122,oo,55" max="139,0,36"/>
         <cuboid id="red-shrine" min="84,oo,8" max="96,0,-7"/>
     </union>
     <union id="blue-woolrooms"> <!-- blue can enter -->
-        <cuboid id="lightblue-woolroom" min="-109,oo,36" max="-126,0,55"/>
-        <cuboid id="yellow-woolroom" min="-109,oo,-54" max="-126,0,-35"/>
+        <cuboid id="lightblue-woolroom" min="-121,oo,36" max="-138,0,55"/>
+        <cuboid id="yellow-woolroom" min="-121,oo,-54" max="-138,0,-35"/>
         <cuboid id="blue-shrine" min="-83,oo,-7" max="-95,0,8"/>
     </union>
     <union id="spawns">
@@ -107,22 +107,22 @@
     </union>
     <union id="gapple-spawners">
         <cuboid min="0,5,1" max="1,7,0"/> <!-- middle -->
-        <cuboid min="92,13,-3" max="93,15,-4"/>
-        <cuboid min="-91,13,4" max="-92,15,5"/>
+        <cuboid min="92,15,-3" max="93,17,-4"/>
+        <cuboid min="-91,15,4" max="-92,17,5"/>
         <!-- wool room chests -->
-        <block>121,17,41</block>
-        <block>121,17,-41</block>
-        <block>-121,17,41</block>
-        <block>-121,17,-41</block>
+        <block>133,19,41</block>
+        <block>133,19,-41</block>
+        <block>-133,19,41</block>
+        <block>-133,19,-41</block>
     </union>
     <negative id="not-void-region">
         <complement>
             <rectangle min="-77,52" max="78,-51"/>
             <union>
-                <rectangle min="-69,39" max="-54,28"/>
-                <rectangle min="-69,-27" max="-54,-38"/>
-                <rectangle min="70,-38" max="55,-27"/>
-                <rectangle min="70,28" max="55,39"/>
+                <rectangle min="-81,39" max="-67,28"/>
+                <rectangle min="-81,-27" max="-67,-38"/>
+                <rectangle min="82,-38" max="68,-27"/>
+                <rectangle min="82,28" max="68,39"/>
             </union>
         </complement>
     </negative>
@@ -140,19 +140,19 @@
 <spawns>
     <spawn team="red-team" kit="spawn-kit">
         <regions yaw="-90">
-            <cylinder base="-129.5,15.1,0.5" radius="1" height="0"/>
+            <cylinder base="-129.5,17.1,0.5" radius="1" height="0"/>
         </regions>
     </spawn>
     <spawn team="blue-team" kit="spawn-kit">
         <regions yaw="90">
-            <cylinder base="130.5,15.1,0.5" radius="1" height="0"/>
+            <cylinder base="130.5,17.1,0.5" radius="1" height="0"/>
         </regions>
     </spawn>
     <default>
         <regions yaw="90">
             <point>6.0,53.5,98.5</point>
         </regions>
-    </default>
+    </default>coo
 </spawns>
 <renewables>
     <renewable region="spawns" renew-filter="only-iron"/>
