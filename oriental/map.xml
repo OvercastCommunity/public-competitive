@@ -152,7 +152,7 @@
         <regions yaw="90">
             <point>6.0,53.5,98.5</point>
         </regions>
-    </default>coo
+    </default>
 </spawns>
 <renewables>
     <renewable region="spawns" renew-filter="only-iron"/>
