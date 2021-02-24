@@ -2,7 +2,7 @@
 <map proto="1.3.5">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>NextGen</name>
-<version>3.4.1</version>
+<version>3.4.2</version>
 <objective>Take the enemy's wool located to either side of the enemy's base and place it in your victory monument.</objective>
 <authors>
     <author uuid="dad8b95c-cf6a-44df-982e-8c8dd70201e0" contribution="reinventing the map"/> <!-- ElectroidFilms -->
@@ -228,7 +228,7 @@
     <item>wood</item>
     <item>glass</item>
     <item>glass bottle</item>
-    <item>cooked fish</item>
+    <item>golden carrot</item>
     <item>redstone</item>
     <item>arrow</item>
     <item>stick</item>
