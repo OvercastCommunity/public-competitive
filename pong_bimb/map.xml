@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+<time overtime="15s">5m</time>
+<name>Pong Bimb</name>
+<version>1.0.0</version>
+<objective>Blow up the enemy side!</objective>
+<authors>
+    <author uuid="e82603df-417d-4a95-bd1f-1720648be0b4"/> <!-- Pablete1234 -->
+</authors>
+<teams>
+    <team id="blue" color="blue" min="6" max="7" max-overfill="7">Blue</team>
+    <team id="red" color="dark red" min="6" max="7" max-overfill="7">Red</team>
+</teams>
+<blitz>
+    <lives>1</lives>
+</blitz>
+<kits>
+    <kit id="spawnkit">
+        <item slot="0" amount="9">sandstone</item>
+        <potion duration="oo" amplifier="1">night vision</potion>
+        <potion duration="oo" amplifier="-3">health boost</potion>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="blue" yaw="90" kit="spawnkit">
+        <regions>
+            <point>29.5,7,0.5</point>
+        </regions>
+    </spawn>
+    <spawn team="red" yaw="-90" kit="spawnkit">
+        <regions>
+            <point>-28.5,7,0.5</point>
+        </regions>
+    </spawn>
+    <default yaw="0">
+        <regions angle="0.5,5,0.5">
+            <cylinder base="19.5,1.5,0.0" radius="2" height="0"/>
+			<cylinder base="-18.5,1.5,0.0" radius="2" height="0"/>
+        </regions>
+    </default>
+</spawns>
+<regions>
+    <apply block-break="never" region="everywhere" message="You may not break the map!"/>
+</regions>
+<killreward>
+    <item>golden apple</item>
+</killreward>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<gamerules>
+    <naturalRegeneration>false</naturalRegeneration>
+    <doDaylightCycle>false</doDaylightCycle>
+</gamerules>
+</map>

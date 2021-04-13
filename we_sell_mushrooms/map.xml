@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>We Sell Mushrooms</name>
-<version>1.6.2</version>
+<version>1.6.4</version>
 <objective>Capture the enemy team's two wools.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -174,7 +174,7 @@
         </replace-filter>
     </renewable>
 </renewables>
-<time results="objective">45m</time>
+<time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <gamerules>
     <doDaylightCycle>false</doDaylightCycle>
 </gamerules>

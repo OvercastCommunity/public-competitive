@@ -2,7 +2,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">12m</time>
 <name>Nartica</name>
-<version>1.5</version>
+<version>1.5.1</version>
 <objective>Capture both of the enemy's flags.</objective>
 <authors>
     <author uuid="07fa10c6-f564-4630-861e-fe134ae27527"/> <!-- Yoyo_ -->
@@ -60,20 +60,34 @@
     <kit id="reset-kit" force="true">
         <potion duration="1" amplifier="0">health boost</potion>
         <potion duration="0" amplifier="10">slowness</potion>
-        <potion duration="1" amplifier="10">regeneration</potion>
+    </kit>
+    <kit id="flagcaptured" force="true">
+        <potion duration="2" amplifier="10">regeneration</potion>
     </kit>
 </kits>
 <filters>
     <team id="red-only">red-team</team>
     <team id="blue-only">blue-team</team>
     <time id="flag-respawns">0</time>
+    <any id="red-flag-captured">
+        <carrying-flag>north-red-flag</carrying-flag>
+        <carrying-flag>south-red-flag</carrying-flag>
+    </any>
+    <any id="blue-flag-captured">
+        <carrying-flag>south-blue-flag</carrying-flag>
+        <carrying-flag>north-blue-flag</carrying-flag>
+    </any>
 </filters>
 <regions>
     <apply block="never">
         <region><everywhere/></region>
     </apply>
-    <cylinder id="blue-net" base="-94.5,2,-4.5" radius="4" height="2" />
-    <cylinder id="red-net" base="-24.5,2,-4.5" radius="4" height="2" />
+    <cylinder id="blue-flagreward" base="-94.5,2,-4.5" radius="4.4" height="2"/>
+    <cylinder id="blue-net" base="-94.5,2,-4.5" radius="4" height="2"/>
+    <cylinder id="red-flagreward" base="-24.5,2,-4.5" radius="4.4" height="2"/>
+    <cylinder id="red-net" base="-24.5,2,-4.5" radius="4" height="2"/>
+    <apply kit="flagcaptured" filter="red-flag-captured" region="blue-flagreward"/>
+    <apply kit="flagcaptured" filter="blue-flag-captured" region="red-flagreward"/>
 </regions>
 <toolrepair>
     <tool>iron sword</tool>

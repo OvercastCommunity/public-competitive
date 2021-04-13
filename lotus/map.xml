@@ -1,7 +1,7 @@
 <map proto="1.4.0">
-<time overtime="1m" max-overtime="15m">45m</time>
+<time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <name>Lotus</name>
-<version>1.2.1</version>
+<version>1.2.5</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!-- teagod -->
@@ -43,12 +43,12 @@
 <spawns>
     <spawn team="red-team" kit="red-kit">
         <regions yaw="180">
-            <point>36.5,10,-75.5</point>
+            <point>36.5,10,-67.5</point>
         </regions>
     </spawn>
     <spawn team="blue-team" kit="blue-kit">
         <regions yaw="0">
-            <point>36.5,10,-259.5</point>
+            <point>36.5,10,-267.5</point>
         </regions>
     </spawn>
     <default>
@@ -85,10 +85,10 @@
 <regions>
     <union id="spawns">
         <union id="red-spawn">
-	        	<rectangle min="48,-84" max="25,-65"/>
+	        	<rectangle min="48,-57" max="25,-76"/>
 	      </union>
         <union id="blue-spawn">
-            <rectangle min="25,-251" max="48,-270"/>
+            <rectangle min="25,-259" max="48,-278"/>
       	</union>
     </union>
     <union id="woolrooms">
@@ -109,7 +109,7 @@
     </union>
     <union id="wool-mons">
         <cuboid min="38,18,-232" max="39,19,-231"/>
-        <cuboid min="35,18,-232" max="34,19,-2"/>
+        <cuboid min="35,18,-232" max="34,19,-231"/>
         <cuboid min="35,18,-103" max="34,19,-104"/>
         <cuboid min="38,18,-103" max="39,19,-104"/>
     </union>

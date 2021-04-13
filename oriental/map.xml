@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Oriental</name>
-<version>2.2.0</version>
+<version>2.2.1</version>
 <objective>Capture both of the enemy team's wools.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -15,7 +15,7 @@
     <contributor uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
     <contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!-- Jexel -->
 </contributors>
-<time overtime="1m" max-overtime="15m">45m</time>
+<time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <teams>
     <team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
     <team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>

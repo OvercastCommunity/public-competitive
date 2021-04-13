@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+<time results="objective" overtime="1m" max-overtime="10m">10m</time>
+<name>Tiebreakinator</name>
+<version>1.1.1</version>
+<objective>TIEBREAKER: Capture the enemy team's wool or win by safety proximity.</objective>
+<authors>
+    <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
+    <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
+</authors>
+<contributors>
+    <contributor uuid="cf1b2da8-3718-45a9-8836-bb70b0628773"/> <!-- Goofie -->
+    <contributor uuid="d2eb523d-69e7-4afe-8cd1-f379d7524b8a"/> <!-- bodacious_butt -->
+</contributors>
+<teams>
+    <team id="purple-team" color="dark purple" min="6" max="8" max-overfill="8">Purple</team>
+    <team id="blue-team"   color="blue"        min="6" max="8" max-overfill="8">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <effect duration="4" amplifier="3">resistance</effect>
+        <item slot="0" material="iron sword" unbreakable="true"/>
+        <item slot="1" material="bow">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="2" material="diamond pickaxe" unbreakable="true"/>
+        <item slot="3" material="diamond axe" unbreakable="true"/>
+        <item slot="5" amount="32" material="glass"/>
+        <item slot="6" amount="64" damage="2" material="wood"/>
+        <item slot="7" material="golden apple"/>
+        <item slot="8" amount="64" material="golden carrot"/>
+        <item slot="28" material="arrow"/>
+        <item slot="33" amount="32" damage="2" material="wood"/>
+    </kit>
+</kits>
+<wools>
+    <wool team="purple-team" color="orange" location="-18.5,14.2,-648.5">
+        <monument>
+            <block>-19,15,-481</block>
+        </monument>
+    </wool>
+    <wool team="blue-team" color="lime" location="-18.5,14.2,-482.5">
+        <monument>
+            <block>-19,15,-651</block>
+        </monument>
+    </wool>
+</wools>
+<spawns>
+    <spawn team="blue-team" kit="spawn-kit">
+        <regions yaw="0">
+            <point>-18.5,14.2,-648.5</point>
+        </regions>
+    </spawn>
+    <spawn team="purple-team" kit="spawn-kit">
+        <regions yaw="180">
+            <point>-18.5,14.2,-482.5</point>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="90">
+            <cylinder base="65.5,52,-565.5" radius="1.5" height="0.1"/>
+        </regions>
+    </default>
+</spawns>
+<filters>
+    <any id="any-player">
+        <team id="only-purple">purple-team</team>
+        <team id="only-blue">blue-team</team>
+    </any>
+    <all id="only-blue-no-lava">
+        <filter id="only-blue"/>
+        <filter id="no-lava"/>
+    </all>
+    <all id="only-purple-no-lava">
+        <filter id="only-purple"/>
+        <filter id="no-lava"/>
+    </all>
+    <material id="only-chest">chest</material>
+    <not id="deny-void">
+        <void/>
+    </not>
+    <not id="deny-void-place">
+        <any>
+            <void/>
+            <all>
+                <not>
+                    <void/>
+                </not>
+                <filter id="lava"/>
+            </all>
+        </any>
+    </not>
+    <not id="no-lava">
+        <all id="lava">
+            <any>
+                <material>stationary lava</material>
+                <material>lava</material>
+            </any>
+            <filter id="any-player"/>
+        </all>
+    </not>
+    <not id="only-purple-usage">
+        <all>
+            <any id="deny-woolroom-use">
+                <material>chest</material>
+                <material>workbench</material>
+            </any>
+            <filter id="only-blue"/>
+        </all>
+    </not>
+    <not id="only-blue-usage">
+        <all>
+            <filter id="deny-woolroom-use"/>
+            <filter id="only-purple"/>
+        </all>
+    </not>
+    <material id="only-iron-break">iron block</material>
+    <not id="deny-player-place">
+        <filter id="any-player"/>
+    </not>
+</filters>
+<regions>
+    <union id="wool-rooms">
+        <union id="wool-rooms-purple">
+            <rectangle min="42,-518" max="53,-507"/> <!-- lime -->
+            <rectangle min="-79,-518" max="-90,-507"/>
+        </union>
+        <union id="wool-rooms-blue">
+            <rectangle min="42,-613" max="53,-624"/> <!-- orange -->
+            <rectangle min="-79,-613" max="-90,-624"/>
+        </union>
+    </union>
+    <union id="spawns">
+        <cuboid id="spawn-purple" min="4,0,-520" max="-41,oo,-478"/> <!-- purple -->
+        <cuboid id="spawn-blue" min="4,0,-611" max="-41,oo,-653"/> <!-- blue -->
+    </union>
+    <union id="pistons">
+        <cuboid id="piston-purple" min="-16,6,-502" max="-20,7,-501"/>
+        <cuboid id="piston-blue" min="-16,6,-630" max="-20,7,-629"/>
+    </union>
+    <rectangle id="playable" min="-90,-520" max="53,-611"/>
+    <union id="unbreakable">
+        <block id="spawner">-19,9,-566</block>
+        <block id="wool-orange-0">48,15,-620</block>
+        <block id="wool-orange-1">-86,15,-620</block>
+        <block id="wool-lime-0">48,15,-512</block>
+        <block id="wool-lime-1">-86,15,-512</block>
+    </union>
+    <apply block="always" region="pistons"/>
+    <apply block="never" message="This block is disabled." region="unbreakable"/>
+    <apply block="only-blue-no-lava"
+           enter="only-blue"
+           use="only-blue-usage"
+           region="wool-rooms-purple"
+           message="This region is disabled."/>
+    <apply block="only-purple-no-lava"
+           enter="only-purple"
+           use="only-purple-usage"
+           region="wool-rooms-blue"
+           message="This region is disabled."/>
+    <apply block-break="only-iron-break"
+           block-place="deny-player-place"
+           region="spawns"
+           message="You may only break iron blocks in spawn.">
+    </apply>
+    <apply block-place="always" block-physics="always" region="spawns"/>
+    <apply block-place="no-lava" block-break="always" region="playable" message="You cannot place lava."/>
+    <apply block-place="deny-void-place" block-break="deny-void" message="This region is disabled."/>
+</regions>
+<renewables>
+    <renewable interval="5s" grow="true" avoid-players="2" region="spawns">
+        <renew-filter>
+            <material>iron block</material>
+        </renew-filter>
+        <replace-filter>
+            <material>air</material>
+        </replace-filter>
+    </renewable>
+</renewables>
+<timelock>on</timelock>
+<maxbuildheight>26</maxbuildheight>
+<crafting>
+	<disable>boat</disable>
+	<disable>iron trapdoor</disable>
+    <shapeless>
+        <result material="fireball" name="`4`lCompressed Lava" amount="3" lore="`5Highly Flammable!">
+            <enchantment>flame</enchantment>
+        </result>
+        <ingredient amount="1">lava bucket</ingredient>
+    </shapeless>
+</crafting>
+<kill-reward>
+    <item>golden apple</item>
+    <item amount="24" damage="2" material="wood"/>
+    <item amount="12" material="glass"/>
+</kill-reward>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>diamond axe</tool>
+    <tool>arrow</tool>
+</toolrepair>
+<itemremove>
+    <item>wood</item>
+    <item>golden carrot</item>
+    <item>stone</item>
+    <item>glowstone dust</item>
+    <item>banner</item>
+    <item>double step</item>
+    <item>glass</item>
+    <item>carpet</item>
+    <item>string</item>
+</itemremove>
+<respawn auto="true" blackout="true" delay="5s"/>
+<terrain remove-36="true"/>
+</map>

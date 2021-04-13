@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+<time overtime="1m" max-overtime="15m">45m</time>
+<name>Highlands</name>
+<version>1.6.1</version>
+<objective>Destroy the enemy's emerald monument and leak their core!</objective>
+<authors>
+    <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- thestrangeboy1 -->
+</authors>
+<contributors>
+    <contributor uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- xCLAFx -->
+    <contributor uuid="e37f18f1-117b-47db-8806-6d3a0854b518"/> <!-- chickolympics -->
+</contributors>
+<teams>
+    <team color="dark red" min="6" max="8" max-overfill="8">Red</team>
+    <team color="blue" min="6" max="8" max-overfill="8">Blue</team>
+</teams>
+<kits>
+    <kit name="spawn">
+        <item slot="0" unbreakable="true">diamond sword</item>
+        <item slot="1" enchantment="arrow infinite:1" unbreakable="true">bow</item>
+        <item slot="2" unbreakable="true">diamond pickaxe</item>
+        <item slot="3" enchantment="dig speed:1" unbreakable="true">iron axe</item>
+		<item slot="4" amount="64">golden carrot</item>
+		<item slot="5">golden apple</item>
+        <item slot="6" amount="64" damage="5">wood</item>
+		<item slot="24" amount="64" damage="5">wood</item>
+		<item slot="33" amount="64" damage="5">wood</item>
+		<item slot="7" amount="64">glass</item>
+		<item slot="8" amount="32">ladder</item>
+        <item slot="28" amount="1">arrow</item>
+    </kit>
+</kits>
+<spawns>
+    <default yaw="90">
+        <point>11,23.5,-35</point>
+    </default>
+    <spawn team="red" kit="spawn" yaw="0">
+        <block>-45.5,94.5,-167.5</block>
+    </spawn>
+    <spawn team="blue" kit="spawn" yaw="180">
+        <block>-45.5,94.5,97.5</block>
+    </spawn>
+</spawns>
+<filters>
+    <filter name="no-void">
+        <deny>
+            <void/>
+        </deny>
+    </filter>
+    <filter name="only-red">
+        <team>red</team>
+    </filter>
+    <filter name="only-blue">
+        <team>blue</team>
+    </filter>
+	<filter name="no-stone">
+        <deny>
+            <material>STONE</material>
+        </deny>
+    </filter>
+</filters>
+<regions>
+    <apply block="no-void">
+        <negative>
+            <rectangle name="map" min="-6,-112" max="-85,42"/>
+        </negative>
+    </apply>
+    <apply block="deny-blocks" message="You may not edit the spawn area!">
+        <rectangle min="-58,62" max="-32,100"/>
+        <rectangle min="-33,-132" max="-58,-170"/>
+    </apply>
+	<apply block-place="no-stone">
+        <everywhere/>
+    </apply>
+</regions>
+<cores material="obsidian" leak="3" mode-changes="true" proximity-metric="none">
+    <core team="red">
+        <cuboid min="-79,22,-79" max="-73,28,-73"/>
+    </core>
+    <core team="blue">
+        <cuboid min="-12,22,3" max="-18,28,9"/>
+    </core>
+</cores>
+<modes>
+    <mode after="10m" material="gold block" name="GOLD CORE MODE"/>
+	<mode after="25m" material="packed ice" name="ICE CORE MODE"/>
+</modes>
+<destroyables materials="emerald block" completion="100%" proximity-metric="none">
+    <destroyable name="East Monument" owner="red">
+        <cuboid min="-12,27,-75" max="-15,22,-72"/>
+    </destroyable>
+    <destroyable name="West Monument" owner="blue">
+        <cuboid min="-76,27,2" max="-79,22,5"/>
+    </destroyable>
+</destroyables>
+<toolrepair>
+    <tool>diamond sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>iron axe</tool>
+</toolrepair>
+<itemremove>
+    <item damage="5">126</item>
+    <item>item frame</item>
+    <item>torch</item>
+    <item damage="3">wood</item>
+    <item damage="14">stained clay</item>
+    <item damage="11">stained clay</item>
+    <item>golden carrot</item>
+    <item>arrow</item>
+	<item>wood</item>
+	<item>ladder</item>
+    <item>glass</item>
+    <item>smooth brick</item>
+    <item>emerald block</item>
+</itemremove>
+<killreward>
+	<item>golden apple</item>
+	<item amount="32" damage="5">wood</item>
+	<item amount="32">glass</item>
+</killreward>
+<tnt>
+    <dispenser-tnt-limit>0</dispenser-tnt-limit>
+    <dispenser-tnt-multiplier>0</dispenser-tnt-multiplier>
+</tnt>
+<crafting>
+	<disable>dispenser</disable>
+</crafting>
+<timelock>on</timelock>
+<autorespawn/>
+<maxbuildheight>50</maxbuildheight>
+</map>
