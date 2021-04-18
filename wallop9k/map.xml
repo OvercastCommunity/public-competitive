@@ -1,7 +1,6 @@
-<?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Wallop 9000</name>
-<version>1.1</version>
+<version>1.2</version>
 <objective>Destory the enemy team's monuments.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -36,41 +35,41 @@
     </kit>
 </kits>
 <destroyables materials="ender stone">
-    <destroyable owner="blue-team" name="Core">
-        <region>
-            <cuboid min="-82,47,84" max="-85,54,81"/>
-        </region>
-    </destroyable>
-    <destroyable owner="blue-team" name="E G G ?">
-        <region>
-            <cuboid min="-79,30,67" max="-82,37,64"/>
-        </region>
-    </destroyable>
     <destroyable owner="red-team" name="Core">
         <region>
-            <cuboid min="-15,47,81" max="-12,54,84"/>
+            <cuboid min="0,47,-17" max="4,54,-21"/>
         </region>
     </destroyable>
     <destroyable owner="red-team" name="E G G ?">
         <region>
-            <cuboid min="-18,30,64" max="-15,37,67"/>
+            <cuboid min="-17,30,-14" max="-13,37,-18"/>
+        </region>
+    </destroyable>
+    <destroyable owner="blue-team" name="Core">
+        <region>
+            <cuboid min="4,47,49" max="0,54,53"/>
+        </region>
+    </destroyable>
+    <destroyable owner="blue-team" name="E G G ?">
+        <region>
+            <cuboid min="-13,30,46" max="-17,37,50"/>
         </region>
     </destroyable>
 </destroyables>
 <spawns>
     <spawn team="red-team" kit="kit-red">
-        <regions yaw="0">
-            <point>-17.5,23,-16.5</point>
+        <regions yaw="-90">
+            <point>-96.5,23.5,-14.5</point>
         </regions>
     </spawn>
     <spawn team="blue-team" kit="kit-blue">
-        <regions yaw="0">
-            <point>-79.5,23,-16.5</point>
+        <regions yaw="-90">
+            <point>-96.5,23.5,47.5</point>
         </regions>
     </spawn>
     <default>
-        <regions yaw="0">
-            <point>-48.5,67,-16.5</point>
+        <regions yaw="-90">
+            <point>-96.5,67.5,16.5</point>
         </regions>
     </default>
 </spawns>
@@ -82,18 +81,18 @@
     <apply block="never" message="You may not build outside of the playable region!">
         <region>
             <negative>
-                <rectangle min="-107,19" max="10,152"/>
+                <rectangle min="-61,75" max="72,-42"/>
             </negative>
         </region>
     </apply>
     <apply enter="only-blue" message="You may not enter Blue Team's spawn!">
         <region>
-            <cuboid min="-82,27,-19" max="-77,27,27"/>
+            <cuboid min="-53,22,44" max="-99,26,49"/>
         </region>
     </apply>
     <apply enter="only-red" message="You may not enter Red Team's spawn!">
         <region>
-            <cuboid min="-20,27,-19" max="-15,27,27"/>
+            <cuboid min="-53,22,-18" max="-99,26,-13"/>
         </region>
     </apply>
 </regions>
