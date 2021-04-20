@@ -100,7 +100,7 @@
 </regions>
 <modes>
     <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
-    <mode after="25m" material="packed ice" name="`3PACKED ICE MODE"/>
+    <mode after="25m" material="packed ice" name="`3ICE CORE MODE"/>
 </modes>
 <cores material="obsidian" leak="3" mode-changes="true">
     <core team="blue">
