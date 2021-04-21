@@ -142,6 +142,5 @@
 <kill-reward>
     <kit id="kill-reward"/>
 </kill-reward>
-<respawn delay="4s"/>
 <autorespawn/>
 </map>
