@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Revenge TE</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Destroy both enemy monuments and leak their core to win!</objective>
 <authors>
     <author uuid="36e46b32-80ef-4fa5-b1e2-6c777736d888" contribution="XML, layout"/> <!-- elijah -->
@@ -87,9 +87,7 @@
     <deny id="no-stone">
         <material>stone</material>
     </deny>
-    <allow id="tnt-at-height-limit">
-        <material>tnt</material>
-    </allow>
+    <material id="tnt-at-height-limit">tnt</material>
 </filters>
 <regions>
     <negative id="outside-map">
@@ -119,9 +117,9 @@
     <apply block="never" message="You may not modify the spawns" region="spawn-drops"/>
     <apply enter="only-blue" message="You may not enter the enemy spawn" region="blue-spawn-drop"/>
     <apply enter="only-red" message="You may not enter the enemy spawn" region="red-spawn-drop"/>
-    <apply block="never" message="You may not edit outside of the map" region="outside-map"/>
-    <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
     <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
+    <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
+    <apply block="never" message="You may not edit outside of the map" region="outside-map"/>
     <apply block-place="no-barf-cannons" message="You may not place this block"/>
     <apply use="deny-access" message="You may not access this block"/>
     <apply block-place="no-stone"/>
@@ -136,7 +134,7 @@
 </cores>
 <modes>
     <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
-    <mode after="25m" material="packed ice" name="`3ICE CORE MODE"/>
+    <mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
 </modes>
 <tnt>
     <dispenser-tnt-limit>2</dispenser-tnt-limit>

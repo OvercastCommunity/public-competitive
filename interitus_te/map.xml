@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Interitus TE</name>
-<version>1.7.2</version>
+<version>1.7.3</version>
 <objective>Leak lava from the enemy's obsidian core into the void.</objective>
 <authors>
     <author uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8"/> <!-- Plastix -->
@@ -62,9 +62,7 @@
     <deny id="no-stone">
         <material>stone</material>
     </deny>
-    <allow id="tnt-at-height-limit">
-        <material>tnt</material>
-    </allow>
+    <material id="tnt-at-height-limit">tnt</material>
 </filters>
 <regions>
     <negative id="playable-inverse">
@@ -82,6 +80,8 @@
     <above id="tnt-height-limit" y="40"/>
     <above id="above-height-limit" y="41"/>
     <!-- Applications -->
+    <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
+    <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
     <apply block="never" message="You may not edit outside the playable area!" region="playable-inverse"/>
     <apply use="deny-beacon" region="playable"/>
     <apply block="never" message="You may not modify the spawns!">
@@ -98,13 +98,11 @@
     </apply>
     <apply enter="only-red" message="You may not enter the enemy spawn tunnel!" region="red-tunnel-e"/>
     <apply enter="only-blue" message="You may not enter the enemy spawn tunnel!" region="blue-tunnel-e"/>
-    <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
-    <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
     <apply block-place="no-stone"/>
 </regions>
 <modes>
     <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
-    <mode after="25m" material="packed ice" name="`3ICE CORE MODE"/>
+    <mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
 </modes>
 <cores material="obsidian" leak="3" mode-changes="true">
     <core team="blue">
