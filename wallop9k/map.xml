@@ -1,6 +1,7 @@
 <map proto="1.4.0">
+<time overtime="1m" max-overtime="15m">45m</time>
 <name>Wallop 9000</name>
-<version>1.2</version>
+<version>1.2.1</version>
 <objective>Destory the enemy team's monuments.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -11,60 +12,38 @@
     <contributor uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
 </contributors>
 <teams>
-    <team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
     <team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>
+    <team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
 </teams>
 <kits>
     <kit id="kit-default">
-        <item slot="0"  unbreakable="true"                       >diamond sword</item>
-        <item slot="1"  unbreakable="true" enchantment="infinity">bow</item>
-        <item slot="2"  unbreakable="true"                       >diamond pickaxe</item>
-        <item slot="3"  unbreakable="true"                       >diamond axe</item>
-        <item slot="5"  amount="64"                    damage="5">wood</item>
-        <item slot="6"  amount="64"                              >glass</item>
-        <item slot="8"  amount="64"                              >golden carrot</item>
-        <item slot="28"                                          >arrow</item>
-        <item slot="32" amount="32"                    damage="5">wood</item>
-        <chestplate     unbreakable="true"                       >chainmail chestplate</chestplate>
-    </kit>
-    <kit id="kit-red" parents="kit-default">
-        <boots unbreakable="true" color="cd0000">leather boots</boots>
+        <item slot="0" unbreakable="true">diamond sword</item>
+        <item slot="1" unbreakable="true" enchantment="infinity">bow</item>
+        <item slot="2" unbreakable="true">diamond pickaxe</item>
+        <item slot="3" unbreakable="true">diamond axe</item>
+        <item slot="5" amount="64" damage="5">wood</item>
+        <item slot="6" amount="64">glass</item>
+        <item slot="8" amount="64">golden carrot</item>
+        <item slot="28">arrow</item>
+        <item slot="32" amount="32" damage="5">wood</item>
+        <chestplate unbreakable="true">chainmail chestplate</chestplate>
     </kit>
     <kit id="kit-blue" parents="kit-default">
         <boots unbreakable="true" color="0066cc">leather boots</boots>
     </kit>
+    <kit id="kit-red" parents="kit-default">
+        <boots unbreakable="true" color="cd0000">leather boots</boots>
+    </kit>
 </kits>
-<destroyables materials="ender stone">
-    <destroyable owner="red-team" name="Core">
-        <region>
-            <cuboid min="0,47,-17" max="4,54,-21"/>
-        </region>
-    </destroyable>
-    <destroyable owner="red-team" name="E G G ?">
-        <region>
-            <cuboid min="-17,30,-14" max="-13,37,-18"/>
-        </region>
-    </destroyable>
-    <destroyable owner="blue-team" name="Core">
-        <region>
-            <cuboid min="4,47,49" max="0,54,53"/>
-        </region>
-    </destroyable>
-    <destroyable owner="blue-team" name="E G G ?">
-        <region>
-            <cuboid min="-13,30,46" max="-17,37,50"/>
-        </region>
-    </destroyable>
-</destroyables>
 <spawns>
-    <spawn team="red-team" kit="kit-red">
-        <regions yaw="-90">
-            <point>-96.5,23.5,-14.5</point>
-        </regions>
-    </spawn>
     <spawn team="blue-team" kit="kit-blue">
         <regions yaw="-90">
             <point>-96.5,23.5,47.5</point>
+        </regions>
+    </spawn>
+    <spawn team="red-team" kit="kit-red">
+        <regions yaw="-90">
+            <point>-96.5,23.5,-14.5</point>
         </regions>
     </spawn>
     <default>
@@ -74,28 +53,48 @@
     </default>
 </spawns>
 <filters>
-    <team id="only-red">red-team</team>
-    <team id="only-blue">blue-team</team>
+    <deny id="only-blue">
+        <team>red-team</team>
+    </deny>
+    <deny id="only-red">
+        <team>blue-team</team>
+    </deny>
+    <material id="tnt-at-height-limit">tnt</material>
 </filters>
 <regions>
-    <apply block="never" message="You may not build outside of the playable region!">
-        <region>
-            <negative>
-                <rectangle min="-61,75" max="72,-42"/>
-            </negative>
-        </region>
-    </apply>
-    <apply enter="only-blue" message="You may not enter Blue Team's spawn!">
-        <region>
-            <cuboid min="-53,22,44" max="-99,26,49"/>
-        </region>
-    </apply>
-    <apply enter="only-red" message="You may not enter Red Team's spawn!">
-        <region>
-            <cuboid min="-53,22,-18" max="-99,26,-13"/>
-        </region>
-    </apply>
+    <union id="no-build">
+        <negative id="void-area">
+            <rectangle id="playable-area" min="-61,75" max="72,-42"/>
+        </negative>
+        <union id="spawns">
+            <cuboid id="blue-spawn" min="-53,22,44" max="-99,26,49"/>
+            <cuboid id="red-spawn" min="-53,22,-18" max="-99,26,-13"/>
+        </union>
+    </union>
+    <union id="monuments">
+        <union id="blue-monuments">
+            <cuboid id="blue-core" min="4,47,49" max="0,54,53"/>
+            <cuboid id="blue-egg" min="-13,30,46" max="-17,37,50"/>
+        </union>
+        <union id="red-monuments">
+            <cuboid id="red-core" min="0,47,-17" max="4,54,-21"/>
+            <cuboid id="red-egg" min="-17,30,-14" max="-13,37,-18"/>
+        </union>
+    </union>
+    <above id="tnt-height-limit" y="58"/>
+    <above id="above-height-limit" y="59"/>
+    <apply block="never" message="You may not build outside of the playable region!" region="no-build"/>
+    <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
+    <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
+    <apply enter="only-blue" message="You may not enter Blue Team's spawn!" region="blue-spawn"/>
+    <apply enter="only-red" message="You may not enter Red Team's spawn!" region="red-spawn"/>
 </regions>
+<destroyables materials="ender stone">
+    <destroyable owner="blue-team" name="Core" region="blue-core"/>
+    <destroyable owner="blue-team" name="E G G ?" region="blue-egg"/>
+    <destroyable owner="red-team" name="Core" region="red-core"/>
+    <destroyable owner="red-team" name="E G G ?" region="red-egg"/>
+</destroyables>
 <crafting>
     <disable>iron fence</disable>
     <disable>anvil</disable>
@@ -126,7 +125,4 @@
         <item amount="1" material="golden apple"/>
     </kill-reward>
 </kill-rewards>
-<timelock>on</timelock>
-<maxbuildheight>58</maxbuildheight>
-<time result="objectives">45m</time>
 </map>
