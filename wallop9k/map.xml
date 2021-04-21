@@ -1,8 +1,8 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Wallop 9000</name>
-<version>1.2.1</version>
-<objective>Destory the enemy team's monuments.</objective>
+<version>1.2.2</version>
+<objective>Leak lava from the enemy team's core and destroy their end stone monument.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
     <author uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/> <!-- triplezko -->
@@ -21,11 +21,11 @@
         <item slot="1" unbreakable="true" enchantment="infinity">bow</item>
         <item slot="2" unbreakable="true">diamond pickaxe</item>
         <item slot="3" unbreakable="true">diamond axe</item>
-        <item slot="5" amount="64" damage="5">wood</item>
+        <item slot="4" amount="64" damage="5">wood</item>
+        <item slot="5" amount="32" damage="5">wood</item>
         <item slot="6" amount="64">glass</item>
         <item slot="8" amount="64">golden carrot</item>
         <item slot="28">arrow</item>
-        <item slot="32" amount="32" damage="5">wood</item>
         <chestplate unbreakable="true">chainmail chestplate</chestplate>
     </kit>
     <kit id="kit-blue" parents="kit-default">
@@ -33,6 +33,9 @@
     </kit>
     <kit id="kit-red" parents="kit-default">
         <boots unbreakable="true" color="cd0000">leather boots</boots>
+    </kit>
+    <kit id="kill-reward">
+        <effect amplifier="2" duration="5">regeneration</effect>
     </kit>
 </kits>
 <spawns>
@@ -59,6 +62,9 @@
     <deny id="only-red">
         <team>blue-team</team>
     </deny>
+    <deny id="no-stone">
+        <material>stone</material>
+    </deny>
     <material id="tnt-at-height-limit">tnt</material>
 </filters>
 <regions>
@@ -72,12 +78,12 @@
         </union>
     </union>
     <union id="monuments">
-        <union id="blue-monuments">
-            <cuboid id="blue-core" min="4,47,49" max="0,54,53"/>
+        <union id="blue-objectives">
+            <cuboid id="blue-core" min="5,47,48" max="-1,52,54"/>
             <cuboid id="blue-egg" min="-13,30,46" max="-17,37,50"/>
         </union>
-        <union id="red-monuments">
-            <cuboid id="red-core" min="0,47,-17" max="4,54,-21"/>
+        <union id="red-objectives">
+            <cuboid id="red-core" min="-1,47,-16" max="5,52,-22"/>
             <cuboid id="red-egg" min="-17,30,-14" max="-13,37,-18"/>
         </union>
     </union>
@@ -88,17 +94,24 @@
     <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
     <apply enter="only-blue" message="You may not enter Blue Team's spawn!" region="blue-spawn"/>
     <apply enter="only-red" message="You may not enter Red Team's spawn!" region="red-spawn"/>
+    <apply block-place="no-stone"/>
 </regions>
-<destroyables materials="ender stone">
-    <destroyable owner="blue-team" name="Core" region="blue-core"/>
-    <destroyable owner="blue-team" name="E G G ?" region="blue-egg"/>
-    <destroyable owner="red-team" name="Core" region="red-core"/>
-    <destroyable owner="red-team" name="E G G ?" region="red-egg"/>
+<destroyables materials="ender stone" name="E G G ?">
+    <destroyable owner="blue-team" region="blue-egg"/>
+    <destroyable owner="red-team" region="red-egg"/>
 </destroyables>
+<cores material="obsidian" name="Core" leak="3" mode-changes="true">
+    <core team="blue-team" region="blue-core"/>
+    <core team="red-team" region="red-core"/>
+</cores>
+<modes>
+    <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
+    <mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
+</modes>
 <crafting>
-    <disable>iron fence</disable>
-    <disable>anvil</disable>
-    <disable>iron trapdoor</disable>
+    <disable override-all="true">iron fence</disable>
+    <disable override-all="true">anvil</disable>
+    <disable override-all="true">iron trapdoor</disable>
 </crafting>
 <toolrepair>
     <tool>diamond sword</tool>
@@ -113,16 +126,16 @@
     <item>iron fence</item>
     <item>iron trapdoor</item>
     <item>ender stone</item>
+    <item>obsidian</item>
     <item>gold block</item>
     <item>packed ice</item>
     <item>glowstone dust</item>
-    <item>cooked_fish:1</item>
+    <item>golden carrot</item>
     <item>leather boots</item>
     <item>chainmail chestplate</item>
 </itemremove>
-<kill-rewards>
-    <kill-reward>
-        <item amount="1" material="golden apple"/>
-    </kill-reward>
-</kill-rewards>
+<kill-reward>
+    <kit id="kill-reward"/>
+</kill-reward>
+<autorespawn/>
 </map>
