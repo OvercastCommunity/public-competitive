@@ -19,13 +19,13 @@
     <kit id="kit-default">
         <item slot="0" unbreakable="true">diamond sword</item>
         <item slot="1" unbreakable="true" enchantment="infinity">bow</item>
+        <item slot="28">arrow</item>
         <item slot="2" unbreakable="true">diamond pickaxe</item>
         <item slot="3" unbreakable="true">diamond axe</item>
         <item slot="4" amount="64" damage="5">wood</item>
-        <item slot="5" amount="32" damage="5">wood</item>
-        <item slot="6" amount="64">glass</item>
+        <item slot="31" amount="32" damage="5">wood</item>
+        <item slot="5" amount="64">glass</item>
         <item slot="8" amount="64">golden carrot</item>
-        <item slot="28">arrow</item>
         <chestplate unbreakable="true">chainmail chestplate</chestplate>
     </kit>
     <kit id="kit-blue" parents="kit-default">
@@ -109,7 +109,6 @@
     <mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
 </modes>
 <crafting>
-    <disable override-all="true">iron fence</disable>
     <disable override-all="true">anvil</disable>
     <disable override-all="true">iron trapdoor</disable>
 </crafting>
@@ -120,10 +119,7 @@
     <tool>diamond axe</tool>
 </toolrepair>
 <itemremove>
-    <item>arrow</item>
-    <item>obsidian</item>
     <item>anvil</item>
-    <item>iron fence</item>
     <item>iron trapdoor</item>
     <item>ender stone</item>
     <item>obsidian</item>
@@ -131,6 +127,7 @@
     <item>packed ice</item>
     <item>glowstone dust</item>
     <item>golden carrot</item>
+    <item>arrow</item>
     <item>leather boots</item>
     <item>chainmail chestplate</item>
 </itemremove>
