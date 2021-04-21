@@ -2,7 +2,7 @@
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Fractal Descent TE</name>
 <version>1.3.5</version>
-<objective>Leak lava from the enemy's obsidian cores and destroy their two endstone monuments.</objective>
+<objective>Leak lava from the enemy team's core and destroy their end stone monument.</objective>
 <authors>
     <author uuid="dbe909c6-2b15-4528-b12a-c77ed4031496" contribution="Design and building"/> <!-- teheggy -->
     <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab" contribution="Design, building, and XML"/> <!-- Reshif -->
@@ -128,8 +128,8 @@
 <itemremove>
     <item>obsidian</item>
     <item>gold block</item>
+    <item>packed ice</item>
     <item>smooth brick</item>
-    <item>glass</item>
     <item>ladder</item>
     <item>ender stone</item>
     <item>arrow</item>
