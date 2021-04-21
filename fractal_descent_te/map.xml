@@ -2,7 +2,7 @@
 <map proto="1.3.2">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Fractal Descent TE</name>
-<version>1.3.2</version>
+<version>1.3.3</version>
 <objective>Leak lava from the enemy's obsidian cores and destroy their two endstone monuments.</objective>
 <authors>
     <author uuid="dbe909c6-2b15-4528-b12a-c77ed4031496" contribution="Design and building"/> <!-- teheggy -->

@@ -138,8 +138,9 @@
     <alert after="0.1s">`5The Obsidian Monument `8doesn't count as an objective for the final score.</alert>
     <alert after="3s">`8Breaking the `5`lObsidian Monument `r`8will increase the enemy's respawn timer.</alert>
 </broadcasts>
-<disable-water-sources>true</disable-water-sources>
 <kill-reward>
-    <item material="golden apple"/>
+    <kit>
+        <potion amplifier="2" duration="5">regeneration</potion>
+    </kit>
 </kill-reward>
 </map>

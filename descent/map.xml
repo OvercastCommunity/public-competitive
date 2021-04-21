@@ -2,7 +2,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noidspaceSchemaLocation="https://raw.githubusercontent.com/PGMTools/PGMSchema/master/map.xsd">
 <name>Descent</name>
-<version>1.2.1</version>
+<version>1.2.2</version>
 <objective>Break both monuments to win!</objective>
 <authors>
     <author uuid="61f8e9dd-62ab-453a-b7ef-83ce8a383fe8"/> <!-- Campeh -->
@@ -200,9 +200,11 @@
 </broadcasts>
 <kill-rewards>
     <kill-reward>
-        <item amount="16"            material="tnt"/>
-        <item amount="8"             material="log"/>
-        <item amount="1"             material="golden apple"/>
+		<kit>
+			<item amount="16"            material="tnt"/>
+			<item amount="8"             material="log"/>
+			<potion amplifier="2" duration="5">regeneration</potion>
+		</kit>
     </kill-reward>
 </kill-rewards>
 <time result="objectives">45m</time>

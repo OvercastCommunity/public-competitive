@@ -1,0 +1,232 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+<name>Wallop Series X</name>
+<version>2.0.0</version>
+<objective>Destroy the spikys.</objective>
+<authors>
+    <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
+    <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
+</authors>
+<contributors>
+    <contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!-- Jexel -->
+    <contributor uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nix -->
+    <contributor uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/> <!-- triplezko -->
+    <contributor uuid="d563101f-4e74-4f14-8707-b8f32c54902b"/> <!-- Andr -->
+    <contributor uuid="a6955518-97b8-4c1d-8e76-e641b8f8822c"/> <!-- Qwuiblington -->
+</contributors>
+<teams>
+    <team id="red-team"  color="dark red" max-overfill="8" max="8" min="6">Red</team>
+    <team id="blue-team" color="blue"     max-overfill="8" max="8" min="6">Blue</team>
+</teams>
+<kits>
+    <kit id="kit-default">
+        <clear/>
+        <item slot="0"  unbreakable="true"                       >diamond sword</item>
+        <item slot="1"  unbreakable="true" enchantment="infinity">bow</item>
+        <item slot="2"  unbreakable="true"                       >diamond pickaxe</item>
+        <item slot="3"  unbreakable="true"                       >diamond axe</item>
+        <item slot="5"  amount="64"                    damage="5">wood</item>
+        <item slot="6"  amount="64"                              >glass</item>
+        <item slot="8"  amount="64"                              >golden carrot</item>
+        <item slot="28"                                          >arrow</item>
+        <item slot="32" amount="32"                    damage="5">wood</item>
+        <chestplate     unbreakable="true"                       >chainmail chestplate</chestplate>
+    </kit>
+    <kit id="kit-red" parents="kit-default">
+        <boots unbreakable="true" color="cd0000">leather boots</boots>
+    </kit>
+    <kit id="kit-blue" parents="kit-default">
+        <boots unbreakable="true" color="0066cc">leather boots</boots>
+    </kit>
+</kits>
+<spawns>
+    <default yaw="90" region="spawn-default"/>
+    <spawn team="red-team"  yaw="180" kit="kit-red"  region="spawn-red"/>
+    <spawn team="blue-team" yaw="0"   kit="kit-blue" region="spawn-blue"/>
+</spawns>
+<filters>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+    <all id="only-creeper-spawn-egg">
+        <spawn>spawner egg</spawn>
+        <mob>creeper</mob>
+    </all>
+    <material id="any-stone">stone</material>
+    <material id="any-log">log</material>
+    <material id="any-wood">wood</material>
+    <material id="any-gravel">gravel</material>
+    <material id="any-smooth-brick">smooth brick</material>
+    <material id="any-smooth-stairs">smooth stairs</material>
+    <material id="any-wood-stairs">spruce wood stairs</material>
+    <material id="any-wood-step">wood step</material>
+    <material id="any-double-step">double step:8</material>
+    <any id="any-step">
+        <material>step:0</material>
+        <material>step:1</material>
+        <material>step:4</material>
+        <material>step:5</material>
+    </any>
+</filters>
+<regions>
+    <cylinder id="spawn-default" base="100.5,52,-14.5"  radius="2"   height="1"/>
+    <cylinder id="spawn-blue"    base="-14.5,9,-68.5" radius="0.9" height="0.1"/>
+    <cylinder id="spawn-red"     base="-14.5,9,39.5"   radius="0.9" height="0.1"/>
+    <negative id="not-playable">
+        <cuboid id="playable" min="56,0,68" max="-57,50,-97"/>
+    </negative>
+    <union id="protection-spawns">
+        <cuboid id="protection-spawn-blue" min="-12,8,-60"  max="-17,14,-71"/>
+        <cuboid id="protection-spawn-red"  min="-17,8,31"   max="-12,14,42"/>
+    </union>
+    <cylinder id="monument-low-red" radius="3" base="29.5,20,46.5" height="10"/>
+    <cylinder id="monument-low-blue" radius="3" base="29.5,20,-75.5" height="10"/>
+    <cylinder id="monument-high-red" radius="3" base="-14.5,36,35.5" height="10"/>
+    <cylinder id="monument-high-blue" radius="3" base="-14.5,36,-64.5" height="10"/>
+    <union id="no-break">
+        <!-- Gapple -->
+        <cuboid min="-45,14,18"  max="-43,18,16"/>
+        <cuboid min="-45,14,-45" max="-43,18,-47"/>
+    </union>
+    <above id="above-50" y="50"/>
+    <point id="red-gapple-spawn">-44,15.5,17</point>
+    <point id="blue-gapple-spawn">-44,15.5,-46</point>
+    <sphere id="red-gapple-player" origin="-44,15.5,17" radius="5"/>
+    <sphere id="blue-gapple-player" origin="-44,15.5,-46" radius="5"/>
+    <apply block="never" region="no-break" message="`7You may not edit the `d`lSpawner `r`7regions"/>
+    <apply block="never" region="above-50" message="`7You may not build outside the `b`lPlayable Region"/>
+    <apply enter="only-blue" block="never" region="protection-spawn-blue" message="`7You may not enter or modify the `9Blue`r `e`lSpawn"/>
+    <apply enter="only-red"  block="never" region="protection-spawn-red"  message="`7You may not enter or modify the `4Red`r `e`lSpawn"/>
+    <apply block="never" region="not-playable" message="`7You may not build outside the `b`lPlayable Region"/>
+</regions>
+<destroyables repairable="false" materials="emerald block">
+    <destroyable owner="red-team"  name="Low Spiky"  region="monument-low-red"/>
+    <destroyable owner="red-team"  name="High Spiky" region="monument-high-red"/>
+    <destroyable owner="blue-team" name="Low Spiky"  region="monument-low-blue"/>
+    <destroyable owner="blue-team" name="High Spiky" region="monument-high-blue"/>
+</destroyables>
+<spawners>
+    <spawner id="red-gapple" spawn-region="red-gapple-spawn" player-region="red-gapple-player" delay="8s">
+        <item material="golden apple"/>
+    </spawner>
+    <spawner id="blue-gapple" spawn-region="blue-gapple-spawn" player-region="blue-gapple-player" delay="8s">
+        <item material="golden apple"/>
+    </spawner>
+</spawners>
+<respawn delay="7s"/>
+<mobs filter="only-creeper-spawn-egg"/>
+<toolrepair>
+    <tool>arrow</tool>
+    <tool>diamond sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>diamond axe</tool>
+</toolrepair>
+<itemremove>
+    <item>iron plate</item>
+    <item>note block</item>
+    <item>wood:0</item>
+    <item>wood:1</item>
+    <item>spruce wood stairs</item>
+    <item>log:1</item>
+    <item>smooth brick:0</item>
+    <item>smooth brick:3</item>
+    <item>stone:5</item>
+    <item>smooth stairs</item>
+    <item>wood step:1</item>
+    <item>step:0</item>
+    <item>grass</item>
+    <item>dirt</item>
+    <item>wool:10</item>
+    <item>wool:7</item>
+    <item>carpet:3</item>
+    <item>carpet:12</item>
+    <item>carpet:11</item>
+    <item>carpet:14</item>
+    <item>stained clay:10</item>
+    <item>nether fence</item>
+    <item>glowstone dust</item>
+    <item>carpet:11</item>
+    <item>rails</item>
+    <item>long grass</item>
+    <item>sapling</item>
+    <item>red rose</item>
+    <item>melon</item>
+    <item>hay block</item>
+    <item>flower pot</item>
+    <item>emerald block</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-rewards>
+	<kill-reward>
+    <kit>
+        <potion amplifier="2" duration="5">regeneration</potion>
+        <item amount="16"            material="tnt"/>
+        <item amount="32" damage="5" material="wood"/>
+    </kit>
+</kill-reward>
+</kill-rewards>
+<crafting>
+    <disable>carpet:14</disable>
+    <disable>carpet:11</disable>
+    <disable>step:0</disable>
+    <disable>smooth brick</disable>
+    <disable>note block</disable>
+</crafting>
+<block-drops>
+    <rule filter="any-stone">
+        <drops>
+            <item material="cobblestone"/>
+        </drops>
+    </rule>
+    <rule filter="any-log">
+        <drops>
+            <item damage="1" material="log 2"/>
+        </drops>
+    </rule>
+    <rule filter="any-wood">
+        <drops>
+            <item damage="5" material="wood"/>
+        </drops>
+    </rule>
+    <rule filter="any-smooth-brick">
+        <drops>
+            <item material="cobblestone"/>
+        </drops>
+    </rule>
+    <rule filter="any-step">
+        <drops>
+            <item damage="3" material="step"/>
+        </drops>
+    </rule>
+    <rule filter="any-gravel">
+        <drops>
+            <item material="flint"/>
+        </drops>
+    </rule>
+    <rule filter="any-smooth-stairs">
+        <drops>
+            <item material="cobblestone stairs"/>
+        </drops>
+    </rule>
+    <rule filter="any-wood-stairs">
+        <drops>
+            <item material="dark oak stairs"/>
+        </drops>
+    </rule>
+    <rule filter="any-wood-step">
+        <drops>
+            <item damage="5" material="wood step"/>
+        </drops>
+    </rule>
+    <rule filter="any-double-step">
+        <drops>
+            <item amount="2" damage="3" material="step"/>
+        </drops>
+    </rule>
+</block-drops>
+<time result="objectives">45m</time>
+<timelock>on</timelock>
+</map>

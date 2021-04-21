@@ -1,0 +1,127 @@
+<map proto="1.4.0">
+<name>Jailbreak</name>
+<version>1.4.3</version>
+<objective>Destroy the opposing team's two monuments!</objective>
+<authors>
+    <author uuid="a63de09d-6fa9-436f-9070-26f5e9a4d27b" contribution="Design, building, and XML"/> <!-- sslumpi -->
+    <author uuid="31f929e5-e2a0-4f4c-8c08-2454f5a05799" contribution="Design and building"/> <!-- Gyalie -->
+</authors>
+<timelock>on</timelock>
+<teams>
+    <team id="red-team" color="dark red" max="8">Red</team>
+    <team id="blue-team" color="blue" max="8">Blue</team>
+</teams>
+<kits>
+    <kit id="spawn">
+        <item slot="0" unbreakable="true">iron sword</item>
+        <item slot="1" unbreakable="true" enchantment="arrow infinite:1">bow</item>
+        <item slot="28" amount="1">arrow</item>
+        <item slot="2" unbreakable="true" enchantment="durability:3;dig speed:2">iron pickaxe</item>
+	    	<item slot="3" unbreakable="true">iron axe</item>
+        <item slot="4" amount="16" damage="1">wood</item>
+		    <item slot="8" amount="64">golden carrot</item>
+		    <chestplate unbreakable="true" material="chainmail chestplate"/>
+	    	<boots unbreakable="true" material="chainmail boots"/>
+	    	<effect duration="15" amplifier="4">resistance</effect>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="blue-team" kit="spawn" yaw="0">
+        <region>
+            <point>106.5,62.5,166.5</point>
+        </region>
+    </spawn>
+    <spawn team="red-team" kit="spawn" yaw="180">
+        <region>
+            <point>106.5,62.5,128.5</point>
+        </region>
+    </spawn>
+    <default yaw="90">
+        <region>
+            <cuboid min="159,73,151" max="154,73,146"/>
+        </region>
+    </default>
+</spawns>
+<destroyables materials="ender stone">
+    <destroyables owner="blue-team">
+        <destroyable name="Lower Monument">
+            <region>
+                <cuboid min="34,31,192" max="37,38,195"/>
+            </region>
+        </destroyable>
+        <destroyable name="Upper Monument">
+            <region>
+                <cuboid min="81,40,194" max="84,43,199"/>
+            </region>
+        </destroyable>
+    </destroyables>
+    <destroyables owner="red-team">
+        <destroyable name="Lower Monument">
+            <region>
+                <cuboid min="37,31,103" max="34,38,100"/>
+            </region>
+        </destroyable>
+        <destroyable name="Upper Monument">
+            <region>
+                <cuboid min="84,40,96" max="81,43,101"/>
+            </region>
+        </destroyable>
+    </destroyables>
+</destroyables>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>iron pickaxe</tool>
+    <tool>arrow</tool>
+	  <tool>iron axe</tool>
+</toolrepair>
+<itemremove>
+    <item>wood</item>
+    <item>glass</item>
+    <item>ender stone</item>
+    <item>golden carrot</item>
+    <item>chainmail chestplate</item>
+    <item>chainmail boots</item>
+    <item>4</item>
+    <item>45</item>
+    <item>98</item>
+    <item>flint</item>
+</itemremove>
+<regions>
+    <negative id="build">
+        <rectangle id="main" min="99,87" max="-38,208"/>
+    </negative>
+    <cuboid id="red-side-blocks" min="84,55,87" max="53,50,85"/>
+    <cuboid id="blue-side-blocks" min="84,55,208" max="53,50,210"/>
+    <cuboid id="center" min="-42,-oo,-48" max="42,45,48"/>
+    <union id="water-bucket-spawners">
+        <cuboid min="8,22,95" max="7,24,96"/>
+        <cuboid min="8,22,199" max="7,24,200"/>
+    </union>
+    <apply block="never" region="water-bucket-spawners" message="You may not break the water bucket spawners!"/>
+    <apply block="never" region="build" message="You may not place or break blocks here!">
+    </apply>
+    <apply block-break="always">
+		<union>
+			<region id="red-side-blocks"/>
+			<region id="blue-side-blocks"/>
+		</union>
+	</apply>
+</regions>
+<filters>
+    <team id="only-red">red-team</team>
+    <team id="only-blue">blue-team</team>
+</filters>
+<crafting>
+	  <disable>iron trapdoor</disable>
+</crafting>
+<timelock>on</timelock>
+<maxbuildheight>60</maxbuildheight>
+<time results="objective">45m</time>
+<kill-reward>
+    <kit>
+        <potion amplifier="2" duration="5">regeneration</potion>
+    </kit>
+</kill-reward>
+<disable-water-sources>true</disable-water-sources>
+</map>
