@@ -21,13 +21,13 @@
         <item slot="1" enchantment="arrow infinite:1" unbreakable="true">bow</item>
         <item slot="2" unbreakable="true">diamond pickaxe</item>
         <item slot="3" enchantment="dig speed:1" unbreakable="true">iron axe</item>
-		<item slot="4" amount="64">golden carrot</item>
-		<item slot="5">golden apple</item>
+        <item slot="4" amount="64">golden carrot</item>
+        <item slot="5">golden apple</item>
         <item slot="6" amount="64" damage="5">wood</item>
-		<item slot="24" amount="64" damage="5">wood</item>
-		<item slot="33" amount="64" damage="5">wood</item>
-		<item slot="7" amount="64">glass</item>
-		<item slot="8" amount="32">ladder</item>
+        <item slot="24" amount="64" damage="5">wood</item>
+        <item slot="33" amount="64" damage="5">wood</item>
+        <item slot="7" amount="64">glass</item>
+        <item slot="8" amount="32">ladder</item>
         <item slot="28" amount="1">arrow</item>
     </kit>
 </kits>
@@ -54,7 +54,7 @@
     <filter name="only-blue">
         <team>blue</team>
     </filter>
-	<filter name="no-stone">
+    <filter name="no-stone">
         <deny>
             <material>STONE</material>
         </deny>
@@ -70,7 +70,7 @@
         <rectangle min="-58,62" max="-32,100"/>
         <rectangle min="-33,-132" max="-58,-170"/>
     </apply>
-	<apply block-place="no-stone">
+    <apply block-place="no-stone">
         <everywhere/>
     </apply>
 </regions>
@@ -84,7 +84,7 @@
 </cores>
 <modes>
     <mode after="10m" material="gold block" name="GOLD CORE MODE"/>
-	<mode after="25m" material="packed ice" name="ICE CORE MODE"/>
+    <mode after="25m" material="packed ice" name="ICE CORE MODE"/>
 </modes>
 <destroyables materials="emerald block" completion="100%" proximity-metric="none">
     <destroyable name="East Monument" owner="red">
@@ -109,23 +109,23 @@
     <item damage="11">stained clay</item>
     <item>golden carrot</item>
     <item>arrow</item>
-	<item>wood</item>
-	<item>ladder</item>
+    <item>wood</item>
+    <item>ladder</item>
     <item>glass</item>
     <item>smooth brick</item>
     <item>emerald block</item>
 </itemremove>
 <killreward>
-	<item>golden apple</item>
-	<item amount="32" damage="5">wood</item>
-	<item amount="32">glass</item>
+    <item>golden apple</item>
+    <item amount="32" damage="5">wood</item>
+    <item amount="32">glass</item>
 </killreward>
 <tnt>
     <dispenser-tnt-limit>0</dispenser-tnt-limit>
     <dispenser-tnt-multiplier>0</dispenser-tnt-multiplier>
 </tnt>
 <crafting>
-	<disable>dispenser</disable>
+    <disable>dispenser</disable>
 </crafting>
 <timelock>on</timelock>
 <autorespawn/>

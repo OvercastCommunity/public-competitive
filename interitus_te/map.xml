@@ -59,6 +59,9 @@
     <deny id="deny-beacon">
         <material>beacon</material>
     </deny>
+    <deny id="no-stone">
+        <material>stone</material>
+    </deny>
     <allow id="tnt-at-height-limit">
         <material>tnt</material>
     </allow>
@@ -97,6 +100,7 @@
     <apply enter="only-blue" message="You may not enter the enemy spawn tunnel!" region="blue-tunnel-e"/>
     <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
     <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
+    <apply block-place="no-stone"/>
 </regions>
 <modes>
     <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
@@ -146,6 +150,7 @@
     <item>gold block</item>
     <item>packed ice</item>
     <item>ender stone</item>
+    <item>cobblestone</item>
 </itemremove>
 <tnt>
     <dispenser-tnt-limit>0</dispenser-tnt-limit>

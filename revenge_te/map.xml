@@ -52,6 +52,7 @@
     <item>obsidian</item>
     <item>dispenser</item>
     <item>beacon</item>
+    <item>packed ice</item>
     <item>cobblestone</item>
     <item>coal block</item>
 </itemremove>
@@ -82,6 +83,9 @@
             <material>dispenser</material>
             <material>hopper</material>
         </any>
+    </deny>
+    <deny id="no-stone">
+        <material>stone</material>
     </deny>
     <allow id="tnt-at-height-limit">
         <material>tnt</material>
@@ -120,6 +124,7 @@
     <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
     <apply block-place="no-barf-cannons" message="You may not place this block"/>
     <apply use="deny-access" message="You may not access this block"/>
+    <apply block-place="no-stone"/>
 </regions>
 <destroyables completion="100%" name="Monument" materials="emerald block">
     <destroyable owner="red" region="red-monument"/>
