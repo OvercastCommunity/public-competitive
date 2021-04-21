@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Interitus TE</name>
-<version>1.7.1</version>
+<version>1.7.2</version>
 <objective>Leak lava from the enemy's obsidian core into the void.</objective>
 <authors>
     <author uuid="ef4ea031-998f-4ec9-b7b6-1bdd428bcef8"/> <!-- Plastix -->
@@ -110,19 +110,19 @@
     </core>
     <core team="red">
         <region>
-            <cuboid min="27,16,34" max="22,22,40"/>
+            <cuboid min="28,16,34" max="22,22,40"/>
         </region>
     </core>
 </cores>
 <destroyables materials="ender stone" completion="100%" name="Monument">
     <destroyable owner="red">
         <region>
-            <cuboid min="-23,17,40" max="-27,22,36"/>
+            <cuboid min="-23,17,40" max="-27,22,35"/>
         </region>
     </destroyable>
     <destroyable owner="blue">
         <region>
-            <cuboid min="23,17,-40" max="27,22,-36"/>
+            <cuboid min="23,17,-40" max="27,22,-35"/>
         </region>
     </destroyable>
 </destroyables>
