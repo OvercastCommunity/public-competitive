@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Fractal Descent TE</name>
-<version>1.3.5</version>
+<version>1.3.6</version>
 <objective>Leak lava from the enemy team's core and destroy their end stone monument.</objective>
 <authors>
     <author uuid="dbe909c6-2b15-4528-b12a-c77ed4031496" contribution="Design and building"/> <!-- teheggy -->
@@ -48,6 +48,9 @@
     <deny id="no-stone">
         <material>stone</material>
     </deny>
+    <deny id="no-dispensers">
+        <material>dispenser</material>
+    </deny>
     <material id="tnt-at-height-limit">tnt</material>
 </filters>
 <regions>
@@ -72,6 +75,7 @@
     <apply block="never" region="above-height-limit" message="You may not edit blocks at this level!"/>
     <apply block-place="no-repeaters" name="You may not use repeaters on this map!"/>
     <apply block-place="no-stone"/>
+    <apply block="no-dispensers"/>
 </regions>
 <spawns>
     <default yaw="-90">
@@ -90,6 +94,18 @@
         </region>
     </spawn>
 </spawns>
+<destroyables materials="ender stone" completion="100%" proximity-metric="none">
+    <destroyable name="East Monument" owner="blue">
+        <region>
+            <cuboid min="22,10,-31" max="26,16,-27"/>
+        </region>
+    </destroyable>
+    <destroyable name="West Monument" owner="red">
+        <region>
+            <cuboid min="-26,10,27" max="-22,16,31"/>
+        </region>
+    </destroyable>
+</destroyables>
 <cores material="obsidian" leak="3" mode-changes="true" proximity-metric="none">
     <core team="blue">
         <region>
@@ -106,18 +122,6 @@
     <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
     <mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
 </modes>
-<destroyables materials="ender stone" completion="100%" proximity-metric="none">
-    <destroyable name="East Monument" owner="blue">
-        <region>
-            <cuboid min="22,10,-31" max="26,16,-27"/>
-        </region>
-    </destroyable>
-    <destroyable name="West Monument" owner="red">
-        <region>
-            <cuboid min="-26,10,27" max="-22,16,31"/>
-        </region>
-    </destroyable>
-</destroyables>
 <toolrepair>
     <tool>diamond sword</tool>
     <tool>bow</tool>
@@ -129,24 +133,23 @@
     <item>obsidian</item>
     <item>gold block</item>
     <item>packed ice</item>
-    <item>smooth brick</item>
-    <item>ladder</item>
     <item>ender stone</item>
-    <item>arrow</item>
-    <item>golden carrot</item>
+    <item>golden apple</item>
+    <item>smooth brick</item>
+    <item>glass</item>
     <item>wood</item>
+    <item>golden carrot</item>
+    <item>arrow</item>
+    <item>ladder</item>
 </itemremove>
 <kill-reward>
     <kit id="kill-reward"/>
-    <item amount="32" damage="1">wood</item>
     <item amount="32">glass</item>
+    <item amount="32" damage="1">wood</item>
 </kill-reward>
 <tnt>
     <dispenser-tnt-limit>0</dispenser-tnt-limit>
     <dispenser-tnt-multiplier>0</dispenser-tnt-multiplier>
 </tnt>
-<crafting>
-    <disable override-all="true">dispenser</disable>
-</crafting>
 <autorespawn/>
 </map>
