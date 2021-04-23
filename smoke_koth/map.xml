@@ -1,8 +1,7 @@
-<map proto="1.4.3">
-<name>Smoke KOTH</name>
-<version>1.0.4</version>
+<map proto="1.4.0">
+<name>Smoke KotH</name>
+<version>1.0.5</version>
 <objective>Be the first team to gain 2500 points.</objective>
-<gamemode>koth</gamemode>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!--  Claf  -->
