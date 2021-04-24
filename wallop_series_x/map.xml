@@ -1,8 +1,9 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
+<time overtime="1m" max-overtime="15m">45m</time>
 <name>Wallop Series X</name>
-<version>2.0.0</version>
-<objective>Destroy the spikys.</objective>
+<version>2.1.0</version>
+<objective>Destroy the monument and leak the core.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -21,7 +22,7 @@
 <kits>
     <kit id="kit-default">
         <clear/>
-        <item slot="0"  unbreakable="true"                       >diamond sword</item>
+        <item slot="0"  unbreakable="true"                       >iron sword</item>
         <item slot="1"  unbreakable="true" enchantment="infinity">bow</item>
         <item slot="2"  unbreakable="true"                       >diamond pickaxe</item>
         <item slot="3"  unbreakable="true"                       >diamond axe</item>
@@ -80,43 +81,37 @@
     </union>
     <cylinder id="monument-low-red" radius="3" base="29.5,20,46.5" height="10"/>
     <cylinder id="monument-low-blue" radius="3" base="29.5,20,-75.5" height="10"/>
-    <cylinder id="monument-high-red" radius="3" base="-14.5,36,35.5" height="10"/>
-    <cylinder id="monument-high-blue" radius="3" base="-14.5,36,-64.5" height="10"/>
-    <union id="no-break">
-        <!-- Gapple -->
-        <cuboid min="-45,14,18"  max="-43,18,16"/>
-        <cuboid min="-45,14,-45" max="-43,18,-47"/>
-    </union>
     <above id="above-50" y="50"/>
-    <point id="red-gapple-spawn">-44,15.5,17</point>
-    <point id="blue-gapple-spawn">-44,15.5,-46</point>
-    <sphere id="red-gapple-player" origin="-44,15.5,17" radius="5"/>
-    <sphere id="blue-gapple-player" origin="-44,15.5,-46" radius="5"/>
-    <apply block="never" region="no-break" message="`7You may not edit the `d`lSpawner `r`7regions"/>
     <apply block="never" region="above-50" message="`7You may not build outside the `b`lPlayable Region"/>
     <apply enter="only-blue" block="never" region="protection-spawn-blue" message="`7You may not enter or modify the `9Blue`r `e`lSpawn"/>
     <apply enter="only-red"  block="never" region="protection-spawn-red"  message="`7You may not enter or modify the `4Red`r `e`lSpawn"/>
     <apply block="never" region="not-playable" message="`7You may not build outside the `b`lPlayable Region"/>
 </regions>
 <destroyables repairable="false" materials="emerald block">
-    <destroyable owner="red-team"  name="Low Spiky"  region="monument-low-red"/>
-    <destroyable owner="red-team"  name="High Spiky" region="monument-high-red"/>
-    <destroyable owner="blue-team" name="Low Spiky"  region="monument-low-blue"/>
-    <destroyable owner="blue-team" name="High Spiky" region="monument-high-blue"/>
+    <destroyable owner="red-team"  name="Monument"  region="monument-low-red"/>
+    <destroyable owner="blue-team" name="Monument"  region="monument-low-blue"/>
 </destroyables>
-<spawners>
-    <spawner id="red-gapple" spawn-region="red-gapple-spawn" player-region="red-gapple-player" delay="8s">
-        <item material="golden apple"/>
-    </spawner>
-    <spawner id="blue-gapple" spawn-region="blue-gapple-spawn" player-region="blue-gapple-player" delay="8s">
-        <item material="golden apple"/>
-    </spawner>
-</spawners>
+<cores material="obsidian" leak="3" mode-changes="true" proximity-metric="none">
+	<core team="blue-team">
+		<region>
+			<cuboid min="-17,42,-62" max="-12,37,-67"/>
+		</region>
+	</core>
+	<core team="red-team">
+		<region>
+			<cuboid min="-17,42,38" max="-12,37,33"/>
+		</region>
+	</core>
+</cores>
+<modes>
+	<mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
+	<mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
+</modes>
 <respawn delay="7s"/>
 <mobs filter="only-creeper-spawn-egg"/>
 <toolrepair>
     <tool>arrow</tool>
-    <tool>diamond sword</tool>
+    <tool>iron sword</tool>
     <tool>bow</tool>
     <tool>diamond pickaxe</tool>
     <tool>diamond axe</tool>
@@ -154,6 +149,10 @@
     <item>hay block</item>
     <item>flower pot</item>
     <item>emerald block</item>
+	<item>chainmail chestplate</item>
+	<item>leather boots</item>
+	<item>golden carrot</item>
+	<item>obsidian</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>
@@ -161,12 +160,12 @@
 </itemkeep>
 <kill-rewards>
 	<kill-reward>
-    <kit>
-        <potion amplifier="2" duration="5">regeneration</potion>
-        <item amount="16"            material="tnt"/>
-        <item amount="32" damage="5" material="wood"/>
-    </kit>
-</kill-reward>
+        <kit>
+            <potion amplifier="2" duration="5">regeneration</potion>
+            <item amount="32" damage="5" material="wood"/>
+			<item amount="32"            material="glass"/>
+        </kit>
+    </kill-reward>
 </kill-rewards>
 <crafting>
     <disable>carpet:14</disable>
@@ -227,6 +226,5 @@
         </drops>
     </rule>
 </block-drops>
-<time result="objectives">45m</time>
 <timelock>on</timelock>
 </map>
