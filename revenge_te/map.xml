@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Revenge TE</name>
-<version>1.0.3</version>
+<version>1.0.4</version>
 <objective>Destroy both enemy monuments and leak their core to win!</objective>
 <authors>
     <author uuid="36e46b32-80ef-4fa5-b1e2-6c777736d888" contribution="XML, layout"/> <!-- elijah -->
@@ -10,42 +10,45 @@
     <contributor uuid="ca2306d1-1198-4d46-8c44-a82f5b3c8a4e" contribution="Aesthetics, theme"/> <!-- beanbutt -->
 </contributors>
 <teams>
-    <team id="red" color="dark red" max="8">Red</team>
     <team id="blue" color="blue" max="8">Blue</team>
+    <team id="red" color="dark red" max="8">Red</team>
 </teams>
+<kits>
+    <kit id="teams">
+        <item slot="0">iron sword</item>
+        <item slot="1">bow</item>
+        <item slot="28" amount="64">arrow</item>
+        <item slot="2" enchantment="dig speed:3;durability:3">iron pickaxe</item>
+        <item slot="3" enchantment="durability:3">iron axe</item>
+        <item slot="4" amount="32">log</item>
+        <item slot="5" amount="64">smooth brick</item>
+        <item slot="6" amount="64">glass</item>
+        <item slot="7">golden apple</item>
+        <item slot="8" amount="64">golden carrot</item>
+    </kit>
+    <kit id="kill-reward">
+        <effect amplifier="2" duration="5">regeneration</effect>
+    </kit>
+</kits>
 <spawns>
     <default>
         <region yaw="-90">
             <block>0.5,87,0.5</block>
         </region>
     </default>
-    <spawn team="red" kit="teams">
-        <region yaw="180">
-            <region id="red-spawn"/>
-        </region>
-    </spawn>
     <spawn team="blue" kit="teams">
         <region yaw="0">
             <region id="blue-spawn"/>
         </region>
     </spawn>
+    <spawn team="red" kit="teams">
+        <region yaw="180">
+            <region id="red-spawn"/>
+        </region>
+    </spawn>
 </spawns>
-<kits>
-    <kit id="teams">
-        <item slot="0">iron sword</item>
-        <item slot="1">bow</item>
-        <item slot="2" enchantment="dig speed:3;durability:3">iron pickaxe</item>
-        <item slot="3" amount="32">log</item>
-        <item slot="4" amount="64">smooth brick</item>
-        <item slot="5" amount="64">glass</item>
-        <item slot="8" amount="64">golden carrot</item>
-        <item slot="28" amount="64">arrow</item>
-    </kit>
-    <kit id="kill-reward">
-        <effect amplifier="2" duration="5">regeneration</effect>
-    </kit>
-</kits>
 <itemremove>
+    <item>golden apple</item>
     <item>golden carrot</item>
     <item>emerald block</item>
     <item>gold block</item>
@@ -60,13 +63,14 @@
     <tool>iron sword</tool>
     <tool>bow</tool>
     <tool>iron pickaxe</tool>
+    <tool>iron axe</tool>
 </toolrepair>
 <filters>
-    <deny id="only-red">
-        <team>blue</team>
-    </deny>
     <deny id="only-blue">
         <team>red</team>
+    </deny>
+    <deny id="only-red">
+        <team>blue</team>
     </deny>
     <deny id="deny-access">
         <any>
@@ -106,8 +110,8 @@
         <cuboid id="red-monument" min="-23,36,17" max="-29,43,23"/>
     </union>
     <union id="cores">
-        <cuboid id="red-core" min="30,36,18" max="22,43,26"/>
-        <cuboid id="blue-core" min="-30,36,-18" max="-22,43,-26"/>
+        <cuboid id="blue-core" min="-28,37,-26" max="-23,42,-31"/>
+        <cuboid id="red-core" min="29,37,27" max="24,42,32"/>
     </union>
     <union id="spawns">
         <block id="blue-spawn">0.5,255,-55.5</block>
@@ -125,12 +129,12 @@
     <apply block-place="no-stone"/>
 </regions>
 <destroyables completion="100%" name="Monument" materials="emerald block">
-    <destroyable owner="red" region="red-monument"/>
     <destroyable owner="blue" region="blue-monument"/>
+    <destroyable owner="red" region="red-monument"/>
 </destroyables>
 <cores material="obsidian" leak="3" mode-changes="true" name="Core">
-    <core team="red" region="red-core"/>
     <core team="blue" region="blue-core"/>
+    <core team="red" region="red-core"/>
 </cores>
 <modes>
     <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
