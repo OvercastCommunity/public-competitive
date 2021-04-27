@@ -15,7 +15,7 @@
 </teams>
 <kits>
     <kit id="teams">
-        <item slot="0">iron sword</item>
+        <item slot="0">diamond sword</item>
         <item slot="1">bow</item>
         <item slot="28" amount="64">arrow</item>
         <item slot="2" enchantment="dig speed:3;durability:3">iron pickaxe</item>
@@ -60,7 +60,7 @@
     <item>coal block</item>
 </itemremove>
 <toolrepair>
-    <tool>iron sword</tool>
+    <tool>diamond sword</tool>
     <tool>bow</tool>
     <tool>iron pickaxe</tool>
     <tool>iron axe</tool>
