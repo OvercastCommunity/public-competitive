@@ -1,88 +1,99 @@
-<map proto="1.3.3">
-    <name>Nea Archí</name>
-    <version>1.0.0</version>
-    <objective>Leak the enemies core and break their monuments.</objective>
-    <authors>
-        <!-- minsii -->
-        <author uuid="fcbc5806-e7fd-45f1-845a-22f1df93c9bf"/>
-        <!-- Buggy441 -->
-        <author uuid="d3cfc603-b971-4dca-b25a-578691f86c63"/>
-    </authors>
-    <teams>
-        <team color="dark red" max="5">Red</team>
-        <team color="blue" max="5">Blue</team>
-    </teams>
-    <filters>
-        <filter name="deny-dispenser">
-            <deny>
-                <block>dispenser</block>
-            </deny>
-        </filter>
-    </filters>
-    <regions>
-        <cuboid name="whereyouplayyo" min="-226,-oo,-255" max="-269,80,-169"/>
-        <apply block="deny-all" message="You may not interact with blocks outside of the playing field.">
-            <negative>
-                <region name="whereyouplayyo"/>
-            </negative>
-        </apply>
-        <apply block-place="deny-dispenser" message="NO DISPENSERING BOYO!">
-            <region name="whereyouplayyo"/>
-        </apply>
-        <apply enter="deny-all" message="You cannot enter the spawn areas!">
-            <union name="thesearethespawnsok">
-                <cuboid name="blue-spawn" min="-226,54,-252" max="-205,49,-277"/>
-                <cuboid name="red-spawm" min="-256,54,-173" max="-205,49,-148"/>
-                <cuboid name="extra-blue-spawn" min="-230,54,-256" max="-227,49,-259"/>
-                <cuboid name="extra-red-spawn" min="-230,54,-169" max="227,49,-166"/>
-            </union>
-        </apply>
-    </regions>
-    <maxbuildheight>80</maxbuildheight>
-    <spawns>
-        <default yaw="90">
+<map proto="1.4.0">
+<name>Nea Archí</name>
+<version>1.0.1</version>
+<objective>Leak the enemies core and break their monuments.</objective>
+<authors>
+    <!-- minsii -->
+    <author uuid="fcbc5806-e7fd-45f1-845a-22f1df93c9bf"/>
+    <!-- Buggy441 -->
+    <author uuid="d3cfc603-b971-4dca-b25a-578691f86c63"/>
+</authors>
+<teams>
+    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5">Blue</team>
+</teams>
+<time result="objectives">25m</time>
+<spawns>
+    <default yaw="90">
+        <region>
             <point>-197.5,61,-211.5</point>
-        </default>
-        <spawn team="blue" yaw="45">
+        </region>
+    </default>
+    <spawn team="blue" yaw="45">
+        <region>
             <point>-206.5,52,-274.5</point>
-        </spawn>
-        <spawn team="red" yaw="135">
+        </region>
+    </spawn>
+    <spawn team="red" yaw="135">
+        <region>
             <point>-206.5,52,-149.5</point>
-        </spawn>
-    </spawns>
-    <modes>
-        <mode material="gold block" after="10m" name="GOLD CORE MODE"/>
-        <mode material="packed ice" after="15m" name="ICE CORE MODE"/>
-    </modes>
-    <cores material="obsidian" leak="0" mode-changes="true">
-        <core team="blue">
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <deny id="deny-dispenser">
+        <material>dispenser</material>
+    </deny>
+</filters>
+<regions>
+    <negative id="whereyoudontplay">
+        <cuboid id="whereyouplayyo" min="-226,-oo,-255" max="-269,80,-169"/>
+    </negative>
+    <union id="thesearethespawnsok">
+        <cuboid id="blue-spawn" min="-226,54,-252" max="-205,49,-277"/>
+        <cuboid id="red-spawm" min="-256,54,-173" max="-205,49,-148"/>
+        <cuboid id="extra-blue-spawn" min="-230,54,-256" max="-227,49,-259"/>
+        <cuboid id="extra-red-spawn" min="-230,54,-169" max="227,49,-166"/>
+    </union>
+    <apply block="never" message="You may not interact with blocks outside of the playing field!" region="whereyoudontplay"/>
+    <apply enter="never" message="You cannot enter the spawn areas!" region="thesearethespawnsok"/>
+    <apply block-place="deny-dispenser" message="NO DISPENSERING BOYO!"/>
+</regions>
+<cores material="obsidian" leak="0" mode-changes="true">
+    <core team="blue">
+        <region>
             <cuboid min="-257,50,-242" max="-254,55,-245"/>
-        </core>
-        <core team="red">
+        </region>
+    </core>
+    <core team="red">
+        <region>
             <cuboid min="-257,50,-182" max="-254,55,-179"/>
-        </core>
-    </cores>    
-    <destroyables materials="coal block" completion="100%">
-        <destroyables owner="blue">
-            <destroyable name="Antenna A">
+        </region>
+    </core>
+</cores>
+<modes>
+    <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
+    <mode after="15m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
+</modes>
+<destroyables materials="coal block" completion="100%">
+    <destroyables owner="blue">
+        <destroyable name="Antenna A">
+            <region>
                 <cuboid min="-231,58,-236" max="-228,64,-239"/>
-            </destroyable>
-            <destroyable name="Antenna B">
-                <cuboid min="-240,58,-239" max="-238,64,-242"/>
-            </destroyable>
-        </destroyables>
-        <destroyables owner="red">
-            <destroyable name="Antenna A">
-                <cuboid min="-231,58,-188" max="-228,64,-185"/>
-            </destroyable>
-            <destroyable name="Antenna B">
-                <cuboid min="-240,58,-185" max="-238,64,-182"/>
-            </destroyable>
-        </destroyables>
+            </region>
+        </destroyable>
+        <destroyable name="Antenna B">
+            <region>
+                <cuboid min="-241,58,-239" max="-238,64,-242"/>
+            </region>
+        </destroyable>
     </destroyables>
-    <itemremove>
-        <item>obsidian</item>
-        <item>coal block</item>
-    </itemremove>
-    <time result="objectives">25m</time>
+    <destroyables owner="red">
+        <destroyable name="Antenna A">
+            <region>
+                <cuboid min="-231,58,-188" max="-228,64,-185"/>
+            </region>
+        </destroyable>
+        <destroyable name="Antenna B">
+            <region>
+                <cuboid min="-241,58,-185" max="-238,64,-182"/>
+            </region>
+        </destroyable>
+    </destroyables>
+</destroyables>
+<itemremove>
+    <item>obsidian</item>
+    <item>coal block</item>
+</itemremove>
+<maxbuildheight>80</maxbuildheight>
 </map>
