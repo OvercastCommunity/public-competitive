@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <name>Deepwind Jungle TE</name>
-<version>2.0.3</version>
+<version>2.0.4</version>
 <objective>Retrieve the wool from the enemy's side and place it on your team's monument</objective>
 <authors>
     <author uuid="91295196-9cd2-4963-b7ec-afd1a110edbe"/> <!-- PandaBattalion -->
