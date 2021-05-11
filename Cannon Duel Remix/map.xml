@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+<name>Cannon Duel Remix</name>
+<version>1.0.0</version>
+<objective>Kill them before they kill you</objective>
+<authors>
+    <author uuid="a90be681-0d8d-4d76-9094-c609a5d4596a"/> <!-- alejitox -->
+    <author uuid="e82603df-417d-4a95-bd1f-1720648be0b4"/> <!-- Pablete1234 -->
+</authors>
+
+    <contributors>
+        <contributor uuid="3fbec7dd-0a5f-40bf-9d11-885a54507112" contribution="Original Map"/> <!-- Cubist -->
+        <contributor uuid="dad8b95c-cf6a-44df-982e-8c8dd70201e0" contribution="Original Map"/> <!-- ElectroidFilms -->
+    </contributors>
+<gamemode>blitz</gamemode>
+<teams>
+    <team id="red-player" color="dark red" max="1" max-overfill="1">Red Player</team>
+    <team id="blue-player" color="blue" max="1" max-overfill="1">Blue Player</team>
+</teams>
+
+<kits>
+    <!-- kit given to everyone, including observers -->
+    <kit id="all">
+        <potion duration="oo">night vision</potion>
+        <potion duration="oo">saturation</potion>
+    </kit>
+
+    <!-- kit given to both teams -->
+    <kit id="team" parents="all">
+        <item slot="9" amount="64">tnt</item>
+        <item slot="18" amount="64">tnt</item>
+        <item slot="27" amount="64">tnt</item>
+        <item slot="0">diamond pickaxe</item>
+        
+        <item slot="10" amount="64">tnt</item>
+        <item slot="19" amount="64">tnt</item>
+        <item slot="28" amount="64">tnt</item>
+        <item slot="1" amount="16">dispenser</item>
+        
+        <item slot="11" amount="64">tnt</item>
+        <item slot="20" amount="64">tnt</item>
+        <item slot="29" amount="64">tnt</item>
+        <item slot="2" amount="64">step</item>
+        
+        <!-- slot="12" -->
+        <!-- slot="21" -->
+        <!-- slot="30" -->
+        <!-- slot="3" -->
+
+        <item slot="13" amount="16">trap door</item>
+        <item slot="22" amount="16">ladder</item>
+        <item slot="31">workbench</item>
+        <item slot="4" amount="64">nether fence</item>
+        
+        <item slot="14" amount="16">piston base</item>
+        <item slot="23" amount="16">lever</item>
+        <item slot="32" amount="16">stone plate</item>
+        <item slot="5" amount="16">stone button</item>
+        
+        <item slot="15">water bucket</item>
+        <item slot="24">water bucket</item>
+        <item slot="33">water bucket</item>
+        <item slot="6">water bucket</item>
+        
+        <item slot="16" amount="16">diode</item>
+        <item slot="25" amount="16">redstone torch on</item>
+        <item slot="34" amount="16">redstone block</item>
+        <item slot="7" amount="64">redstone</item>
+
+        <item slot="17" amount="64">tnt</item>
+        <item slot="26" amount="64">tnt</item>
+        <item slot="35" amount="64">tnt</item>
+        <item slot="8" amount="64">tnt</item>
+
+        <!-- Resistance to make it into the spawn drop -->
+
+        <potion duration="15" amplifier="5">damage resistance</potion>
+        <potion duration="15" amplifier="5">heal</potion>
+
+    </kit>
+
+    <kit id="red-gear" parents="team">
+        <item slot="12" damage="14" amount="64">stained glass</item>
+        <item slot="21" damage="14" amount="64">stained clay</item>
+        <item slot="30" damage="14" amount="64">stained clay</item>
+        <item slot="3" damage="14" amount="64">stained clay</item>
+        
+        <helmet locked="true" color="dd5566" enchantment="water worker:3" unbreakable="true">leather helmet</helmet>
+        <chestplate locked="true" color="dd5566" unbreakable="true">leather chestplate</chestplate>
+        <leggings locked="true" color="dd5566" unbreakable="true">leather leggings</leggings>
+        <boots locked="true" color="dd5566" durability="-3000">leather boots</boots>
+    </kit>
+
+    <kit id="blue-gear" parents="team">
+        <item slot="12" damage="11" amount="64">stained glass</item>
+        <item slot="21" damage="11" amount="64">stained clay</item>
+        <item slot="30" damage="11" amount="64">stained clay</item>
+        <item slot="3" damage="11" amount="64">stained clay</item>
+        
+        <helmet locked="true" color="5e55dd" enchantment="water worker:3" unbreakable="true">leather helmet</helmet>
+        <chestplate locked="true" color="5e55dd" unbreakable="true">leather chestplate</chestplate>
+        <leggings locked="true" color="5e55dd" unbreakable="true">leather leggings</leggings>
+        <boots locked="true" color="5e55dd" durability="-3000">leather boots</boots>
+    </kit>
+</kits>
+
+<filters>
+    <any id="respawn-filter">
+        <objective id="spawn-1" team="red-player">hill-spawn-1</objective>
+        <objective id="spawn-2" team="red-player">hill-spawn-2</objective>
+        <objective id="spawn-3" team="red-player">hill-spawn-3</objective>
+        <team>red-player</team>
+    </any>
+</filters>
+
+<regions>
+
+    <!--                    -->
+    <!-- Region Definitions -->
+    <!--                    -->
+
+    <!-- area where players drop to get dropped into the box -->
+    <union id="glass">
+        <cuboid id="drops" min="-6,51.0,2" max="69,52.0,73"/>
+        <cuboid id="bridge-1" min="64,25,23" max="65,26,52"/>
+        <cuboid id="bridge-2" min="31,25,17" max="32,26,58"/>
+        <cuboid id="bridge-3" min="-2,25,11" max="-1,26,64"/>
+    </union>
+
+    <union id="red-zones">
+        <cuboid min="60,16,14" max="69,35,23"/>
+        <cuboid min="27,16,8" max="36,35,17"/>
+        <cuboid min="-6,16,2" max="3,35,11"/>
+    </union>
+    <union id="blue-zones">
+        <cuboid min="60,16,52" max="69,35,61"/>
+        <cuboid min="27,16,58" max="36,35,67"/>
+        <cuboid min="-6,16,64" max="3,35,73"/>
+    </union>
+    <!--             -->
+    <!-- Block Rules -->
+    <!--             -->
+    <apply block="always" region="red-zones"/>
+    <apply block="always" region="blue-zones"/>
+    <apply block="never" message="You may not place or break blocks outside the build zone"/>
+</regions>
+
+<spawns pitch="0">
+    <default yaw="90" kit="all">
+        <region>
+            <cylinder base="31.5,58,37.5" radius="4" height="0"/>
+        </region>
+    </default>
+    <spawn team="red-player" yaw="0" kit="red-gear">
+        <region>
+            <point>64.5,52,18.5</point>
+        </region>
+        <region>
+            <point>31.5,52,12.5</point>
+        </region>
+        <region>
+            <point>-1.5,52,6.5</point>
+        </region>
+    </spawn>
+    <spawn team="blue-player" yaw="180" kit="blue-gear" filter="spawn-1">
+        <region>
+            <point>64.5,52,56.5</point>
+        </region>
+    </spawn>
+    <spawn team="blue-player" yaw="180" kit="blue-gear" filter="spawn-2">
+        <region>
+            <point>31.5,52,62.5</point>
+        </region>
+    </spawn>
+    <spawn team="blue-player" yaw="180" kit="blue-gear" filter="spawn-3">
+        <region>
+            <point>-1.5,52,68.5</point>
+        </region>
+    </spawn>
+</spawns>
+
+<!-- Destroyables are impossible to break as they are in a deny-all region -->
+
+<destroyables materials="95:7" show="false" mode-changes="true">
+    <destroyable name="glass-monu" owner="red-player" region="glass">
+    </destroyable>
+</destroyables>
+
+<control-points capture-time="0s" show="false" required="false" permanent="true">
+    <control-point id="hill-spawn-1">
+        <capture>
+            <cylinder base="64.5,52,18.5" radius="2" height="3"/>
+        </capture>
+    </control-point>
+    <control-point id="hill-spawn-2">
+        <capture>
+            <cylinder base="31.5,52,12.5" radius="2" height="3"/>
+        </capture>
+    </control-point>
+    <control-point id="hill-spawn-3">
+        <capture>
+            <cylinder base="-1.5,52,6.5" radius="2" height="3"/>
+        </capture>
+    </control-point>
+</control-points>
+
+<broadcasts>
+    <alert after="1s">`aYou have 10 seconds to sort your inventory</alert>
+</broadcasts>
+
+<modes>
+    <mode after="10s" material="air" show-before="10s" name="`3Dropping you into the map"/>
+    <mode after="2m30s" material="stained glass:7" show-before="30s" name="`3Connecting the platforms"/>
+</modes>
+    <blitz/>
+
+</map>
