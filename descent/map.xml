@@ -1,8 +1,6 @@
-<map proto="1.4.2"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:noidspaceSchemaLocation="https://raw.githubusercontent.com/PGMTools/PGMSchema/master/map.xsd">
+<map proto="1.4.0">
 <name>Descent</name>
-<version>1.2.2</version>
+<version>1.2.3</version>
 <objective>Break both monuments to win!</objective>
 <authors>
     <author uuid="61f8e9dd-62ab-453a-b7ef-83ce8a383fe8"/> <!-- Campeh -->
