@@ -14,6 +14,9 @@ session.lock
 uid.dat
 villages.dat
 
+# ignore MCEdit files
+mcedit_waypoints.dat
+
 # misc
 Thumbs.db
 
