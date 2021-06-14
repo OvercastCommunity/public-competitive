@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Revenge TE</name>
-<version>1.0.5</version>
+<version>1.0.6</version>
 <objective>Destroy both enemy monuments and leak their core to win!</objective>
 <authors>
     <author uuid="36e46b32-80ef-4fa5-b1e2-6c777736d888" contribution="XML, layout"/> <!-- elijah -->
@@ -14,17 +14,19 @@
     <team id="red" color="dark red" max="8">Red</team>
 </teams>
 <kits>
-    <kit id="teams">
-        <item slot="0">diamond sword</item>
-        <item slot="1">bow</item>
-        <item slot="28" amount="64">arrow</item>
-        <item slot="2" enchantment="dig speed:3;durability:3">iron pickaxe</item>
-        <item slot="3" enchantment="durability:3">iron axe</item>
-        <item slot="4" amount="32">log</item>
-        <item slot="5" amount="64">smooth brick</item>
-        <item slot="6" amount="64">glass</item>
-        <item slot="7">golden apple</item>
-        <item slot="8" amount="64">golden carrot</item>
+    <kit id="spawn-kit">
+        <item slot="0" unbreakable="true" material="diamond sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="28" amount="64" material="arrow"/>
+        <item slot="2" unbreakable="true" material="iron pickaxe">
+            <enchantment level="3">efficiency</enchantment>
+        </item>
+        <item slot="3" unbreakable="true" material="iron axe"/>
+        <item slot="4" amount="32" material="log"/>
+        <item slot="5" amount="64" material="smooth brick"/>
+        <item slot="6" amount="64" material="glass"/>
+        <item slot="7" material="golden apple"/>
+        <item slot="8" amount="64" material="golden carrot"/>
     </kit>
     <kit id="kill-reward">
         <effect amplifier="2" duration="5">regeneration</effect>
@@ -36,42 +38,12 @@
             <block>0.5,87,0.5</block>
         </region>
     </default>
-    <spawn team="blue" kit="teams">
-        <region yaw="0">
-            <region id="blue-spawn"/>
-        </region>
-    </spawn>
-    <spawn team="red" kit="teams">
-        <region yaw="180">
-            <region id="red-spawn"/>
-        </region>
-    </spawn>
+    <spawn team="blue" kit="spawn-kit" yaw="0" region="blue-spawn"/>
+    <spawn team="red" kit="spawn-kit" yaw="180" region="red-spawn"/>
 </spawns>
-<itemremove>
-    <item>golden apple</item>
-    <item>golden carrot</item>
-    <item>emerald block</item>
-    <item>gold block</item>
-    <item>obsidian</item>
-    <item>dispenser</item>
-    <item>beacon</item>
-    <item>packed ice</item>
-    <item>cobblestone</item>
-    <item>coal block</item>
-</itemremove>
-<toolrepair>
-    <tool>diamond sword</tool>
-    <tool>bow</tool>
-    <tool>iron pickaxe</tool>
-    <tool>iron axe</tool>
-</toolrepair>
 <filters>
-    <deny id="only-blue">
-        <team>red</team>
-    </deny>
-    <deny id="only-red">
-        <team>blue</team>
-    </deny>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
     <deny id="deny-access">
         <any>
             <material>beacon</material>
@@ -91,7 +63,7 @@
     <deny id="no-stone">
         <material>stone</material>
     </deny>
-    <material id="tnt-at-height-limit">tnt</material>
+    <material id="only-tnt">tnt</material>
 </filters>
 <regions>
     <negative id="outside-map">
@@ -121,8 +93,8 @@
     <apply block="never" message="You may not modify the spawns" region="spawn-drops"/>
     <apply enter="only-blue" message="You may not enter the enemy spawn" region="blue-spawn-drop"/>
     <apply enter="only-red" message="You may not enter the enemy spawn" region="red-spawn-drop"/>
-    <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
-    <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
+    <apply block="never" region="above-height-limit" message="You may not break or place any blocks at this height!"/>
+    <apply block-place="only-tnt" region="tnt-height-limit" message="Only TNT may be placed at this height!"/>
     <apply block="never" message="You may not edit outside of the map" region="outside-map"/>
     <apply block-place="no-barf-cannons" message="You may not place this block"/>
     <apply use="deny-access" message="You may not access this block"/>
@@ -132,19 +104,38 @@
     <destroyable owner="blue" region="blue-monument"/>
     <destroyable owner="red" region="red-monument"/>
 </destroyables>
-<cores material="obsidian" leak="3" mode-changes="true" name="Core">
+<cores material="obsidian" leak="3" name="Core" modes="gold-core ice-core">
     <core team="blue" region="blue-core"/>
     <core team="red" region="red-core"/>
 </cores>
 <modes>
-    <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
-    <mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
+    <mode id="gold-core" after="10m" material="gold block" name="`6GOLD CORE MODE"/>
+    <mode id="ice-core" after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
 </modes>
-<tnt>
-    <dispenser-tnt-limit>2</dispenser-tnt-limit>
-</tnt>
+<toolrepair>
+    <tool>diamond sword</tool>
+    <tool>bow</tool>
+    <tool>iron pickaxe</tool>
+    <tool>iron axe</tool>
+</toolrepair>
+<itemremove>
+    <item>golden apple</item>
+    <item>golden carrot</item>
+    <item>gold block</item>
+    <item>obsidian</item>
+    <item>packed ice</item>
+    <item>emerald block</item>
+    <item>dispenser</item>
+    <item>hopper</item>
+    <item>beacon</item>
+    <item>cobblestone</item>
+    <item>coal block</item>
+</itemremove>
 <kill-reward>
     <kit id="kill-reward"/>
 </kill-reward>
-<autorespawn/>
+<tnt>
+    <dispenser-tnt-limit>2</dispenser-tnt-limit>
+</tnt>
+<respawn auto="true"/>
 </map>
