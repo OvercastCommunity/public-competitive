@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Wallop 9000</name>
-<version>1.2.3</version>
+<version>1.2.4</version>
 <objective>Leak lava from the enemy team's core and destroy their end stone monument.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -12,60 +12,54 @@
     <contributor uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
 </contributors>
 <teams>
-    <team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>
-    <team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
+    <team id="blue" color="blue" max="8" max-overfill="8">Blue</team>
+    <team id="red" color="dark red" max="8" max-overfill="8">Red</team>
 </teams>
 <kits>
-    <kit id="kit-default">
-        <item slot="0" unbreakable="true">diamond sword</item>
-        <item slot="1" unbreakable="true" enchantment="infinity">bow</item>
-        <item slot="28">arrow</item>
-        <item slot="2" unbreakable="true">diamond pickaxe</item>
-        <item slot="3" unbreakable="true">diamond axe</item>
-        <item slot="4" amount="64" damage="5">wood</item>
-        <item slot="31" amount="32" damage="5">wood</item>
-        <item slot="5" amount="64">glass</item>
-        <item slot="8" amount="64">golden carrot</item>
-        <chestplate unbreakable="true">chainmail chestplate</chestplate>
-    </kit>
-    <kit id="kit-blue" parents="kit-default">
-        <boots unbreakable="true" color="0066cc">leather boots</boots>
-    </kit>
-    <kit id="kit-red" parents="kit-default">
-        <boots unbreakable="true" color="cd0000">leather boots</boots>
+    <kit id="spawn-kit">
+        <item slot="0" unbreakable="true" material="diamond sword"/>
+        <item slot="1" unbreakable="true" material="bow">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="28" material="arrow"/>
+        <item slot="2" unbreakable="true" material="diamond pickaxe"/>
+        <item slot="3" unbreakable="true" material="diamond axe"/>
+        <item slot="4" amount="64" damage="5" material="wood"/>
+        <item slot="31" amount="32" damage="5" material="wood"/>
+        <item slot="5" amount="64" material="glass"/>
+        <item slot="7" material="golden apple"/>
+        <item slot="8" amount="64" material="golden carrot"/>
+        <chestplate unbreakable="true" material="chainmail chestplate"/>
+        <boots unbreakable="true" team-color="true" material="leather boots"/>
     </kit>
     <kit id="kill-reward">
         <effect amplifier="2" duration="5">regeneration</effect>
     </kit>
 </kits>
 <spawns>
-    <spawn team="blue-team" kit="kit-blue">
-        <regions yaw="-90">
-            <point>-96.5,23.5,47.5</point>
-        </regions>
-    </spawn>
-    <spawn team="red-team" kit="kit-red">
-        <regions yaw="-90">
-            <point>-96.5,23.5,-14.5</point>
-        </regions>
-    </spawn>
     <default>
         <regions yaw="-90">
             <point>-96.5,67.5,16.5</point>
         </regions>
     </default>
+    <spawn team="blue" kit="spawn-kit">
+        <regions yaw="-90">
+            <point>-96.5,23.5,47.5</point>
+        </regions>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <regions yaw="-90">
+            <point>-96.5,23.5,-14.5</point>
+        </regions>
+    </spawn>
 </spawns>
 <filters>
-    <deny id="only-blue">
-        <team>red-team</team>
-    </deny>
-    <deny id="only-red">
-        <team>blue-team</team>
-    </deny>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
     <deny id="no-stone">
         <material>stone</material>
     </deny>
-    <material id="tnt-at-height-limit">tnt</material>
+    <material id="only-tnt">tnt</material>
 </filters>
 <regions>
     <union id="no-build">
@@ -73,8 +67,8 @@
             <rectangle id="playable-area" min="-61,75" max="72,-42"/>
         </negative>
         <union id="spawns">
-            <cuboid id="blue-spawn" min="-53,22,44" max="-99,26,49"/>
-            <cuboid id="red-spawn" min="-53,22,-18" max="-99,26,-13"/>
+            <cuboid id="blue-spawn" min="-53,22,45" max="-99,26,50"/>
+            <cuboid id="red-spawn" min="-53,22,-17" max="-99,26,-12"/>
         </union>
     </union>
     <union id="monuments">
@@ -90,23 +84,23 @@
     <above id="tnt-height-limit" y="58"/>
     <above id="above-height-limit" y="59"/>
     <apply block="never" message="You may not build outside of the playable region!" region="no-build"/>
-    <apply block="never" message="You may not edit blocks at this level!" region="above-height-limit"/>
-    <apply block="tnt-at-height-limit" message="Only TNT is allowed at this level!" region="tnt-height-limit"/>
+    <apply block="never" region="above-height-limit" message="You may not break or place any blocks at this height!"/>
+    <apply block-place="only-tnt" region="tnt-height-limit" message="Only TNT may be placed at this height!"/>
     <apply enter="only-blue" message="You may not enter Blue Team's spawn!" region="blue-spawn"/>
     <apply enter="only-red" message="You may not enter Red Team's spawn!" region="red-spawn"/>
     <apply block-place="no-stone"/>
 </regions>
 <destroyables materials="ender stone" name="E G G ?">
-    <destroyable owner="blue-team" region="blue-egg"/>
-    <destroyable owner="red-team" region="red-egg"/>
+    <destroyable owner="blue" region="blue-egg"/>
+    <destroyable owner="red" region="red-egg"/>
 </destroyables>
-<cores material="obsidian" name="Core" leak="3" mode-changes="true">
-    <core team="blue-team" region="blue-core"/>
-    <core team="red-team" region="red-core"/>
+<cores material="obsidian" name="Core" leak="3" modes="gold-core ice-core">
+    <core team="blue" region="blue-core"/>
+    <core team="red" region="red-core"/>
 </cores>
 <modes>
-    <mode after="10m" material="gold block" name="`6GOLD CORE MODE"/>
-    <mode after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
+    <mode id="gold-core" after="10m" material="gold block" name="`6GOLD CORE MODE"/>
+    <mode id="ice-core" after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
 </modes>
 <crafting>
     <disable override-all="true">anvil</disable>
@@ -117,22 +111,23 @@
     <tool>bow</tool>
     <tool>diamond pickaxe</tool>
     <tool>diamond axe</tool>
+    <tool>arrow</tool>
 </toolrepair>
 <itemremove>
+    <item>golden apple</item>
+    <item>golden carrot</item>
+    <item>leather boots</item>
+    <item>chainmail chestplate</item>
     <item>anvil</item>
     <item>iron trapdoor</item>
-    <item>ender stone</item>
     <item>obsidian</item>
     <item>gold block</item>
     <item>packed ice</item>
+    <item>ender stone</item>
     <item>glowstone dust</item>
-    <item>golden carrot</item>
-    <item>arrow</item>
-    <item>leather boots</item>
-    <item>chainmail chestplate</item>
 </itemremove>
 <kill-reward>
     <kit id="kill-reward"/>
 </kill-reward>
-<autorespawn/>
+<respawn auto="true"/>
 </map>
