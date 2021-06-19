@@ -1,0 +1,147 @@
+<map proto="1.4.0">
+<name>NeoTenochtitlan 2049</name>
+<version>1.0.2</version>
+<objective>Destroy the enemy's core and monument</objective>
+<authors>
+    <author uuid="396229db-3e91-415f-be44-8bacc9fcbc9f"/> <!-- CIPato -->
+</authors>
+<teams>
+    <team id="blue" color="blue" max="8" max-overfill="8">Blue</team>
+    <team id="red" color="dark red" max="8" max-overfill="8">Red</team>
+</teams>
+<time overtime="1m" max-overtime="15m">45m</time>
+<kits>
+    <kit id="spawn-kit">
+        <item slot="0" unbreakable="true" material="iron sword"/>
+        <item slot="1" unbreakable="true" material="bow">
+            <enchantment>infinity</enchantment>
+        </item>
+        <item slot="28" material="arrow"/>
+        <item slot="2" unbreakable="true" material="diamond pickaxe"/>
+        <item slot="3" unbreakable="true" material="iron axe">
+            <enchantment>efficiency</enchantment>
+        </item>
+        <item slot="5" amount="48" damage="2" material="wood"/>
+        <item slot="7" material="golden apple"/>
+        <item slot="8" amount="64" material="golden carrot"/>
+        <helmet team-color="true" unbreakable="true" material="leather helmet"/>
+        <chestplate unbreakable="true" material="gold chestplate"/>
+        <effect duration="14" amplifier="2">resistance</effect>
+        <effect>saturation</effect>
+    </kit>
+    <kit id="blue-kit" parents="spawn-kit">
+        <item slot="4" amount="64" damage="11" material="stained clay"/>
+    </kit>
+    <kit id="red-kit" parents="spawn-kit">
+        <item slot="4" amount="64" damage="14" material="stained clay"/>
+    </kit>
+    <kit id="kill-reward">
+        <effect amplifier="2" duration="5">regeneration</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="90">
+            <cuboid min="-338,73.5,107" max="-341,74,103"/>
+        </region>
+    </default>
+    <spawn team="blue" kit="blue-kit">
+        <region yaw="0">
+            <point>-421.5,125.5,51.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="red-kit">
+        <region yaw="180">
+            <point>-421.5,125.5,158.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <not id="protect-spawners">
+        <material>mob spawner</material>
+    </not>
+</filters>
+<regions>
+    <negative id="void">
+        <cuboid id="play" min="-363,0,35" max="-525,92,175"/>
+    </negative>
+    <union id="spawns">
+        <union id="blue-spawn">
+            <cuboid min="-416,41,70" max="-427,48,58"/>
+            <cuboid min="-419,48,67" max="-424,129,61"/>
+        </union>
+        <union id="red-spawn">
+            <cuboid min="-416,41,152" max="-427,48,140"/>
+            <cuboid min="-419,48,149" max="-424,129,143"/>
+        </union>
+    </union>
+    <apply block="never" message="You may not break or place blocks outside of the playing field!" region="void"/>
+    <apply block="never" message="You may not edit the spawn area!" region="spawns"/>
+    <apply block="protect-spawners"/>
+</regions>
+<destroyables name="Monument" materials="ender stone" completion="100%">
+    <destroyable owner="blue">
+        <region>
+            <cuboid min="-381,42,80" max="-390,46,73"/>
+        </region>
+    </destroyable>
+    <destroyable owner="red">
+        <region>
+            <cuboid min="-381,42,133" max="-390,46,137"/>
+        </region>
+    </destroyable>
+</destroyables>
+<cores material="obsidian" leak="3" modes="gold-core ice-core">
+    <core team="blue">
+        <region>
+            <cuboid min="-459,70,67" max="-466,76,61"/>
+        </region>
+    </core>
+    <core team="red">
+        <region>
+            <cuboid min="-459,70,143" max="-466,76,149"/>
+        </region>
+    </core>
+</cores>
+<modes>
+    <mode id="gold-core" after="10m" material="gold block" name="`6GOLD CORE MODE"/>
+    <mode id="ice-core" after="25m" material="packed ice" name="`3PACKED ICE CORE MODE"/>
+</modes>
+<block-drops>
+    <rule>
+        <filter>
+            <material>emerald block</material>
+        </filter>
+        <drops>
+            <item amount="160" material="tnt"/>
+            <item amount="2" material="redstone block"/>
+        </drops>
+    </rule>
+</block-drops>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+    <tool>iron axe</tool>
+    <tool>arrow</tool>
+</toolrepair>
+<itemremove>
+    <item>stained clay</item>
+    <item>wood</item>
+    <item>golden apple</item>
+    <item>golden carrot</item>
+    <item>leather helmet</item>
+    <item>gold chestplate</item>
+    <item>obsidian</item>
+    <item>ender stone</item>
+    <item>seeds</item>
+    <item>glowstone dust</item>
+    <item>redstone lamp on</item>
+    <item>redstone lamp off</item>
+</itemremove>
+<kill-reward>
+    <kit id="kill-reward"/>
+</kill-reward>
+<maxbuildheight>92</maxbuildheight>
+<respawn delay="1s" auto="true"/>
+</map>
