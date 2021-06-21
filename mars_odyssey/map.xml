@@ -169,11 +169,6 @@
     <dispenser-tnt-limit>0</dispenser-tnt-limit>
     <dispenser-tnt-multiplier>0</dispenser-tnt-multiplier>
 </tnt> -->
-<crafting>
-	<disable>iron fence</disable>
-    <disable>anvil</disable>
-    <disable>iron trapdoor</disable>
-</crafting>
 <timelock>on</timelock>
 <respawn delay="4s"/>
 <autorespawn/>
