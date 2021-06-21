@@ -88,6 +88,9 @@
 <filters>
     <team id="only-lime">lime-team</team>
     <team id="only-purple">purple-team</team>
+    <deny id="no-stone">
+        <material>stone</material>
+    </deny>
 </filters>
 <regions>
     <apply block="never" message="You may not modify the portal room!">
@@ -136,6 +139,7 @@
             </negative>
         </region>
     </apply>
+    <apply block-place="no-stone"/>
 </regions>
 <toolrepair>
     <tool>iron sword</tool>
