@@ -1,7 +1,6 @@
 <map proto="1.4.0">
-<time overtime="1m" max-overtime="15m">45m</time>
 <name>Wallop 9000</name>
-<version>1.2.4</version>
+<version>1.2.5</version>
 <objective>Leak lava from the enemy team's core and destroy their end stone monument.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -15,6 +14,7 @@
     <team id="blue" color="blue" max="8" max-overfill="8">Blue</team>
     <team id="red" color="dark red" max="8" max-overfill="8">Red</team>
 </teams>
+<time overtime="1m" max-overtime="15m">45m</time>
 <kits>
     <kit id="spawn-kit">
         <item slot="0" unbreakable="true" material="diamond sword"/>
@@ -30,7 +30,12 @@
         <item slot="7" material="golden apple"/>
         <item slot="8" amount="64" material="golden carrot"/>
         <chestplate unbreakable="true" material="chainmail chestplate"/>
-        <boots unbreakable="true" team-color="true" material="leather boots"/>
+    </kit>
+    <kit id="blue-kit" parents="spawn-kit">
+        <boots unbreakable="true" color="334CB2" material="leather boots"/>
+    </kit>
+    <kit id="red-kit" parents="spawn-kit">
+        <boots unbreakable="true" color="993333" material="leather boots"/>
     </kit>
     <kit id="kill-reward">
         <effect amplifier="2" duration="5">regeneration</effect>
@@ -42,12 +47,12 @@
             <point>-96.5,67.5,16.5</point>
         </regions>
     </default>
-    <spawn team="blue" kit="spawn-kit">
+    <spawn team="blue" kit="blue-kit">
         <regions yaw="-90">
             <point>-96.5,23.5,47.5</point>
         </regions>
     </spawn>
-    <spawn team="red" kit="spawn-kit">
+    <spawn team="red" kit="red-kit">
         <regions yaw="-90">
             <point>-96.5,23.5,-14.5</point>
         </regions>
