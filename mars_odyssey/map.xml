@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+  <map proto="1.4.0">
 <name>Mars Odyssey</name>
-<version>1.0.4</version>
+<version>1.0.5</version>
 <objective>Leak the enemy team's obsidian core and break their monument.</objective>
 <authors>
     <author uuid="3143b9d9-cea7-465f-97fc-8de59fbbb3a4"/> <!-- DiamondAx -->
@@ -71,23 +71,17 @@
         <region>
             <!-- Lime -->
             <union>
-                <rectangle min="-21,-120" max="-40,-158"/>
-                <cuboid min="-31,14,-158" max="-37,0,-164"/>
-                <cuboid min="-32,0,-164" max="-37,14,-165"/>
-                <cuboid min="-33,0,-165" max="-36,14,-166"/>
-                <cuboid min="-23,26,-158" max="-30,38,-161"/>
-                <cuboid min="-24,26,-161" max="-29,38,-162"/>
-                <cuboid min="-25,26,-162" max="-28,38,-163"/>
+                <rectangle min="-28,-120" max="-41,-158"/>
+				<cuboid min="-31,14,-158" max="-38,0,-160"/>
+                <cuboid min="-32,14,-158" max="-37,0,-164"/>
+                <cuboid min="-33,0,-164" max="-36,14,-165"/>
             </union>
             <!-- Purple -->
             <union>
-                <rectangle min="-40,-347" max="-28,-309"/>
-                <cuboid min="-38,14,-309" max="-31,0,-303"/>
-                <cuboid min="-37,0,-303" max="-32,14,-302"/>
-                <cuboid min="-36,0,-302" max="-33,14,-301"/>
-                <cuboid min="-30,26,-309" max="-23,38,-306"/>
-                <cuboid min="-29,26,-306" max="-24,38,-305"/>
-                <cuboid min="-28,26,-305" max="-25,38,-304"/>
+                <rectangle min="-41,-347" max="-28,-309"/>
+				<cuboid min="-38,14,-307" max="-31,0,-309"/>
+                <cuboid min="-37,14,-307" max="-32,0,-303"/>
+                <cuboid min="-36,0,-303" max="-33,14,-302"/>
             </union>
         </region>
     </apply>
