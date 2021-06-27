@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Wallop 9000</name>
-<version>1.2.6</version>
+<version>1.2.7</version>
 <objective>Leak lava from the enemy team's core and destroy their end stone monument.</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -115,7 +115,17 @@
 </toolrepair>
 <itemremove>
 	<item>wood</item>
+	<item>stained clay</item>
+	<item>iron door</item>
+	<item>step</item>
+	<item>38</item>
+	<item>flower pot</item>
     <item>iron trapdoor</item>
+	<item>stone</item>
+	<item>carpet</item>
+	<item>trap door</item>
+	<item>quartz block</item>
+	<item>quartz stairs</item>
     <item>ender stone</item>
     <item>glowstone dust</item>
 	<item>glass</item>

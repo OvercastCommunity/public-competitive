@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Fractal Descent TE</name>
-<version>1.3.8</version>
+<version>1.3.9</version>
 <objective>Leak lava from the enemy team's core and destroy their end stone monument.</objective>
 <authors>
     <author uuid="dbe909c6-2b15-4528-b12a-c77ed4031496" contribution="Design and building"/> <!-- teheggy -->
@@ -125,6 +125,14 @@
 </toolrepair>
 <itemremove>
     <item>wood</item>
+	<item>quartz block</item>
+	<item>nether brick</item>
+	<item>glowstone dust</item>
+	<item>sapling</item>
+	<item>stone plate</item>
+	<item>iron plate</item>
+	<item>step</item>
+	<item>trap door</item>
 	<item>iron trapdoor</item>
 	<item>smooth brick</item>
     <item>ender stone</item>

@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Mars Odyssey</name>
-<version>1.0.7</version>
+<version>1.0.8</version>
 <objective>Leak the enemy team's obsidian core and break their monument.</objective>
 <authors>
     <author uuid="3143b9d9-cea7-465f-97fc-8de59fbbb3a4"/> <!-- DiamondAx -->
@@ -148,6 +148,26 @@
 </toolrepair>
 <itemremove>
     <item>wood</item>
+	<item>quartz block</item>
+	<item>quartz stairs</item>
+	<item>item frame</item>
+	<item>quartz block</item>
+	<item>hard clay</item>
+	<item>stained clay</item>
+	<item>step</item>
+	<item>red sandstone</item>
+	<item>stone</item>
+	<item>iron plate</item>
+	<item>iron door</item>
+	<item>book</item>
+	<item>torch</item>
+	<item>carpet</item>
+	<item>prismarine crystals</item>
+	<item>flower pot</item>
+	<item>dead bush</item>
+	<item>jukebox</item>
+	<item>note block</item>
+	<item>bed</item>
 	<item>iron trapdoor</item>
     <item>ender stone</item>
 	<item>glass</item>

@@ -2,7 +2,7 @@
 <map proto="1.3.2">
 <time overtime="1m" max-overtime="15m">45m</time>
 <name>Highlands</name>
-<version>1.6.2</version>
+<version>1.6.3</version>
 <objective>Destroy the enemy's emerald monument and leak their core!</objective>
 <authors>
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- thestrangeboy1 -->
@@ -110,9 +110,18 @@
 </toolrepair>
 <itemremove>
     <item damage="5">126</item>
+	<item>dirt</item>
+	<item>seeds</item>
+	<item>38</item>
 	<item>iron trapdoor</item>
+	<item>trap door</item>
     <item>item frame</item>
     <item>torch</item>
+	<item>flower pot</item>
+	<item>carpet</item>
+	<item>book</item>
+	<item>birch wood stairs</item>
+	<item>wood stairs</item>
     <item damage="5">wood</item>
     <item damage="14">stained clay</item>
     <item damage="11">stained clay</item>

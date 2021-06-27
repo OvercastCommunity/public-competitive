@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<map proto="1.4.0">
+<time overtime="1m">1m</time>
+<name>War Warsn't TE</name>
+<version>1.0.0</version>
+<objective>Leak the enemy core or have the most players alive</objective>
+<authors>
+    <author uuid="61f8e9dd-62ab-453a-b7ef-83ce8a383fe8"/> <!-- Campeh -->
+    <author uuid="65ffe1e4-d09e-4835-85d3-bfa6972b8a25"/> <!-- Pibo -->
+    <author uuid="e82603df-417d-4a95-bd1f-1720648be0b4"/> <!-- Pablete1234 -->
+    <author uuid="8d02e486-66d5-46bf-8e6b-81e18ef9e6c7"/> <!-- TiTo_418 -->
+</authors>
+<teams>
+    <team id="blue" color="blue" min="6" max="8" max-overfill="8">Blue</team>
+    <team id="red" color="dark red" min="6" max="8" max-overfill="8">Red</team>
+</teams>
+<blitz>
+    <lives>1</lives>
+</blitz>
+<spawns>
+    <spawn team="blue" yaw="90">
+        <regions>
+            <point>6,10,0</point>
+        </regions>
+    </spawn>
+    <spawn team="red" yaw="-90">
+        <regions>
+            <point>-6,10,0</point>
+        </regions>
+    </spawn>
+    <default yaw="0">
+        <regions>
+            <cylinder base="0.0,10,-8.0" radius="1" height="0"/>
+        </regions>
+    </default>
+</spawns>
+<cores leak="5" proximity-metric="none">
+    <core team="blue">
+        <region>
+            <cuboid min="9,14,-1" max="11,17,1"/>
+        </region>
+    </core>
+    <core team="red">
+        <region>
+            <cuboid min="-9,14,-1" max="-11,17,1"/>
+        </region>
+    </core>
+</cores>
+<killreward>
+    <item>golden apple</item>
+</killreward>
+<gamerules>
+    <doDaylightCycle>false</doDaylightCycle>
+</gamerules>
+</map>
