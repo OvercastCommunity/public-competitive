@@ -1,17 +1,17 @@
 <map proto="1.4.0">
 <name>Badlands</name>
-<version>1.2.0</version>
+<version>1.2.1</version>
 <objective>Be the first team to gain 2500 points.</objective>
 <gamemode>koth</gamemode>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
+    <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!--  teagod  -->
 </authors>
 <contributors>
     <contributor uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!--  Claf  -->
     <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!--  Strangey  -->
     <contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!--  Jexel  -->
     <contributor uuid="a6955518-97b8-4c1d-8e76-e641b8f8822c"/> <!--  Qwuiblington  -->
-	<contributor uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!--  teagod  -->
 </contributors>
 <teams>
     <team id="red-team" color="dark red" max="7" max-overfill="7">Red</team>
@@ -24,7 +24,7 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="3" amount="20" material="arrow"/>
-        <leggings unbreakable="true" enchantment="protection projectile:2" material="chainmail leggings"/>
+        <leggings unbreakable="true" enchantment="protection projectile:3" material="chainmail leggings"/>
         <boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
         <potion duration="4" amplifier="255">resistance</potion>
     </kit>
@@ -98,7 +98,7 @@
 <timelock>on</timelock>
 <kill-reward>
     <item material="golden apple"/>
-	<item material="arrow" amount="8"/>
+    <item material="arrow" amount="8"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>

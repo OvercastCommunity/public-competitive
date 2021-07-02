@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <name>Lotus</name>
-<version>1.2.5</version>
+<version>1.2.6</version>
 <objective>Capture the enemy's two wools!</objective>
 <authors>
     <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!-- teagod -->
@@ -9,11 +9,11 @@
 <contributors>
     <contributor uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e" contribution="Spawn Design"/> <!-- Blazy -->
     <contributor uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9" contribution="XML"/> <!-- Xerocoles -->
-	<contributor uuid="cef67055-9c27-4b58-a16f-278d793ff6bc" contribution="sup sexy"/> <!-- mrcookie_13 -->
+    <contributor uuid="cef67055-9c27-4b58-a16f-278d793ff6bc" contribution="sup sexy"/> <!-- mrcookie_13 -->
 </contributors>
 <teams>
-	<team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
-	<team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>
+    <team id="red-team" color="dark red" max="8" max-overfill="8">Red</team>
+    <team id="blue-team" color="blue" max="8" max-overfill="8">Blue</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -59,7 +59,7 @@
 </spawns>
 <filters>
     <not id="no-void">
-      <void/>
+        <void/>
     </not>
     <team id="only-red">red-team</team>
     <team id="only-blue">blue-team</team>
@@ -85,21 +85,21 @@
 <regions>
     <union id="spawns">
         <union id="red-spawn">
-	        	<rectangle min="48,-57" max="25,-76"/>
-	      </union>
+            <rectangle min="48,-57" max="25,-76"/>
+        </union>
         <union id="blue-spawn">
             <rectangle min="25,-259" max="48,-278"/>
-      	</union>
+        </union>
     </union>
     <union id="woolrooms">
         <union id="red-woolrooms">
-          <rectangle min="6,-67" max="-7,-54"/> <!-- Cyan -->
-          <rectangle min="81,-69" max="68,-55"/> <!-- Purple -->
+            <rectangle min="6,-67" max="-7,-54"/> <!-- Cyan -->
+            <rectangle min="81,-69" max="68,-55"/> <!-- Purple -->
         </union>
-    	  <union id="blue-woolrooms">
-		        <rectangle min="6,-281" max="-7,-268"/> <!-- Yellow -->
-		        <rectangle min="81,-266" max="68,-280"/> <!-- Orange -->
-	      </union>
+        <union id="blue-woolrooms">
+            <rectangle min="6,-281" max="-7,-268"/> <!-- Yellow -->
+            <rectangle min="81,-266" max="68,-280"/> <!-- Orange -->
+        </union>
     </union>
     <union id="spawners">
         <cuboid min="-471,7,52" max="-470,9,53"/>
@@ -126,7 +126,7 @@
         </union>
     </union>
     <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
-	  <apply enter="only-red" region="red-spawn" message="You may not enter the opponent's spawn!"/>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the opponent's spawn!"/>
     <apply enter="only-blue" region="blue-spawn" message="You may not enter the opponent's spawn!"/>
     <apply block="deny-red-woolrooms" region="red-woolrooms"/>
     <apply block="deny-blue-woolrooms" region="blue-woolrooms"/>
@@ -134,12 +134,12 @@
     <apply block="only-red" region="blue-woolrooms"/>
     <apply use="only-blue" region="red-woolrooms"/>
     <apply use="only-red" region="blue-woolrooms"/>
-  	<apply enter="only-blue" region="red-woolrooms" message="You may not enter your own wool room!"/>
+    <apply enter="only-blue" region="red-woolrooms" message="You may not enter your own wool room!"/>
     <apply enter="only-red" region="blue-woolrooms" message="You may not enter your own wool room!"/>
     <apply block="never" region="spawners" message="You may not destroy the spawners!"/>
     <apply block="never" region="wool-mons" message="You may not edit that!"/>
     <apply block="never" region="spawners" message="You may not destroy the spawners!"/>
-	  <apply block-place="no-void" message="You may not edit the void!"/>
+    <apply block-place="no-void" message="You may not edit the void!"/>
 </regions>
 <spawners>
     <spawner id="east-gapple-spawner" spawn-region="east-spawn-drop" player-region="east-spawn-activation" max-entities="9999" delay="10s">
@@ -157,17 +157,25 @@
     </renewable>
 </renewables>
 <wools wool-proximity-metric="none">
-	<wool team="red-team" color="yellow" location="-7.5,13,-318.5">
-		<monument><block>34.5,17,-103.5</block></monument>
-	</wool>
-	<wool team="red-team" color="orange" location="76.5,13,-306.5">
-		<monument><block>38.5,17,-103.5</block></monument>
-	</wool>
-  <wool team="blue-team" color="cyan" location="-7.5,13,-68.5">
-    <monument><block>34.5,17,-231.5</block></monument>
+    <wool team="red-team" color="yellow" location="-7.5,13,-318.5">
+        <monument>
+            <block>34.5,17,-103.5</block>
+        </monument>
+    </wool>
+    <wool team="red-team" color="orange" location="76.5,13,-306.5">
+        <monument>
+            <block>38.5,17,-103.5</block>
+        </monument>
+    </wool>
+    <wool team="blue-team" color="cyan" location="-7.5,13,-68.5">
+        <monument>
+            <block>34.5,17,-231.5</block>
+        </monument>
   </wool>
   <wool team="blue-team" color="purple" location="7.5,13,-80.5">
-    <monument><block>38.5,17,-231.5</block></monument>
+        <monument>
+            <block>38.5,17,-231.5</block>
+        </monument>
   </wool>
 </wools>
 <toolrepair>
@@ -180,9 +188,9 @@
 <itemremove>
     <item>arrow</item>
     <item>golden carrot</item>
-  	<item damage="2">wood</item>
-  	<item>glass</item>
-  	<item>string</item>
+    <item damage="2">wood</item>
+    <item>glass</item>
+    <item>string</item>
     <item>sapling</item>
     <item>leather helmet</item>
     <item>leather chestplate</item>
@@ -190,27 +198,27 @@
     <item>31</item>
     <item>37</item>
     <item>38</item>
-	<item>175</item>
-	<item>338</item>
-	<item>wool:7</item>
+    <item>175</item>
+    <item>338</item>
+    <item>wool:7</item>
     <item>wool:8</item>
-	<item>171:8</item>
-	<item>171:6</item>
-	<item>171:3</item>
+    <item>171:8</item>
+    <item>171:6</item>
+    <item>171:3</item>
     <item>apple</item>
     <item>flint</item>
     <item>redstone</item>
     <item>redstone torch on</item>
     <item>seeds</item>
-	<item>clay ball</item>
+    <item>clay ball</item>
 </itemremove>
 <killreward>
-	  <item>golden apple</item>
+    <item>golden apple</item>
     <item amount="16" damage="2">wood</item>
     <item amount="8">glass</item>
 </killreward>
 <crafting>
-  	<disable>iron trapdoor</disable>
+    <disable>iron trapdoor</disable>
     <disable>boat</disable>
 </crafting>
 <respawn delay="7s" blackout="true"/>
