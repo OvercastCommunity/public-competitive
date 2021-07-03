@@ -1,8 +1,7 @@
 <map proto="1.4.0">
 <name>Badlands</name>
-<version>2.2.3</version>
+<version>2.2.6</version>
 <objective>Be the first team to gain 2500 points.</objective>
-<gamemode>koth</gamemode>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
     <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f"/> <!--  teagod  -->
@@ -14,8 +13,8 @@
     <contributor uuid="a6955518-97b8-4c1d-8e76-e641b8f8822c"/> <!--  Qwuiblington  -->
 </contributors>
 <teams>
-    <team id="red-team" color="dark red" max="7" max-overfill="7">Red</team>
     <team id="blue-team" color="blue" max="7" max-overfill="7">Blue</team>
+    <team id="red-team" color="dark red" max="7" max-overfill="7">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -26,33 +25,34 @@
         <item slot="3" amount="20" material="arrow"/>
         <leggings unbreakable="true" enchantment="protection projectile:3" material="chainmail leggings"/>
         <boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
-        <potion duration="4" amplifier="255">resistance</potion>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="993333" material="leather helmet"/>
-        <chestplate unbreakable="true" color="993333" material="leather chestplate"/>
+        <effect duration="4" amplifier="255">resistance</effect>
+        <game-mode>adventure</game-mode>
     </kit>
     <kit id="blue-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="334CB2" material="leather helmet"/>
         <chestplate unbreakable="true" color="334CB2" material="leather chestplate"/>
     </kit>
+    <kit id="red-kit" parents="spawn-kit">
+        <helmet unbreakable="true" color="993333" material="leather helmet"/>
+        <chestplate unbreakable="true" color="993333" material="leather chestplate"/>
+    </kit>
 </kits>
 <spawns>
-    <spawn team="red-team" kit="red-kit">
-        <regions yaw="90">
-            <cylinder base="-170.5,24,32.5" radius="1" height="1"/>
-        </regions>
-    </spawn>
-    <spawn team="blue-team" kit="blue-kit">
-        <regions yaw="180">
-            <cylinder base="-230.5,24,92.5" radius="1" height="1"/>
-        </regions>
-    </spawn>
     <default>
-        <regions yaw="135">
+        <region yaw="135">
             <cylinder base="-159.5,28,103.5" radius="1" height="1"/>
-        </regions>
+        </region>
     </default>
+    <spawn team="blue-team" kit="blue-kit">
+        <region yaw="180">
+            <cylinder base="-230.5,24,92.5" radius="1" height="1"/>
+        </region>
+    </spawn>
+    <spawn team="red-team" kit="red-kit">
+        <region yaw="90">
+            <cylinder base="-170.5,24,32.5" radius="1" height="1"/>
+        </region>
+    </spawn>
 </spawns>
 <regions>
     <apply block="never"/>
@@ -71,13 +71,13 @@
     </control-point>
     <control-point name="Cliff">
         <capture>
-            <cuboid min="-192,26,71" max="-185,32,78"/>
+            <cuboid min="-198,24,65" max="-191,30,72"/>
         </capture>
         <progress>
-            <cuboid min="-192,26,71" max="-185,32,78"/>
+            <cuboid min="-198,24,65" max="-191,30,72"/>
         </progress>
         <captured>
-            <cuboid min="-192,26,71" max="-185,32,78"/>
+            <cuboid min="-198,24,65" max="-191,30,72"/>
         </captured>
     </control-point>
     <control-point name="Cave">
@@ -95,7 +95,20 @@
 <score>
     <limit>2500</limit>
 </score>
-<timelock>on</timelock>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
 <kill-reward>
     <item material="golden apple"/>
     <item material="arrow" amount="8"/>
@@ -103,8 +116,5 @@
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<gamerules>
-    <doDaylightCycle>false</doDaylightCycle>
-</gamerules>
-<respawn delay="5s"/>
+<respawn delay="5s" auto="true" blackout="true"/>
 </map>
