@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Mush</name>
-<version>1.0.2</version>
+<version>1.0.4</version>
 <objective>Capture the hills to be the first to reach 2500 points!</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -22,19 +22,20 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="16" material="arrow"/>
-        <leggings unbreakable="true" material="chainmail leggings">
+        <leggings unbreakable="true" material="iron leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
-        <boots unbreakable="true" material="iron boots"/>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="blue-kit" parents="spawn-kit">
         <helmet color="0066cc" unbreakable="true" material="leather helmet"/>
         <chestplate color="0066cc" unbreakable="true" material="leather chestplate"/>
+		<boots color="0066cc" unbreakable="true" material="leather boots"/>
     </kit>
     <kit id="red-kit" parents="spawn-kit">
         <helmet color="cd0000" unbreakable="true" material="leather helmet"/>
         <chestplate color="cd0000" unbreakable="true" material="leather chestplate"/>
+		<boots color="cd0000" unbreakable="true" material="leather boots"/>
     </kit>
 </kits>
 <spawns>
@@ -77,7 +78,7 @@
     <apply region="b-bottom" velocity="0.2,1.7,-0.2"/>
     <apply block="never"/>
 </regions>
-<control-points incremental="true" show-progress="true" neutral-state="true" required="false" capture-time="5s" time-multiplier="0.75" points="3.5">
+<control-points incremental="true" show-progress="true" neutral-state="true" required="false" capture-time="5s" time-multiplier="0.75" points="3">
     <control-point name="Point A">
         <capture>
             <cuboid min="-432,11,-296" max="-424,15,-304"/>
@@ -122,8 +123,8 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>chainmail leggings</item>
-    <item>iron boots</item>
+    <item>iron leggings</item>
+    <item>leather boots</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>

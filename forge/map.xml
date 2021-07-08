@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Forge</name>
-<version>1.6.3</version>
+<version>1.6.4</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -17,21 +17,23 @@
 </teams>
 <kits>
     <kit id="spawn-kit">
+		<clear/>
         <game-mode>adventure</game-mode>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="3" amount="20" material="arrow"/>
-        <leggings unbreakable="true" enchantment="protection projectile:2" material="chainmail leggings"/>
-        <boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
+        <item slot="8" amount="16" material="arrow"/>
+        <leggings unbreakable="true" enchantment="protection projectile:3" material="iron leggings"/>
     </kit>
     <kit id="kit-red" parents="spawn-kit">
         <helmet color="cd0000" unbreakable="true" material="leather helmet"/>
         <chestplate color="cd0000" unbreakable="true" material="leather chestplate"/>
+		<boots color="cd0000" unbreakable="true" enchantment="protection fall:1" material="leather boots"/>
     </kit>
     <kit id="kit-blue" parents="spawn-kit">
         <helmet color="0066cc" unbreakable="true" material="leather helmet"/>
         <chestplate color="0066cc" unbreakable="true" material="leather chestplate"/>
+		<boots color="0066cc" unbreakable="true" enchantment="protection fall:1" material="leather boots"/>
     </kit>
 </kits>
 <spawns>
@@ -442,9 +444,13 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>chainmail leggings</item>
-    <item>iron boots</item>
+    <item>iron leggings</item>
+    <item>leather boots</item>
 </itemremove>
+<itemkeep>
+	<item>golden apple</item>
+	<item>arrow</item>
+</itemkeep>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>

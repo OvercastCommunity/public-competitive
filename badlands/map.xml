@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Badlands</name>
-<version>2.2.6</version>
+<version>2.2.7</version>
 <objective>Be the first team to gain 2500 points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
@@ -22,19 +22,20 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="3" amount="20" material="arrow"/>
-        <leggings unbreakable="true" enchantment="protection projectile:3" material="chainmail leggings"/>
-        <boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
+        <item slot="8" amount="16" material="arrow"/>
+        <leggings unbreakable="true" enchantment="protection projectile:3" material="iron leggings"/>
         <effect duration="4" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="blue-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="334CB2" material="leather helmet"/>
         <chestplate unbreakable="true" color="334CB2" material="leather chestplate"/>
+		<boots unbreakable="true" color="334CB2" enchantment="protection fall:1" material="leather boots"/>
     </kit>
     <kit id="red-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="993333" material="leather helmet"/>
         <chestplate unbreakable="true" color="993333" material="leather chestplate"/>
+		<boots unbreakable="true" color="993333" enchantment="protection fall:1" material="leather boots"/>
     </kit>
 </kits>
 <spawns>
@@ -57,7 +58,7 @@
 <regions>
     <apply block="never"/>
 </regions>
-<control-points capture-time="5s" neutral-state="true" show-progress="true" time-multiplier="0.75" points="3.5" incremental="true" required="false">
+<control-points capture-time="5s" neutral-state="true" show-progress="true" time-multiplier="0.75" points="3" incremental="true" required="false">
     <control-point name="Top">
         <capture>
             <cuboid min="-220,31,43" max="-213,37,50"/>
