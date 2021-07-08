@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Workshop</name>
-<version>1.0</version>
+<version>1.0.1</version>
 <objective>Control the hills to be first to 2500 points!</objective>
 <authors>
     <author uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c"/> <!-- Blaszczak -->
@@ -43,14 +43,14 @@
             <cylinder base="0.5,12,-2.5" radius="4" height="1"/>
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit">
+    <spawn team="blue" kit="blue-kit" yaw="90">
         <region>
-            <cuboid min="28.5,8,-3.5" max="30.5,8,-1.5"/>
+            <cuboid min="35.5,8,-3.5" max="37.5,8,-1.5"/>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit">
+    <spawn team="red" kit="red-kit" yaw="-90">
         <region>
-            <cuboid min="-29.5,8,-3.5" max="-27.5,8,-1.5"/>
+            <cuboid min="-36.5,8,-3.5" max="-34.5,8,-1.5"/>
         </region>
     </spawn>
 </spawns>
@@ -72,7 +72,7 @@
     <apply block="never"/>
 </regions>
 <spawners>
-    <spawner spawn-region="gapples-spawn-here" player-region="player-gapple-spawn" delay="6s">
+    <spawner spawn-region="gapples-spawn-here" player-region="player-gapple-spawn" delay="8s">
         <item material="golden apple"/>
     </spawner>
 </spawners>
@@ -85,7 +85,7 @@
              <cuboid min="-3,13,-28" max="4,14,-21"/>
         </progress>
         <captured>
-             <cuboid min="-3,13,-28" max="4,14,-21"/>
+             <cuboid min="-2,28,-25" max="3,33,-24"/>
         </captured>
     </control-point>
     <control-point name="Centre">
@@ -107,7 +107,7 @@
              <cuboid min="-3,13,16" max="4,14,23"/>
         </progress>
         <captured>
-             <cuboid min="-3,13,16" max="4,14,23"/>
+             <cuboid min="-2,28,19" max="3,33,20"/>
         </captured>
     </control-point>
 </control-points>
