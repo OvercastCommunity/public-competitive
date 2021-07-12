@@ -59,7 +59,7 @@
         <cuboid id="gapples-spawn-here" min="0.25,7,-2.75" max="0.75,7,-2.25"/>
         <cylinder id="player-gapple-spawn" base="0.5,7,-2.5" radius="4" height="3"/>
     </union>
-    <apply block="never"/>
+    <apply block="never" use="never"/>
 </regions>
 <spawners>
     <spawner spawn-region="gapples-spawn-here" player-region="player-gapple-spawn" delay="8s">
