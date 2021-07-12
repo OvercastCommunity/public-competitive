@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Workshop</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Control the hills to be first to 2500 points!</objective>
 <authors>
     <author uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c"/> <!-- Blaszczak -->
@@ -20,9 +20,10 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="16" material="arrow"/>
-        <leggings unbreakable="true" material="iron leggings">
+        <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
+		<boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="10">resistance</effect>
         <effect duration="4" amplifier="10">regeneration</effect>
         <game-mode>adventure</game-mode>
@@ -30,12 +31,10 @@
     <kit id="blue-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="334CB2" material="leather helmet"/>
         <chestplate unbreakable="true" color="334CB2" material="leather chestplate"/>
-		<boots unbreakable="true" color="334CB2" material="leather boots"/>
     </kit>
     <kit id="red-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="993333" material="leather helmet"/>
         <chestplate unbreakable="true" color="993333" material="leather chestplate"/>
-		<boots unbreakable="true" color="334CB2" material="leather boots"/>
     </kit>
 </kits>
 <spawns>
@@ -122,8 +121,8 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>iron leggings</item>
-    <item>leather boots</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>

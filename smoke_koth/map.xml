@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Smoke KotH</name>
-<version>1.2.7</version>
+<version>1.2.8</version>
 <objective>Be the first team to reach 2500 points!</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
@@ -20,9 +20,12 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="16" material="arrow"/>
-        <leggings unbreakable="true" material="iron leggings">
+        <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
+		<boots unbreakable="true" material="iron boots">
+			<enchantment>fire_protection</enchantment>
+		</boots>
         <effect duration="4" amplifier="10">resistance</effect>
         <effect duration="4" amplifier="10">regeneration</effect>
         <game-mode>adventure</game-mode>
@@ -30,16 +33,10 @@
     <kit id="red-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
         <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
-		<boots unbreakable="true" color="cd0000" material="leather boots">
-			<enchantment>fire_protection</enchantment>
-		</boots>
     </kit>
     <kit id="yellow-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="e5e533" material="leather helmet"/>
         <chestplate unbreakable="true" color="e5e533" material="leather chestplate"/>
-		<boots unbreakable="true" color="e5e533" material="leather boots">
-			<enchantment>fire_protection</enchantment>
-		</boots>
     </kit>
 </kits>
 <spawns>
@@ -107,8 +104,8 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>iron leggings</item>
-    <item>leather boots</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
 </itemremove>
 <itemkeep>
     <item>arrow</item>

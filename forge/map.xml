@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Forge</name>
-<version>1.6.4</version>
+<version>1.6.5</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -23,17 +23,16 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="16" material="arrow"/>
-        <leggings unbreakable="true" enchantment="protection projectile:3" material="iron leggings"/>
+        <leggings unbreakable="true" enchantment="protection projectile:3" material="chainmail leggings"/>
+		<boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
     </kit>
     <kit id="kit-red" parents="spawn-kit">
         <helmet color="cd0000" unbreakable="true" material="leather helmet"/>
         <chestplate color="cd0000" unbreakable="true" material="leather chestplate"/>
-		<boots color="cd0000" unbreakable="true" enchantment="protection fall:1" material="leather boots"/>
     </kit>
     <kit id="kit-blue" parents="spawn-kit">
         <helmet color="0066cc" unbreakable="true" material="leather helmet"/>
         <chestplate color="0066cc" unbreakable="true" material="leather chestplate"/>
-		<boots color="0066cc" unbreakable="true" enchantment="protection fall:1" material="leather boots"/>
     </kit>
 </kits>
 <spawns>
@@ -444,8 +443,8 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>iron leggings</item>
-    <item>leather boots</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
 </itemremove>
 <itemkeep>
 	<item>golden apple</item>

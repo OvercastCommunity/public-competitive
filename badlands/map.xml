@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Badlands</name>
-<version>2.2.7</version>
+<version>2.2.8</version>
 <objective>Be the first team to gain 2500 points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
@@ -23,19 +23,18 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="16" material="arrow"/>
-        <leggings unbreakable="true" enchantment="protection projectile:3" material="iron leggings"/>
+        <leggings unbreakable="true" enchantment="protection projectile:3" material="chainmail leggings"/>
+		<boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
         <effect duration="4" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="blue-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="334CB2" material="leather helmet"/>
         <chestplate unbreakable="true" color="334CB2" material="leather chestplate"/>
-		<boots unbreakable="true" color="334CB2" enchantment="protection fall:1" material="leather boots"/>
     </kit>
     <kit id="red-kit" parents="spawn-kit">
         <helmet unbreakable="true" color="993333" material="leather helmet"/>
         <chestplate unbreakable="true" color="993333" material="leather chestplate"/>
-		<boots unbreakable="true" color="993333" enchantment="protection fall:1" material="leather boots"/>
     </kit>
 </kits>
 <spawns>
