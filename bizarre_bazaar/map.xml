@@ -1,8 +1,8 @@
 <map proto="1.4.0">
-<game>King of the Flag</game>
 <name>Bizarre Bazaar</name>
-<version>1.0.9</version>
+<version>1.1.0</version>
 <objective>Hold the flag for 200 seconds to win!</objective>
+<game>King of the Flag</game>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -19,11 +19,15 @@
     <kit id="spawn-kit">
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
+		<item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="20" material="arrow"/>
-        <leggings locked="true" unbreakable="true" material="iron leggings">
+        <leggings locked="true" unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
+		<boots locked="true" unbreakable="true" material="iron boots">
+			<enchantment level="2">feather_falling</enchantment>
+		</boots>
         <health>20</health>
         <game-mode>adventure</game-mode>
     </kit>
@@ -35,18 +39,6 @@
         <helmet locked="true" unbreakable="true" color="993333" material="leather helmet"/>
         <chestplate locked="true" unbreakable="true" color="993333" material="leather chestplate"/>
     </kit>
-    <kit id="bow-kit-blue" force="true">
-        <item slot="1" unbreakable="true" material="bow"/>
-        <boots locked="true" color="334CB2" unbreakable="true" material="leather boots">
-            <enchantment level="2">feather_falling</enchantment>
-        </boots>
-    </kit>
-    <kit id="bow-kit-red" force="true">
-        <item slot="1" unbreakable="true" material="bow"/>
-        <boots locked="true" color="993333" unbreakable="true" material="leather boots">
-            <enchantment level="2">feather_falling</enchantment>
-        </boots>
-    </kit>
     <kit id="flag-kit" force="true">
         <effect amplifier="-3">health boost</effect>
         <effect duration="3" amplifier="2">absorption</effect>
@@ -54,19 +46,6 @@
     <kit id="reset-health" force="true">
         <effect duration="1" amplifier="0">health boost</effect>
         <effect duration="1" amplifier="10">regeneration</effect>
-        <boots locked="true" unbreakable="true" material="gold boots">
-            <enchantment level="2">feather_falling</enchantment>
-        </boots>
-    </kit>
-    <kit id="blue-flag" force="true">
-        <boots locked="true" color="7F3FB2" unbreakable="true" material="leather boots">
-            <enchantment level="2">feather_falling</enchantment>
-        </boots>
-    </kit>
-    <kit id="red-flag" force="true">
-        <boots locked="true" color="E5E533" unbreakable="true" material="leather boots">
-            <enchantment level="2">feather_falling</enchantment>
-        </boots>
     </kit>
 </kits>
 <spawns>
@@ -75,91 +54,23 @@
             <cylinder base="239.5,27,-16.5" radius="1" height="1"/>
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit" yaw="-135">
+    <spawn team="blue" kit="blue-kit" yaw="-135" filter="no-flag">
         <region>
             <point>237.5,26,79.5</point>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit" yaw="45">
+    <spawn team="red" kit="red-kit" yaw="45" filter="no-flag">
         <region>
             <point>335.5,26,-18.5</point>
         </region>
     </spawn>
 </spawns>
 <filters>
-    <not id="activate-portal">
-        <same-team>
-            <carrying-flag id="carrying-flag">flag</carrying-flag>
-        </same-team>
-    </not>
-    <not id="no-shoes">
-        <any id="shoes">
-            <wearing>
-                <item color="334CB2" unbreakable="true" material="leather boots">
-                    <enchantment level="2">feather_falling</enchantment>
-                </item>
-            </wearing>
-            <wearing>
-                <item color="993333" unbreakable="true" material="leather boots">
-                    <enchantment level="2">feather_falling</enchantment>
-                </item>
-            </wearing>
-            <wearing>
-                <item color="7F3FB2" unbreakable="true" material="leather boots">
-                    <enchantment level="2">feather_falling</enchantment>
-                </item>
-            </wearing>
-            <wearing>
-                <item color="E5E533" unbreakable="true" material="leather boots">
-                    <enchantment level="2">feather_falling</enchantment>
-                </item>
-            </wearing>
-        </any>
-    </not>
-    <all id="blue-player-carrying">
-        <filter id="carrying-flag"/>
-        <team id="only-blue">blue</team>
-    </all>
-    <all id="red-player-carrying">
-        <filter id="carrying-flag"/>
-        <team id="only-red">red</team>
-    </all>
-    <all id="blue-portal-filter">
-        <not>
-            <filter id="activate-portal"/>
-        </not>
-        <filter id="only-blue"/>
-        <filter id="no-shoes"/>
-    </all>
-    <all id="red-portal-filter">
-        <not>
-            <filter id="activate-portal"/>
-        </not>
-        <filter id="only-red"/>
-        <filter id="no-shoes"/>
-    </all>
-    <not id="no-give-red">
-        <any>
-            <filter id="shoes"/>
-            <not>
-                <all>
-                    <filter id="activate-portal"/>
-                    <filter id="only-red"/>
-                </all>
-            </not>
-        </any>
-    </not>
-    <not id="no-give-blue">
-        <any>
-            <filter id="shoes"/>
-            <not>
-                <all>
-                    <filter id="activate-portal"/>
-                    <filter id="only-blue"/>
-                </all>
-            </not>
-        </any>
-    </not>
+	<not id="no-flag">
+		<same-team>
+			<carrying-flag>flag</carrying-flag>
+		</same-team>
+	</not>
     <not id="no-use">
         <any>
             <material>beacon</material>
@@ -169,26 +80,7 @@
         </any>
     </not>
 </filters>
-<portals>
-    <portal id="blue-portal" observers="false" x="@237.5" y="@26" z="@79.5" filter="blue-portal-filter" region="bow" sound="false"/>
-    <portal id="red-portal" observers="false" x="@335.5" y="@26" z="@-18.5" filter="red-portal-filter" region="bow" sound="false"/>
-</portals>
 <regions>
-    <negative id="apply-flag-kit">
-        <union>
-            <cuboid id="middle" min="288,17,32" max="285,21,29"/>
-            <cuboid id="nw" min="264,23,8" max="261,26,5"/>
-            <cuboid id="se" min="309,23,53" max="312,26,56"/>
-        </union>
-    </negative>
-    <union id="bow">
-        <cuboid min="334,26,-17" max="317,0,0"/>
-        <cuboid min="239,26,78" max="256,0,61"/>
-    </union>
-    <apply kit="blue-flag" region="apply-flag-kit" filter="blue-player-carrying"/>
-    <apply kit="red-flag" region="apply-flag-kit" filter="red-player-carrying"/>
-    <apply kit="bow-kit-blue" region="bow" filter="no-give-blue"/>
-    <apply kit="bow-kit-red" region="bow" filter="no-give-red"/>
     <below id="below-26" y="26"/>
     <apply block="never" use="no-use"/>
 </regions>
@@ -218,9 +110,8 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>iron leggings</item>
-    <item>leather boots</item>
-    <item>gold boots</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>
@@ -228,10 +119,15 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="8" material="arrow"/>
+    <item amount="10" material="arrow"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="5s" auto="true" blackout="true"/>
+<respawn delay="5s" auto="true"/>
+<respawn spectate="true">
+	<message>
+		{"translate":"death.respawn.confirmed.waiting.flagDropped"}
+	</message>
+</respawn>
 </map>
