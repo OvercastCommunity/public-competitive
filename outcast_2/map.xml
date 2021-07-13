@@ -1,6 +1,6 @@
-<map proto="1.3.5">
+<map proto="1.4.0">
 <name>OutCast 2</name>
-<version>1.5.3</version>
+<version>1.5.4</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <game>King of the Flag</game>
 <authors>
@@ -11,75 +11,98 @@
     <contributor contribution="Aesthetic help" uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
 </contributors>
 <teams>
-    <team color="blue" max="7" min="6" max-overfill="7">Blue</team>
-    <team color="dark red" max="7" min="6" max-overfill="7">Red</team>
+    <team id="blue" color="blue" max="7" min="6" max-overfill="7">Blue</team>
+    <team id="red" color="dark red" max="7" min="6" max-overfill="7">Red</team>
 </teams>
 <kits>
-    <kit name="spawn">
-		<clear-items/>
-        <item slot="0" unbreakable="true">stone sword</item>
-		<item slot="1" unbreakable="true">bow</item>
-        <item slot="2">golden apple</item>
-		<item slot="8" amount="20">arrow</item>
-        <leggings unbreakable="true" enchantment="protection projectile:3">chainmail leggings</leggings>
-		<boots unbreakable="true" enchantment="protection fall:2">iron boots</boots>
+    <kit id="spawn-kit">
+        <clear-items/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="20" material="arrow"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots">
+            <enchantment level="2">feather_falling</enchantment>
+        </boots>
         <health>20</health>
         <game-mode>adventure</game-mode>
-		<potion duration="6">heal</potion>
-        <potion duration="6">damage resistance</potion>
+        <effect duration="6">heal</effect>
+        <effect duration="6">damage resistance</effect>
     </kit>
-    <kit name="red" parents="spawn" force="true">
-        <helmet unbreakable="true" color="cd0000">leather helmet</helmet>
-        <chestplate unbreakable="true" color="cd0000">leather chestplate</chestplate>
+    <kit id="blue-kit" parents="spawn-kit" force="true">
+        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
+        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
     </kit>
-    <kit name="blue" parents="spawn" force="true">
-        <helmet unbreakable="true" color="0066cc">leather helmet</helmet>
-        <chestplate unbreakable="true" color="0066cc">leather chestplate</chestplate>
+    <kit id="red-kit" parents="spawn-kit" force="true">
+        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
+        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
     </kit>
-    <kit name="flag" force="true">
-        <potion duration="oo" amplifier="-3">health boost</potion>
-		<potion duration="oo" amplifier="1">slowness</potion>
-        <potion duration="3" amplifier="2">absorption</potion>
+    <kit id="flag-kit" force="true">
+        <effect>slowness</effect>
+        <effect amplifier="-3">health boost</effect>
+        <effect duration="3" amplifier="2">absorption</effect>
     </kit>
-    <kit name="reset-health" force="true">
-        <potion duration="1" amplifier="0">health boost</potion>
-        <potion duration="1" amplifier="10">regeneration</potion>
-		<potion duration="1" amplifier="0">slowness</potion>
+    <kit id="reset-health" force="true">
+        <effect duration="1" amplifier="0">slowness</effect>
+        <effect duration="1" amplifier="0">health boost</effect>
+        <effect duration="1" amplifier="10">regeneration</effect>
     </kit>
 </kits>
 <spawns>
-    <spawn team="red" kit="red" yaw="90" filter="has-flag">
-        <point>296.5,48,-155.5</point>
-    </spawn>
-    <spawn team="blue" kit="blue" yaw="-90" filter="has-flag">
-        <point>120.5,48,-155.5</point>
-    </spawn>
-    <default yaw="90">
-        <cylinder base="267,84,-155.5" radius="1" height="0"/>
+    <default>
+        <region yaw="90">
+            <cylinder base="267,84,-155.5" radius="1" height="0"/>
+        </region>
     </default>
+    <spawn team="blue" kit="blue-kit" filter="has-flag">
+        <region yaw="-90">
+            <point>120.5,48,-155.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="red-kit" filter="has-flag">
+        <region yaw="90">
+            <point>296.5,48,-155.5</point>
+        </region>
+    </spawn>
 </spawns>
 <filters>
-    <filter name="has-flag">
-        <any>
-            <carrying-flag>flag</carrying-flag>
-            <not>
-                <same-team>
-                    <carrying-flag>flag</carrying-flag>
-                </same-team>
-            </not>
-        </any>
-    </filter>
-	<filter name="deny-beacon">
-		<deny>
-            <block>beacon</block>
-        </deny>
-	</filter>
+    <any id="has-flag">
+        <carrying-flag>flag</carrying-flag>
+        <not>
+            <same-team>
+                <carrying-flag>flag</carrying-flag>
+            </same-team>
+        </not>
+    </any>
+    <deny id="deny-beacon">
+        <material>beacon</material>
+    </deny>
 </filters>
 <regions>
-    <apply use="deny-beacon">
-        <rectangle min="oo,oo" max="-oo,-oo"/>
-    </apply>
+    <apply block="never" use="deny-beacon"/>
 </regions>
+<flags>
+    <flag id="flag"
+          name="Flag"
+          color="purple"
+          shared="true"
+          post="center-post"
+          points-rate="1"
+          pickup-kit="flag-kit"
+          drop-kit="reset-health"
+          flag-proximity-metric="none"
+          show-respawn-on-pickup="true">
+            <post id="center-post" name="Center Post" return-time="0s" respawn-time="20s">208.5,27,-155.5</post>
+            <post id="north-post" name="North Platform" return-time="0s" respawn-time="20s">208.5,39,-182.5</post>
+            <post id="south-post" name="South Platform" return-time="0s" respawn-time="20s">208.5,39,-128.5</post>
+    </flag>
+</flags>
+<score>
+    <limit>200</limit>
+</score>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -87,45 +110,22 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>iron boots</item>
     <item>chainmail leggings</item>
-	<item>minecart</item>
+    <item>iron boots</item>
+    <item>minecart</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
-<score>
-    <limit>200</limit>
-    <kills>0</kills>
-    <deaths>0</deaths>
-</score>
-<killreward>
-    <item amount="10">arrow</item>
-    <item>golden apple</item>
-</killreward>
-<flags>
-	<flag id="flag"
-			name="Flag"
-			color="purple"
-			shared="true"
-			post="center-post"
-			points-rate="1"
-			pickup-kit="flag"
-			drop-kit="reset-health"
-			flag-proximity-metric="closest player"
-			show-respawn-on-pickup="false">
-		<!-- Would have left this enabled but it was not a function before. Evalute in future when/if map is used in a tourney etc. -->
-		<post id="center-post" return-time="0s" respawn-time="20s" name="Centre Platform">208.5,27,-155.5</post>
-		<post id="south-post" return-time="0s" respawn-time="20s" name="South Platform">208.5,39,-128.5</post>
-		<post id="north-post" return-time="0s" respawn-time="20s" name="North Platform">208.5,39,-182.5</post>
-	</flag>
-</flags>
-<respawn delay="5s" auto="true"/>
-<respawn spectate="true">
-	<message>
-		{"translate":"death.respawn.confirmed.waiting.flagDropped"}
-	</message>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="10" material="arrow"/>
+</kill-reward>
+<respawn delay="5s" auto="true" spectate="true">
+    <message>
+        {"translate":"death.respawn.confirmed.waiting.flagDropped"}
+    </message>
 </respawn>
 <hunger>
     <depletion>off</depletion>
