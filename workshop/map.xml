@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Workshop</name>
-<version>2.0</version>
+<version>2.0.2</version>
 <objective>Control the hills to be first to 2500 points!</objective>
 <authors>
     <author uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c"/> <!-- Blaszczak -->
@@ -19,7 +19,7 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="20" material="arrow"/>
+        <item slot="8" amount="16" material="arrow"/>
         <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
