@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">12m</time>
 <name>Nartica</name>
-<version>1.5.4</version>
+<version>1.5.5</version>
 <objective>Capture both of the enemy's flags.</objective>
 <authors>
     <author uuid="07fa10c6-f564-4630-861e-fe134ae27527"/> <!-- Yoyo_ -->
@@ -71,14 +71,14 @@
 </spawns>
 <filters>
     <time id="flag-respawns">0</time>
-    <all id="blue-flag-captured">
+    <all id="blue-captures-flag">
         <team id="only-blue">blue</team>
         <any>
             <carrying-flag>north-red-flag</carrying-flag>
             <carrying-flag>south-red-flag</carrying-flag>
         </any>
     </all>
-    <all id="red-flag-captured">
+    <all id="red-captures-flag">
         <team id="only-red">red</team>
         <any>
             <carrying-flag>north-blue-flag</carrying-flag>
@@ -91,8 +91,8 @@
     <cylinder id="blue-net" base="-94.5,2,-4.5" radius="4" height="2"/>
     <cylinder id="red-flag-reward" base="-24.5,2,-4.5" radius="4.4" height="2"/>
     <cylinder id="red-net" base="-24.5,2,-4.5" radius="4" height="2"/>
-    <apply kit="flag-captured" filter="red-flag-captured" region="blue-flag-reward"/>
-    <apply kit="flag-captured" filter="blue-flag-captured" region="red-flag-reward"/>
+    <apply kit="flag-captured" filter="blue-captures-flag" region="blue-flag-reward"/>
+    <apply kit="flag-captured" filter="red-captures-flag" region="red-flag-reward"/>
     <apply block="never"/>
 </regions>
 <flags flag-proximity-metric="none">
