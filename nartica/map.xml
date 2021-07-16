@@ -1,7 +1,7 @@
 <map proto="1.4.0">
 <time overtime="1m" max-overtime="15m">12m</time>
 <name>Nartica</name>
-<version>1.5.5</version>
+<version>1.5.6</version>
 <objective>Capture both of the enemy's flags.</objective>
 <authors>
     <author uuid="07fa10c6-f564-4630-861e-fe134ae27527"/> <!-- Yoyo_ -->
@@ -95,22 +95,38 @@
     <apply kit="flag-captured" filter="red-captures-flag" region="red-flag-reward"/>
     <apply block="never"/>
 </regions>
-<flags flag-proximity-metric="none">
-    <flag id="north-blue-flag" name="North Blue Flag" owner="blue" pickup-kit="flag-pickup" drop-kit="flag-dropped">
+<flags flag-proximity-metric="none" net-proximity-metric="none">
+    <flag id="north-blue-flag"
+          name="North Blue Flag"
+          owner="blue"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-dropped">
         <post pickup-filter="only-red" recover-time="15s" respawn-time="5s">-89.5,10,-36.5</post>
     </flag>
-    <flag id="south-blue-flag" name="South Blue Flag" owner="blue" pickup-kit="flag-pickup" drop-kit="flag-dropped">
+    <flag id="south-blue-flag"
+          name="South Blue Flag"
+          owner="blue"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-dropped">
         <post pickup-filter="only-red" recover-time="15s" respawn-time="5s">-89.5,10,27.5</post>
     </flag>
-    <flag id="north-red-flag" name="North Red Flag" owner="red" pickup-kit="flag-pickup" drop-kit="flag-dropped">
+    <flag id="north-red-flag"
+          name="North Red Flag"
+          owner="red"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-dropped">
         <post pickup-filter="only-blue" recover-time="15s" respawn-time="5s">-29.5,10,-36.5</post>
     </flag>
-    <flag id="south-red-flag" name="South Red Flag" owner="red" pickup-kit="flag-pickup" drop-kit="flag-dropped">
+    <flag id="south-red-flag"
+          name="South Red Flag"
+          owner="red"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-dropped">
         <post pickup-filter="only-blue" recover-time="15s" respawn-time="5s">-29.5,10,27.5</post>
     </flag>
     <flags points="1">
-        <net region="red-net" flag="north-blue-flag south-blue-flag" respawn-filter="flag-respawns"/>
         <net region="blue-net" flag="north-red-flag south-red-flag" respawn-filter="flag-respawns"/>
+        <net region="red-net" flag="north-blue-flag south-blue-flag" respawn-filter="flag-respawns"/>
     </flags>
 </flags>
 <score>
