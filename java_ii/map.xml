@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Java II</name>
-<version>1.3.3</version>
+<version>1.3.4</version>
 <objective>Capture the enemy's two wools!</objective>
 <time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <authors>
@@ -152,7 +152,7 @@
         <item material="golden apple"/>
     </spawner>
 </spawners>
-<wools>
+<wools wool-proximity-metric="none" monument-proximity-metric="closest block">
     <wool team="blue-team" color="orange" location="222.5,12,208.5">
         <monument>
             <block>2.5,11,175.5</block>
