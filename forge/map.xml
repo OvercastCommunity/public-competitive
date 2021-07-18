@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Forge</name>
-<version>1.6.5</version>
+<version>1.7.2</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -12,116 +12,90 @@
     <contributor contribution="Was awesome" uuid="a43135a4-d7b9-49ab-ac8d-a16bb2513c8d"/> <!-- Ny_ -->
 </contributors>
 <teams>
-    <team id="red" color="dark red" max="7" max-overfill="7">Red</team>
     <team id="blue" color="blue" max="7" max-overfill="7">Blue</team>
+    <team id="red" color="dark red" max="7" max-overfill="7">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
-		<clear/>
-        <game-mode>adventure</game-mode>
+        <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="16" material="arrow"/>
-        <leggings unbreakable="true" enchantment="protection projectile:3" material="chainmail leggings"/>
-		<boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots">
+            <enchantment>feather_falling</enchantment>
+        </boots>
+        <game-mode>adventure</game-mode>
     </kit>
-    <kit id="kit-red" parents="spawn-kit">
-        <helmet color="cd0000" unbreakable="true" material="leather helmet"/>
-        <chestplate color="cd0000" unbreakable="true" material="leather chestplate"/>
-    </kit>
-    <kit id="kit-blue" parents="spawn-kit">
+    <kit id="blue-kit" parents="spawn-kit">
         <helmet color="0066cc" unbreakable="true" material="leather helmet"/>
         <chestplate color="0066cc" unbreakable="true" material="leather chestplate"/>
     </kit>
+    <kit id="red-kit" parents="spawn-kit">
+        <helmet color="cd0000" unbreakable="true" material="leather helmet"/>
+        <chestplate color="cd0000" unbreakable="true" material="leather chestplate"/>
+    </kit>
 </kits>
 <spawns>
-    <spawn team="red"  filter="spawn-1" kit="kit-red">
-        <regions yaw="0"><region id="spawn-red-1"/></regions>
-    </spawn>
-    <spawn team="red"  filter="spawn-2" kit="kit-red">
-        <regions yaw="0"><region id="spawn-red-2"/></regions>
-    </spawn>
-    <spawn team="red"  filter="spawn-3" kit="kit-red">
-        <regions yaw="0"><region id="spawn-red-3"/></regions>
-    </spawn>
-    <spawn team="red"  filter="spawn-4" kit="kit-red">
-        <regions yaw="0"><region id="spawn-red-4"/></regions>
-    </spawn>
-    <spawn team="red"  filter="spawn-5" kit="kit-red">
-        <regions yaw="0"><region id="spawn-red-5"/></regions>
-    </spawn>
-    <spawn team="red"  filter="spawn-6" kit="kit-red">
-        <regions yaw="0"><region id="spawn-red-6"/></regions>
-    </spawn>
-    <spawn team="blue" filter="spawn-1" kit="kit-blue">
-        <regions yaw="180"><region id="spawn-blue-1"/></regions>
-    </spawn>
-    <spawn team="blue" filter="spawn-2" kit="kit-blue">
-        <regions yaw="180"><region id="spawn-blue-2"/></regions>
-    </spawn>
-    <spawn team="blue" filter="spawn-3" kit="kit-blue">
-        <regions yaw="180"><region id="spawn-blue-3"/></regions>
-    </spawn>
-    <spawn team="blue" filter="spawn-4" kit="kit-blue">
-        <regions yaw="180"><region id="spawn-blue-4"/></regions>
-    </spawn>
-    <spawn team="blue" filter="spawn-5" kit="kit-blue">
-        <regions yaw="180"><region id="spawn-blue-5"/></regions>
-    </spawn>
-    <spawn team="blue" filter="spawn-6" kit="kit-blue">
-        <regions yaw="180"><region id="spawn-blue-6"/></regions>
-    </spawn>
-    <!--
-    <spawns>
-        <spawn team="red"  filter="spawn-red-1" kit="kit-red">
+    <default yaw="0" region="spawn-default"/>
+    <spawn team="blue" filter="spawn-1" kit="blue-kit" yaw="180" region="spawn-blue-1"/>
+    <spawn team="blue" filter="spawn-2" kit="blue-kit" yaw="180" region="spawn-blue-2"/>
+    <spawn team="blue" filter="spawn-3" kit="blue-kit" yaw="180" region="spawn-blue-3"/>
+    <spawn team="blue" filter="spawn-4" kit="blue-kit" yaw="180" region="spawn-blue-4"/>
+    <spawn team="blue" filter="spawn-5" kit="blue-kit" yaw="180" region="spawn-blue-5"/>
+    <spawn team="blue" filter="spawn-6" kit="blue-kit" yaw="180" region="spawn-blue-6"/>
+    <spawn team="red" filter="spawn-1" kit="red-kit" yaw="0" region="spawn-red-1"/>
+    <spawn team="red" filter="spawn-2" kit="red-kit" yaw="0" region="spawn-red-2"/>
+    <spawn team="red" filter="spawn-3" kit="red-kit" yaw="0" region="spawn-red-3"/>
+    <spawn team="red" filter="spawn-4" kit="red-kit" yaw="0" region="spawn-red-4"/>
+    <spawn team="red" filter="spawn-5" kit="red-kit" yaw="0" region="spawn-red-5"/>
+    <spawn team="red" filter="spawn-6" kit="red-kit" yaw="0" region="spawn-red-6"/>
+    <!-- <spawns>
+        <spawn team="red"  filter="spawn-red-1" kit="red-kit">
             <regions yaw="0"><region id="spawn-red-1"/></regions>
         </spawn>
-        <spawn team="red"  filter="spawn-red-2" kit="kit-red">
+        <spawn team="red"  filter="spawn-red-2" kit="red-kit">
             <regions yaw="0"><region id="spawn-red-2"/></regions>
         </spawn>
-        <spawn team="red"  filter="spawn-red-3" kit="kit-red">
+        <spawn team="red"  filter="spawn-red-3" kit="red-kit">
             <regions yaw="0"><region id="spawn-red-3"/></regions>
         </spawn>
-        <spawn team="red"  filter="spawn-red-4" kit="kit-red">
+        <spawn team="red"  filter="spawn-red-4" kit="red-kit">
             <regions yaw="0"><region id="spawn-red-4"/></regions>
         </spawn>
-        <spawn team="red"  filter="spawn-red-5" kit="kit-red">
+        <spawn team="red"  filter="spawn-red-5" kit="red-kit">
             <regions yaw="0"><region id="spawn-red-5"/></regions>
         </spawn>
-        <spawn team="red"  filter="spawn-red-6" kit="kit-red">
+        <spawn team="red"  filter="spawn-red-6" kit="red-kit">
             <regions yaw="0"><region id="spawn-red-6"/></regions>
         </spawn>
-        <spawn team="blue" filter="spawn-blue-1" kit="kit-blue">
+        <spawn team="blue" filter="spawn-blue-1" kit="blue-kit">
             <regions yaw="180"><region id="spawn-blue-1"/></regions>
         </spawn>
-        <spawn team="blue" filter="spawn-blue-2" kit="kit-blue">
+        <spawn team="blue" filter="spawn-blue-2" kit="blue-kit">
             <regions yaw="180"><region id="spawn-blue-2"/></regions>
         </spawn>
-        <spawn team="blue" filter="spawn-blue-3" kit="kit-blue">
+        <spawn team="blue" filter="spawn-blue-3" kit="blue-kit">
             <regions yaw="180"><region id="spawn-blue-3"/></regions>
         </spawn>
-        <spawn team="blue" filter="spawn-blue-4" kit="kit-blue">
+        <spawn team="blue" filter="spawn-blue-4" kit="blue-kit">
             <regions yaw="180"><region id="spawn-blue-4"/></regions>
         </spawn>
-        <spawn team="blue" filter="spawn-blue-5" kit="kit-blue">
+        <spawn team="blue" filter="spawn-blue-5" kit="blue-kit">
             <regions yaw="180"><region id="spawn-blue-5"/></regions>
         </spawn>
-        <spawn team="blue" filter="spawn-blue-6" kit="kit-blue">
+        <spawn team="blue" filter="spawn-blue-6" kit="blue-kit">
             <regions yaw="180"><region id="spawn-blue-6"/></regions>
         </spawn>
-      </spawns>
-      -->
-    <default>
-        <regions yaw="0">
-            <region id="spawn-default"/>
-        </regions>
-    </default>
+    </spawns> -->
 </spawns>
 <filters>
-  <not id="deny-trapdoors">
-      <material>trap door</material>
-  </not>
+    <not id="deny-trapdoors">
+        <material>trap door</material>
+    </not>
     <team id="only-red">red</team>
     <team id="only-blue">blue</team>
     <!-- Portal Filters -->
@@ -364,9 +338,9 @@
     -->
     <!--control points-->
     <cuboid id="cp-red-last"  min="4,7,-96" max="-3,15,-103"/>
-    <cuboid id="cp-red-2nd"   min="8,3,-38" max="-1,15,-47"/>
+    <cuboid id="cp-red-2nd"   min="8,3,-36" max="-1,15,-45"/>
     <cuboid id="cp-mid"       min="4,7,4" max="-3,15,-3"/>
-    <cuboid id="cp-blue-2nd"  min="-7,3,39" max="2,15,48"/>
+    <cuboid id="cp-blue-2nd"  min="-7,3,37" max="2,15,46"/>
     <cuboid id="cp-blue-last" min="-3,7,97" max="4,15,104"/>
     <!-- Red Portals -->
     <cuboid id="portal-red-red-2nd"  min="2,9,-131" max="-1,12,-134"/>
@@ -392,13 +366,13 @@
 <control-points neutral-state="true" show-progress="true">
     <control-point initial-owner="red"  id="red-last"  required="false" name="Red Last"  capture-time="5s" points="0" incremental="true" capture="cp-red-last"  scaled-time="true" time-multiplier="0.25" progress="cp-red-last"  player-filter="filter-red-last"/>
     <control-point initial-owner="red"  id="red-2nd"   required="false" name="Red 2nd"   capture-time="5s" points="0" incremental="true" capture="cp-red-2nd"   scaled-time="true" time-multiplier="0.25" progress="cp-red-2nd"   player-filter="filter-red-2nd"/>
-    <control-point                      id="mid"       required="false" name="Mid"       capture-time="5s" points="1" incremental="true" capture="cp-mid"       scaled-time="true" time-multiplier="0.25" progress="cp-mid"       player-filter="filter-mid"/>
+    <control-point                      id="mid"       required="false" name="Mid"       capture-time="5s" points="2" incremental="true" capture="cp-mid"       scaled-time="true" time-multiplier="0.25" progress="cp-mid"       player-filter="filter-mid"/>
     <control-point initial-owner="blue" id="blue-2nd"  required="false" name="Blue 2nd"  capture-time="5s" points="0" incremental="true" capture="cp-blue-2nd"  scaled-time="true" time-multiplier="0.25" progress="cp-blue-2nd"  player-filter="filter-blue-2nd"/>
     <control-point initial-owner="blue" id="blue-last" required="false" name="Blue Last" capture-time="5s" points="0" incremental="true" capture="cp-blue-last" scaled-time="true" time-multiplier="0.25" progress="cp-blue-last" player-filter="filter-blue-last"/>
     <!-- Point Givers -->
     <control-point id="red-last-point"  required="false" show="false" points="10000" name="RL Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-last-point-blue" capture-filter="only-blue"/>
-    <!-- <control-point id="red-2nd-point"   required="false" show="false" points="1"      name="R2 Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-2nd-point-blue"  capture-filter="only-blue"/>
-    <control-point id="blue-2nd-point"  required="false" show="false" points="1"      name="B2 Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-2nd-point-red"   capture-filter="only-red"/> -->
+    <control-point id="red-2nd-point"   required="false" show="false" points="1"      name="R2 Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-2nd-point-blue"  capture-filter="only-blue"/>
+    <control-point id="blue-2nd-point"  required="false" show="false" points="1"      name="B2 Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-2nd-point-red"   capture-filter="only-red"/>
     <control-point id="blue-last-point" required="false" show="false" points="10000" name="BL Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-last-point-red"  capture-filter="only-red"/>
     <!--
     <control-point id="mercy" name="Win"  time-multiplier="750" capture-time="0.1s" capture="everywhere" player-filter="mercy-cap" required="true"/>
@@ -446,22 +420,15 @@
     <item>chainmail leggings</item>
     <item>iron boots</item>
 </itemremove>
-<itemkeep>
-	<item>golden apple</item>
-	<item>arrow</item>
-</itemkeep>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
 </toolrepair>
-<timelock>true</timelock>
 <hunger>
     <depletion>off</depletion>
 </hunger>
 <respawn delay="6s" auto="true"/>
 <score>
-	<kills>0</kills>
-	<deaths>0</deaths>
-  <limit>400</limit>
+    <limit>1000</limit>
 </score>
 </map>
