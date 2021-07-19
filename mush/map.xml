@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Mush</name>
-<version>1.0.5</version>
+<version>1.0.6</version>
 <objective>Capture the hills to be the first to reach 2500 points!</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -25,7 +25,7 @@
         <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
-		<boots unbreakable="true" material="iron boots"/>
+		<boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="blue-kit" parents="spawn-kit">
