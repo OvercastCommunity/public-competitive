@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Forge</name>
-<version>1.7.2</version>
+<version>1.7.3</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -424,6 +424,10 @@
     <tool>stone sword</tool>
     <tool>bow</tool>
 </toolrepair>
+<itemkeep>
+	<item>golden apple</item>
+	<item>arrow</item>
+</itemkeep>
 <hunger>
     <depletion>off</depletion>
 </hunger>
