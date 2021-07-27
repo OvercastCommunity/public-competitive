@@ -33,10 +33,11 @@
         <item slot="4" amount="64" damage="4" material="wood"/>
         <item slot="31" amount="64" damage="4" material="wood"/>
         <item slot="5" amount="64" material="glass"/>
+        <item slot="32" amount="64" damage="4" material="wood"/>
         <item slot="7" material="golden apple"/>
         <item slot="8" amount="64" material="golden carrot"/>
         <leggings unbreakable="true" material="chainmail leggings"/>
-        <effect amplifier="255" duration="6s">resistance</effect>
+        <effect amplifier="255" duration="10s">resistance</effect>
     </kit>
     <kit id="purple-kit" parents="spawn-kit">
         <chestplate color="7F3FB2" unbreakable="true" material="leather chestplate"/>
@@ -48,19 +49,19 @@
     </kit>
 </kits>
 <spawns>
-    <default yaw="-90">
-        <region>
+    <default>
+        <region yaw="-90">
             <cuboid min="-221.5,49,65.5" max="-216.5,49,60.5"/>
         </region>
     </default>
-    <spawn team="purple-team" kit="purple-kit" yaw="0">
-        <region>
-            <point>-121.5,6,-51.5</point>
+    <spawn team="purple-team" kit="purple-kit">
+        <region yaw="0">
+            <point>-121.5,103.25,-59.5</point>
         </region>
     </spawn>
-    <spawn team="yellow-team" kit="yellow-kit" yaw="180">
-        <region>
-            <point>-121.5,6,174.5</point>
+    <spawn team="yellow-team" kit="yellow-kit">
+        <region yaw="180">
+            <point>-121.5,103.25,182.5</point>
         </region>
     </spawn>
 </spawns>
@@ -128,12 +129,17 @@
         <cuboid min="-65,7,62" max="-66,9,61"/>
         <cuboid min="-177,7,62" max="-178,9,61"/>
     </union>
+    <union id="spawn-drops">
+        <cuboid id="purple-drop" min="-124,0,-62" max="-119,107,-49"/>
+        <cuboid id="yellow-drop" min="-124,0,172" max="-119,107,185"/>
+    </union>
     <apply enter="only-purple" region="purple-spawn" message="You may not enter the opponent's spawn!"/>
     <apply enter="only-yellow" region="yellow-spawn" message="You may not enter the opponent's spawn!"/>
     <apply enter="only-purple" region="yellow-wool-rooms" message="You may not enter your own wool room!"/>
     <apply enter="only-yellow" region="purple-wool-rooms" message="You may not enter your own wool room!"/>
     <apply use="only-purple" region="yellow-wool-rooms"/>
     <apply use="only-yellow" region="purple-wool-rooms"/>
+    <apply block="never" region="spawn-drops"/>
     <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
     <apply block="deny-purple-wool-rooms" region="purple-wool-rooms"/>
     <apply block="deny-yellow-wool-rooms" region="yellow-wool-rooms"/>
@@ -199,15 +205,23 @@
     <item>golden apple</item>
 </itemkeep>
 <kill-reward>
+    <item amount="32" damage="4" material="wood"/>
+    <item amount="16" material="glass"/>
     <item material="golden apple"/>
-    <item amount="16" damage="4" material="wood"/>
-    <item amount="8" material="glass"/>
 </kill-reward>
+<maxbuildheight>25</maxbuildheight>
+<respawn delay="2s" auto="true" blackout="true"/>
 <crafting>
     <disable>iron trapdoor</disable>
     <disable>minecart</disable>
     <disable>boat</disable>
 </crafting>
-<maxbuildheight>25</maxbuildheight>
-<respawn delay="6s" auto="true" blackout="true"/>
+<damage>
+    <deny>
+        <all>
+            <cause>fall</cause>
+            <region id="spawn-drops"/>
+        </all>
+    </deny>
+</damage>
 </map>
