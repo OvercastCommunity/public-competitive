@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Java II</name>
-<version>1.3.5</version>
+<version>1.3.6</version>
 <objective>Capture the enemy's two wools!</objective>
 <time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <authors>
@@ -51,12 +51,12 @@
     </default>
     <spawn team="blue-team" kit="blue-kit">
         <region yaw="-90">
-            <point>-14.5,107.25,171.5</point>
+            <point>-14.5,107.5,171.5</point>
         </region>
     </spawn>
     <spawn team="red-team" kit="red-kit">
         <region yaw="90">
-            <point>257.5,107.25,171.5</point>
+            <point>257.5,107.5,171.5</point>
         </region>
     </spawn>
 </spawns>
@@ -144,22 +144,24 @@
     <apply enter="only-red" region="blue-wool-rooms" message="You may not enter your own wool room!"/>
     <apply use="only-blue" region="red-wool-rooms"/>
     <apply use="only-red" region="blue-wool-rooms"/>
-    <apply velocity="7,0,0"> <!-- blue launch out -->
-        <region>
-            <cuboid min="-8,10,170" max="-5,11,173"/>
-        </region>
-    </apply>
-    <apply velocity="-7,0,0"> <!-- red launch out -->
-        <region>
-            <cuboid min="248,10,170" max="251,11,173"/>
-        </region>
-    </apply>
     <apply block="never" enter="never" region="spawn-drops"/>
     <apply block="deny-blue-wool-rooms" region="blue-wool-rooms"/>
     <apply block="deny-red-wool-rooms" region="red-wool-rooms"/>
     <apply block="never" region="spawner" message="You may not destroy the spawner!"/>
     <apply block-place="no-void" message="You may not edit the void!"/>
 </regions>
+<portals>
+    <portal x="@2.5" y="@10" z="@171.5" sound="false"> <!-- blue launch out -->
+        <region>
+            <cuboid min="-8,10,170" max="-5,11,173"/>
+        </region>
+    </portal>
+    <portal x="@240.5" y="@10" z="@171.5" sound="false"> <!-- red launch out -->
+        <region>
+            <cuboid min="248,10,170" max="251,11,173"/>
+        </region>
+    </portal>
+</portals>
 <renewables>
     <renewable rate="2" grow="false" particles="true" sound="true" avoid-entities="true" region="spawns" renew-filter="only-iron"/>
 </renewables>
