@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<map proto="1.4.3">
+<map proto="1.4.0">
 <name>Golden Drought V</name>
-<version>1.0.1</version>
+<version>1.0.2</version>
 <objective>Capture the enemy wool!</objective>
 <authors>
     <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!--  Reshif  -->
@@ -47,23 +47,49 @@
         </regions>
     </default>
 </spawns>
+<wools>
+    <wool team="blue-team" color="purple" location="-10.5,13.5,-1265.5">
+        <monument>
+            <block>106,5,-1281</block>
+        </monument>
+    </wool>
+    <wool team="red-team" color="green" location="83.5,13.5,-1289.5">
+        <monument>
+            <block>-34,5,-1275</block>
+        </monument>
+    </wool>
+</wools>
+<itemremove>
+    <item>cooked chicken</item>
+</itemremove>
+<kill-rewards>
+    <kill-reward>
+        <item amount="1">golden apple</item>
+        <item amount="12">arrow</item>
+	<item amount="32">sandstone</item>
+	<item amount="12" damage="2">wood</item>
+    </kill-reward>
+</kill-rewards>
+<maxbuildheight>20</maxbuildheight>
 <filters>
     <team id="only-red">red-team</team>
-    <team id="only-blue">blue-team</team>
+    <team id="only-blue">blue-team</team>    
+    <not id="no-teams">
+        <any>
+            <team id="only-red-team">red-team</team>
+            <team id="only-blue-team">blue-team</team>
+        </any>
+    </not>
     <not id="no-void">
         <void/>
     </not>
-<all id="only-gold">
-	<material>gold block</material>
-</all>
+    <material id="allow-gold">gold block</material>
 </filters>
 <regions>
-    <apply block-break="only-gold" block-place="never" message="You may only break gold blocks in spawn!">
-        <region>
-            <cuboid min="105,0,-1289" max="121,20,-1273"/>
-            <cuboid min="-32,0,-1266" max="-48,20,-1282"/>
-        </region>
-    </apply>
+    <union id="bases">
+    	<rectangle id="red-spawn" min="-33.5,-1267.5" max="-48.5,-1282.5"/>
+    	<rectangle id="blue-spawn" min="105.5,-1289.5" max="120.5,-1274.5"/>
+    </union>
     <apply block="only-red" message="You may not modify the wool room!">
         <region>
             <union id="wool-red">
@@ -88,6 +114,9 @@
             <region id="wool-blue"/>
         </region>
     </apply>
+    <apply enter="only-red-team" message="`7You may not enter the `cRed Team`7's base!" region="red-spawn"/>
+    <apply enter="only-blue-team" message="`7You may not enter the `9Blue Team`7's base!" region="blue-spawn"/>
+    <apply block-break="allow-gold" block-place="no-teams" message="`7You may only break gold in the base!" region="bases"/>
     <apply block="no-void" message="You may not build in the void!">
         <region>
             <negative>
@@ -100,33 +129,10 @@
         </region>
     </apply>
 </regions>
-<wools>
-    <wool team="blue-team" color="purple" location="-10.5,13.5,-1265.5">
-        <monument>
-            <block>106,5,-1281</block>
-        </monument>
-    </wool>
-    <wool team="red-team" color="green" location="83.5,13.5,-1289.5">
-        <monument>
-            <block>-34,5,-1275</block>
-        </monument>
-    </wool>
-</wools>
-<maxbuildheight>20</maxbuildheight>
-<itemremove>
-    <item>cooked chicken</item>
-</itemremove>
-<toolrepair>
-    <tool>stone sword</tool>
-    <tool>bow</tool>
-    <tool>iron pickaxe</tool>
-</toolrepair>
-<kill-rewards>
-    <kill-reward>
-        <item amount="1">golden apple</item>
-        <item amount="12">arrow</item>
-	<item amount="32">sandstone</item>
-	<item amount="12" damage="2">wood</item>
-    </kill-reward>
-</kill-rewards>
+<renewables>
+    <renewable rate="5" grow="true" particles="true" sound="true" avoid-players="3" region="bases">
+        <renew>gold block</renew>
+        <replace>air</replace>
+    </renewable>
+</renewables>
 </map>
