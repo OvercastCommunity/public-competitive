@@ -1,145 +1,46 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Space Race: 1969</name>
-<version>1.0.0</version>
-<objective>Capture the enemies' flag.</objective>
+<version>1.0.10</version>
+<objective>Capture the enemy's flag.</objective>
 <authors>
-    <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  NixaniaXi  -->
+    <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
 </authors>
-<time>12m</time>
-<score>
-    <limit>3</limit>
-    <kills>0</kills>
-    <deaths>0</deaths>
-</score>
+<time result="score" overtime="2m" max-overtime="6m">12m</time>
 <teams>
-    <team id="red" color="dark red" max="5">Red</team>
-    <team id="blue" color="blue" max="5">Blue</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
-<respawn delay="5s" auto="true"/>
-<spawns>
-    <spawn team="red" filter="spawn1" kit="redKit">
-        <regions yaw="-90">
-            <block>52.5,8,63.5</block>
-        </regions>
-    </spawn>
-    <spawn team="red" filter="spawn2" kit="redKit">
-        <regions yaw="-90">
-            <block>52.5,56,63.5</block>
-        </regions>
-    </spawn>
-    <spawn team="red" filter="spawn3" kit="redKit">
-        <regions yaw="-90">
-            <block>52.5,96,63.5</block>
-        </regions>
-    </spawn>
-    <spawn team="red" filter="spawn4" kit="redKit">
-        <regions yaw="-90">
-            <block>52.5,136,63.5</block>
-        </regions>
-    </spawn>
-    <spawn team="red" filter="spawn5" kit="redKit">
-        <regions yaw="-90">
-            <block>52.5,176,63.5</block>
-        </regions>
-    </spawn>
-    <spawn team="red" filter="spawn6" kit="redKit">
-        <regions yaw="-90">
-            <block>52.5,216,63.5</block>
-        </regions>
-    </spawn>
-    <spawn team="blue" filter="spawn1" kit="blueKit">
-        <regions yaw="90">
-            <block>76.5,8,-12.5</block>
-        </regions>
-    </spawn>
-    <spawn team="blue" filter="spawn2" kit="blueKit">
-        <regions yaw="90">
-            <block>76.5,56,-12.5</block>
-        </regions>
-    </spawn>
-    <spawn team="blue" filter="spawn3" kit="blueKit">
-       <regions yaw="90">
-            <block>76.5,96,-12.5</block>
-        </regions>
-    </spawn>
-    <spawn team="blue" filter="spawn4" kit="blueKit">
-        <regions yaw="90">
-            <block>76.5,136,-12.5</block>
-        </regions>
-    </spawn>
-    <spawn team="blue" filter="spawn5" kit="blueKit">
-        <regions yaw="90">
-            <block>76.5,176,-12.5</block>
-        </regions>
-    </spawn>
-    <spawn team="blue" filter="spawn6" kit="blueKit">
-        <regions yaw="90">
-            <block>76.5,216,-12.5</block>
-        </regions>
-    </spawn>
-    <default>
-        <regions yaw="0">
-            <point>64.5,18,25.5</point>
-        </regions>
-    </default>
-</spawns>
 <kits>
-    <kit id="spawn">
+    <kit id="default-kit">
+        <effect>night vision</effect>
+    </kit>
+    <kit id="spawn-kit" parents="default-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="16" material="arrow"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
         <game-mode>adventure</game-mode>
-        <item slot="0" unbreakable="true">stone sword</item>
-        <item slot="1" unbreakable="true">bow</item>
-        <item slot="7" amount="1">golden apple</item>
-        <item slot="8" amount="12">arrow</item>
-        <chestplate enchantment="protection projectile:3" unbreakable="true">iron chestplate</chestplate>
     </kit>
-    <kit id="redKit" parents="spawn">
-        <helmet color="cd0000" unbreakable="true">leather helmet</helmet>
-        <leggings color="cd0000" unbreakable="true">leather leggings</leggings>
-        <boots color="cd0000" unbreakable="true">leather boots</boots>
+    <kit id="blue-kit" parents="spawn-kit">
+        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
+        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
     </kit>
-    <kit id="blueKit" parents="spawn">
-        <helmet color="0066cc" unbreakable="true">leather helmet</helmet>
-        <leggings color="0066cc" unbreakable="true">leather leggings</leggings>
-        <boots color="0066cc" unbreakable="true">leather boots</boots>
+    <kit id="red-kit" parents="spawn-kit">
+        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
+        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
     </kit>
-    <kit id="red-flag-kit">
-        <potion duration="oo">slowness</potion>
+    <kit id="flag-pickup" force="true">
+        <effect>slowness</effect>
     </kit>
-    <kit id="blue-flag-kit">
-        <potion duration="oo">slowness</potion>
-    </kit>
-    <kit id="reset-kit" force="true">
-        <potion duration="0" amplifier="10">slowness</potion>
+    <kit id="flag-drop" force="true">
+        <effect duration="0" amplifier="0">slowness</effect>
     </kit>
 </kits>
-<flags flag-proximity-metric="closest player">
-    <flag id="red-flag" name="Red Flag" owner="red" pickup-kit="red-flag-kit" drop-kit="reset-kit">
-        <post pickup-filter="only-blue" recover-time="12s" respawn-time="10s">72.5,13,53.5</post>
-    </flag>
-    <flag id="blue-flag" name="Blue Flag" owner="blue" pickup-kit="blue-flag-kit" drop-kit="reset-kit">
-        <post pickup-filter="only-red" recover-time="12s" respawn-time="10s">56.5,13,-2.5</post>
-    </flag>
-    <flags points="1">
-        <net region="red-net" flag="blue-flag"/>
-        <net region="blue-net" flag="red-flag"/>
-    </flags>
-</flags>
-<killreward>
-    <item>golden apple</item>
-    <item amount="12">arrow</item>
-</killreward>
-<itemremove>
-    <item>golden apple</item>
-    <item>arrow</item>
-    <item>leather helmet</item>
-    <item>iron chestplate</item>
-    <item>leather leggings</item>
-    <item>leather boots</item>
-</itemremove>
-<toolrepair>
-    <tool>stone sword</tool>
-    <tool>bow</tool>
-</toolrepair>
 <filters>
     <team id="only-blue">blue</team>
     <team id="only-red">red</team>
@@ -175,12 +76,120 @@
         <time>10m</time>
     </all>
 </filters>
+<spawns>
+    <default kit="default-kit">
+        <region yaw="0">
+            <point>64.5,18,25.5</point>
+        </region>
+    </default>
+    <spawn team="blue" filter="spawn1" kit="blue-kit">
+        <region yaw="90">
+            <block>76.5,8,-12.5</block>
+        </region>
+    </spawn>
+    <spawn team="blue" filter="spawn2" kit="blue-kit">
+        <region yaw="90">
+            <block>76.5,56,-12.5</block>
+        </region>
+    </spawn>
+    <spawn team="blue" filter="spawn3" kit="blue-kit">
+       <region yaw="90">
+            <block>76.5,96,-12.5</block>
+        </region>
+    </spawn>
+    <spawn team="blue" filter="spawn4" kit="blue-kit">
+        <region yaw="90">
+            <block>76.5,136,-12.5</block>
+        </region>
+    </spawn>
+    <spawn team="blue" filter="spawn5" kit="blue-kit">
+        <region yaw="90">
+            <block>76.5,176,-12.5</block>
+        </region>
+    </spawn>
+    <spawn team="blue" filter="spawn6" kit="blue-kit">
+        <region yaw="90">
+            <block>76.5,216,-12.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" filter="spawn1" kit="red-kit">
+        <region yaw="-90">
+            <block>52.5,8,63.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" filter="spawn2" kit="red-kit">
+        <region yaw="-90">
+            <block>52.5,56,63.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" filter="spawn3" kit="red-kit">
+        <region yaw="-90">
+            <block>52.5,96,63.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" filter="spawn4" kit="red-kit">
+        <region yaw="-90">
+            <block>52.5,136,63.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" filter="spawn5" kit="red-kit">
+        <region yaw="-90">
+            <block>52.5,176,63.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" filter="spawn6" kit="red-kit">
+        <region yaw="-90">
+            <block>52.5,216,63.5</block>
+        </region>
+    </spawn>
+</spawns>
 <regions>
     <cylinder id="blue-net" base="56.5,13,-2.5" radius=".5" height="2" />
     <cylinder id="red-net" base="72.5,13,53.5" radius=".5" height="2" />
-    <apply block="never" region="everywhere"/>
+    <apply block="never" use="never"/>
 </regions>
-<timelock>true</timelock>
+<flags flag-proximity-metric="none" net-proximity-metric="none">
+    <flag id="blue-flag"
+          name="Blue Flag"
+          owner="blue"
+          color="blue"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-drop">
+        <post pickup-filter="only-red" recover-time="12s" respawn-time="10s">56.5,13,-2.5</post>
+    </flag>
+    <flag id="red-flag"
+          name="Red Flag"
+          owner="red"
+          color="red"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-drop">
+        <post pickup-filter="only-blue" recover-time="12s" respawn-time="10s">72.5,13,53.5</post>
+    </flag>
+    <flags points="1">
+        <net region="blue-net" flag="red-flag"/>
+        <net region="red-net" flag="blue-flag"/>
+    </flags>
+</flags>
+<score/>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="6" material="arrow"/>
+</kill-reward>
+<respawn delay="5s" auto="true" blackout="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

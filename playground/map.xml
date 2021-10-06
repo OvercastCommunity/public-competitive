@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Playground</name>
-<version>1.0.0</version>
+<version>1.0.1</version>
 <gamemode>koth</gamemode>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
@@ -59,7 +59,7 @@
 		</region>
 	</default>
 </spawns>
-<respawn delay="4s"/>
+<respawn delay="4s" auto="true"/>
 <filters>
     <team id="only-blue">blue-team</team>
     <team id="only-red">red-team</team>

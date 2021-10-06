@@ -1,0 +1,125 @@
+<map proto="1.4.0">
+<name>Playground Redux</name>
+<version>1.0.5</version>
+<objective>Be the first team to reach 750 points!</objective>
+<authors>
+    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383"/> <!-- XUPH -->
+    <author uuid="0b8f95fa-0f40-4f28-9fd0-b8e243bb6800"/> <!--Fouled-->
+</authors>
+<contributors>
+    <contributor uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c"/> <!-- Blaszczak -->
+</contributors>
+<teams>
+    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="16" material="arrow"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="4" amplifier="10">resistance</effect>
+        <effect duration="4" amplifier="10">regeneration</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <kit id="blue-kit" parents="spawn-kit">
+        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
+        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
+    </kit>
+    <kit id="red-kit" parents="spawn-kit">
+        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
+        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="45">
+            <cuboid min="51,51,-53" max="49,51,-51"/>
+        </region>
+    </default>
+    <spawn team="blue-team" kit="blue-kit">
+        <region yaw="0">
+            <point>51.5,24,-20.5</point>
+        </region>
+    </spawn>
+    <spawn team="red-team" kit="red-kit">
+        <region yaw="90">
+            <point>18.5,24,-53.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <team id="only-blue">blue-team</team>
+    <team id="only-red">red-team</team>
+</filters>
+<regions>
+    <union id="a-captured-region">
+        <cylinder base="27.5,27,-29.5" radius="4.5" height="1"/>
+        <cuboid min="25,55,-27" max="30,49,-32"/>
+    </union>
+    <apply block="never"/>
+</regions>
+<control-points incremental="true" show-progress="true" neutral-state="true" required="false" capture-time="5s" points="1">
+    <control-point name="Castle" captured="a-captured-region">
+        <capture>
+            <cylinder base="27.5,27,-29.5" radius="4.5" height="4"/>
+        </capture>
+        <progress>
+            <cylinder base="27.5,27,-29.5" radius="4.5" height="1"/>
+        </progress>
+    </control-point>
+    <control-point name="Sandbox">
+        <capture>
+            <cylinder base="8.5,23,-10.5" radius="4.5" height="4"/>
+        </capture>
+        <progress>
+            <cylinder base="8.5,23,-10.5" radius="4.5" height="1"/>
+        </progress>
+        <captured>
+            <cuboid min="2,27,-4" max="15,22,-17"/>
+        </captured>
+    </control-point>
+    <control-point name="Roundabout">
+        <capture>
+            <cylinder base="-9.5,30,7.5" radius="4.5" height="4"/>
+        </capture>
+        <progress>
+            <cylinder base="-9.5,30,7.5" radius="4.5" height="1"/>
+        </progress>
+        <captured>
+            <cylinder base="-9.5,30,7.5" radius="4.5" height="26"/>
+        </captured>
+    </control-point>
+</control-points>
+<score>
+    <limit>750</limit>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="6" material="arrow"/>
+</kill-reward>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<respawn delay="4s" auto="true" blackout="true"/>
+</map>
