@@ -1,0 +1,203 @@
+<map proto="1.4.0">
+<name>Twilight Shrooms</name>
+<version>1.1.0</version>
+<objective>Destroy the enemy's monuments</objective>
+<authors>
+    <author uuid="396229db-3e91-415f-be44-8bacc9fcbc9f"/>
+</authors>
+<teams>
+    <team id="red-team" color="dark red" max="8">Red</team>
+    <team id="blue-team" color="blue" max="8">Blue</team>
+</teams>
+<timelock>on</timelock>
+<time results="objective">45m</time>
+<disable-water-sources>true</disable-water-sources>
+<kits>
+    <kit id="nv">
+        <effect duration="oo">night vision</effect>
+    </kit>
+    <kit id="spawn" parents="nv">
+        <effect duration="15" amplifier="4">resistance</effect>
+        <item slot="0" unbreakable="true">stone sword</item>
+        <item slot="1" unbreakable="true">bow</item>
+        <item slot="28" amount="36">arrow</item>
+        <item slot="2" enchantment="dig speed:3" unbreakable="true">iron pickaxe</item>
+        <item slot="3" enchantment="dig speed:3" unbreakable="true">iron axe</item>
+        <item slot="30" unbreakable="true">gold spade</item>
+        <item slot="4" amount="48">cooked beef</item>
+        <item slot="6" amount="32" damage="2">wood</item>
+        <item slot="7">golden apple</item>
+        <item slot="9" amount="3">stick</item>
+    </kit>
+    <kit id="bluekit" parents="spawn">
+        <helmet color="0066cc" locked="true" unbreakable="true">leather helmet</helmet>
+        <item slot="5" amount="64" damage="11">stained clay</item>
+        <item slot="32" amount="64" damage="11">stained clay</item>
+        <item slot="23" amount="64" damage="11">stained clay</item>
+    </kit>
+    <kit id="redkit" parents="spawn">
+        <helmet color="cd0000" locked="true" unbreakable="true">leather helmet</helmet>
+        <item slot="5" amount="64" damage="14">stained clay</item>
+        <item slot="32" amount="64" damage="14">stained clay</item>
+        <item slot="23" amount="64" damage="14">stained clay</item>
+    </kit>
+</kits>
+<respawn delay="3s"/>
+<spawns>
+    <spawn team="red-team" kit="redkit">
+        <regions yaw="0">
+            <cylinder base="11.5,49.5,-110.5" radius="1" height="0"/>
+        </regions>
+    </spawn>
+    <spawn team="blue-team" kit="bluekit">
+        <regions yaw="180">
+            <cylinder base="11.5,49.5,111.5" radius="1" height="0"/>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="90" kit="nv">
+            <cylinder base="60.5,75.5,0.5" radius="2" height="0"/>
+        </regions>
+    </default>
+</spawns>
+<spawners>
+    <spawner id="ironspawner" spawn-region="hierro"  player-region="play" max-entities="50" delay="30s">
+        <item amount="1" material="iron block"/>
+    </spawner>
+</spawners>
+<crafting>
+    <disable>dispenser</disable>
+    <disable>diamond sword</disable>
+    <disable>diamond pickaxe</disable>
+    <shaped override="true" override-all="true">
+        <result material="diamond pickaxe">
+            <enchantment level="1">dig speed</enchantment>
+        </result>
+        <shape>
+            <row>DDD</row>
+            <row>.S.</row>
+            <row>.S.</row>
+        </shape>
+        <ingredient symbol="D">diamond</ingredient>
+        <ingredient symbol="S">stick</ingredient>
+    </shaped>
+</crafting>
+<itemkeep>
+    <item>diamond</item>
+</itemkeep>
+<kill-rewards>
+    <kill-reward>
+        <item>golden apple</item>
+    </kill-reward>
+    <kill-reward>
+        <item>diamond</item>
+    </kill-reward>
+    <kill-reward>
+        <item amount="10">tnt</item>
+    </kill-reward>
+    <kill-reward>
+        <item amount="10">arrow</item>
+    </kill-reward>
+</kill-rewards>
+<regions>
+    <point id="hierro">10.5,56.5,0.5</point>
+    <cuboid id="play" min="46,0,72" max="-39,93,-71"/>
+    <union id="no-play">
+        <negative>
+            <cuboid min="46,0,72" max="-39,93,-71"/>
+        </negative>
+    </union>
+    <cuboid id="no-agua" min="46,74,24" max="-39,93,-23"/> -23 24
+    <apply block="never" message="You may not interact with blocks outside the playing field." region="no-play">
+    </apply>
+    <apply region="play" block="tnt-immune" />
+    <apply region="no-agua" message="You cant place water above height 74" block-place="deny-water" />
+</regions>
+<filters>
+    <not id="deny-water">
+        <all>
+            <material>water</material>
+            <material>stationary water</material>
+        </all>
+    </not>
+    <not id="tnt-immune">
+        <all>
+            <any>
+                <material>stained clay:5</material>
+                <material>stained clay:12</material>
+                <material>wool:10</material>
+                <material>wool:8</material>
+                <material>spruce wood stairs</material>
+                <material>wood:1</material>
+                <material>log:1</material>
+                <material>log:13</material>
+                <material>wood step:1</material>
+            </any>
+            <cause>explosion</cause>
+        </all>
+    </not>
+</filters>
+<destroyables owner="blue-team">
+    <destroyable name="Endstone Monument" materials="ender stone">
+        <region>
+            <cuboid min="-27,61,64" max="-29,70,66"/>
+        </region>
+    </destroyable>
+    <destroyable name="Obsidian Monument" materials="obsidian">
+        <region>
+            <cuboid min="29,68,38" max="28,71,39"/>
+        </region>
+    </destroyable>
+</destroyables>
+<destroyables owner="red-team">
+    <destroyable name="Endstone Monument" materials="ender stone">
+        <region>
+            <cuboid min="-27,61,-63" max="-29,70,-65"/>
+        </region>
+    </destroyable>
+    <destroyable name="Obsidian Monument" materials="obsidian">
+        <region>
+            <cuboid min="29,68,-37" max="28,71,-38"/>
+        </region>
+    </destroyable>
+</destroyables>
+<renewables>
+    <renewable rate="3">
+        <region>
+            <cuboid min="27,56,-66" max="30,60,67"/>
+        </region>
+        <renew-filter>
+            <any>
+                <material>gold block</material>
+            </any>
+        </renew-filter>
+    </renewable>
+</renewables>
+<itemremove>
+    <item>iron pickaxe</item>
+    <item>iron axe</item>
+    <item>gold spade</item>
+    <item>wood</item>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>cooked beef</item>
+    <item>stained clay</item>
+    <item>leather helmet</item>
+    <item>stained clay</item>
+    <item>wool</item>
+    <item>wood</item>
+    <item>log</item>
+    <item>wood step</item>
+    <item>obsidian</item>
+    <item>ender stone</item>
+    <item>seeds</item>
+    <item>red rose</item>
+    <item>stick</item>
+    <item>yellow flower</item>
+    <item>quartz block</item>
+    <item>brown mushroom</item>
+    <item>dirt</item>
+    <item>cobblestone</item>
+    <item>sapling</item>
+</itemremove>
+</map>
