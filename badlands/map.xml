@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Badlands</name>
-<version>2.2.8</version>
+<version>2.2.9</version>
 <objective>Be the first team to gain 2500 points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
@@ -22,19 +22,15 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
-        <leggings unbreakable="true" enchantment="protection projectile:3" material="chainmail leggings"/>
-		<boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="4">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="334CB2" material="leather helmet"/>
-        <chestplate unbreakable="true" color="334CB2" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="993333" material="leather helmet"/>
-        <chestplate unbreakable="true" color="993333" material="leather chestplate"/>
     </kit>
 </kits>
 <spawns>
@@ -43,12 +39,12 @@
             <cylinder base="-159.5,28,103.5" radius="1" height="1"/>
         </region>
     </default>
-    <spawn team="blue-team" kit="blue-kit">
+    <spawn team="blue-team" kit="spawn-kit">
         <region yaw="180">
             <cylinder base="-230.5,24,92.5" radius="1" height="1"/>
         </region>
     </spawn>
-    <spawn team="red-team" kit="red-kit">
+    <spawn team="red-team" kit="spawn-kit">
         <region yaw="90">
             <cylinder base="-170.5,24,32.5" radius="1" height="1"/>
         </region>
@@ -57,41 +53,43 @@
 <regions>
     <apply block="never"/>
 </regions>
-<control-points capture-time="5s" neutral-state="true" show-progress="true" time-multiplier="0.75" points="3" incremental="true" required="false">
-    <control-point name="Top">
-        <capture>
-            <cuboid min="-220,31,43" max="-213,37,50"/>
-        </capture>
-        <progress>
-            <cuboid min="-220,31,43" max="-213,37,50"/>
-        </progress>
-        <captured>
-            <cuboid min="-220,31,43" max="-213,37,50"/>
-        </captured>
-    </control-point>
-    <control-point name="Cliff">
-        <capture>
-            <cuboid min="-198,24,65" max="-191,30,72"/>
-        </capture>
-        <progress>
-            <cuboid min="-198,24,65" max="-191,30,72"/>
-        </progress>
-        <captured>
-            <cuboid min="-198,24,65" max="-191,30,72"/>
-        </captured>
-    </control-point>
-    <control-point name="Cave">
-        <capture>
-            <cuboid min="-222,19,41" max="-215,25,48"/>
-        </capture>
-        <progress>
-            <cuboid min="-222,19,41" max="-215,25,48"/>
-        </progress>
-        <captured>
-            <cuboid min="-222,19,41" max="-215,25,48"/>
-        </captured>
-    </control-point>
-</control-points>
+<king>
+    <hills required="false" capture-time="5s" points="3" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+        <hill name="Top">
+            <capture>
+                <cuboid min="-220,31,43" max="-213,37,50"/>
+            </capture>
+            <progress>
+                <cuboid min="-220,31,43" max="-213,37,50"/>
+            </progress>
+            <captured>
+                <cuboid min="-220,31,43" max="-213,37,50"/>
+            </captured>
+        </hill>
+        <hill name="Cliff">
+            <capture>
+                <cuboid min="-198,24,65" max="-191,30,72"/>
+            </capture>
+            <progress>
+                <cuboid min="-198,24,65" max="-191,30,72"/>
+            </progress>
+            <captured>
+                <cuboid min="-198,24,65" max="-191,30,72"/>
+            </captured>
+        </hill>
+        <hill name="Cave">
+            <capture>
+                <cuboid min="-222,19,41" max="-215,25,48"/>
+            </capture>
+            <progress>
+                <cuboid min="-222,19,41" max="-215,25,48"/>
+            </progress>
+            <captured>
+                <cuboid min="-222,19,41" max="-215,25,48"/>
+            </captured>
+        </hill>
+    </hills>
+</king>
 <score>
     <limit>2500</limit>
 </score>
@@ -111,7 +109,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item material="arrow" amount="8"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>

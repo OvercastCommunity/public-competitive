@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Mush</name>
-<version>1.0.6</version>
+<version>1.0.7</version>
 <objective>Capture the hills to be the first to reach 2500 points!</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -21,35 +21,31 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
-		<boots unbreakable="true" enchantment="protection fall:1" material="iron boots"/>
+        <boots unbreakable="true" material="iron boots">
+            <enchantment>feather_falling</enchantment>
+        </boots>
         <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet color="0066cc" unbreakable="true" material="leather helmet"/>
-        <chestplate color="0066cc" unbreakable="true" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet color="cd0000" unbreakable="true" material="leather helmet"/>
-        <chestplate color="cd0000" unbreakable="true" material="leather chestplate"/>
     </kit>
 </kits>
 <spawns>
-    <default yaw="-45">
-        <region>
+    <default>
+        <region yaw="-45">
             <point>-403.5,30,-324.5</point>
         </region>
     </default>
-    <spawn team="blue-team" kit="blue-kit" yaw="-45">
-        <region>
+    <spawn team="blue-team" kit="spawn-kit">
+        <region yaw="-45">
             <point>-436.5,11,-357.5</point>
         </region>
     </spawn>
-    <spawn team="red-team" kit="red-kit" yaw="135">
-        <region>
+    <spawn team="red-team" kit="spawn-kit">
+        <region yaw="135">
             <point>-370.5,11,-291.5</point>
         </region>
     </spawn>
@@ -77,41 +73,43 @@
     <apply region="b-bottom" velocity="0.2,1.7,-0.2"/>
     <apply block="never"/>
 </regions>
-<control-points incremental="true" show-progress="true" neutral-state="true" required="false" capture-time="5s" time-multiplier="0.75" points="3">
-    <control-point name="Point A">
-        <capture>
-            <cuboid min="-432,11,-296" max="-424,15,-304"/>
-        </capture>
-        <progress>
-            <cuboid min="-432,10,-296" max="-424,15,-304"/>
-        </progress>
-        <captured>
-            <cuboid min="-408,16,-278" max="-450,29,-320"/>
-        </captured>
-    </control-point>
-    <control-point name="Middle">
-        <capture>
-            <cuboid min="-399,11,-329" max="-408,15,-320"/>
-        </capture>
-        <progress>
-            <cuboid min="-399,10,-329" max="-408,15,-320"/>
-        </progress>
-        <captured>
-            <cuboid min="-400,24,-328" max="-407,29,-321"/>
-        </captured>
-    </control-point>
-    <control-point name="Point B">
-        <capture>
-            <cuboid min="-375,11,-353" max="-383,15,-345"/>
-        </capture>
-        <progress>
-            <cuboid min="-375,10,-353" max="-383,15,-345"/>
-        </progress>
-        <captured>
-            <cuboid min="-399,16,-371" max="-357,29,-329"/>
-        </captured>
-    </control-point>
-</control-points>
+<king>
+    <hills required="false" capture-time="5s" points="3" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+        <hill name="Point A">
+            <capture>
+                <cuboid min="-432,11,-296" max="-424,15,-304"/>
+            </capture>
+            <progress>
+                <cuboid min="-432,10,-296" max="-424,15,-304"/>
+            </progress>
+            <captured>
+                <cuboid min="-408,16,-278" max="-450,29,-320"/>
+            </captured>
+        </hill>
+        <hill name="Middle">
+            <capture>
+                <cuboid min="-399,11,-329" max="-408,15,-320"/>
+            </capture>
+            <progress>
+                <cuboid min="-399,10,-329" max="-408,15,-320"/>
+            </progress>
+            <captured>
+                <cuboid min="-400,24,-328" max="-407,29,-321"/>
+            </captured>
+        </hill>
+        <hill name="Point B">
+            <capture>
+                <cuboid min="-375,11,-353" max="-383,15,-345"/>
+            </capture>
+            <progress>
+                <cuboid min="-375,10,-353" max="-383,15,-345"/>
+            </progress>
+            <captured>
+                <cuboid min="-399,16,-371" max="-357,29,-329"/>
+            </captured>
+        </hill>
+    </hills>
+</king>
 <score>
     <limit>2500</limit>
 </score>
@@ -131,7 +129,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="8" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>
