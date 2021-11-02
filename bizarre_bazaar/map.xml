@@ -1,8 +1,9 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Bizarre Bazaar</name>
-<version>1.1.0</version>
+<version>1.1.2</version>
 <objective>Hold the flag for 200 seconds to win!</objective>
-<game>King of the Flag</game>
+<gamemode>kotf</gamemode>
+<edition>tournament</edition>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -19,25 +20,19 @@
     <kit id="spawn-kit">
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
-		<item slot="1" unbreakable="true" material="bow"/>
+        <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="20" material="arrow"/>
-        <leggings locked="true" unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
-		<boots locked="true" unbreakable="true" material="iron boots">
-			<enchantment level="2">feather_falling</enchantment>
-		</boots>
+        <boots locked="true" unbreakable="true" material="iron boots">
+            <enchantment level="2">feather_falling</enchantment>
+        </boots>
         <health>20</health>
         <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet locked="true" unbreakable="true" color="334CB2" material="leather helmet"/>
-        <chestplate locked="true" unbreakable="true" color="334CB2" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet locked="true" unbreakable="true" color="993333" material="leather helmet"/>
-        <chestplate locked="true" unbreakable="true" color="993333" material="leather chestplate"/>
     </kit>
     <kit id="flag-kit" force="true">
         <effect amplifier="-3">health boost</effect>
@@ -49,28 +44,31 @@
     </kit>
 </kits>
 <spawns>
-    <default yaw="-45">
-        <region>
+    <default>
+        <region yaw="-45">
             <cylinder base="239.5,27,-16.5" radius="1" height="1"/>
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit" yaw="-135" filter="no-flag">
-        <region>
+    <spawn team="blue" kit="spawn-kit" filter="has-flag">
+        <region yaw="-135">
             <point>237.5,26,79.5</point>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit" yaw="45" filter="no-flag">
-        <region>
+    <spawn team="red" kit="spawn-kit" filter="has-flag">
+        <region yaw="45">
             <point>335.5,26,-18.5</point>
         </region>
     </spawn>
 </spawns>
 <filters>
-	<not id="no-flag">
-		<same-team>
-			<carrying-flag>flag</carrying-flag>
-		</same-team>
-	</not>
+    <any id="has-flag">
+        <carrying-flag>flag</carrying-flag>
+        <not>
+            <same-team>
+                <carrying-flag>flag</carrying-flag>
+            </same-team>
+        </not>
+    </any>
     <not id="no-use">
         <any>
             <material>beacon</material>
@@ -95,9 +93,9 @@
           drop-kit="reset-health"
           flag-proximity-metric="none"
           show-respawn-on-pickup="true">
-            <post id="mid-post" name="Mid Post" return-time="0s" respawn-time="20s">286,20,30</post>
-            <post id="nw-post" name="Northwest Post" return-time="0s" respawn-time="20s">262,23,6</post>
-            <post id="se-post" name="Southeast Post" return-time="0s" respawn-time="20s">310,23,54</post>
+        <post id="mid-post" name="Mid Post" return-time="0s" respawn-time="20s">286,20,30</post>
+        <post id="nw-post" name="Northwest Post" return-time="0s" respawn-time="20s">262,23,6</post>
+        <post id="se-post" name="Southeast Post" return-time="0s" respawn-time="20s">310,23,54</post>
     </flag>
 </flags>
 <score>
@@ -119,15 +117,14 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="10" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="5s" auto="true"/>
-<respawn spectate="true">
-	<message>
-		{"translate":"death.respawn.confirmed.waiting.flagDropped"}
-	</message>
+<respawn delay="5s" auto="true" spectate="true">
+    <message>
+        {"translate":"death.respawn.confirmed.waiting.flagDropped"}
+    </message>
 </respawn>
 </map>
