@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Desert Sanctuary TE</name>
-<version>1.4.3</version>
+<version>1.4.4</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -20,9 +20,9 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="20" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots">
             <enchantment level="2">feather_falling</enchantment>
@@ -112,9 +112,9 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="8" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="5s" auto="true">
+<respawn delay="5s" auto="true" blackout="true">
     <message>
         {"translate":"death.respawn.confirmed.waiting.flagDropped"}
     </message>
