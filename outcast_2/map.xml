@@ -1,10 +1,11 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>OutCast 2</name>
-<version>1.5.4</version>
+<version>1.5.5</version>
 <objective>Control the flag for 200 seconds to win!</objective>
-<game>King of the Flag</game>
+<gamemode>kotf</gamemode>
+<edition>tournament</edition>
 <authors>
-    <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!--  Strangey  -->
+    <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
 </authors>
 <contributors>
     <contributor contribution="Aesthetic help" uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -16,29 +17,23 @@
 </teams>
 <kits>
     <kit id="spawn-kit">
-        <clear-items/>
+        <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="20" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots">
             <enchantment level="2">feather_falling</enchantment>
         </boots>
-        <health>20</health>
-        <game-mode>adventure</game-mode>
         <effect duration="6">heal</effect>
         <effect duration="6">damage resistance</effect>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit" force="true">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit" force="true">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
+        <health>20</health>
+        <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-kit" force="true">
         <effect>slowness</effect>
@@ -46,8 +41,8 @@
         <effect duration="3" amplifier="2">absorption</effect>
     </kit>
     <kit id="reset-health" force="true">
-        <effect duration="1" amplifier="0">slowness</effect>
-        <effect duration="1" amplifier="0">health boost</effect>
+        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0" amplifier="0">health boost</effect>
         <effect duration="1" amplifier="10">regeneration</effect>
     </kit>
 </kits>
@@ -57,12 +52,12 @@
             <cylinder base="267,84,-155.5" radius="1" height="0"/>
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit" filter="has-flag">
+    <spawn team="blue" kit="spawn-kit" filter="has-flag">
         <region yaw="-90">
             <point>120.5,48,-155.5</point>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit" filter="has-flag">
+    <spawn team="red" kit="spawn-kit" filter="has-flag">
         <region yaw="90">
             <point>296.5,48,-155.5</point>
         </region>
@@ -70,7 +65,7 @@
 </spawns>
 <filters>
     <any id="has-flag">
-        <carrying-flag>flag</carrying-flag>
+        <carrying-flag id="carrying-flag">flag</carrying-flag>
         <not>
             <same-team>
                 <carrying-flag>flag</carrying-flag>
@@ -95,14 +90,21 @@
           drop-kit="reset-health"
           flag-proximity-metric="none"
           show-respawn-on-pickup="true">
-            <post id="center-post" name="Center Post" return-time="0s" respawn-time="20s">208.5,27,-155.5</post>
-            <post id="north-post" name="North Platform" return-time="0s" respawn-time="20s">208.5,39,-182.5</post>
-            <post id="south-post" name="South Platform" return-time="0s" respawn-time="20s">208.5,39,-128.5</post>
+        <post id="center-post" name="Center Platform" return-time="0s" respawn-time="20s">208.5,27,-155.5</post>
+        <post id="north-post" name="North Platform" return-time="0s" respawn-time="20s">208.5,39,-182.5</post>
+        <post id="south-post" name="South Platform" return-time="0s" respawn-time="20s">208.5,39,-128.5</post>
     </flag>
 </flags>
 <score>
     <limit>200</limit>
 </score>
+<portals sound="false">
+    <portal x="@325" z="@-156" filter="carrying-flag">
+        <region>
+            <below y="17"/>
+        </region>
+    </portal>
+</portals>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -120,7 +122,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="10" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
 <respawn delay="5s" auto="true" spectate="true">
     <message>
