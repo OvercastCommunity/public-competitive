@@ -1,7 +1,7 @@
 <map proto="1.4.2">
 <name>Cobalt</name> <!-- Cobalt - Colorblind -->
-<version>2.2.3</version>
-<objective>Reach 2500 points before the opposing team!</objective>
+<version>2.2.4</version>
+<objective>Reach 1000 points before the opposing team!</objective>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
 </authors>
@@ -69,7 +69,7 @@
     <apply block="never"/>
 </regions>
 <king>
-    <hills required="false" capture-time="5s" points="3" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
         <hill name="West Hill" capture="cap-region-west" progress="cap-region-west">
             <captured>
                 <cuboid min="259,34,92" max="266,41,99"/>
@@ -88,7 +88,7 @@
     </hills>
 </king>
 <score>
-    <limit>2500</limit>
+    <limit>1000</limit>
 </score>
 <spawners>
     <spawner id="gapple-spawner" spawn-region="mid-spawn-area" player-region="mid-spawn-radius" max-entities="9999" delay="6s">
