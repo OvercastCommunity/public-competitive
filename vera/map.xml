@@ -1,0 +1,120 @@
+<map proto="1.4.2">
+<name>Vera</name>
+<version>1.0.5</version>
+<objective>Capture the enemy's flag!</objective>
+<time result="score" overtime="2m" max-overtime="8m">12m</time>
+<authors>
+    <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
+</authors>
+<contributors>
+    <contributor uuid="d9f76ee6-975a-45ab-bbda-763600738a73" contribution="XML"/> <!-- Aleeay -->
+</contributors>
+<teams>
+    <team id="blue" color="blue" max="5">Blue</team>
+    <team id="red" color="dark red" max="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet locked="true" unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate locked="true" unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings locked="true" unbreakable="true" material="chainmail leggings">
+            <enchantment level="4">projectile_protection</enchantment>
+        </leggings>
+        <boots locked="true" unbreakable="true" material="iron boots"/>
+        <effect duration="4" amplifier="255">resistance</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <kit id="flag-pickup" force="true">
+        <effect>slowness</effect>
+    </kit>
+    <kit id="flag-drop" force="true">
+        <effect duration="0">slowness</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="90">
+            <cylinder base="-18.5,19,71.5" radius="0.5" height="1"/>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="0">
+            <block>20.5,16,-42.5</block>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="180">
+            <block>20.5,16,51.5</block>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
+</filters>
+<regions>
+    <point id="gapple-spawn-region">0.5,21,4.5</point>
+    <cylinder id="gapple-player-region" base="0.5,20,4.5" radius="8.5" height="6"/>
+    <point id="arrow-spawn-region">30.5,22,4.5</point>
+    <cylinder id="arrow-player-region" base="30.5,21,4.5" radius="6.5" height="6"/>
+    <cylinder id="blue-net" base="20.5,20,-40.5" radius="1" height="2.5"/>
+    <cylinder id="red-net" base="20.5,20,49.5" radius="1" height="2.5"/>
+    <apply block="never" use="never"/>
+</regions>
+<flags flag-proximity-metric="none" net-proximity-metric="none">
+    <flag color="blue"
+          id="blue-flag"
+          name="Blue Flag"
+          owner="blue"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-drop">
+        <post pickup-filter="only-red" recover-time="12s" respawn-time="10s">20.5,20,-40.5</post>
+        <net region="red-net" points="1"/>
+    </flag>
+    <flag color="red"
+          id="red-flag"
+          name="Red Flag"
+          owner="red"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-drop">
+        <post pickup-filter="only-blue" recover-time="12s" respawn-time="10s">20.5,20,49.5</post>
+        <net region="blue-net" points="1"/>
+    </flag>
+</flags>
+<score/>
+<spawners>
+    <spawner spawn-region="gapple-spawn-region" player-region="gapple-player-region" max-entities="1" delay="10s">
+        <item material="golden apple"/>
+    </spawner>
+    <spawner spawn-region="arrow-spawn-region" player-region="arrow-player-region" max-entities="8" delay="3s">
+        <item material="arrow"/>
+    </spawner>
+</spawners>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="5" material="arrow"/>
+</kill-reward>
+<respawn delay="5s" auto="true"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>

@@ -1,0 +1,128 @@
+<map proto="1.4.2">
+<name>Flag Football: Fantasy</name>
+<version>1.0.4</version>
+<objective>Score as many times as possible within eight minutes!</objective>
+<time result="score" overtime="1m" max-overtime="6m">8m</time>
+<gamemode>ffb</gamemode>
+<authors>
+    <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
+</authors>
+<contributors>
+    <contributor uuid="430ec559-364a-4363-ac7a-2529050440ac" contribution="XML"/> <!-- mame_BT -->
+</contributors>
+<teams>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="default-kit">
+        <effect>night vision</effect>
+    </kit>
+    <kit id="spawn-kit" parents="default-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="16" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment>projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <game-mode>adventure</game-mode>
+    </kit>
+</kits>
+<spawns>
+    <default kit="default-kit">
+        <region yaw="-135">
+            <point>15.5,57,318.5</point>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="45">
+            <point id="blue-spawn">56.5,17,287.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="-135">
+            <point id="red-spawn">20.5,17,323.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <all id="blue-has-flag">
+        <team id="only-blue">blue</team>
+        <carrying-flag>flag</carrying-flag>
+    </all>
+    <all id="red-has-flag">
+        <team id="only-red">red</team>
+        <carrying-flag>flag</carrying-flag>
+    </all>
+</filters>
+<regions>
+    <cylinder id="blue-capture" base="56.5,17,287.5" radius="1.5" height="2.5"/>
+    <cylinder id="red-capture" base="20.5,17,323.5" radius="1.5" height="2.5"/>
+    <cylinder id="blue-net" base="72.5,9.5,339.5" radius="2.5" height="3.5"/>
+    <cylinder id="red-net" base="4.5,9.5,271.5" radius="2.5" height="3.5"/>
+    <circle id="blue-side" center="72.5,339.5" radius="25"/>
+    <circle id="red-side" center="4.5,271.5" radius="25"/>
+    <apply block="never" use="never"/>
+</regions>
+<flags>
+    <flag id="flag"
+          name="Flag"
+          color="yellow"
+          shared="true"
+          flag-proximity-metric="none"
+          net-proximity-metric="none">
+        <post recover-time="8s" respawn-time="4s">
+            <point>38.5,11,305.5</point>
+        </post>
+        <pickup-kit force="true">
+            <effect>speed</effect>
+        </pickup-kit>
+        <drop-kit force="true">
+            <effect duration="0">speed</effect>
+        </drop-kit>
+        <net points="1" region="blue-capture" capture-filter="only-blue"/>
+        <net points="1" region="red-capture" capture-filter="only-red"/>
+    </flag>
+</flags>
+<score/>
+<portals>
+    <portal filter="blue-has-flag" region="blue-net" destination="blue-spawn" yaw="@45"/>
+    <portal filter="red-has-flag" region="red-net" destination="red-spawn" yaw="@-135"/>
+    <portal filter="only-red" region="blue-net" x="@72.5" y="@0" z="@339.5"/>
+    <portal filter="only-blue" region="red-net" x="@4.5" y="@0" z="@271.5"/>
+</portals>
+<proximity-alarms>
+    <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="red-side" detect="blue-has-flag" notify="blue-has-flag"/>
+    <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="blue-side" detect="red-has-flag" notify="red-has-flag"/>
+</proximity-alarms>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="6" material="arrow"/>
+</kill-reward>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<respawn delay="3s" auto="true"/>
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
+</map>
