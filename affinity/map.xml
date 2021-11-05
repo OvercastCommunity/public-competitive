@@ -1,7 +1,8 @@
 <map proto="1.4.2">
 <name>Affinity</name>
-<version>1.0.11</version>
+<version>1.0.12</version>
 <objective>Control the flag for 200 seconds to win!</objective>
+<gamemode>kotf</gamemode>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!--  Zero_Frosty  -->
 </authors>
