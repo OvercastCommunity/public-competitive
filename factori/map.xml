@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Factori</name>
-<version>1.2.8</version>
+<version>1.2.10</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="0b8f95fa-0f40-4f28-9fd0-b8e243bb6800"/> <!-- Fouled -->
@@ -20,22 +20,16 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="3">heal</effect>
         <effect duration="4">damage resistance</effect>
         <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet color="0066cc" unbreakable="true" material="leather helmet"/>
-        <chestplate color="0066cc" unbreakable="true" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet color="cd0000" unbreakable="true" material="leather helmet"/>
-        <chestplate color="cd0000" unbreakable="true" material="leather chestplate"/>
     </kit>
 </kits>
 <spawns>
@@ -44,12 +38,12 @@
             <point>-24,27,-31.5</point>
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit">
+    <spawn team="blue" kit="spawn-kit">
         <region yaw="0">
             <point>-11.5,9.5,-59.5</point>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit">
+    <spawn team="red" kit="spawn-kit">
         <region yaw="180">
             <point>-75.5,9.5,-3.5</point>
         </region>
@@ -63,41 +57,43 @@
     <apply block="never"/>
     <material id="only-wool">wool</material>
 </regions>
-<control-points incremental="true" show-progress="true" neutral-state="true" required="false" capture-time="5s" points="1" visual-materials="only-wool">
-    <control-point name="Point A">
-        <capture>
-            <cuboid min="-57,10,-54" max="-52,12,-49"/>
-        </capture>
-        <progress>
-            <cylinder base="-54.5,9,-51.5" radius="3" height="1"/>
-        </progress>
-        <captured>
-            <cuboid min="-52,29,-52" max="-57,23,-51"/>
-        </captured>
-    </control-point>
-    <control-point name="Middle">
-        <capture>
-            <cuboid min="-47,5,-35" max="-40,8,-28"/>
-        </capture>
-        <progress>
-            <cuboid min="-47,5,-35" max="-40,8,-28"/>
-        </progress>
-        <captured>
-            <cuboid min="-48,3,-36" max="-39,6,-27"/>
-        </captured>
-    </control-point>
-    <control-point name="Point B">
-        <capture>
-            <cuboid min="-30,10,-9" max="-35,12,-14"/>
-        </capture>
-        <progress>
-            <cylinder base="-32.5,9,-11.5" radius="3" height="1"/>
-        </progress>
-        <captured>
-            <cuboid min="-35,29,-11" max="-30,23,-12"/>
-        </captured>
-    </control-point>
-</control-points>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false" visual-materials="only-wool">
+        <hill name="Point A">
+            <capture>
+                <cuboid min="-57,10,-54" max="-52,12,-49"/>
+            </capture>
+            <progress>
+                <cylinder base="-54.5,9,-51.5" radius="3" height="1"/>
+            </progress>
+            <captured>
+                <cuboid min="-52,29,-52" max="-57,23,-51"/>
+            </captured>
+        </hill>
+        <hill name="Middle">
+            <capture>
+                <cuboid min="-47,5,-35" max="-40,8,-28"/>
+            </capture>
+            <progress>
+                <cuboid min="-47,5,-35" max="-40,8,-28"/>
+            </progress>
+            <captured>
+                <cuboid min="-48,3,-36" max="-39,6,-27"/>
+            </captured>
+        </hill>
+        <hill name="Point B">
+            <capture>
+                <cuboid min="-30,10,-9" max="-35,12,-14"/>
+            </capture>
+            <progress>
+                <cylinder base="-32.5,9,-11.5" radius="3" height="1"/>
+            </progress>
+            <captured>
+                <cuboid min="-35,29,-11" max="-30,23,-12"/>
+            </captured>
+        </hill>
+    </hills>
+</king>
 <score>
     <limit>750</limit>
 </score>
@@ -117,12 +113,12 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="6" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
+<respawn delay="5s" auto="true" blackout="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="5s" auto="true" blackout="true"/>
 <gamerules>
     <doFireTick>false</doFireTick>
 </gamerules>

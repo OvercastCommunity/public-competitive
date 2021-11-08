@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Sandy</name>
-<version>1.0.4</version>
+<version>1.0.7</version>
 <objective>Be the first to 750 points</objective>
 <authors>
     <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383" /> <!-- XUPH -->
@@ -16,22 +16,15 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="10">resistance</effect>
         <effect duration="4" amplifier="10">regeneration</effect>
-        <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
     </kit>
 </kits>
 <spawns>
@@ -40,66 +33,68 @@
             <cylinder base="-891.5,178,-696.5" radius="1" height="1" />
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit">
+    <spawn team="blue" kit="spawn-kit">
         <region yaw="-90">
-            <block>-921.5,155.5,-664.5</block>
+            <block>-921.5,155.75,-664.5</block>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit">
+    <spawn team="red" kit="spawn-kit">
         <region yaw="90">
-            <block>-861.5,155.5,-664.5</block>
+            <block>-861.5,155.75,-664.5</block>
         </region>
     </spawn>
 </spawns>
 <regions>
     <apply block="never" use="never"/>
 </regions>
-<control-points incremental="true" show-progress="true" neutral-state="true" required="false" capture-time="5s" points="1">
-    <control-point name="Point A">
-        <capture>
-            <cuboid min="-888,152,-685" max="-895,155,-690" />
-            <cuboid min="-889,152,-684" max="-894,155,-691" />
-        </capture>
-        <progress>
-            <cuboid min="-888,152,-685" max="-895,155,-690" />
-            <cuboid min="-889,152,-684" max="-894,155,-691" />
-        </progress>
-        <captured>
-            <cuboid min="-888,152,-685" max="-895,155,-690" />
-            <cuboid min="-889,152,-684" max="-894,155,-691" />
-            <cuboid min="-887,152,-696" max="-896,173,-693" />
-        </captured>
-    </control-point>
-    <control-point name="Middle">
-        <capture>
-            <cuboid min="-889,144,-661" max="-894,147,-668" />
-            <cuboid min="-895,144,-667" max="-888,147,-662" />
-        </capture>
-        <progress>
-            <cuboid min="-889,144,-661" max="-894,147,-668" />
-            <cuboid min="-895,144,-667" max="-888,147,-662" />
-        </progress>
-        <captured>
-            <cuboid min="-889,144,-661" max="-894,147,-668" />
-            <cuboid min="-895,144,-667" max="-888,147,-662" />
-        </captured>
-    </control-point>
-    <control-point name="Point B">
-        <capture>
-            <cuboid min="-889,152,-638" max="-894,155,-645" />
-            <cuboid min="-888,152,-639" max="-895,155,-644" />
-        </capture>
-        <progress>
-            <cuboid min="-889,152,-638" max="-894,155,-645" />
-            <cuboid min="-888,152,-639" max="-895,155,-644" />
-        </progress>
-        <captured>
-            <cuboid min="-889,152,-638" max="-894,155,-645" />
-            <cuboid min="-888,152,-639" max="-895,155,-644" />
-            <cuboid min="-887,152,-636" max="-896,173,-633" />
-        </captured>
-    </control-point>
-</control-points>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+        <hill name="Point A">
+            <capture>
+                <cuboid min="-888,152,-685" max="-895,155,-690"/>
+                <cuboid min="-889,152,-684" max="-894,155,-691"/>
+            </capture>
+            <progress>
+                <cuboid min="-888,152,-685" max="-895,155,-690"/>
+                <cuboid min="-889,152,-684" max="-894,155,-691"/>
+            </progress>
+            <captured>
+                <cuboid min="-888,152,-685" max="-895,155,-690"/>
+                <cuboid min="-889,152,-684" max="-894,155,-691"/>
+                <cuboid min="-887,152,-696" max="-896,173,-693"/>
+            </captured>
+        </hill>
+        <hill name="Middle">
+            <capture>
+                <cuboid min="-889,144,-661" max="-894,147,-668"/>
+                <cuboid min="-895,144,-667" max="-888,147,-662"/>
+            </capture>
+            <progress>
+                <cuboid min="-889,144,-661" max="-894,147,-668"/>
+                <cuboid min="-895,144,-667" max="-888,147,-662"/>
+            </progress>
+            <captured>
+                <cuboid min="-889,144,-661" max="-894,147,-668"/>
+                <cuboid min="-895,144,-667" max="-888,147,-662"/>
+            </captured>
+        </hill>
+        <hill name="Point B">
+            <capture>
+                <cuboid min="-889,152,-638" max="-894,155,-645"/>
+                <cuboid min="-888,152,-639" max="-895,155,-644"/>
+            </capture>
+            <progress>
+                <cuboid min="-889,152,-638" max="-894,155,-645"/>
+                <cuboid min="-888,152,-639" max="-895,155,-644"/>
+            </progress>
+            <captured>
+                <cuboid min="-889,152,-638" max="-894,155,-645"/>
+                <cuboid min="-888,152,-639" max="-895,155,-644"/>
+                <cuboid min="-887,152,-636" max="-896,173,-633"/>
+            </captured>
+        </hill>
+    </hills>
+</king>
 <score>
     <limit>750</limit>
 </score>
@@ -119,7 +114,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="6" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
 <respawn delay="5s" auto="true" blackout="true"/>
 <hunger>

@@ -1,13 +1,10 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Command Redux</name>
-<version>1.0.1</version>
+<version>1.0.2</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!-- Reshif -->
 </authors>
-<contributors>
-    <contributor uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c"/> <!-- Blaszczak -->
-</contributors>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
     <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
@@ -18,9 +15,9 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="10">resistance</effect>
@@ -68,11 +65,13 @@
     </union>
     <apply block="never" use="never"/>
 </regions>
-<control-points incremental="true" show-progress="true" neutral-state="true" required="false" capture-time="5s" points="1">
-    <control-point name="Top" capture="top" progress="top"/>
-    <control-point name="Middle" capture="mid" progress="mid"/>
-    <control-point name="Bottom" capture="bot" progress="bot"/>
-</control-points>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+        <hill name="Top" capture="top" progress="top"/>
+        <hill name="Middle" capture="mid" progress="mid"/>
+        <hill name="Bottom" capture="bot" progress="bot"/>
+    </hills>
+</king>
 <score>
     <limit>750</limit>
 </score>
@@ -92,7 +91,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="6" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
 <respawn delay="5s" auto="true" blackout="true"/>
 <hunger>
