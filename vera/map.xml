@@ -1,8 +1,8 @@
 <map proto="1.4.2">
 <name>Vera</name>
-<version>1.0.5</version>
+<version>1.0.6</version>
 <objective>Capture the enemy's flag!</objective>
-<time result="score" overtime="2m" max-overtime="8m">12m</time>
+<time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
 </authors>
