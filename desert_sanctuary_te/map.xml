@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Desert Sanctuary TE</name>
-<version>1.4.4</version>
+<version>1.5</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -12,7 +12,7 @@
 </contributors>
 <teams>
     <team id="blue" color="blue" min="6" max="7" max-overfill="7">Blue</team>
-    <team id="red" color="red" min="6" max="7" max-overfill="7">Red</team>
+    <team id="red" color="dark red" min="6" max="7" max-overfill="7">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -21,6 +21,8 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="4">projectile_protection</enchantment>
         </leggings>
@@ -30,21 +32,13 @@
         <health>20</health>
         <game-mode>adventure</game-mode>
     </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet color="6E6EF9" unbreakable="true" material="leather helmet"/>
-        <chestplate color="6E6EF9" unbreakable="true" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet color="AF002A" unbreakable="true" material="leather helmet"/>
-        <chestplate color="AF002A" unbreakable="true" material="leather chestplate"/>
-    </kit>
     <kit id="flag-kit" force="true">
         <effect amplifier="-3">health boost</effect>
         <effect duration="3" amplifier="2">absorption</effect>
     </kit>
     <kit id="reset-health" force="true">
-        <effect duration="1" amplifier="0">health boost</effect>
-        <effect duration="2" amplifier="10">regeneration</effect>
+        <effect duration="0" amplifier="0">health boost</effect>
+        <effect duration="1" amplifier="10">regeneration</effect>
     </kit>
 </kits>
 <spawns>
@@ -53,12 +47,12 @@
             <cylinder base="11.5,51,24.5" radius="2" height="0"/>
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit" filter="has-flag">
+    <spawn team="blue" kit="spawn-kit" filter="has-flag">
         <region yaw="0">
             <point>11.5,16,-47.5</point>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit" filter="has-flag">
+    <spawn team="red" kit="spawn-kit" filter="has-flag">
         <region yaw="180">
             <point>11.5,16,96.5</point>
         </region>
@@ -82,15 +76,15 @@
           name="Flag"
           color="purple"
           shared="true"
-          post="centre-platform"
+          post="mid-post"
           points-rate="1"
           pickup-kit="flag-kit"
           drop-kit="reset-health"
           flag-proximity-metric="none"
           show-respawn-on-pickup="true">
-        <post id="centre-platform" name="Centre Platform" return-time="0s" respawn-time="20s">11.5,9,24.5</post>
-        <post id="east-platform" name="East Platform" return-time="0s" respawn-time="20s">36.5,14,24.5</post>
-        <post id="west-platform" name="West Platform" return-time="0s" respawn-time="20s">-13.5,14,24.5</post>
+        <post id="mid-post" name="Mid Post" return-time="0s" respawn-time="20s">11.5,9,24.5</post>
+        <post id="east-post" name="East Post" return-time="0s" respawn-time="20s">36.5,14,24.5</post>
+        <post id="west-post" name="West Post" return-time="0s" respawn-time="20s">-13.5,14,24.5</post>
     </flag>
 </flags>
 <score>
@@ -105,6 +99,7 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>
@@ -114,7 +109,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="5s" auto="true" blackout="true">
+<respawn delay="5s" spectate="true" auto="true">
     <message>
         {"translate":"death.respawn.confirmed.waiting.flagDropped"}
     </message>
