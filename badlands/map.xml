@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Badlands</name>
-<version>2.2.10</version>
+<version>2.2.11</version>
 <objective>Be the first team to gain 2500 points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  Nixani  -->
@@ -28,7 +28,9 @@
         <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="4">projectile_protection</enchantment>
         </leggings>
-        <boots unbreakable="true" material="iron boots"/>
+        <boots unbreakable="true" material="iron boots">
+            <enchantment>feather_falling</enchantment>
+        </boots>
         <effect duration="4" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
