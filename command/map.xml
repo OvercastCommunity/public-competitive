@@ -1,103 +1,100 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Command</name>
-<version>1.0.0</version>
-<gamemode>koth</gamemode>
+<version>2.0.4</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
-	<author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
+    <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!-- Reshif -->
 </authors>
+<contributors>
+    <contributor uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c" contribution="2.0 update"/> <!-- Blaszczak -->
+</contributors>
 <teams>
-    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
-    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
-    <kit id="main-kit">
-        <clear />
-        <game-mode>adventure</game-mode>
+    <kit id="default-kit">
+        <effect>night vision</effect>
+    </kit>
+    <kit id="spawn-kit" parents="default-kit">
+        <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
-        <item slot="2" amount="1" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
-        <chestplate unbreakable="true" material="chainmail chestplate"/>
-        <boots unbreakable="true" material="iron boots">
-            <enchantment level="2">protection projectile</enchantment>
-        </boots>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="4">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="10">resistance</effect>
         <effect duration="4" amplifier="10">regeneration</effect>
-    </kit>
-    <kit id="blue-kit" parents="main-kit">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <leggings unbreakable="true" color="0066cc" material="leather leggings"/>
-    </kit>
-    <kit id="red-kit" parents="main-kit">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <leggings unbreakable="true" color="cd0000" material="leather leggings"/>
+        <game-mode>adventure</game-mode>
     </kit>
 </kits>
+<spawns>
+    <default kit="default-kit">
+        <region yaw="180">
+            <point>0.5,27,27.5</point>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="90">
+            <point>37.5,10,0.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="-90">
+            <point>-36.5,10,0.5</point>
+        </region>
+    </spawn>
+</spawns>
+<regions>
+    <union id="top">
+        <cuboid min="-2,9,21" max="3,12,28"/>
+        <cuboid min="4,9,27" max="-3,12,22"/>
+    </union>
+    <union id="mid">
+        <cuboid min="-2,6,-3" max="3,9,4"/>
+        <cuboid min="4,6,3" max="-3,9,-2"/>
+    </union>
+    <union id="bot">
+        <cuboid min="-2,4,-21" max="3,7,-14"/>
+        <cuboid min="4,4,-15" max="-3,7,-20"/>
+    </union>
+    <apply block="never" use="never"/>
+</regions>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+        <hill name="Top" capture="top" progress="top"/>
+        <hill name="Middle" capture="mid" progress="mid"/>
+        <hill name="Bottom" capture="bot" progress="bot"/>
+    </hills>
+</king>
+<score>
+    <limit>750</limit>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="8" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
+<respawn delay="5s" auto="true" blackout="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<spawns>
-    <default>
-        <regions>
-            <point yaw="180">0.5,27,27.5</point>
-        </regions>
-    </default>
-    <spawn team="blue-team" kit="blue-kit">
-        <regions>
-            <point yaw="90">37.5,10,0.5</point>
-        </regions>
-    </spawn>
-    <spawn team="red-team" kit="red-kit">
-        <regions>
-            <point yaw="-90">-36.5,10,0.5</point>
-        </regions>
-    </spawn>
-</spawns>
-<respawn delay="5s"/>
-<filters>
-    <team id="only-blue">blue-team</team>
-    <team id="only-red">red-team</team>
-</filters>
-<regions>
-	<apply block="never"/>
-</regions>
-<control-points incremental="true" show-progress="true">
-    <control-point name="Top" neutral-state="true" required="false" capture-time="5s" points="1">
-        <capture><cuboid min="-3,10,28" max="4,13,21"/></capture>
-        <progress><cylinder base="0.5,8,24.5" radius="4" height="2"/></progress>
-        <captured><cylinder base="0.5,8,24.5" radius="4" height="2"/></captured>
-    </control-point>
-	<control-point name="Middle" neutral-state="true" required="false" capture-time="5s" points="1">
-        <capture><cuboid min="-3,7,4" max="4,7,-3"/></capture>
-        <progress><cylinder base="0.5,6,0.5" radius="4" height="2"/></progress>
-        <captured><cylinder base="0.5,6,0.5" radius="4" height="2"/></captured>
-    </control-point>
-	<control-point name="Bottom" neutral-state="true" required="false" capture-time="5s" points="1">
-        <capture><cuboid min="-3,5,-14" max="4,5,-21"/></capture>
-        <progress><cylinder base="0.5,4,-17.5" radius="4" height="2"/></progress>
-        <captured><cylinder base="0.5,4,-17.5" radius="4" height="2"/></captured>
-    </control-point>
-</control-points>
-<score>
-	<limit>750</limit>
-</score>
-<toolrepair>
-	<tool>stone sword</tool>
-	<tool>bow</tool>
-</toolrepair>
-<itemkeep>
-    <item>arrow</item>
-    <item>golden apple</item>
-</itemkeep>
-<itemremove>
-    <item>leather helmet</item>
-    <item>chainmail chestplate</item>
-    <item>leather leggings</item>
-    <item>iron boots</item>
-</itemremove>
 </map>

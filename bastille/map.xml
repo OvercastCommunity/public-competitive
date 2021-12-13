@@ -1,78 +1,112 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Bastille</name>
-<version>1.1.5</version>
-<gamemode>ctf</gamemode>
-<objective>Capture the enemy flag as many times before time runs out</objective>
+<version>2.0.3</version>
+<objective>Capture the enemy flag.</objective>
+<time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
-    <author uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/> <!-- Triplezko -->
+    <author uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/> <!-- triplezko -->
 </authors>
+<contributors>
+    <contributor uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c" contribution="2.0 update"/> <!-- Blaszczak -->
+</contributors>
 <teams>
-    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
-<spawns>
-    <spawn team="red" kit="red-kit">
-        <region yaw="0">
-            <cylinder base="33.5,6,16.5" radius="1" height="1"/>
-        </region>
-    </spawn>
-    <spawn team="blue" kit="blue-kit">
-        <region yaw="0">
-            <cylinder base="-32.5,6,16.5" radius="1" height="1"/>
-        </region>
-    </spawn>
-    <default kit="observers">
-        <region yaw="180">
-            <cylinder base="0,13,20" radius="1.5" height="1"/>
-        </region>
-    </default>
-</spawns>
 <kits>
-    <kit id="main-kit">
+    <kit id="default-kit">
+        <effect>night vision</effect>
+    </kit>
+    <kit id="spawn-kit" parents="default-kit">
         <clear/>
-        <game-mode>adventure</game-mode>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
-        <item slot="2" amount="1" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
-        <chestplate unbreakable="true" material="chainmail chestplate"/>
-        <boots unbreakable="true" material="iron boots">
-            <enchantment level="2">protection projectile</enchantment>
-        </boots>
-        <effect duration="4" amplifier="10">resistance</effect>
-        <effect duration="4" amplifier="10">regeneration</effect>
-        <effect>night vision</effect>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="4">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <game-mode>adventure</game-mode>
     </kit>
-    <kit id="blue-kit" parents="main-kit">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <leggings unbreakable="true" color="0066cc" material="leather leggings"/>
-    </kit>
-    <kit id="red-kit" parents="main-kit">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <leggings unbreakable="true" color="cd0000" material="leather leggings"/>
-    </kit>
-    <kit id="flag-carry" force="true">
+    <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
     </kit>
-    <kit id="flag-reset" force="true">
-        <effect duration="0" amplifier="10">slowness</effect>
-    </kit>
-    <kit id="observers">
-        <effect>night vision</effect>
+    <kit id="flag-drop" force="true">
+        <effect duration="0" amplifier="0">slowness</effect>
     </kit>
 </kits>
+<spawns>
+    <default kit="default-kit" region="obs-spawn" yaw="0"/>
+    <spawn team="blue" kit="spawn-kit" region="blue-spawn" yaw="-45"/>
+    <spawn team="red" kit="spawn-kit" region="red-spawn" yaw="45"/>
+</spawns>
+<filters>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
+    <time id="flag-respawns">0</time>
+</filters>
 <regions>
-    <apply block="never" use="no-use"/>
+    <cylinder id="obs-spawn"  base="0,30,0" radius="1.5" height="1"/>
+    <cuboid id="blue-spawn" min="-31.5,7.1,15.5" max="-33.5,7.1,16.5"/>
+    <cuboid id="red-spawn" min="34.5,7.1,15.5" max="32.5,7.1,16.5"/>
     <cuboid id="blue-net" min="-44,11,-8" max="-41,14,-11"/>
     <cuboid id="red-net" min="42,11,-8" max="45,14,-11"/>
+    <apply block="never" use="never"/>
 </regions>
+<flags flag-proximity-metric="none" net-proximity-metric="none">
+    <flag id="blue-flag"
+          name="Blue Flag"
+          owner="blue"
+          color="blue"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-drop">
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">-42.5,11,-9.5</post>
+    </flag>
+    <flag id="red-flag"
+          name="Red Flag"
+          owner="red"
+          color="red"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-drop">
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">43.5,11,-9.5</post>
+    </flag>
+    <flags points="1">
+        <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
+        <net region="red-net" flag="blue-flag" respawn-filter="flag-respawns"/>
+    </flags>
+</flags>
+<score/>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+    <item>banner</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="5" material="arrow"/>
+</kill-reward>
+<respawn delay="6s" auto="true" blackout="true"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<!--
 <filters>
-    <team id="red-only">red</team>
-    <team id="blue-only">blue</team>
-    <time id="flag-respawns">0</time>
     <not id="spawn-1">
         <time>2m</time>
     </not>
@@ -103,31 +137,7 @@
     <all id="spawn-6">
         <time>10m</time>
     </all>
-    <not id="no-use">
-        <any>
-            <material>chest</material>
-            <material>workbench</material>
-            <material>jukebox</material>
-            <material>trap door</material>
-        </any>
-    </not>
 </filters>
-<flags flag-proximity-metric="none" net-proximity-metric="none" drop-on-water="false">
-    <flag id="red-flag" name="Red Flag" owner="red" color="red" pickup-kit="flag-carry" drop-kit="flag-reset">
-        <post pickup-filter="blue-only" recover-time="15s" respawn-time="10s">43.5,11,-9.5</post>
-    </flag>
-    <flag id="blue-flag" name="Blue Flag" owner="blue" color="blue" pickup-kit="flag-carry" drop-kit="flag-reset">
-        <post pickup-filter="red-only" recover-time="15s" respawn-time="10s">-42.5,11,-9.5</post>
-    </flag>
-    <flags points="1">
-        <net region="red-net" flag="blue-flag" respawn-filter="flag-respawns"/>
-        <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
-    </flags>
-</flags>
-<time overtime="1m" max-overtime="6m" result="score">12m</time>
-<score>
-    <mercy>5</mercy>
-</score>
 <respawns>
     <respawn delay="3s" auto="true" blackout="true" filter="spawn-1"/>
     <respawn delay="3.5s" auto="true" blackout="true" filter="spawn-2"/>
@@ -136,26 +146,5 @@
     <respawn delay="5s" auto="true" blackout="true" filter="spawn-5"/>
     <respawn delay="5.5s" auto="true" blackout="true" filter="spawn-6"/>
 </respawns>
-<kill-reward>
-    <item amount="8" material="arrow"/>
-    <item material="golden apple"/>
-</kill-reward>
-<itemkeep>
-    <item>arrow</item>
-    <item>golden apple</item>
-</itemkeep>
-<itemremove>
-    <item>leather helmet</item>
-    <item>chainmail chestplate</item>
-    <item>leather leggings</item>
-    <item>iron boots</item>
-</itemremove>
-<toolrepair>
-    <tool>stone sword</tool>
-    <tool>bow</tool>
-</toolrepair>
-<timelock>on</timelock>
-<hunger>
-    <depletion>off</depletion>
-</hunger>
+-->
 </map>
