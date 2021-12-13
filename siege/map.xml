@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Siege</name>
-<version>2.0.2</version>
+<version>2.0.3</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -34,157 +34,162 @@
             <point>101.5,11,-43.5</point>
         </region>
     </default>
-    <spawn team="blue" filter="spawn-1" kit="blue-kit">
+    <spawn team="blue" filter="spawn-1" kit="spawn-kit">
         <region yaw="0">
-            <block>122.5,15,-142.5</block>
+            <point>122.5,15,-142.5</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-2" kit="blue-kit">
+    <spawn team="blue" filter="spawn-2" kit="spawn-kit">
         <region yaw="0">
-            <block>122.5,65,-142.5</block>
+            <point>122.5,65,-142.5</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-3" kit="blue-kit">
+    <spawn team="blue" filter="spawn-3" kit="spawn-kit">
         <region yaw="0">
-            <block>122.5,115,-142.5</block>
+            <point>122.5,115,-142.5</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-4" kit="blue-kit">
+    <spawn team="blue" filter="spawn-4" kit="spawn-kit">
         <region yaw="0">
-            <block>122.5,165,-142.5</block>
+            <point>122.5,165,-142.5</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-5" kit="blue-kit">
+    <spawn team="blue" filter="spawn-5" kit="spawn-kit">
         <region yaw="0">
-            <block>122.5,215,-142.5</block>
+            <point>122.5,215,-142.5</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-6" kit="blue-kit">
+    <spawn team="blue" filter="spawn-6" kit="spawn-kit">
         <region yaw="0">
-            <block>122.5,255,-142.5</block>
+            <point>122.5,255,-142.5</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-1" kit="red-kit">
+    <spawn team="red" filter="spawn-1" kit="spawn-kit">
         <region yaw="180">
-            <block>122.5,15,55.5</block>
+            <point>122.5,15,55.5</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-2" kit="red-kit">
+    <spawn team="red" filter="spawn-2" kit="spawn-kit">
         <region yaw="180">
-            <block>122.5,65,55.5</block>
+            <point>122.5,65,55.5</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-3" kit="red-kit">
+    <spawn team="red" filter="spawn-3" kit="spawn-kit">
         <region yaw="180">
-            <block>122.5,115,55.5</block>
+            <point>122.5,115,55.5</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-4" kit="red-kit">
+    <spawn team="red" filter="spawn-4" kit="spawn-kit">
         <region yaw="180">
-            <block>122.5,165,55.5</block>
+            <point>122.5,165,55.5</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-5" kit="red-kit">
+    <spawn team="red" filter="spawn-5" kit="spawn-kit">
         <region yaw="180">
-            <block>122.5,215,55.5</block>
+            <point>122.5,215,55.5</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-6" kit="red-kit">
+    <spawn team="red" filter="spawn-6" kit="spawn-kit">
         <region yaw="180">
-            <block>122.5,255,55.5</block>
+            <point>122.5,255,55.5</point>
         </region>
     </spawn>
 </spawns>
 <filters>
-    <!-- Mercy -->
-    <any id="mercy-cap">
-        <all>
-            <objective id="capped-blue-last">blue-last</objective>
-            <team id="only-red">red</team>
-        </all>
-        <all>
-            <objective id="capped-red-last">red-last</objective>
-            <team id="only-blue">blue</team>
-        </all>
+    <!-- Portal filters -->
+    <objective id="blue-capped-blue-2nd" team="blue">blue-2nd</objective>
+    <objective id="red-capped-blue-2nd" team="red">blue-2nd</objective>
+    <objective id="blue-capped-mid" team="blue">mid</objective>
+    <objective id="red-capped-mid" team="red">mid</objective>
+    <objective id="blue-capped-red-2nd" team="blue">red-2nd</objective>
+    <objective id="red-capped-red-2nd" team="red">red-2nd</objective>
+    <!-- Capture rules for visual control points, which must be captured sequentially -->
+    <any id="filter-blue-last">
+        <filter id="only-blue"/>
+        <objective id="capped-blue-2nd">blue-2nd</objective>
     </any>
-    <!-- Point filters -->
-    <any id="filter-red-last">
-        <objective id="capped-red-2nd">red-2nd</objective>
-        <filter id="only-red"/>
+    <any id="filter-blue-2nd">
+        <objective id="capped-mid">mid</objective>
+        <objective id="capped-blue-last">blue-last</objective>
     </any>
     <any id="filter-red-2nd">
-        <filter id="capped-red-last"/>
-        <objective id="capped-mid">mid</objective>
+        <objective id="capped-red-last">red-last</objective>
+        <filter id="capped-mid"/>
+    </any>
+    <any id="filter-red-last">
+        <team id="only-red">red</team>
+        <objective id="capped-red-2nd">red-2nd</objective>
     </any>
     <any id="filter-mid">
         <filter id="capped-red-2nd"/>
-        <objective id="capped-blue-2nd">blue-2nd</objective>
-    </any>
-    <any id="filter-blue-last">
         <filter id="capped-blue-2nd"/>
-        <filter id="only-blue"/>
     </any>
-    <any id="filter-blue-2nd">
-        <filter id="capped-mid"/>
-        <filter id="capped-blue-last"/>
-    </any>
-    <!-- Point giving filters filters -->
-    <not id="BL-point">
-        <any>
-            <objective team="blue">blue-last</objective>
-            <objective team="red" id="red-mercy">blue-last</objective>
-        </any>
-    </not>
-    <not id="B2-point">
-        <any>
-            <objective team="blue">blue-2nd</objective>
-            <objective team="red">blue-2nd</objective>
-        </any>
-    </not>
-    <not id="R2-point">
-        <any>
-            <objective team="blue">red-2nd</objective>
-            <objective team="red">red-2nd</objective>
-        </any>
-    </not>
-    <not id="RL-point">
-        <any>
-            <objective id="blue-mercy" team="blue">red-last</objective>
-            <objective team="red">red-last</objective>
-        </any>
-    </not>
-    <!-- Point giving filters -->
-    <any id="filter-last-point-red">
-        <filter id="capped-blue-last"/>
+    <!-- Filters for the point-giving control points -->
+    <!--
+        A team can capture a point-giving control point when they capture the enemy's associated
+        visual point. If the enemy uncaptures the point, they will return the point-giving
+        point to a neutral state and points will no longer be scored from it by the team who lost
+        control. Once one team reaches 750 points, or gains full control, the match will end.
+    -->
+    <any id="mercy-cap">
         <all>
-            <filter id="only-blue"/>
-            <filter id="BL-point"/>
+            <team id="only-blue">blue</team>
+            <filter id="capped-red-last"/>
+        </all>
+        <all>
+            <filter id="only-red"/>
+            <filter id="capped-blue-last"/>
+        </all>
+    </any>
+    <any id="filter-last-point-blue">
+        <filter id="capped-red-last"/>
+        <all>
+            <filter id="only-red"/>
+            <not>
+                <any>
+                    <objective team="blue">red-last</objective>
+                    <objective team="red">red-last</objective>
+                </any>
+            </not>
+        </all>
+    </any>
+    <any id="filter-2nd-point-blue">
+        <filter id="capped-red-2nd"/>
+        <all>
+            <filter id="only-red"/>
+            <not>
+                <any>
+                    <filter id="blue-capped-red-2nd"/>
+                    <filter id="red-capped-red-2nd"/>
+                </any>
+            </not>
         </all>
     </any>
     <any id="filter-2nd-point-red">
         <filter id="capped-blue-2nd"/>
         <all>
             <filter id="only-blue"/>
-            <filter id="B2-point"/>
+            <not>
+                <any>
+                    <filter id="blue-capped-blue-2nd"/>
+                    <filter id="red-capped-blue-2nd"/>
+                </any>
+            </not>
         </all>
     </any>
-    <!-- -->
-    <any id="filter-2nd-point-blue">
-        <filter id="capped-red-2nd"/>
+    <any id="filter-last-point-red">
+        <filter id="capped-blue-last"/>
         <all>
-            <filter id="only-red"/>
-            <filter id="R2-point"/>
+            <filter id="only-blue"/>
+            <not>
+                <any>
+                    <objective team="blue">blue-last</objective>
+                    <objective team="red">blue-last</objective>
+                </any>
+            </not>
         </all>
     </any>
-    <!-- -->
-    <any id="filter-last-point-blue">
-        <filter id="capped-red-last"/>
-        <all>
-            <filter id="only-red"/>
-            <filter id="RL-point"/>
-        </all>
-    </any>
-    <!-- Time Filters -->
+    <!-- Time-based spawn location filters -->
     <not id="spawn-1">
         <time>2m</time>
     </not>
@@ -216,26 +221,6 @@
         <time>10m</time>
     </all>
     <!-- Portal filters -->
-    <objective id="blue-capped-red-2nd" team="blue">red-2nd</objective>
-    <objective id="red-capped-red-2nd" team="red">red-2nd</objective>
-    <objective id="blue-capped-mid" team="blue">mid</objective>
-    <objective id="red-capped-mid" team="red">mid</objective>
-    <objective id="blue-capped-blue-2nd" team="blue">blue-2nd</objective>
-    <objective id="red-capped-blue-2nd" team="red">blue-2nd</objective>
-    <!-- new portal filters red-->
-    <all id="portal-red-red-2nd-active">
-        <filter id="capped-red-2nd"/>
-        <not>
-            <filter id="capped-mid"/>
-        </not>
-    </all>
-    <all id="portal-red-mid-active">
-        <filter id="capped-mid"/>
-        <not>
-            <filter id="capped-blue-2nd"/>
-        </not>
-    </all>
-    <!-- new portal filters blue-->
     <all id="portal-blue-blue-2nd-active">
         <filter id="capped-blue-2nd"/>
         <not>
@@ -248,6 +233,22 @@
             <filter id="capped-red-2nd"/>
         </not>
     </all>
+    <all id="portal-red-mid-active">
+        <filter id="capped-mid"/>
+        <not>
+            <filter id="capped-blue-2nd"/>
+        </not>
+    </all>
+    <all id="portal-red-red-2nd-active">
+        <filter id="capped-red-2nd"/>
+        <not>
+            <filter id="capped-mid"/>
+        </not>
+    </all>
+    <any id="nature">
+        <material>sugar cane block</material>
+        <material>long grass</material>
+    </any>
 </filters>
 <regions>
     <!--
@@ -279,22 +280,8 @@
     <cuboid id="portal-red-red-2nd" min="120,6,58" max="125,9,53"/>
     <cuboid id="portal-red-mid" min="120,6,58" max="125,9,53"/>
     <cuboid id="portal-red-blue-2nd" min="120,6,58" max="125,9,53"/>
+    <apply block="never"/>
 </regions>
-<control-points neutral-state="true" show-progress="true">
-    <control-point initial-owner="blue" id="blue-last" required="false" name="Blue Last" capture-time="5s" points="0" incremental="true" capture="cp-blue-last" time-multiplier="0.25" progress="cp-blue-last" player-filter="filter-blue-last"/>
-    <control-point initial-owner="blue" id="blue-2nd" required="false" name="Blue 2nd" capture-time="5s" points="0" incremental="true" capture="cp-blue-2nd" time-multiplier="0.25" progress="cp-blue-2nd" player-filter="filter-blue-2nd"/>
-    <control-point id="mid" required="false" name="Mid" capture-time="5s" points="2" incremental="true" capture="cp-mid" time-multiplier="0.25" progress="cp-mid" player-filter="filter-mid"/>
-    <control-point initial-owner="red" id="red-2nd" required="false" name="Red 2nd" capture-time="5s" points="0" incremental="true" capture="cp-red-2nd" time-multiplier="0.25" progress="cp-red-2nd" player-filter="filter-red-2nd"/>
-    <control-point initial-owner="red" id="red-last" required="false" name="Red Last" capture-time="5s" points="0" incremental="true" capture="cp-red-last" time-multiplier="0.25" progress="cp-red-last" player-filter="filter-red-last"/>
-    <!-- Point givers -->
-    <control-point id="blue-last-point" required="false" show="false" points="10000" name="BL Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-last-point-red" capture-filter="only-red"/>
-    <control-point id="blue-2nd-point" required="false" show="false" points="1" name="B2 Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-2nd-point-red" capture-filter="only-red"/>
-    <control-point id="red-2nd-point" required="false" show="false" points="1" name="R2 Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-2nd-point-blue" capture-filter="only-blue"/>
-    <control-point id="red-last-point" required="false" show="false" points="10000" name="RL Point" capture-time="0s" capture="everywhere" decay="9999" player-filter="filter-last-point-blue" capture-filter="only-blue"/>
-</control-points>
-<score>
-    <limit>750</limit>
-</score>
 <portals>
     <!-- Blue portals -->
     <portal x="@103" y="@7" z="@-104" yaw="@0" region="portal-blue-blue-2nd" filter="portal-blue-blue-2nd-active"/>
@@ -305,6 +292,24 @@
     <portal x="@137" y="@7" z="@-10" yaw="@90" region="portal-red-mid" filter="portal-red-mid-active"/>
     <portal x="@135.5" y="@2" z="@-60.5" yaw="@90" region="portal-red-blue-2nd" filter="capped-blue-2nd"/>
 </portals>
+<control-points neutral-state="true" show-progress="true">
+    <!-- Blue visual control points -->
+    <control-point initial-owner="blue" id="blue-last" required="false" name="Blue Last" capture-time="5s" points="0" incremental="true" capture="cp-blue-last" progress="cp-blue-last" player-filter="filter-blue-last"/>
+    <control-point initial-owner="blue" id="blue-2nd" required="false" name="Blue 2nd" capture-time="5s" points="0" incremental="true" capture="cp-blue-2nd" progress="cp-blue-2nd" player-filter="filter-blue-2nd"/>
+    <!-- Mid -->
+    <control-point id="mid" required="false" name="Mid" capture-time="5s" points="2" incremental="true" capture="cp-mid" progress="cp-mid" player-filter="filter-mid"/>
+    <!-- Red visual control points -->
+    <control-point initial-owner="red" id="red-2nd" required="false" name="Red 2nd" capture-time="5s" points="0" incremental="true" capture="cp-red-2nd" progress="cp-red-2nd" player-filter="filter-red-2nd"/>
+    <control-point initial-owner="red" id="red-last" required="false" name="Red Last" capture-time="5s" points="0" incremental="true" capture="cp-red-last" progress="cp-red-last" player-filter="filter-red-last"/>
+    <!-- Point-giving control points -->
+    <control-point id="red-last-point" required="false" show="false" points="10000" name="RL Point" capture-time="0s" capture="everywhere" player-filter="filter-last-point-blue" capture-filter="only-blue"/>
+    <control-point id="red-2nd-point" required="false" show="false" points="1" name="R2 Point" capture-time="0s" capture="everywhere" player-filter="filter-2nd-point-blue" capture-filter="only-blue"/>
+    <control-point id="blue-2nd-point" required="false" show="false" points="1" name="B2 Point" capture-time="0s" capture="everywhere" player-filter="filter-2nd-point-red" capture-filter="only-red"/>
+    <control-point id="blue-last-point" required="false" show="false" points="10000" name="BL Point" capture-time="0s" capture="everywhere" player-filter="filter-last-point-red" capture-filter="only-red"/>
+</control-points>
+<score>
+    <limit>750</limit>
+</score>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -323,8 +328,8 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="7s" auto="true" blackout="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
+<respawn delay="7s" auto="true" blackout="true"/>
 </map>
