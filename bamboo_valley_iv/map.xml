@@ -19,20 +19,14 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="16" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="3">projectile_protection</enchantment>
+            <enchantment level="4">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
     </kit>
 </kits>
 <spawns>
@@ -41,62 +35,62 @@
             <point>-66,38,-4</point>
         </region>
     </default>
-    <spawn team="blue" filter="spawn-1" kit="blue-kit">
+    <spawn team="blue" filter="spawn-1" kit="spawn-kit">
         <region yaw="-45">
             <point>-174,25,-86</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-2" kit="blue-kit">
+    <spawn team="blue" filter="spawn-2" kit="spawn-kit">
         <region yaw="-45">
             <point>-174,75,-86</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-3" kit="blue-kit">
+    <spawn team="blue" filter="spawn-3" kit="spawn-kit">
         <region yaw="-45">
             <point>-174,125,-86</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-4" kit="blue-kit">
+    <spawn team="blue" filter="spawn-4" kit="spawn-kit">
         <region yaw="-45">
             <point>-174,175,-86</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-5" kit="blue-kit">
+    <spawn team="blue" filter="spawn-5" kit="spawn-kit">
         <region yaw="-45">
             <point>-174,225,-86</point>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn-6" kit="blue-kit">
+    <spawn team="blue" filter="spawn-6" kit="spawn-kit">
         <region yaw="-45">
             <point>-174,250,-86</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-1" kit="red-kit">
+    <spawn team="red" filter="spawn-1" kit="spawn-kit">
         <region yaw="135">
             <point>-24,25,78</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-2" kit="red-kit">
+    <spawn team="red" filter="spawn-2" kit="spawn-kit">
         <region yaw="135">
             <point>-24,75,78</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-3" kit="red-kit">
+    <spawn team="red" filter="spawn-3" kit="spawn-kit">
         <region yaw="135">
             <point>-24,125,78</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-4" kit="red-kit">
+    <spawn team="red" filter="spawn-4" kit="spawn-kit">
         <region yaw="135">
             <point>-24,175,78</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-5" kit="red-kit">
+    <spawn team="red" filter="spawn-5" kit="spawn-kit">
         <region yaw="135">
             <point>-24,225,78</point>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn-6" kit="red-kit">
+    <spawn team="red" filter="spawn-6" kit="spawn-kit">
         <region yaw="135">
             <point>-24,250,78</point>
         </region>
@@ -336,7 +330,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="6" material="arrow"/>
+    <item amount="5" material="arrow"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>
