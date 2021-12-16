@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Smoke KotH 5v5</name>
-<version>1.2.11</version>
+<version>1.2.12</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
@@ -35,7 +35,7 @@
 </kits>
 <spawns>
     <default>
-        <region yaw="-45">
+        <region yaw="135">
             <cylinder base="101,38,-272" radius="0.5" height="0"/>
         </region>
     </default>
