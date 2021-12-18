@@ -1,13 +1,13 @@
 <map proto="1.4.2">
 <name>Vera</name>
-<version>1.0.6</version>
+<version>1.1</version>
 <objective>Capture the enemy's flag!</objective>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
 </authors>
 <contributors>
-    <contributor uuid="d9f76ee6-975a-45ab-bbda-763600738a73" contribution="XML"/> <!-- Aleeay -->
+    <contributor uuid="d9f76ee6-975a-45ab-bbda-763600738a73" contribution="original XML"/> <!-- Aleeay -->
 </contributors>
 <teams>
     <team id="blue" color="blue" max="5">Blue</team>
@@ -20,14 +20,13 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="12" material="arrow"/>
-        <helmet locked="true" unbreakable="true" team-color="true" material="leather helmet"/>
-        <chestplate locked="true" unbreakable="true" team-color="true" material="leather chestplate"/>
-        <leggings locked="true" unbreakable="true" material="chainmail leggings">
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="4">projectile_protection</enchantment>
         </leggings>
-        <boots locked="true" unbreakable="true" material="iron boots"/>
+        <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="255">resistance</effect>
-        <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
@@ -39,7 +38,7 @@
 <spawns>
     <default>
         <region yaw="90">
-            <cylinder base="-18.5,19,71.5" radius="0.5" height="1"/>
+            <point>64.5,68,4.5</point>
         </region>
     </default>
     <spawn team="blue" kit="spawn-kit">
@@ -62,8 +61,8 @@
     <cylinder id="gapple-player-region" base="0.5,20,4.5" radius="8.5" height="6"/>
     <point id="arrow-spawn-region">30.5,22,4.5</point>
     <cylinder id="arrow-player-region" base="30.5,21,4.5" radius="6.5" height="6"/>
-    <cylinder id="blue-net" base="20.5,20,-40.5" radius="1" height="2.5"/>
-    <cylinder id="red-net" base="20.5,20,49.5" radius="1" height="2.5"/>
+    <cylinder id="blue-net" base="20.5,19,-36.5" radius="1" height="2.5"/>
+    <cylinder id="red-net" base="20.5,19,45.5" radius="1" height="2.5"/>
     <apply block="never" use="never"/>
 </regions>
 <flags flag-proximity-metric="none" net-proximity-metric="none">
@@ -73,7 +72,7 @@
           owner="blue"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-red" recover-time="12s" respawn-time="10s">20.5,20,-40.5</post>
+        <post pickup-filter="only-red" recover-time="12s" respawn-time="10s">20.5,19,-36.5</post>
         <net region="red-net" points="1"/>
     </flag>
     <flag color="red"
@@ -82,7 +81,7 @@
           owner="red"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-blue" recover-time="12s" respawn-time="10s">20.5,20,49.5</post>
+        <post pickup-filter="only-blue" recover-time="12s" respawn-time="10s">20.5,19,45.5</post>
         <net region="blue-net" points="1"/>
     </flag>
 </flags>
