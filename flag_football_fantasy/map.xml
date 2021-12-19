@@ -90,11 +90,12 @@
 </flags>
 <score/>
 <portals>
-    <portal filter="blue-has-flag" region="blue-net" destination="blue-spawn" yaw="@45"/>
-    <portal filter="red-has-flag" region="red-net" destination="red-spawn" yaw="@-135"/>
-    <portal observers="false" filter="only-red" region="blue-net" x="@72.5" y="@0" z="@339.5"/>
-    <portal observers="false" filter="only-blue" region="red-net" x="@4.5" y="@0" z="@271.5"/>
+    <portal observers="never" filter="blue-has-flag" region="blue-net" destination="blue-spawn" yaw="@45"/>
+    <portal observers="never" filter="red-has-flag" region="red-net" destination="red-spawn" yaw="@-135"/>
+    <portal observers="never" filter="only-red" region="blue-net" x="@72.5" y="@0" z="@339.5"/>
+    <portal observers="never" filter="only-blue" region="red-net" x="@4.5" y="@0" z="@271.5"/>
 </portals>
+<!-- prox alarms do not work as consistently as I would like them too, especially for this map :/ -->
 <proximity-alarms>
     <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="red-side" detect="blue-has-flag" notify="blue-has-flag"/>
     <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="blue-side" detect="red-has-flag" notify="red-has-flag"/>
