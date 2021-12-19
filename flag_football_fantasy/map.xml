@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Flag Football: Fantasy</name>
-<version>1.0.4</version>
+<version>1.0.6</version>
 <objective>Score as many times as possible within eight minutes!</objective>
 <time result="score" overtime="1m" max-overtime="6m">8m</time>
 <gamemode>ffb</gamemode>
@@ -22,7 +22,6 @@
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
-        <item slot="2" material="golden apple"/>
         <item slot="8" amount="16" material="arrow"/>
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
@@ -93,8 +92,8 @@
 <portals>
     <portal filter="blue-has-flag" region="blue-net" destination="blue-spawn" yaw="@45"/>
     <portal filter="red-has-flag" region="red-net" destination="red-spawn" yaw="@-135"/>
-    <portal filter="only-red" region="blue-net" x="@72.5" y="@0" z="@339.5"/>
-    <portal filter="only-blue" region="red-net" x="@4.5" y="@0" z="@271.5"/>
+    <portal observers="false" filter="only-red" region="blue-net" x="@72.5" y="@0" z="@339.5"/>
+    <portal observers="false" filter="only-blue" region="red-net" x="@4.5" y="@0" z="@271.5"/>
 </portals>
 <proximity-alarms>
     <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="red-side" detect="blue-has-flag" notify="blue-has-flag"/>
