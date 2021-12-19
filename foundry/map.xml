@@ -1,15 +1,15 @@
 <map proto="1.4.0">
 <name>Foundry</name>
-<version>2.0.0</version>
+<version>2.0.4</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  NixaniaXi  -->
 </authors>
-<time>12m</time>
 <teams>
-    <team id="red" color="dark red" max="5">Red</team>
-    <team id="blue" color="blue" max="5">Blue</team>
+    <team id="red" color="dark red" min="5" max="5">Red</team>
+    <team id="blue" color="blue" min="5" max="5">Blue</team>
 </teams>
+<edition>ranked</edition>
 <respawn delay="5s" auto="true"/>
 <spawns>
     <spawn team="red" filter="spawn1" kit="redKit">
@@ -81,6 +81,7 @@
 </spawns>
 <kits>
     <kit id="spawn">
+        <clear/>
         <game-mode>adventure</game-mode>
         <item slot="0" unbreakable="true">stone sword</item>
         <item slot="1" unbreakable="true">bow</item>
@@ -101,20 +102,22 @@
 </kits>
 <killreward>
     <item>golden apple</item>
-    <item amount="32">arrow</item>
+    <item amount="16">arrow</item>
 </killreward>
-<itemremove>
-    <item>golden apple</item>
+<toolrepair>
+	<tool>stone sword</tool>
+	<tool>bow</tool>
+</toolrepair>
+<itemkeep>
     <item>arrow</item>
+    <item>golden apple</item>
+</itemkeep>
+<itemremove>
     <item>leather helmet</item>
     <item>chainmail chestplate</item>
     <item>leather leggings</item>
     <item>leather boots</item>
 </itemremove>
-<toolrepair>
-    <tool>stone sword</tool>
-    <tool>bow</tool>
-</toolrepair>
 <filters>
     <team id="only-blue">blue</team>
     <team id="only-red">red</team>
@@ -161,7 +164,7 @@
     <apply enter="only-blue" region="blue-spawn"/>
     <apply enter="only-red" region="red-spawn"/>
 </regions>
-<control-points incremental="true" neutral-state="true" show-progress="true" scaled-time="true" time-multiplier="0.25" capture-time="5s">
+<control-points incremental="true" neutral-state="true" show-progress="true" scaled-time="true" time-multiplier="0.25" capture-time="5s" points="0" required="false">
     <control-point initial-owner="red" id="red-last" name="Red Last">
         <capture-region>
             <cuboid min="-60,15,-21" max="-69,20,-30"/>
@@ -190,7 +193,7 @@
             </any>
         </player-filter>
     </control-point>
-    <control-point id="mid" name="Mid">
+    <control-point id="mid" name="Mid" points="1">
         <capture-region>
             <cuboid min="-4,7,-4" max="5,12,5"/>
         </capture-region>
@@ -232,7 +235,27 @@
             </any>
         </player-filter>
     </control-point>
+    <control-point id="end" points="10000" capture-time="0s" show="false">
+        <capture-region><everywhere/></capture-region>
+        <player-filter>
+            <any>
+                <all>
+                    <objective>blue-last</objective>
+                    <team>red</team>
+                </all>
+                <all>
+                    <objective>red-last</objective>
+                    <team>blue</team>
+                </all>
+            </any>
+        </player-filter>
+    </control-point>
 </control-points>
+<score>
+    <kills>0</kills>
+    <deaths>0</deaths>
+    <limit>400</limit>
+</score>
 <portals>
     <!-- Red Portals -->
     <portal x="@-55.5" y="@13" z="@-17.5" yaw="@-90" filter="red2ndPortal">
