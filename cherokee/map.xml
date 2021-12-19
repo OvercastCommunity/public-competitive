@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Cherokee</name>
-<version>1.2.7</version>
+<version>1.2.8</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -28,7 +28,7 @@
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="12" material="arrow"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="4">projectile_protection</enchantment>
+            <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <game-mode>adventure</game-mode>

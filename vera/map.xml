@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Vera</name>
-<version>1.1</version>
+<version>1.1.1</version>
 <objective>Capture the enemy's flag!</objective>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
@@ -19,11 +19,11 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="12" material="arrow"/>
+        <item slot="8" amount="14" material="arrow"/>
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="4">projectile_protection</enchantment>
+            <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="255">resistance</effect>
@@ -110,7 +110,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="5" material="arrow"/>
+    <item amount="6" material="arrow"/>
 </kill-reward>
 <respawn delay="5s" auto="true"/>
 <hunger>

@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Smoke KotH 5v5</name>
-<version>1.2.12</version>
+<version>1.2.13</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
@@ -23,7 +23,7 @@
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="4">projectile_protection</enchantment>
+            <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots">
             <enchantment>fire_protection</enchantment>

@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Desert Sanctuary 5v5</name>
-<version>1.1.1</version>
+<version>1.1.2</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -21,11 +21,11 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="12" material="arrow"/>
+        <item slot="8" amount="14" material="arrow"/>
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="4">projectile_protection</enchantment>
+            <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
@@ -108,7 +108,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="5" material="arrow"/>
+    <item amount="6" material="arrow"/>
 </kill-reward>
 <respawn delay="3s" spectate="true" auto="true">
     <message>
