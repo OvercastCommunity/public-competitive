@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Space Race: 1969</name>
-<version>1.0.12</version>
+<version>1.0.13</version>
 <objective>Capture the enemy's flag.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -148,7 +148,7 @@
     <cylinder id="red-net" base="72.5,13,53.5" radius=".5" height="2" />
     <apply block="never" use="never"/>
 </regions>
-<flags flag-proximity-metric="none" net-proximity-metric="none">
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="blue-flag"
           name="Blue Flag"
           owner="blue"

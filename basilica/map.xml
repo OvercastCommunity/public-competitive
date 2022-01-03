@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Basilica</name>
-<version>1.1.11</version>
+<version>1.1.12</version>
 <objective>Capture the enemy flag as many times as possible before time runs out!</objective>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
@@ -61,7 +61,7 @@
     <spawn team="blue" kit="blue-kit" region="blue-spawn" yaw="90"/>
     <spawn team="red" kit="red-kit" region="red-spawn" yaw="-90"/>
 </spawns>
-<flags flag-proximity-metric="none" net-proximity-metric="none">
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="blue-flag"
           name="Blue Flag"
           owner="blue"

@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Bastille</name>
-<version>2.0.4</version>
+<version>2.0.5</version>
 <objective>Capture the enemy flag.</objective>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
@@ -59,7 +59,7 @@
     <cuboid id="red-net" min="42,11,-8" max="45,14,-11"/>
     <apply block="never" use="never"/>
 </regions>
-<flags flag-proximity-metric="none" net-proximity-metric="none">
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="blue-flag"
           name="Blue Flag"
           owner="blue"
