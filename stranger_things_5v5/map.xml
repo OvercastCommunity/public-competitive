@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Stranger Things 5v5</name>
-<version>1.0</version>
+<version>1.0.1</version>
 <objective>Capture the enemy team's wool!</objective>
 <time result="objectives" overtime="5m" max-overtime="5m">20m</time>
 <authors>
