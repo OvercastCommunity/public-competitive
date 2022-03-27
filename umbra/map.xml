@@ -1,11 +1,14 @@
 <map proto="1.4.2">
 <name>Umbra</name>
-<version>1.1.5</version>
+<version>1.2</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
     <author uuid="510cf71c-0f8a-44b6-87c2-b1ed9c197040"/> <!-- finshu/fleuor -->
 </authors>
+<contributors>
+    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
+</contributors>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
@@ -61,14 +64,8 @@
 </filters>
 <regions>
     <union id="flag-nets">
-        <cuboid id="red-net" min="223,30,105" max="224,31.5,106"/>
-        <cuboid id="blue-net" min="203,30,105" max="204,31.5,106"/>
-    </union>
-    <union id="spawner-stuff">
-        <union id="gapple-spawner-stuff">
-            <cuboid id="gapple-spawn-drop" min="213.4,31.5,79.4" max="213.6,31.5,79.6"/>
-            <cuboid id="gapple-spawn-activation" min="209,30,83" max="218,33,76"/>
-        </union>
+        <cylinder id="blue-net" base="203.5,29,105.5" radius="0.5" height="2"/>
+        <cylinder id="red-net" base="223.5,29,105.5" radius="0.5" height="2"/>
     </union>
     <apply block="never"/>
 </regions>
@@ -79,7 +76,7 @@
           color="blue"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">203.5,30,105.5</post>
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">203.5,29,105.5</post>
     </flag>
     <flag id="red-flag"
           name="Red Flag"
@@ -87,7 +84,7 @@
           color="red"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">223.5,30,105.5</post>
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">223.5,29,105.5</post>
     </flag>
     <flags points="1">
         <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
@@ -96,7 +93,13 @@
 </flags>
 <score/>
 <spawners>
-    <spawner id="gapple-spawner" spawn-region="gapple-spawn-drop" player-region="gapple-spawn-activation" delay="7s">
+    <spawner delay="5s">
+        <spawn-region>
+            <point>213.5,28.1,99.5</point>
+        </spawn-region>
+        <player-region>
+            <cuboid min="209,28,95" max="218,31.5,105"/>
+        </player-region>
         <item material="golden apple"/>
     </spawner>
 </spawners>

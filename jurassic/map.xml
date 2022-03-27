@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Jurassic</name>
-<version>2.7.5</version> <!-- OCC v2.7.5 -->
+<version>2.7.6</version>
 <objective>Capture the enemy's two wools!</objective>
 <time overtime="5m" max-overtime="15m" end-overtime="1m">45m</time>
 <authors>
@@ -15,7 +15,6 @@
 </teams>
 <kits>
     <kit id="spawn-kit">
-        <clear/>
         <item slot="0" unbreakable="true" material="iron sword"/>
         <item slot="1" unbreakable="true" material="bow">
             <enchantment>infinity</enchantment>
@@ -36,16 +35,10 @@
         <item slot="32" amount="64" damage="4" material="wood"/>
         <item slot="7" material="golden apple"/>
         <item slot="8" amount="64" material="golden carrot"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings"/>
-        <effect amplifier="255" duration="10s">resistance</effect>
-    </kit>
-    <kit id="purple-kit" parents="spawn-kit">
-        <chestplate color="7F3FB2" unbreakable="true" material="leather chestplate"/>
-        <boots color="7F3FB2" unbreakable="true" material="leather boots"/>
-    </kit>
-    <kit id="yellow-kit" parents="spawn-kit">
-        <chestplate color="E5E533" unbreakable="true" material="leather chestplate"/>
-        <boots color="E5E533" unbreakable="true" material="leather boots"/>
+        <boots unbreakable="true" team-color="true" material="leather boots"/>
+        <effect duration="6s" amplifier="255">resistance</effect>
     </kit>
 </kits>
 <spawns>
@@ -54,14 +47,14 @@
             <cuboid min="-221.5,49,65.5" max="-216.5,49,60.5"/>
         </region>
     </default>
-    <spawn team="purple-team" kit="purple-kit">
+    <spawn team="purple-team" kit="spawn-kit">
         <region yaw="0">
-            <point>-121.5,103.5,-59.5</point>
+            <point>-121.5,6,-51.5</point>
         </region>
     </spawn>
-    <spawn team="yellow-team" kit="yellow-kit">
+    <spawn team="yellow-team" kit="spawn-kit">
         <region yaw="180">
-            <point>-121.5,103.5,182.5</point>
+            <point>-121.5,6,174.5</point>
         </region>
     </spawn>
 </spawns>
@@ -69,22 +62,22 @@
     <not id="no-void">
         <void/>
     </not>
-    <material id="only-iron">iron block</material>
-    <any id="no-chest">
-        <material>chest</material>
-    </any>
     <not id="deny-purple-wool-rooms">
         <any>
             <team id="only-purple">purple-team</team>
-            <filter id="no-chest"/>
+            <material>chest</material>
         </any>
     </not>
     <not id="deny-yellow-wool-rooms">
         <any>
             <team id="only-yellow">yellow-team</team>
-            <filter id="no-chest"/>
+            <material>chest</material>
         </any>
     </not>
+    <all id="only-iron-regen">
+        <material id="only-iron">iron block</material>
+        <cause>world</cause>
+    </all>
 </filters>
 <regions>
     <union id="bridges">
@@ -108,12 +101,8 @@
         <rectangle min="-67,90" max="-68,126"/>
     </union>
     <union id="spawns">
-        <union id="yellow-spawn">
-            <rectangle min="-104,148" max="-139,192"/>
-        </union>
-        <union id="purple-spawn">
-            <rectangle min="-139,-25" max="-104,-69"/>
-        </union>
+        <rectangle id="yellow-spawn" min="-104,148" max="-139,192"/>
+        <rectangle id="purple-spawn" min="-139,-25" max="-104,-69"/>
     </union>
     <union id="wool-rooms">
         <union id="purple-wool-rooms">
@@ -129,20 +118,13 @@
         <cuboid min="-65,7,62" max="-66,9,61"/>
         <cuboid min="-177,7,62" max="-178,9,61"/>
     </union>
-    <union id="spawn-drops">
-        <cuboid id="purple-drop" min="-124,0,-62" max="-119,107,-49"/>
-        <cuboid id="yellow-drop" min="-124,0,172" max="-119,107,185"/>
-    </union>
     <apply enter="only-purple" region="purple-spawn" message="You may not enter the opponent's spawn!"/>
     <apply enter="only-yellow" region="yellow-spawn" message="You may not enter the opponent's spawn!"/>
     <apply enter="only-purple" region="yellow-wool-rooms" message="You may not enter your own wool room!"/>
     <apply enter="only-yellow" region="purple-wool-rooms" message="You may not enter your own wool room!"/>
-    <apply use="only-purple" region="yellow-wool-rooms"/>
-    <apply use="only-yellow" region="purple-wool-rooms"/>
-    <apply block="never" region="spawn-drops"/>
-    <apply block="only-iron" region="spawns" message="You may not edit the spawn!"/>
-    <apply block="deny-purple-wool-rooms" region="purple-wool-rooms"/>
-    <apply block="deny-yellow-wool-rooms" region="yellow-wool-rooms"/>
+    <apply block-place="only-iron-regen" block-break="only-iron" region="spawns" message="You may not edit the spawn!"/>
+    <apply block="deny-purple-wool-rooms" use="only-yellow" region="purple-wool-rooms"/>
+    <apply block="deny-yellow-wool-rooms" use="only-purple" region="yellow-wool-rooms"/>
     <apply block="never" region="spawners" message="You may not destroy the spawners!"/>
     <apply block="never" region="bridges" message="You may not edit the bridge!"/>
     <apply block-place="never" region="not-buildable" message="You may not edit the void!"/>
@@ -184,8 +166,8 @@
 </toolrepair>
 <itemremove>
     <item damage="4">wood</item>
-    <item>golden carrot</item>
     <item>glass</item>
+    <item>golden carrot</item>
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>leather boots</item>
@@ -202,23 +184,15 @@
     <item>seeds</item>
 </itemremove>
 <kill-reward>
+    <item material="golden apple"/>
     <item amount="32" damage="4" material="wood"/>
     <item amount="16" material="glass"/>
-    <item material="golden apple"/>
 </kill-reward>
 <maxbuildheight>25</maxbuildheight>
-<respawn delay="2s" auto="true" blackout="true"/>
+<respawn delay="6s" auto="true" blackout="true"/>
 <crafting>
     <disable>iron trapdoor</disable>
     <disable>minecart</disable>
     <disable>boat</disable>
 </crafting>
-<damage>
-    <deny>
-        <all>
-            <cause>fall</cause>
-            <region id="spawn-drops"/>
-        </all>
-    </deny>
-</damage>
 </map>

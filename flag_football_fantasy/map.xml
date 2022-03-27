@@ -1,14 +1,14 @@
 <map proto="1.4.2">
 <name>Flag Football: Fantasy</name>
-<version>1.0.6</version>
+<version>1.0.10</version>
 <objective>Score as many times as possible within eight minutes!</objective>
-<time result="score" overtime="1m" max-overtime="6m">8m</time>
+<time result="score" overtime="1m" max-overtime="5m">8m</time>
 <gamemode>ffb</gamemode>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
 </authors>
 <contributors>
-    <contributor uuid="430ec559-364a-4363-ac7a-2529050440ac" contribution="XML"/> <!-- mame_BT -->
+    <contributor uuid="430ec559-364a-4363-ac7a-2529050440ac" contribution="XML"/> <!-- mameBT -->
 </contributors>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
@@ -22,11 +22,12 @@
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
-        <item slot="8" amount="16" material="arrow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment>projectile_protection</enchantment>
+            <enchantment level="2">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <game-mode>adventure</game-mode>
@@ -58,23 +59,25 @@
         <team id="only-red">red</team>
         <carrying-flag>flag</carrying-flag>
     </all>
+    <not id="above-or-below">
+        <cuboid min="37,9,304" max="40,11,307"/>
+    </not>
 </filters>
 <regions>
     <cylinder id="blue-capture" base="56.5,17,287.5" radius="1.5" height="2.5"/>
     <cylinder id="red-capture" base="20.5,17,323.5" radius="1.5" height="2.5"/>
     <cylinder id="blue-net" base="72.5,9.5,339.5" radius="2.5" height="3.5"/>
     <cylinder id="red-net" base="4.5,9.5,271.5" radius="2.5" height="3.5"/>
-    <circle id="blue-side" center="72.5,339.5" radius="25"/>
-    <circle id="red-side" center="4.5,271.5" radius="25"/>
+    <circle id="blue-side" center="64.5,331.5" radius="18"/>
+    <circle id="red-side" center="12.5,279.5" radius="18"/>
     <apply block="never" use="never"/>
 </regions>
-<flags>
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="flag"
           name="Flag"
           color="yellow"
           shared="true"
-          flag-proximity-metric="none"
-          net-proximity-metric="none">
+          pickup-filter="above-or-below">
         <post recover-time="8s" respawn-time="4s">
             <point>38.5,11,305.5</point>
         </post>
@@ -116,7 +119,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="6" material="arrow"/>
+    <item amount="3" material="arrow"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>

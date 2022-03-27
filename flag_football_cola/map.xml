@@ -1,7 +1,9 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Flag Football: Cola</name>
-<version>1.1.2</version>
+<version>1.1.5</version>
 <objective>Capture the flag as many times as possible in eight minutes!</objective>
+<time result="score" overtime="1m" max-overtime="5m">8m</time>
+<gamemode>ffb</gamemode>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
 </authors>
@@ -11,117 +13,104 @@
     <contributor uuid="0a359aef-794b-4d88-97ca-5672d9421532"/> <!-- xTrina -->
 </contributors>
 <teams>
-    <team id="red-team" color="dark red" max="5">Red</team>
-    <team id="blue-team" color="blue" max="5">Blue</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
-    <kit id="spawn-kit">
-        <item slot="0" material="stone sword" unbreakable="true"/>
-        <item slot="1" material="bow" unbreakable="true"/>
-        <item slot="2" material="arrow" amount="16"/>
-        <leggings material="chainmail leggings" enchantment="protection projectile:1" unbreakable="true"/>
-        <boots material="iron boots" unbreakable="true"/>
+    <kit id="default-kit">
+        <effect>night vision</effect>
+    </kit>
+    <kit id="spawn-kit" parents="default-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="2">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
         <game-mode>adventure</game-mode>
-        <potion duration="9999" amplifier="255">night vision</potion>
-    </kit>
-    <kit id="red-kit" parent="spawn-kit">
-        <helmet color="993333" unbreakable="true" material="leather helmet"/>
-        <chestplate color="993333" unbreakable="true" material="leather chestplate"/>
-    </kit>
-    <kit id="blue-kit" parent="spawn-kit">
-        <helmet locked="true" color="334CB2" unbreakable="true" material="leather helmet"/>
-        <chestplate locked="true" color="334CB2" unbreakable="true" material="leather chestplate"/>
     </kit>
 </kits>
 <spawns>
-    <spawn team="red-team" kit="red-kit" yaw="-90">
-        <region>
-            <point>-38.5,46,-25.5</point>
-        </region>
-    </spawn>
-    <spawn team="blue-team" kit="blue-kit" yaw="90">
-        <region>
-            <point>9.5,46,-25.5</point>
-        </region>
-    </spawn>
-    <default yaw="90">
-        <region>
+    <default kit="default-kit">
+        <region yaw="90">
             <cuboid min="22.5,63,-26.5" max="20.5,63,-24.5"/>
         </region>
     </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="90">
+            <point id="blue-spawn-point">9.5,46,-25.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="-90">
+            <point id="red-spawn-point">-38.5,46,-25.5</point>
+        </region>
+    </spawn>
 </spawns>
-<respawn delay="4s"/>
-<flags>
-    <flag id="flag" name="Flag" color="black" shared="true" pickup-filter="above-or-below">
-        <post id="center-post" recover-time="8s" respawn-time="4">
-            <block>-14.5,39,-25.5</block>
-        </post>
-        <pickup-kit force="true">
-            <potion duration="oo">speed</potion>
-        </pickup-kit>
-        <drop-kit force="true">
-            <potion duration="0">speed</potion>
-        </drop-kit>
-        <net points="1" region="blue-spawn" capture-filter="only-blue"/>
-        <net points="1" region="red-spawn" capture-filter="only-red"/>
-    </flag>
-</flags>
-<score>
-    <deaths>0</deaths>
-    <kills>0</kills>
-</score>
-<time>8m</time>
 <filters>
-    <team id="only-red">red-team</team>
-    <team id="only-blue">blue-team</team>
-    <all id="red-team-carrying-flag">
-        <team>red-team</team>
+    <all id="blue-has-flag">
+        <team id="only-blue">blue</team>
         <carrying-flag>flag</carrying-flag>
     </all>
-    <all id="blue-team-carrying-flag">
-        <team>blue-team</team>
+    <all id="red-has-flag">
+        <team id="only-red">red</team>
         <carrying-flag>flag</carrying-flag>
     </all>
-    <any id="above-or-below">
-        <not>
-            <cuboid min="-17,39,-28" max="-12,37,-23"/>
-        </not>
-    </any>
+    <not id="above-or-below">
+        <cuboid min="-17,39,-28" max="-12,37,-23"/>
+    </not>
 </filters>
 <regions>
-    <union id="spawn-points">
-        <point id="red-spawn-point">-38.5,46.25,-25.5</point>
-        <point id="blue-spawn-point">9.5,46.25,-25.5</point>
-    </union>
     <union id="sides">
-        <rectangle id="red-side" min="-20,-34" max="-9,-64"/>
         <rectangle id="blue-side" min="-20,-16" max="-9,13"/>
+        <rectangle id="red-side" min="-20,-34" max="-9,-64"/>
     </union>
     <union id="nets">
-        <union id="red-net">
-            <cuboid min="-12,36,-63" max="-17,41,-65"/>
-        </union>
-        <union id="blue-net">
-            <cuboid min="-12,36,12" max="-17,41,14"/>
-        </union>
+        <cuboid id="blue-net" min="-12,36,12" max="-17,41,14"/>
+        <cuboid id="red-net" min="-12,36,-63" max="-17,41,-65"/>
     </union>
     <union id="spawns">
         <cuboid id="red-spawn" min="-36,43,-23" max="-40,49,-27"/>
         <cuboid id="blue-spawn" min="7,43,-23" max="11,49,-27"/>
     </union>
-    <apply block="never" region="everywhere" message="You may not edit the map!"/>
+    <apply block="never" use="never"/>
 </regions>
-<proximity-alarms>
-    <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="blue-side" detect="red-team-carrying-flag" notify="red-team-carrying-flag"/>
-    <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="red-side" detect="blue-team-carrying-flag" notify="blue-team-carrying-flag"/>
-</proximity-alarms>
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
+    <flag id="flag"
+          name="Flag"
+          color="yellow"
+          shared="true"
+          pickup-filter="above-or-below">
+        <post recover-time="8s" respawn-time="4s">
+            <point>-14.5,39,-25.5</point>
+        </post>
+        <pickup-kit force="true">
+            <effect>speed</effect>
+        </pickup-kit>
+        <drop-kit force="true">
+            <effect duration="0">speed</effect>
+        </drop-kit>
+        <net points="1" region="blue-spawn" capture-filter="only-blue"/>
+        <net points="1" region="red-spawn" capture-filter="only-red"/>
+    </flag>
+</flags>
+<score/>
 <portals>
-    <portal filter="red-team-carrying-flag" region="red-net" destination="red-spawn-point" yaw="@-90"/>
-    <portal filter="blue-team-carrying-flag" region="blue-net" destination="blue-spawn-point" yaw="@90"/>
+    <portal observers="never" filter="blue-has-flag" region="blue-net" destination="blue-spawn-point" yaw="@90"/>
+    <portal observers="never" filter="red-has-flag" region="red-net" destination="red-spawn-point" yaw="@-90"/>
 </portals>
+<proximity-alarms>
+    <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="red-side" detect="blue-has-flag" notify="blue-has-flag"/>
+    <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="blue-side" detect="red-has-flag" notify="red-has-flag"/>
+</proximity-alarms>
 <toolrepair>
-    <item>stone sword</item>
-    <item>bow</item>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
 </toolrepair>
 <itemremove>
     <item>leather helmet</item>
@@ -129,17 +118,19 @@
     <item>chainmail leggings</item>
     <item>iron boots</item>
 </itemremove>
-<kill-rewards>
-    <kill-reward>
-        <item material="golden apple"/>
-        <item material="arrow" amount="6"/>
-    </kill-reward>
-</kill-rewards>
-<disabledamage>
-    <damage>fall</damage>
-</disabledamage>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="3" material="arrow"/>
+</kill-reward>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<timelock>on</timelock>
+<respawn delay="4s" auto="true"/>
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
 </map>
