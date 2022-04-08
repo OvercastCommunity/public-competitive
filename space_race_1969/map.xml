@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Space Race: 1969</name>
-<version>1.0.13</version>
+<version>1.0.14</version>
 <objective>Capture the enemy's flag.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -19,20 +19,15 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="14" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
     </kit>
     <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
@@ -82,62 +77,62 @@
             <point>64.5,18,25.5</point>
         </region>
     </default>
-    <spawn team="blue" filter="spawn1" kit="blue-kit">
+    <spawn team="blue" filter="spawn1" kit="spawn-kit">
         <region yaw="90">
             <block>76.5,8,-12.5</block>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn2" kit="blue-kit">
+    <spawn team="blue" filter="spawn2" kit="spawn-kit">
         <region yaw="90">
             <block>76.5,56,-12.5</block>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn3" kit="blue-kit">
+    <spawn team="blue" filter="spawn3" kit="spawn-kit">
         <region yaw="90">
             <block>76.5,96,-12.5</block>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn4" kit="blue-kit">
+    <spawn team="blue" filter="spawn4" kit="spawn-kit">
         <region yaw="90">
             <block>76.5,136,-12.5</block>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn5" kit="blue-kit">
+    <spawn team="blue" filter="spawn5" kit="spawn-kit">
         <region yaw="90">
             <block>76.5,176,-12.5</block>
         </region>
     </spawn>
-    <spawn team="blue" filter="spawn6" kit="blue-kit">
+    <spawn team="blue" filter="spawn6" kit="spawn-kit">
         <region yaw="90">
             <block>76.5,216,-12.5</block>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn1" kit="red-kit">
+    <spawn team="red" filter="spawn1" kit="spawn-kit">
         <region yaw="-90">
             <block>52.5,8,63.5</block>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn2" kit="red-kit">
+    <spawn team="red" filter="spawn2" kit="spawn-kit">
         <region yaw="-90">
             <block>52.5,56,63.5</block>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn3" kit="red-kit">
+    <spawn team="red" filter="spawn3" kit="spawn-kit">
         <region yaw="-90">
             <block>52.5,96,63.5</block>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn4" kit="red-kit">
+    <spawn team="red" filter="spawn4" kit="spawn-kit">
         <region yaw="-90">
             <block>52.5,136,63.5</block>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn5" kit="red-kit">
+    <spawn team="red" filter="spawn5" kit="spawn-kit">
         <region yaw="-90">
             <block>52.5,176,63.5</block>
         </region>
     </spawn>
-    <spawn team="red" filter="spawn6" kit="red-kit">
+    <spawn team="red" filter="spawn6" kit="spawn-kit">
         <region yaw="-90">
             <block>52.5,216,63.5</block>
         </region>
@@ -180,6 +175,7 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>

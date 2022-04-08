@@ -1,39 +1,32 @@
 <map proto="1.4.2">
 <name>Versatile</name>
-<version>1.0.12</version>
-<objective>Capture the enemy's flag.</objective>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<version>1.1.1</version>
+<objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <authors>
     <author uuid="a4266139-34f3-46c5-a730-f8828376a15a"/> <!-- LArrowHead -->
     <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/> <!-- DoomRobotBoy -->
 </authors>
+<time result="score" overtime="2m" max-overtime="6m">12m</time>
 <teams>
-    <team id="blue" color="blue" max="5">Blue</team>
-    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
-    <kit id="default-kit">
-        <effect>night vision</effect>
-    </kit>
-    <kit id="spawn-kit" parents="default-kit">
+    <kit id="spawn-kit">
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="14" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
+        <effect duration="4" amplifier="255">resistance</effect>
+        <effect duration="4" amplifier="255">regeneration</effect>
     </kit>
     <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
@@ -43,19 +36,19 @@
     </kit>
 </kits>
 <spawns>
-    <default kit="default-kit">
+    <default>
         <region yaw="180">
-            <cylinder base="-16.5,13,23.5" radius="1" height="2"/>
+            <block>-17,12,23</block>
         </region>
     </default>
-    <spawn team="blue" kit="blue-kit">
+    <spawn team="blue" kit="spawn-kit">
         <region yaw="-90">
-            <cylinder base="-90.5,3,-13.5" radius="1" height="1"/>
+            <block>-90,2,-14</block>
         </region>
     </spawn>
-    <spawn team="red" kit="red-kit">
+    <spawn team="red" kit="spawn-kit">
         <region yaw="90">
-            <cylinder base="57.5,3,6.5" radius="1" height="1"/>
+            <block>56,2,6</block>
         </region>
     </spawn>
 </spawns>
@@ -73,16 +66,18 @@
     <flag id="blue-flag"
           name="Blue Flag"
           owner="blue"
+          color="blue"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-red" recover-time="20s" respawn-time="10s">-57.5,10,-13.5</post>
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">-57.5,10,-13.5</post>
     </flag>
     <flag id="red-flag"
           name="Red Flag"
           owner="red"
+          color="red"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-blue" recover-time="20s" respawn-time="10s">24.5,10,6.5</post>
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">24.5,10,6.5</post>
     </flag>
     <flags points="1">
         <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
@@ -90,6 +85,35 @@
     </flags>
 </flags>
 <score/>
+<spawners>
+    <spawner id="mid-gapple" delay="8s">
+        <spawn-region>
+            <block>-17,3,-4</block>
+        </spawn-region>
+        <player-region>
+            <cylinder base="-16.5,2,-3.5" height="4" radius="2.25"/>
+        </player-region>
+        <item material="golden apple"/>
+    </spawner>
+    <spawner id="blue-arrow" delay="2s">
+        <spawn-region>
+            <block>-31,6,0</block>
+        </spawn-region>
+        <player-region>
+            <cylinder base="-30.5,5,0.4" height="4" radius="2.25"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
+    <spawner id="red-arrow" delay="2s">
+        <spawn-region>
+            <block>-3,6,-8</block>
+        </spawn-region>
+        <player-region>
+            <cylinder base="-2.5,5,-7.5" height="4" radius="2.25"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
+</spawners>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -99,6 +123,7 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>

@@ -26,20 +26,15 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="12" material="arrow"/>
+        <item slot="8" amount="10" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="2" amplifier="255">resistance</effect>
-    </kit>
-    <kit id="purple-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="7F3FB2" material="leather helmet"/>
-        <chestplate unbreakable="true" color="7F3FB2" material="leather chestplate"/>
-    </kit>
-    <kit id="yellow-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="E5E533" material="leather helmet"/>
-        <chestplate unbreakable="true" color="E5E533" material="leather chestplate"/>
     </kit>
 </kits>
 <spawns>
@@ -48,12 +43,12 @@
             <point>117.5,51,176</point>
         </region>
     </default>
-    <spawn team="purple" kit="purple-kit">
+    <spawn team="purple" kit="spawn-kit">
         <region yaw="90">
             <block>156,13,185</block>
         </region>
     </spawn>
-    <spawn team="yellow" kit="yellow-kit">
+    <spawn team="yellow" kit="spawn-kit">
         <region yaw="-90">
             <block>79,13,170</block>
         </region>

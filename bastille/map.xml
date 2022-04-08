@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Bastille</name>
-<version>2.0.5</version>
+<version>2.1.2</version>
 <objective>Capture the enemy flag.</objective>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
@@ -17,18 +17,16 @@
     <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
-    <kit id="default-kit">
-        <effect>night vision</effect>
-    </kit>
-    <kit id="spawn-kit" parents="default-kit">
+    <kit id="spawn-kit">
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="14" material="arrow"/>
+        <item slot="8" amount="12" material="arrow"/>
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
@@ -42,9 +40,21 @@
     </kit>
 </kits>
 <spawns>
-    <default kit="default-kit" region="obs-spawn" yaw="0"/>
-    <spawn team="blue" kit="spawn-kit" region="blue-spawn" yaw="-45"/>
-    <spawn team="red" kit="spawn-kit" region="red-spawn" yaw="45"/>
+    <default>
+        <region yaw="0">
+            <block>0,9,-13</block>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="-45">
+            <block>-33,4,15</block>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="45">
+            <block>33,4,15</block>
+        </region>
+    </spawn>
 </spawns>
 <filters>
     <team id="only-blue">blue</team>
@@ -52,21 +62,18 @@
     <time id="flag-respawns">0</time>
 </filters>
 <regions>
-    <cylinder id="obs-spawn"  base="0,30,0" radius="1.5" height="1"/>
-    <cuboid id="blue-spawn" min="-31.5,7.1,15.5" max="-33.5,7.1,16.5"/>
-    <cuboid id="red-spawn" min="34.5,7.1,15.5" max="32.5,7.1,16.5"/>
-    <cuboid id="blue-net" min="-44,11,-8" max="-41,14,-11"/>
-    <cuboid id="red-net" min="42,11,-8" max="45,14,-11"/>
+    <cuboid id="blue-net" min="-44,8,-8" max="-41,11,-11"/>
+    <cuboid id="red-net" min="42,8,-8" max="45,11,-11"/>
     <apply block="never" use="never"/>
 </regions>
-<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false" drop-on-water="false">
     <flag id="blue-flag"
           name="Blue Flag"
           owner="blue"
           color="blue"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">-42.5,11,-9.5</post>
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">-42.5,8,-9.5</post>
     </flag>
     <flag id="red-flag"
           name="Red Flag"
@@ -74,7 +81,7 @@
           color="red"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">43.5,11,-9.5</post>
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">43.5,8,-9.5</post>
     </flag>
     <flags points="1">
         <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
@@ -82,6 +89,35 @@
     </flags>
 </flags>
 <score/>
+<spawners>
+    <spawner id="mid-gapple" delay="8s">
+        <spawn-region>
+            <block>0,4,-3</block>
+        </spawn-region>
+        <player-region>
+            <cylinder base="0.5,3,-2.5" height="4" radius="2.25"/>
+        </player-region>
+        <item material="golden apple"/>
+    </spawner>
+    <spawner id="blue-arrow" delay="2s">
+        <spawn-region>
+            <block>-18,14,-10</block>
+        </spawn-region>
+        <player-region>
+            <cylinder base="-17.5,13,-9.5" height="4" radius="2.25"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
+    <spawner id="red-arrow" delay="2s">
+        <spawn-region>
+            <block>18,14,-10</block>
+        </spawn-region>
+        <player-region>
+            <cylinder base="18.5,13,-9.5" height="4" radius="2.25"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
+</spawners>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -105,46 +141,4 @@
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<!--
-<filters>
-    <not id="spawn-1">
-        <time>2m</time>
-    </not>
-    <all id="spawn-2">
-        <time>2m</time>
-        <not>
-            <time>4m</time>
-        </not>
-    </all>
-    <all id="spawn-3">
-        <time>4m</time>
-        <not>
-            <time>6m</time>
-        </not>
-    </all>
-    <all id="spawn-4">
-        <time>6m</time>
-        <not>
-            <time>8m</time>
-        </not>
-    </all>
-    <all id="spawn-5">
-        <time>8m</time>
-        <not>
-            <time>10m</time>
-        </not>
-    </all>
-    <all id="spawn-6">
-        <time>10m</time>
-    </all>
-</filters>
-<respawns>
-    <respawn delay="3s" auto="true" blackout="true" filter="spawn-1"/>
-    <respawn delay="3.5s" auto="true" blackout="true" filter="spawn-2"/>
-    <respawn delay="4s" auto="true" blackout="true" filter="spawn-3"/>
-    <respawn delay="4.5s" auto="true" blackout="true" filter="spawn-4"/>
-    <respawn delay="5s" auto="true" blackout="true" filter="spawn-5"/>
-    <respawn delay="5.5s" auto="true" blackout="true" filter="spawn-6"/>
-</respawns>
--->
 </map>
