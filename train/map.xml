@@ -1,0 +1,93 @@
+<map proto="1.4.0">
+<name>Train</name>
+<version>1.0.1</version>
+<objective>Be the first team to reach 750 points!</objective>
+<authors>
+    <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!-- Blazy -->
+</authors>
+<teams>
+    <team id="blue-team" color="blue" max="5">Blue</team>
+    <team id="red-team" color="dark red" max="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="10" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="3" amplifier="255">resistance</effect>
+        <effect duration="3" amplifier="255">regeneration</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <regions>
+            <point yaw="90">68.5,25.1,-50.5</point>
+        </regions>
+    </default>
+    <spawn team="blue-team" kit="spawn-kit">
+        <regions>
+            <point yaw="-90">31,5,-67.5</point>
+        </regions>
+    </spawn>
+    <spawn team="red-team" kit="spawn-kit">
+        <regions>
+            <point yaw="-90">31,5,-33.5</point>
+        </regions>
+    </spawn>
+</spawns>
+<filters>
+    <team id="only-blue">blue-team</team>
+    <team id="only-red">red-team</team>
+    <not id="no-use">
+        <material>trap door</material>
+    </not>
+</filters>
+<regions>
+    <union id="point-b">
+        <cuboid min="66,3,-68" max="73,7,-75"/>
+    </union>
+    <union id="point-a">
+        <cuboid min="66,3,-33" max="73,7,-26"/>
+    </union>
+    <union id="mid">
+        <cuboid min="29,9,-54" max="36,13,-47"/>
+    </union>
+    <apply region="everywhere" use="no-use" block="never"/>
+</regions>
+<control-points neutral-state="true" incremental="true" show-progress="true" required="false" capture-time="5s" points="1">
+    <control-point name="Point B" capture="point-b" progress="point-b"/>
+    <control-point name="Point A" capture="point-a" progress="point-a"/>
+    <control-point name="Middle" capture="mid" progress="mid"/>
+</control-points>
+<kill-rewards>
+    <kill-reward>
+        <item material="golden apple"/>
+        <item amount="5" material="arrow"/>
+    </kill-reward>
+</kill-rewards>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<score>
+    <limit>750</limit>
+</score>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<respawn delay="4s" auto="true" blackout="false"/>
+</map>

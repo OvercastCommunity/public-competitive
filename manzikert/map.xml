@@ -1,0 +1,119 @@
+<map proto="1.4.2">
+<name>Manzikert</name>
+<version>1.0.3</version>
+<objective>Control the flag for 200 seconds to win!</objective>
+<gamemode>kotf</gamemode>
+<authors>
+    <author uuid="f70b7a8f-93b2-480f-9d54-88e21485a042"/> <!-- Diamyx -->
+</authors>
+<contributors>
+    <contributor uuid="75fd93dd-8e48-4698-81a2-97dae2ec5b5f" /> <!-- Pugzy -->
+</contributors>
+<teams>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots">
+            <enchantment>feather_falling</enchantment>
+        </boots>
+        <effect duration="1" amplifier="0">health boost</effect>
+        <effect duration="6" amplifier="255">resistance</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <kit id="flag-kit" force="true">
+        <effect amplifier="-3">health boost</effect>
+        <effect duration="3" amplifier="2">absorption</effect>
+    </kit>
+    <kit id="reset-health" force="true">
+        <effect duration="0" amplifier="0">health boost</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="180">
+            <cylinder base="-44.5,10,77.5" radius="2" height="0"/>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit" filter="has-flag">
+        <region yaw="-90">
+            <point>-100.5,7,22.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit" filter="has-flag">
+        <region yaw="90">
+            <point>11.5,7,22.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <any id="has-flag">
+        <carrying-flag>flag</carrying-flag>
+        <not>
+            <same-team>
+                <carrying-flag>flag</carrying-flag>
+            </same-team>
+        </not>
+    </any>
+</filters>
+<regions>
+    <apply block="never" use="never"/>
+</regions>
+<flags>
+    <flag id="flag"
+          name="Flag"
+          color="purple"
+          shared="true"
+          post="west-post"
+          points-rate="1"
+          pickup-kit="flag-kit"
+          drop-kit="reset-health"
+          flag-proximity-metric="none"
+          sequential="true"
+          show-respawn-on-pickup="true">
+        <post id="west-post" return-time="0s" respawn-time="20s" name="West Post">-44.5,13,2.5</post>
+        <post id="south-post" return-time="0s" respawn-time="20s" name="South Post">-44.5,13,42.5</post>
+    </flag>
+</flags>
+<score>
+    <limit>200</limit>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+    <item>banner</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="6" material="arrow"/>
+</kill-reward>
+<respawn delay="5s" spectate="true" auto="true">
+    <message>
+        {"translate":"death.respawn.confirmed.waiting.flagDropped"}
+    </message>
+</respawn>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>

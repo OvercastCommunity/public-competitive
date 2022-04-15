@@ -1,0 +1,114 @@
+<map proto="1.4.2">
+<name>Jasper KoTF</name>
+<version>1.0</version>
+<objective>Control the flag for 200 seconds to win!</objective>
+<gamemode>kotf</gamemode>
+<authors>
+    <author uuid="706bb3b3-f4e3-451d-9f46-acc0db1f0db1"/> <!-- _cool_steve_ -->
+    <author uuid="883b4cb2-0bdc-453f-916f-5bdfb8c74599"/> <!-- YJme -->
+</authors>
+<teams>
+    <team id="black" color="black" max="5" max-overfill="5">Blue</team>
+    <team id="yellow" color="yellow" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="3" amplifier="255">resistance</effect>
+    </kit>
+    <kit id="flag-kit" force="true">
+        <effect amplifier="-3">health boost</effect>
+        <effect duration="3" amplifier="2">absorption</effect>
+    </kit>
+    <kit id="reset-health" force="true">
+        <effect duration="0" amplifier="0">health boost</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="90">
+            <block>-36.5,73,14.5</block>
+        </region>
+    </default>
+    <spawn team="black" kit="spawn-kit" filter="has-flag">
+        <region yaw="0">
+            <block>-36.5,20,-17.5</block>
+        </region>
+    </spawn>
+    <spawn team="yellow" kit="spawn-kit" filter="has-flag">
+        <region yaw="180">
+            <block>-36.5,20,46.5</block>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <any id="has-flag">
+        <carrying-flag>flag</carrying-flag>
+        <not>
+            <same-team>
+                <carrying-flag>flag</carrying-flag>
+            </same-team>
+        </not>
+    </any>
+</filters>
+<regions>
+    <apply block="never" use="never"/>
+</regions>
+<flags>
+    <flag id="flag"
+          name="Flag"
+          color="cyan"
+          shared="true"
+          post="mid-post"
+          points-rate="1"
+          pickup-kit="flag-kit"
+          drop-kit="reset-health"
+          flag-proximity-metric="none"
+          show-respawn-on-pickup="true"
+          sequential="false">
+        <post id="mid-post" name="Mid Post" return-time="0s" respawn-time="20s">-36.5,23,14.5</post>
+        <post id="east-post" name="East Post" return-time="0s" respawn-time="20s">-1.5,32,16.5</post>
+        <post id="west-post" name="West Post" return-time="0s" respawn-time="20s">-71.5,32,12.5</post>
+    </flag>
+</flags>
+<score>
+    <limit>200</limit>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+    <item>banner</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="6" material="arrow"/>
+</kill-reward>
+<respawn delay="2s" auto="true" spectate="true">
+    <message>
+        {"translate":"death.respawn.confirmed.waiting.flagDropped"}
+    </message>
+</respawn>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>
