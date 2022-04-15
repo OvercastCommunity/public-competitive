@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Biotech</name>
-<version>1.0.3</version>
+<version>1.0.4</version>
 <objective>Be the first team to reach 750 points!</objective>
 <gamemode>koth</gamemode>
 <created>2022-04-05</created>
@@ -102,8 +102,8 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
+<respawn delay="3s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="3s" auto="true" blackout="true"/>
 </map>

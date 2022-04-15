@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Minos</name>
-<version>1.0.1</version>
+<version>1.0.2</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="a9373ae5-37c7-4319-95d8-867d011bcdee"/> <!-- jam0828 -->
@@ -25,7 +25,7 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots">
-        	<enchantment level="1">feather_falling</enchantment>
+            <enchantment>feather_falling</enchantment>
         </boots>
         <effect duration="3" amplifier="255">resistance</effect>
         <effect duration="3" amplifier="255">regeneration</effect>
@@ -33,51 +33,44 @@
 </kits>
 <spawns>
     <default>
-        <regions>
-            <point yaw="-45">146.5,55.2,115.5</point>
-        </regions>
+        <region yaw="-45">
+            <point>146.5,55.2,115.5</point>
+        </region>
     </default>
     <spawn team="blue-team" kit="spawn-kit">
-        <regions>
-            <point yaw="0">138.5,24.1,122.5</point>
-        </regions>
+        <region yaw="0">
+            <point>138.5,24.1,122.5</point>
+        </region>
     </spawn>
     <spawn team="red-team" kit="spawn-kit">
-        <regions>
-            <point yaw="-90">153.5,24.1,107.5</point>
-        </regions>
+        <region yaw="-90">
+            <point>153.5,24.1,107.5</point>
+        </region>
     </spawn>
 </spawns>
 <filters>
     <team id="only-blue">blue-team</team>
     <team id="only-red">red-team</team>
-    <not id="no-use">
+    <deny id="no-use">
         <material>trap door</material>
-    </not>
+    </deny>
 </filters>
 <regions>
-    <union id="point-b">
-        <cuboid min="157,25,152" max="150,29,159"/>
-    </union>
-    <union id="point-a">
-        <cuboid min="183,25,126" max="190,29,119"/>
-    </union>
-    <union id="mid">
-        <cuboid min="168,25,137" max="161,29,130"/>
-    </union>
-    <apply region="everywhere" use="no-use" block="never"/>
+    <cuboid id="point-a" min="183,25,126" max="190,29,119"/>
+    <cuboid id="mid" min="168,25,137" max="161,29,130"/>
+    <cuboid id="point-b" min="157,25,152" max="150,29,159"/>
+    <apply use="no-use" block="never"/>
 </regions>
-<control-points neutral-state="true" incremental="true" show-progress="true" required="false" capture-time="5s" points="1">
-    <control-point name="Point B" capture="point-b" progress="point-b"/>
-    <control-point name="Point A" capture="point-a" progress="point-a"/>
-    <control-point name="Middle" capture="mid" progress="mid"/>
-</control-points>
-<kill-rewards>
-    <kill-reward>
-        <item material="golden apple"/>
-        <item amount="5" material="arrow"/>
-    </kill-reward>
-</kill-rewards>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
+        <hill name="Point A" capture="point-a" progress="point-a"/>
+        <hill name="Middle" capture="mid" progress="mid"/>
+        <hill name="Point B" capture="point-b" progress="point-b"/>
+    </hills>
+</king>
+<score>
+    <limit>750</limit>
+</score>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -88,11 +81,16 @@
     <item>chainmail leggings</item>
     <item>iron boots</item>
 </itemremove>
-<score>
-    <limit>750</limit>
-</score>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="5" material="arrow"/>
+</kill-reward>
+<respawn delay="4s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="4s" auto="true" blackout="false"/>
 </map>

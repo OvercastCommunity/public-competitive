@@ -1,6 +1,6 @@
-<map proto="1.4.0">
+<map proto="1.4.2">
 <name>Train</name>
-<version>1.0.1</version>
+<version>1.0.2</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!-- Blazy -->
@@ -28,51 +28,44 @@
 </kits>
 <spawns>
     <default>
-        <regions>
-            <point yaw="90">68.5,25.1,-50.5</point>
-        </regions>
+        <region yaw="90">
+            <point>68.5,25.1,-50.5</point>
+        </region>
     </default>
     <spawn team="blue-team" kit="spawn-kit">
-        <regions>
-            <point yaw="-90">31,5,-67.5</point>
-        </regions>
+        <region yaw="-90">
+            <point>31,5,-67.5</point>
+        </region>
     </spawn>
     <spawn team="red-team" kit="spawn-kit">
-        <regions>
-            <point yaw="-90">31,5,-33.5</point>
-        </regions>
+        <region yaw="-90">
+            <point>31,5,-33.5</point>
+        </region>
     </spawn>
 </spawns>
 <filters>
     <team id="only-blue">blue-team</team>
     <team id="only-red">red-team</team>
-    <not id="no-use">
+    <deny id="no-use">
         <material>trap door</material>
-    </not>
+    </deny>
 </filters>
 <regions>
-    <union id="point-b">
-        <cuboid min="66,3,-68" max="73,7,-75"/>
-    </union>
-    <union id="point-a">
-        <cuboid min="66,3,-33" max="73,7,-26"/>
-    </union>
-    <union id="mid">
-        <cuboid min="29,9,-54" max="36,13,-47"/>
-    </union>
-    <apply region="everywhere" use="no-use" block="never"/>
+    <cuboid id="point-a" min="66,3,-33" max="73,7,-26"/>
+    <cuboid id="mid" min="29,9,-54" max="36,13,-47"/>
+    <cuboid id="point-b" min="66,3,-68" max="73,7,-75"/>
+    <apply use="no-use" block="never"/>
 </regions>
-<control-points neutral-state="true" incremental="true" show-progress="true" required="false" capture-time="5s" points="1">
-    <control-point name="Point B" capture="point-b" progress="point-b"/>
-    <control-point name="Point A" capture="point-a" progress="point-a"/>
-    <control-point name="Middle" capture="mid" progress="mid"/>
-</control-points>
-<kill-rewards>
-    <kill-reward>
-        <item material="golden apple"/>
-        <item amount="5" material="arrow"/>
-    </kill-reward>
-</kill-rewards>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
+        <hill name="Point A" capture="point-a" progress="point-a"/>
+        <hill name="Middle" capture="mid" progress="mid"/>
+        <hill name="Point B" capture="point-b" progress="point-b"/>
+    </hills>
+</king>
+<score>
+    <limit>750</limit>
+</score>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -83,11 +76,12 @@
     <item>chainmail leggings</item>
     <item>iron boots</item>
 </itemremove>
-<score>
-    <limit>750</limit>
-</score>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="5" material="arrow"/>
+</kill-reward>
+<respawn delay="4s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="4s" auto="true" blackout="false"/>
 </map>
