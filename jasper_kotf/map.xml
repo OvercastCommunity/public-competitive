@@ -1,6 +1,6 @@
 <map proto="1.4.2">
-<name>Jasper KoTF</name>
-<version>1.0</version>
+<name>Jasper KotF</name>
+<version>1.0.1</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -8,8 +8,8 @@
     <author uuid="883b4cb2-0bdc-453f-916f-5bdfb8c74599"/> <!-- YJme -->
 </authors>
 <teams>
-    <team id="black" color="black" max="5" max-overfill="5">Blue</team>
-    <team id="yellow" color="yellow" max="5" max-overfill="5">Red</team>
+    <team id="black" color="black" max="5" max-overfill="5">Black</team>
+    <team id="yellow" color="yellow" max="5" max-overfill="5">Yellow</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
