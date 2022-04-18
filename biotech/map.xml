@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Biotech</name>
-<version>1.0.4</version>
+<version>1.0.7</version>
 <objective>Be the first team to reach 750 points!</objective>
 <gamemode>koth</gamemode>
 <created>2022-04-05</created>
@@ -54,8 +54,15 @@
 </spawns>
 <regions>
     <apply block="never" use="never"/>
+    <point id="gap-spawner-point">0.5,5,0.5</point>
+    <cylinder id="gap-spawner" base="0.5,5,0.5" radius="4" height="3"/>
 </regions>
-<control-points incremental="true" required="false" show-progress="true" capture-time="5s" points="1">
+<spawners>
+    <spawner spawn-region="gap-spawner-point" player-region="gap-spawner" delay="6s">
+        <item amount="1" material="golden apple"/>
+    </spawner>
+</spawners>
+<control-points required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
     <control-point name="Balcony (SW)">
         <capture-region>
             <cuboid min="-12,17,13" max="-21,20,22"/>

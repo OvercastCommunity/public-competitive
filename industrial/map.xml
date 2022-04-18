@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Industrial</name>
-<version>1.0.3</version>
+<version>1.1</version>
 <objective>Reach 750 points before the opposing team!</objective>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
@@ -81,7 +81,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="4s" auto="true" blackout="true"/>
+<respawn delay="4s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

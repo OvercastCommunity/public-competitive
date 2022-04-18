@@ -35,7 +35,7 @@
         </region>
     </default>
     <spawn team="blue-team" kit="spawn-kit">
-        <region>
+        <region yaw="-90">
             <point>30,15,120.5</point>
         </region>
     </spawn>

@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Sunstroke KoTF</name>
-<version>7.5.0</version>
+<version>1.0.1</version>
 <objective>BatChest</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -68,16 +68,16 @@
           name="Flag"
           color="purple"
           shared="true"
-          post="mid-post"
           points-rate="1"
           pickup-kit="flag-kit"
           drop-kit="reset-health"
           flag-proximity-metric="none"
-          show-respawn-on-pickup="true"
-          sequential="false">
-        <post id="mid-post" name="Mid Post" return-time="0s" respawn-time="20s">0.5,9,0.5</post>
-        <post id="post-a" name="Post A" return-time="0s" respawn-time="20s">0.5,13,-12.5</post>
-        <post id="post-b" name="Post B" return-time="0s" respawn-time="20s">0.5,11,29.5</post>
+          show-respawn-on-pickup="true">
+        <post return-time="0s" respawn-time="20s">
+            <post name="Mid Post">0.5,9,0.5</post>
+            <post name="Post A">0.5,13,-12.5</post>
+            <post name="Post B">0.5,11,29.5</post>
+        </post>
     </flag>
 </flags>
 <score>

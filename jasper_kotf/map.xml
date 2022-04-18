@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Jasper KotF</name>
-<version>1.0.1</version>
+<version>1.0.2</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -69,16 +69,16 @@
           name="Flag"
           color="cyan"
           shared="true"
-          post="mid-post"
           points-rate="1"
           pickup-kit="flag-kit"
           drop-kit="reset-health"
           flag-proximity-metric="none"
-          show-respawn-on-pickup="true"
-          sequential="false">
-        <post id="mid-post" name="Mid Post" return-time="0s" respawn-time="20s">-36.5,23,14.5</post>
-        <post id="east-post" name="East Post" return-time="0s" respawn-time="20s">-1.5,32,16.5</post>
-        <post id="west-post" name="West Post" return-time="0s" respawn-time="20s">-71.5,32,12.5</post>
+          show-respawn-on-pickup="true">
+        <post return-time="0s" respawn-time="20s">
+            <post name="Mid Post">-36.5,23,14.5</post>
+            <post name="East Post">-1.5,32,16.5</post>
+            <post name="West Post">-71.5,32,12.5</post>
+        </post>
     </flag>
 </flags>
 <score>

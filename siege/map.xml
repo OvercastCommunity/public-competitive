@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Siege</name>
-<version>2.0.5</version>
+<version>2.0.6</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
@@ -22,7 +22,6 @@
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>

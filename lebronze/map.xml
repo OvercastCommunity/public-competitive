@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>LeBronze</name>
-<version>1.2.3</version>
+<version>1.2.4</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -30,7 +30,6 @@
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
@@ -146,13 +145,13 @@
 </regions>
 <control-points neutral-state="true" show-progress="true">
     <!-- Purple visual control points -->
-    <control-point initial-owner="purple" id="purple-last" required="false" name="Purple Last" capture-time="8s" points="0" incremental="true" capture="cp-purple-last" progress="cp-purple-last" player-filter="filter-purple-last"/>
-    <control-point initial-owner="purple" id="purple-2nd" required="false" name="Purple 2nd" capture-time="6s" points="0" incremental="true" capture="cp-purple-2nd" progress="cp-purple-2nd" player-filter="filter-purple-2nd"/>
+    <control-point initial-owner="purple" id="purple-last" required="false" name="Purple Last" capture-time="8s" points="0" time-multiplier="0.25" incremental="true" capture="cp-purple-last" progress="cp-purple-last" player-filter="filter-purple-last"/>
+    <control-point initial-owner="purple" id="purple-2nd" required="false" name="Purple 2nd" capture-time="6s" points="0" time-multiplier="0.25" incremental="true" capture="cp-purple-2nd" progress="cp-purple-2nd" player-filter="filter-purple-2nd"/>
     <!-- Mid -->
-    <control-point id="mid" required="false" name="Mid" capture-time="6s" points="2" incremental="true" capture="cp-mid" progress="cp-mid" player-filter="filter-mid"/>
+    <control-point id="mid" required="false" name="Mid" capture-time="6s" points="2" time-multiplier="0.25" incremental="true" capture="cp-mid" progress="cp-mid" player-filter="filter-mid"/>
     <!-- Yellow visual control points -->
-    <control-point initial-owner="yellow" id="yellow-2nd" required="false" name="Yellow 2nd" capture-time="6s" points="0" incremental="true" capture="cp-yellow-2nd" progress="cp-yellow-2nd" player-filter="filter-yellow-2nd"/>
-    <control-point initial-owner="yellow" id="yellow-last" required="false" name="Yellow Last" capture-time="8s" points="0" incremental="true" capture="cp-yellow-last" progress="cp-yellow-last" player-filter="filter-yellow-last"/>
+    <control-point initial-owner="yellow" id="yellow-2nd" required="false" name="Yellow 2nd" capture-time="6s" points="0" time-multiplier="0.25" incremental="true" capture="cp-yellow-2nd" progress="cp-yellow-2nd" player-filter="filter-yellow-2nd"/>
+    <control-point initial-owner="yellow" id="yellow-last" required="false" name="Yellow Last" capture-time="8s" points="0" time-multiplier="0.25" incremental="true" capture="cp-yellow-last" progress="cp-yellow-last" player-filter="filter-yellow-last"/>
     <!-- Point-giving control points -->
     <control-point id="yellow-last-point" required="false" show="false" points="1" name="YL Point" capture-time="0s" capture="everywhere" player-filter="filter-last-point-purple" capture-filter="only-purple"/>
     <control-point id="yellow-2nd-point" required="false" show="false" points="1" name="Y2 Point" capture-time="0s" capture="everywhere" player-filter="filter-2nd-point-purple" capture-filter="only-purple"/>

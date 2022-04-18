@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Playground</name>
-<version>2.0.5</version>
+<version>2.0.6</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383"/> <!-- XUPH -->
@@ -23,7 +23,6 @@
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>

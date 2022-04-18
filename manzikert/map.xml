@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Manzikert</name>
-<version>1.0.3</version>
+<version>1.0.4</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -75,15 +75,15 @@
           name="Flag"
           color="purple"
           shared="true"
-          post="west-post"
           points-rate="1"
           pickup-kit="flag-kit"
           drop-kit="reset-health"
           flag-proximity-metric="none"
-          sequential="true"
           show-respawn-on-pickup="true">
-        <post id="west-post" return-time="0s" respawn-time="20s" name="West Post">-44.5,13,2.5</post>
-        <post id="south-post" return-time="0s" respawn-time="20s" name="South Post">-44.5,13,42.5</post>
+        <post return-time="0s" respawn-time="20s" sequential="true">
+            <post name="North Post">-44.5,13,2.5</post>
+            <post name="South Post">-44.5,13,42.5</post>
+        </post>
     </flag>
 </flags>
 <score>

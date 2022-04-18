@@ -1,9 +1,9 @@
 <map proto="1.4.2">
 <name>Sandy</name>
-<version>1.0.9</version>
+<version>1.1.1</version>
 <objective>Be the first to 750 points</objective>
 <authors>
-    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383" /> <!-- XUPH -->
+    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383" /> <!-- Xuph -->
     <author uuid="0b8f95fa-0f40-4f28-9fd0-b8e243bb6800" /> <!-- Fouled -->
 </authors>
 <teams>
@@ -20,80 +20,52 @@
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="2">protection</enchantment>
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="4" amplifier="10">resistance</effect>
-        <effect duration="4" amplifier="10">regeneration</effect>
+        <effect duration="4" amplifier="255">resistance</effect>
+        <effect duration="4" amplifier="255">regeneration</effect>
     </kit>
 </kits>
 <spawns>
     <default>
         <region yaw="0">
-            <cylinder base="-891.5,178,-696.5" radius="1" height="1" />
+            <block>-892,42,-697</block>
         </region>
     </default>
     <spawn team="blue" kit="spawn-kit">
         <region yaw="-90">
-            <block>-921.5,155.75,-664.5</block>
+            <block>-922,19,-665</block>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
         <region yaw="90">
-            <block>-861.5,155.75,-664.5</block>
+            <block>-862,19,-665</block>
         </region>
     </spawn>
 </spawns>
 <regions>
+    <union id="a-capture">
+        <cuboid min="-895,16,-690" max="-888,20,-685"/>
+        <cuboid min="-894,16,-691" max="-889,20,-684"/>
+    </union>
+    <cuboid id="a-captured" min="-896,28,-696" max="-887,37,-693"/>
+    <union id="mid-capture">
+        <cuboid min="-894,8,-668" max="-889,12,-661"/>
+        <cuboid min="-895,8,-667" max="-888,12,-662"/>
+    </union>
+    <union id="b-capture">
+        <cuboid min="-894,16,-645" max="-889,20,-638"/>
+        <cuboid min="-895,16,-644" max="-888,20,-639"/>
+    </union>
+    <cuboid id="b-captured" min="-896,28,-636" max="-887,37,-633"/>
     <apply block="never" use="never"/>
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
-        <hill name="Point A">
-            <capture>
-                <cuboid min="-888,152,-685" max="-895,155,-690"/>
-                <cuboid min="-889,152,-684" max="-894,155,-691"/>
-            </capture>
-            <progress>
-                <cuboid min="-888,152,-685" max="-895,155,-690"/>
-                <cuboid min="-889,152,-684" max="-894,155,-691"/>
-            </progress>
-            <captured>
-                <cuboid min="-888,152,-685" max="-895,155,-690"/>
-                <cuboid min="-889,152,-684" max="-894,155,-691"/>
-                <cuboid min="-887,152,-696" max="-896,173,-693"/>
-            </captured>
-        </hill>
-        <hill name="Middle">
-            <capture>
-                <cuboid min="-889,144,-661" max="-894,147,-668"/>
-                <cuboid min="-895,144,-667" max="-888,147,-662"/>
-            </capture>
-            <progress>
-                <cuboid min="-889,144,-661" max="-894,147,-668"/>
-                <cuboid min="-895,144,-667" max="-888,147,-662"/>
-            </progress>
-            <captured>
-                <cuboid min="-889,144,-661" max="-894,147,-668"/>
-                <cuboid min="-895,144,-667" max="-888,147,-662"/>
-            </captured>
-        </hill>
-        <hill name="Point B">
-            <capture>
-                <cuboid min="-889,152,-638" max="-894,155,-645"/>
-                <cuboid min="-888,152,-639" max="-895,155,-644"/>
-            </capture>
-            <progress>
-                <cuboid min="-889,152,-638" max="-894,155,-645"/>
-                <cuboid min="-888,152,-639" max="-895,155,-644"/>
-            </progress>
-            <captured>
-                <cuboid min="-889,152,-638" max="-894,155,-645"/>
-                <cuboid min="-888,152,-639" max="-895,155,-644"/>
-                <cuboid min="-887,152,-636" max="-896,173,-633"/>
-            </captured>
-        </hill>
+        <hill name="Point A" capture="a-capture" progress="a-capture" captured="a-captured"/>
+        <hill name="Middle" capture="mid-capture" progress="mid-capture"/>
+        <hill name="Point B" capture="b-capture" progress="b-capture" captured="b-captured"/>
     </hills>
 </king>
 <score>

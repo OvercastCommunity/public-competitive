@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Bizarre Bazaar</name>
-<version>1.1.2</version>
+<version>1.1.3</version>
 <objective>Hold the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <edition>tournament</edition>
@@ -26,12 +26,13 @@
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="4">projectile_protection</enchantment>
+            <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots locked="true" unbreakable="true" material="iron boots">
             <enchantment level="2">feather_falling</enchantment>
         </boots>
-        <health>20</health>
+        <effect duration="1" amplifier="0">health boost</effect>
+        <effect duration="2" amplifier="10">regeneration</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-kit" force="true">
@@ -40,7 +41,6 @@
     </kit>
     <kit id="reset-health" force="true">
         <effect duration="1" amplifier="0">health boost</effect>
-        <effect duration="1" amplifier="10">regeneration</effect>
     </kit>
 </kits>
 <spawns>
@@ -69,14 +69,14 @@
             </same-team>
         </not>
     </any>
-    <not id="no-use">
+    <deny id="no-use">
         <any>
             <material>beacon</material>
             <material>daylight detector inverted</material>
             <material>trap door</material>
             <material>fence gate</material>
         </any>
-    </not>
+    </deny>
 </filters>
 <regions>
     <below id="below-26" y="26"/>
@@ -87,15 +87,22 @@
           name="Flag"
           color="purple"
           shared="true"
-          post="mid-post"
           points-rate="1"
           pickup-kit="flag-kit"
           drop-kit="reset-health"
           flag-proximity-metric="none"
           show-respawn-on-pickup="true">
-        <post id="mid-post" name="Mid Post" return-time="0s" respawn-time="20s">286,20,30</post>
-        <post id="nw-post" name="Northwest Post" return-time="0s" respawn-time="20s">262,23,6</post>
-        <post id="se-post" name="Southeast Post" return-time="0s" respawn-time="20s">310,23,54</post>
+        <post return-time="0s" respawn-time="20s">
+            <post name="Mid Post">
+                <block>286,20,30</block>
+            </post>
+            <post name="Northwest Post" yaw="-45">
+                <block>262,23,6</block>
+            </post>
+            <post name="Southeast Post" yaw="135">
+                <block>310,23,54</block>
+            </post>
+        </post>
     </flag>
 </flags>
 <score>
@@ -110,6 +117,7 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>
@@ -117,7 +125,7 @@
 </itemkeep>
 <kill-reward>
     <item material="golden apple"/>
-    <item amount="5" material="arrow"/>
+    <item amount="6" material="arrow"/>
 </kill-reward>
 <hunger>
     <depletion>off</depletion>
