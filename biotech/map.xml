@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Biotech</name>
-<version>1.0.7</version>
+<version>1.0.8</version>
 <objective>Be the first team to reach 750 points!</objective>
 <gamemode>koth</gamemode>
 <created>2022-04-05</created>
@@ -43,12 +43,12 @@
     </default>
     <spawn team="blue" kit="spawn-kit">
         <region yaw="-180">
-            <point>20.5,10,28.5</point>
+            <point>17.5,10,28.5</point>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
         <region yaw="-90">
-            <point>-27.5,10,-19.5</point>
+            <point>-27.5,10,-16.5</point>
         </region>
     </spawn>
 </spawns>
@@ -84,7 +84,7 @@
             <cuboid min="14,14,-13" max="23,16,-22"/>
         </capture-region>
         <progress-display-region>
-            <cuboid min="14,13,-13" max="23,16,-22"/>
+            <cuboid min="14,3,-13" max="23,16,-22"/>
         </progress-display-region>
     </control-point>
 </control-points>
@@ -109,7 +109,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="3s" auto="true"/>
+<respawn delay="4.5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
