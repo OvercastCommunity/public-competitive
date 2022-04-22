@@ -1,0 +1,146 @@
+<map proto="1.4.2">
+<name>Ruins</name>
+<version>1.1</version>
+<objective>Capture the enemy flag as many times as possible before time runs out!</objective>
+<created>2022-04-16</created>
+<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<authors>
+    <author uuid="fe3608b7-d105-4029-8800-34b3147065b6"/> <!-- rockymine -->
+</authors>
+<contributors>
+    <contributor uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e" contribution="Feedback"/> <!-- Blazy -->
+    <contributor uuid="30401f63-f5bb-4f24-9a5a-0ecd5f706115" contribution="Feedback"/> <!-- dentmaged -->
+    <contributor uuid="430ec559-364a-4363-ac7a-2529050440ac" contribution="XML template"/> <!-- mameBT -->
+    <contributor uuid="75fd93dd-8e48-4698-81a2-97dae2ec5b5f" contribution="Feedback"/> <!-- Pugzy -->
+    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06" contribution="Feedback"/> <!-- Strangey -->
+    <contributor uuid="2d372806-0e62-4e44-87f7-2394540f5203" contribution="Feedback"/> <!-- Tkes -->
+    <contributor uuid="bbfac3db-dd46-4996-b936-0e2432f33285" contribution="Feedback"/> <!-- Valky -->
+    <contributor uuid="d71152ca-187d-43c4-9901-ba001606c655" contribution="Feedback"/> <!-- wylt -->
+    <contributor uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9" contribution="Feedback"/> <!-- Xerorca -->
+    <contributor uuid="74948888-fdb8-4446-9340-f7688c2435cc" contribution="Feedback"/> <!-- Zero_Frosty -->
+</contributors>
+<teams>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="3.5" amplifier="255">resistance</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <kit id="flag-pickup" force="true">
+        <effect>slowness</effect>
+    </kit>
+    <kit id="flag-reset" force="true">
+        <effect duration="0" amplifier="0">slowness</effect>
+    </kit>
+</kits>
+<spawns>
+    <default>
+        <region yaw="-135">
+            <point>-22.5,13.2,22.5</point>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="0" pitch="7">
+            <point>-10.5,5.2,-42.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="90" pitch="7">
+            <point>42.5,5.2,10.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
+    <time id="flag-respawns">0</time>
+</filters>
+<regions>
+    <cylinder id="blue-net" base="-35.5,6,-15.5" radius="1.5" height="3"/>
+    <cylinder id="red-net" base="15.5,6,35.5" radius="1.5" height="3"/>
+    <apply block="never" use="never"/>
+</regions>
+<spawners>
+    <spawners>
+        <spawner delay="8s">
+            <spawn-region>
+                <point>-13.5,7.2,13.5</point>
+            </spawn-region>
+            <player-region>
+                <cylinder base="-13.5,6,13.5" height="4" radius="4"/>
+            </player-region>
+            <item material="golden apple"/>
+        </spawner>
+    </spawners>
+    <spawners>
+        <spawner delay="2s">
+            <spawn-region>
+                <point>7.5,9.2,-7.5</point>
+            </spawn-region>
+            <player-region>
+                <cylinder base="7.5,8,-7.5" height="4" radius="4"/>
+            </player-region>
+            <item material="arrow"/>
+        </spawner>
+    </spawners>
+</spawners>
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
+    <flag id="blue-flag"
+          name="Blue Flag"
+          owner="blue"
+          color="blue"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-reset">
+        <post pickup-filter="only-red" recover-time="12s" respawn-time="10s">-36,6,-16</post>
+    </flag>
+    <flag id="red-flag"
+          name="Red Flag"
+          owner="red"
+          color="red"
+          pickup-kit="flag-pickup"
+          drop-kit="flag-reset">
+        <post pickup-filter="only-blue" recover-time="12s" respawn-time="10s">15,6,35</post>
+    </flag>
+    <flags points="1">
+        <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
+        <net region="red-net" flag="blue-flag" respawn-filter="flag-respawns"/>
+    </flags>
+</flags>
+<score/>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+    <item>banner</item>
+</itemremove>
+<itemkeep>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="6" material="arrow"/>
+</kill-reward>
+<respawn delay="4.5s" auto="true"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>

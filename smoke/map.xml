@@ -1,6 +1,6 @@
 <map proto="1.3.6">
 <name>Smoke</name>
-<version>1.2.1</version>
+<version>1.2.2</version>
 <objective>You must capture 5 points (excluding top mid) sequentially before 12 minutes!</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!--  NixaniaXi  -->
@@ -34,20 +34,22 @@
 </spawns>
 <kits>
     <kit name="spawn">
+        <clear-items/>
         <item slot="0" unbreakable="true">stone sword</item>
         <item slot="1" unbreakable="true">bow</item>
-        <item slot="2" damage="8225" potions="regeneration:80:0:false;heal:1:0:false">potion</item>
-        <item slot="8" amount="16">arrow</item>
+        <item slot="2">golden apple</item>
+        <item slot="8" amount="20">arrow</item>
         <leggings unbreakable="true" enchantment="protection fire:1" locked="true">iron leggings</leggings>
-        <boots unbreakable="true" enchantment="protection fall:1" locked="true">iron boots</boots>
     </kit>
     <kit name="red" parents="spawn">
         <helmet color="cd0000" unbreakable="true" locked="true">leather helmet</helmet>
         <chestplate color="cd0000" unbreakable="true" locked="true">leather chestplate</chestplate>
+        <boots color="cd0000" unbreakable="true" enchantment="protection fall:1" locked="true">leather boots</boots>
     </kit>
     <kit name="yellow" parents="spawn">
         <helmet color="E5E533" unbreakable="true" locked="true">leather helmet</helmet>
         <chestplate color="E5E533" unbreakable="true" locked="true">leather chestplate</chestplate>
+        <boots color="E5E533" unbreakable="true" enchantment="protection fall:1" locked="true">leather boots</boots>
     </kit>
 </kits>
 <filters>
@@ -158,7 +160,7 @@
         <region>
             <cuboid min="73,3,15" max="74,6,12"/>
         </region>
-    </portal>        
+    </portal>
     <!--  Portal to Yellow 2nd (Yellow)  -->
     <portal x="@-35" y="@9" z="@-33" yaw="90" filter="yellow-has-2nd">
         <region>
@@ -176,7 +178,7 @@
         <region>
             <cuboid min="-19,3,-72" max="-22,6,-73"/>
         </region>
-    </portal>        
+    </portal>
 </portals>
 <control-points incremental="true" neutral-state="true" show-progress="true" time-multiplier="0.75">
     <control-point initial-owner="red" id="red-last" name="Red Last" capture-time="3s">
@@ -269,16 +271,16 @@
 <itemremove>
     <item>leather helmet</item>
     <item>leather chestplate</item>
-    <item>iron boots</item>
+    <item>leather boots</item>
     <item>iron leggings</item>
-    <item>cooked beef</item>
-    <item>glass bottle</item>
-    <item>arrow</item>
-    <item>potion</item>
 </itemremove>
+<itemkeep>
+    <item>arrow</item>
+    <item>golden apple</item>
+</itemkeep>
 <killreward>
-    <item amount="10">arrow</item>
-    <item damage="8225" potions="regeneration:80:0:false;heal:1:0:false">potion</item>
+    <item amount="12">arrow</item>
+    <item>golden apple</item>
 </killreward>
 <time result="objectives">12m</time>
 <hunger>
@@ -286,13 +288,13 @@
 </hunger>
 <destroyables>
     <destroyable id="closure-of-spawn-exits" name="Spawn Closure" completion="0%" materials="air" mode-changes="true" owner="red" show="false">
-      <region>
-        <cuboid name="redSpawn" min="65,3,19" max="66,5,24"/>
-        <cuboid name="yellowSpawn" min="-18,3,-64" max="-23,5,-65"/>
-      </region>
+        <region>
+            <cuboid name="redSpawn" min="65,3,19" max="66,5,24"/>
+            <cuboid name="yellowSpawn" min="-18,3,-64" max="-23,5,-65"/>
+        </region>
     </destroyable>
 </destroyables>
 <modes show-before="90s">
-  <mode name="`6Extra Layer of Webs" show-before="20s" after="8m" material="web"/>
+    <mode name="`6Extra Layer of Webs" show-before="20s" after="8m" material="web"/>
 </modes>
 </map>
