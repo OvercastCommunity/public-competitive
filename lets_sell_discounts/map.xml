@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Let's Sell Discounts</name>
-<version>1.0.3</version>
+<version>1.1.0</version>
 <objective>Capture the enemy team's flag</objective>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
@@ -11,14 +11,6 @@
 <contributors>
     <contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!-- jexel -->
 </contributors>
-<rules>
-    <rule>This is a CTF map with CTW-lite elements, meaning you may build infrastructure to get to the flag.</rule>
-    <rule>Gain blocks from kills/block spawners at mid (purple carpet).</rule>
-    <rule>The map is indestructable except for the blocks you place, leaves, melons, and end stone.</rule>
-    <rule>The flag alternates between the rooms on either side of your spawn. Either team can enter them.</rule>
-    <rule>Use the arrow spawner (iron pressure plate) at your flag net to help defend it.</rule>
-    <rule>Standard CTF time limit is still enforced (12 min).</rule>
-</rules>
 <teams>
     <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
     <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
@@ -31,8 +23,7 @@
         <item slot="2" material="diamond pickaxe">
             <enchantment>efficiency</enchantment>
         </item>
-        <item slot="3" material="iron axe"/>
-        <item slot="4" material="golden apple"/>
+        <item slot="3" material="golden apple"/>
         <item slot="28" amount="12" material="arrow"/>
          <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
@@ -45,12 +36,12 @@
         <effect duration="4s">instant_health</effect>
     </kit>
     <kit id="blue-kit" parents="spawn-kit">
-        <item slot="5" amount="32" damage="11" material="stained clay"/>
-        <item slot="6" amount="8" damage="11" material="stained glass"/>
+        <item slot="4" amount="32" damage="11" material="stained clay"/>
+        <item slot="5" amount="8" damage="11" material="stained glass"/>
     </kit>
     <kit id="red-kit" parents="spawn-kit">
-        <item slot="5" amount="32" damage="14" material="stained clay"/>
-        <item slot="6" amount="8" damage="14" material="stained glass"/>
+        <item slot="4" amount="32" damage="14" material="stained clay"/>
+        <item slot="5" amount="8" damage="14" material="stained glass"/>
     </kit>
     <kit id="flag-pickup">
         <effect>slowness</effect>
@@ -88,16 +79,13 @@
     <team id="only-blue">blue-team</team>
     <time id="flag-respawns">0</time>
     <any id="only-blocks">
-        <material>stained clay</material>
+        <material>stained clay:2</material>
+        <material>stained clay:11</material>
+        <material>stained clay:14</material>
         <material>stained glass</material>
         <material>leaves_2</material>
         <material>long grass</material>
         <material>red rose</material>
-        <material>melon block</material>
-        <material>chest</material>
-        <material>sugar cane block</material>
-        <material>ender stone</material>
-        <material>step:4</material>
     </any>
     <not id="not-void">
         <void/>
@@ -108,10 +96,10 @@
     <point id="left-spawner-spawn">81.5,11,123.5</point>
     <cylinder id="right-spawner-player" base="46,10,88" radius="5" height="3"/>
     <point id="right-spawner-spawn">46.5,11,88.5</point>
-    <cylinder id="blue-arrow-player" base="79,17,90" radius="10" height="6"/>
-    <point id="blue-arrow-spawn">79.5,19,90.5</point>
-    <cylinder id="red-arrow-player" base="48,17,121" radius="10" height="6"/>
-    <point id="red-arrow-spawn">48.5,19,121.5</point>
+    <cylinder id="blue-arrow-player" base="74,17,95" radius="5" height="3"/>
+    <point id="blue-arrow-spawn">74.5,17.5,95.5</point>
+    <cylinder id="red-arrow-player" base="53,17,116" radius="5" height="3"/>
+    <point id="red-arrow-spawn">53.5,17.5,116.5</point>
     <union id="flag-regions">
         <cuboid min="51,17,153" max="56,24,158"/> <!-- red right -->
         <cuboid min="12,17,119" max="17,24,114"/> <!-- red left -->
@@ -119,8 +107,14 @@
         <cuboid min="111,17,98" max="116,24,93"/> <!-- blue left -->
     </union>
     <union id="flag-nets">
-        <cylinder id="red-net" base="53.5,16,116.5" radius="2.5" height="4"/>
-        <cylinder id="blue-net" base="74.5,16,95.5" radius="2.5" height="4"/>
+        <union id="red-net">
+            <cylinder base="35.5,4,135.5" radius="2.5" height="4"/>
+            <cylinder base="34.5,4,134.5" radius="2.5" height="4"/>
+        </union>
+        <union id="blue-net">
+            <cylinder base="92.5,4,76.5" radius="2.5" height="4"/>
+            <cylinder base="93.5,4,77.5" radius="2.5" height="4"/>
+        </union>
     </union>
     <union id="spawns">
         <rectangle min="13,157" max="30,140"/>
@@ -143,10 +137,10 @@
     <apply block="never" lend-kit="flag-room-regen" region="flag-regions" message="You may not modify the flag area!"/>
     <apply block="never" region="flag-nets" message="You may not modify the flag capture area!"/>
     <apply block-break="never" block-place="not-void" region="spawns" message="You may not modify the spawn region!"/>
-    <apply block="only-blocks" region="map-region" message="You may only interact with stained clay, stained glass, end stone, melons, and leaves."/>
+    <apply block="only-blocks" region="map-region" message="You may only interact with stained clay and stained glass."/>
     <apply block="never" region="void-region" message="You may not build in the void!"/>
 </regions>
-<flags flag-proximity-metric="none" net-proximity-metric="none" required="false" carry-message="Return the flag to your beacon!">
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false" carry-message="Return the flag to your spawn!">
     <flag id="red-flag" name="Red Flag" owner="red-team" color="red" show-respawn-on-pickup="true" post="red-right-post" carry-kit="flag-pickup">
         <post recover-time="20s" respawn-time="15s" pickup-filter="only-blue" sequential="true">
             <post id="red-right-post" name="Purple Post">53.5,17,155.5</post>
@@ -165,14 +159,14 @@
     </flags>
 </flags>
 <score>
-    <mercy>3</mercy>
+    <mercy>4</mercy>
 </score>
 <spawners>
     <spawner spawn-region="left-spawner-spawn" player-region="left-spawner-player" delay="10s" max-entities="1">
-        <item amount="8" damage="10" material="stained clay"/>
+        <item amount="8" damage="2" material="stained clay"/>
     </spawner>
     <spawner spawn-region="right-spawner-spawn" player-region="right-spawner-player" delay="10s" max-entities="1">
-        <item amount="8" damage="10" material="stained clay"/>
+        <item amount="8" damage="2" material="stained clay"/>
     </spawner>
     <spawner spawn-region="blue-arrow-spawn" player-region="blue-arrow-player" delay="8s" max-entities="1">
         <item amount="4" material="arrow"/>
@@ -185,7 +179,6 @@
     <tool>stone sword</tool>
     <tool>bow</tool>
     <tool>diamond pickaxe</tool>
-    <tool>iron axe</tool>
 </toolrepair>
 <itemremove>
     <item>leather helmet</item>
@@ -196,16 +189,12 @@
     <item>sapling</item>
     <item>seeds</item>
     <item>red rose</item>
-    <item>melon</item>
-    <item>sugar cane</item>
-    <item>step</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>
     <item>arrow</item>
     <item>stained clay</item>
     <item>stained glass</item>
-    <item>ender stone</item>
 </itemkeep>
 <kill-rewards>
     <kill-reward>
