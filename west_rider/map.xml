@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>West Rider</name>
-<version>1.0.1</version>
+<version>1.1.5</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -18,8 +18,8 @@
     <alert after="2s" every="4m">If Blue holds the flag, it spawns at Red's flag post, and if Red holds the flag, it spawns at Blue's flag post.</alert>
 </broadcasts>
 <teams>
-    <team id="blue" color="blue" max="5">Blue</team>
-    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -36,14 +36,17 @@
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
         </boots>
-        <effect duration="6" amplifier="255">resistance</effect>
+        <effect duration="1s" amplifier="0">health boost</effect>
+        <effect duration="2s" amplifier="10">regeneration</effect>
+        <effect duration="6s" amplifier="255">resistance</effect>
+        <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-kit" force="true">
         <effect amplifier="-3">health boost</effect>
-        <effect duration="3" amplifier="2">absorption</effect>
+        <effect duration="3s" amplifier="2">absorption</effect>
     </kit>
     <kit id="reset-health" force="true">
-        <effect duration="0" amplifier="0">health boost</effect>
+        <effect duration="0s" amplifier="0">health boost</effect>
     </kit>
 </kits>
 <spawns>
@@ -64,20 +67,33 @@
     </spawn>
 </spawns>
 <filters>
-    <material id="use-noteblock">note block</material>
     <any id="has-flag">
-        <carrying-flag>flag</carrying-flag>
+        <carrying-flag id="flag-carrier">flag</carrying-flag>
         <not>
             <same-team id="flag-control">
                 <carrying-flag>flag</carrying-flag>
             </same-team>
         </not>
     </any>
+    <deny id="deny-flag-carrier">
+        <filter id="flag-carrier"/>
+    </deny>
     <objective id="dropped-by-blue" team="blue">kotf</objective>
     <objective id="dropped-by-red" team="red">kotf</objective>
 </filters>
 <regions>
-    <apply use="use-noteblock" block="never"/>
+    <union id="spawns">
+        <union id="blue-spawn">
+            <cuboid min="20,0,32" max="48,oo,50"/>
+            <cuboid min="42,0,17" max="47,oo,32"/>
+        </union>
+        <union id="red-spawn">
+            <cuboid min="-39,0,-47" max="-11,oo,-29"/>
+            <cuboid min="-38,0,-29" max="-33,oo,-14"/>
+        </union>
+    </union>
+    <apply use="never" block="never"/>
+    <apply enter="deny-flag-carrier" region="spawns" message="You may not enter the spawns with the flag."/>
 </regions>
 <flags>
     <flag id="flag"
@@ -91,7 +107,7 @@
           show-respawn-on-pickup="false">
         <!-- filtering makes respawn announce on pickup wrong initially -->
         <post return-time="0s" respawn-time="20s">
-            <post name="Mid Post" respawn-filter="never">4.5,16,1.5</post>
+            <post name="Mid Post" respawn-filter="never">4.5,17,1.5</post>
             <post name="Blue's Post" respawn-filter="dropped-by-red" yaw="180">-14.5,14,14.5</post>
             <post name="Red's Post" respawn-filter="dropped-by-blue" yaw="0">23.5,14,-11.5</post>
         </post>
@@ -115,6 +131,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

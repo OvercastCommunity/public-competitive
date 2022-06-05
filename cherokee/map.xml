@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Cherokee</name>
-<version>1.2.9</version>
+<version>1.2.12</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -142,13 +142,13 @@
 </regions>
 <control-points neutral-state="true" show-progress="true">
     <!-- Blue visual control points -->
-    <control-point initial-owner="blue" id="blue-last" required="false" name="Blue Last" capture-time="8s" time-multiplier="0.25" points="0" incremental="true" capture="cp-blue-last" progress="cp-blue-last" player-filter="filter-blue-last"/>
-    <control-point initial-owner="blue" id="blue-2nd" required="false" name="Blue 2nd" capture-time="6s" time-multiplier="0.25" points="0" incremental="true" capture="cp-blue-2nd" progress="cp-blue-2nd" player-filter="filter-blue-2nd"/>
+    <control-point initial-owner="blue" id="blue-last" required="false" name="Blue Last" capture-time="6s" time-multiplier="0.35" points="0" incremental="true" capture="cp-blue-last" progress="cp-blue-last" player-filter="filter-blue-last"/>
+    <control-point initial-owner="blue" id="blue-2nd" required="false" name="Blue 2nd" capture-time="6s" time-multiplier="0.35" points="0" incremental="true" capture="cp-blue-2nd" progress="cp-blue-2nd" player-filter="filter-blue-2nd"/>
     <!-- Mid -->
-    <control-point id="mid" required="false" name="Mid" capture-time="6s" points="2" time-multiplier="0.25" incremental="true" capture="cp-mid" progress="cp-mid" player-filter="filter-mid"/>
+    <control-point id="mid" required="false" name="Mid" capture-time="6s" points="2" time-multiplier="0.35" incremental="true" capture="cp-mid" progress="cp-mid" player-filter="filter-mid"/>
     <!-- Red visual control points -->
-    <control-point initial-owner="red" id="red-2nd" required="false" name="Red 2nd" capture-time="6s" points="0" time-multiplier="0.25" incremental="true" capture="cp-red-2nd" progress="cp-red-2nd" player-filter="filter-red-2nd"/>
-    <control-point initial-owner="red" id="red-last" required="false" name="Red Last" capture-time="8s" points="0" time-multiplier="0.25" incremental="true" capture="cp-red-last" progress="cp-red-last" player-filter="filter-red-last"/>
+    <control-point initial-owner="red" id="red-2nd" required="false" name="Red 2nd" capture-time="6s" points="0" time-multiplier="0.35" incremental="true" capture="cp-red-2nd" progress="cp-red-2nd" player-filter="filter-red-2nd"/>
+    <control-point initial-owner="red" id="red-last" required="false" name="Red Last" capture-time="6s" points="0" time-multiplier="0.35" incremental="true" capture="cp-red-last" progress="cp-red-last" player-filter="filter-red-last"/>
     <!-- Point-giving control points -->
     <control-point id="red-last-point" required="false" show="false" points="1" name="RL Point" capture-time="0s" capture="everywhere" player-filter="filter-last-point-blue" capture-filter="only-blue"/>
     <control-point id="red-2nd-point" required="false" show="false" points="1" name="R2 Point" capture-time="0s" capture="everywhere" player-filter="filter-2nd-point-blue" capture-filter="only-blue"/>
@@ -169,6 +169,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -179,5 +181,5 @@
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="7s" auto="true" blackout="true"/>
+<respawn delay="7s" auto="true"/>
 </map>

@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Abood</name>
-<version>1.0.4</version>
+<version>1.0.6</version>
 <objective>First team to 750 points win!</objective>
 <authors>
     <author uuid="bd133f12-724a-4ca9-af7b-f808810aa835"/> <!-- ref -->
@@ -15,8 +15,8 @@
     <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
 </contributors>
 <teams>
-    <team id="blue" color="blue" max="5">Blue</team>
-    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -81,6 +81,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

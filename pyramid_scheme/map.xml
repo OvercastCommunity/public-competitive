@@ -1,0 +1,116 @@
+<map proto="1.4.2">
+<name>Pyramid Scheme</name>
+<version>1.2.1</version>
+<objective>Be the first team to reach 750 points!</objective>
+<edition>ranked</edition>
+<authors>
+    <author uuid="2ca8072f-74be-4798-85b8-bbce03aa91af"/> <!-- Tywnis -->
+</authors>
+<teams>
+    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="10" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots">
+            <enchantment>feather_falling</enchantment>
+        </boots>
+        <effect duration="3s" amplifier="255">resistance</effect>
+    </kit>
+    <take>
+        <kit id="jump">
+            <effect amplifier="255">jump</effect>
+        </kit>
+        <filter>
+            <grounded/>
+        </filter>
+    </take>
+</kits>
+<spawns>
+    <default>
+        <regions>
+            <point yaw="135">-6.5,32,-6.5</point>
+        </regions>
+    </default>
+    <spawn team="blue-team" kit="spawn-kit">
+        <regions>
+            <point yaw="-135">-79.5,27,-9.5</point>
+        </regions>
+    </spawn>
+    <spawn team="red-team" kit="spawn-kit">
+        <regions>
+            <point yaw="45">-9.5,27,-79.5</point>
+        </regions>
+    </spawn>
+</spawns>
+<filters>
+    <team id="only-blue">blue-team</team>
+    <team id="only-red">red-team</team>
+</filters>
+<regions>
+    <union id="points">
+        <union id="summit">
+            <cuboid min="-52,32,-51" size="7,4,5"/>
+            <cuboid min="-51,32,-52" size="5,4,7"/>
+        </union>
+        <union id="balcony">
+            <cuboid min="-30,20,-29" size="7,4,5"/>
+            <cuboid min="-29,20,-30" size="5,4,7"/>
+        </union>
+        <union id="cave">
+            <cuboid min="-45,11,-44" size="7,4,5"/>
+            <cuboid min="-44,11,-45" size="5,4,7"/>
+        </union>
+    </union>
+    <apply kit="jump" velocity="-0.75,1.45,-0.75">
+        <region>
+            <cuboid min="-57.5,17,-57.5" max="-58.5,19,-58.5"/>
+        </region>
+    </apply>
+    <apply block="never" use="never"/>
+</regions>
+<king>
+    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
+        <hill name="Summit" capture="summit" progress="summit"/>
+        <hill name="Balcony" capture="balcony" progress="balcony"/>
+        <hill name="Cave" capture="cave" progress="cave"/>
+    </hills>
+</king>
+<score>
+    <limit>750</limit>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+</itemremove>
+<itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="5" material="arrow"/>
+</kill-reward>
+<respawn delay="4s" auto="true"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>

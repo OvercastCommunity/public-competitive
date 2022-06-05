@@ -1,8 +1,8 @@
 <map proto="1.4.2">
 <name>Basilica Redux</name>
-<version>1.1</version>
+<version>1.1.3</version>
 <objective>Capture the enemy flag as many times as possible before time runs out!</objective>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="cbdc7b1d-7a07-465b-bebb-4f20bfb8ebd8"/> <!-- Cratain -->
     <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!-- Reshif -->
@@ -137,8 +137,11 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -146,7 +149,7 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
-<respawn delay="4.5s" auto="true" blackout="true"/>
+<respawn delay="4.5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

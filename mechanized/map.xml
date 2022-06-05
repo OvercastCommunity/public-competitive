@@ -1,8 +1,8 @@
 <map proto="1.4.2">
 <name>Mechanized</name>
-<version>1.0.5</version>
+<version>1.3.1</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="bd133f12-724a-4ca9-af7b-f808810aa835"/> <!-- ref -->
     <author uuid="2d372806-0e62-4e44-87f7-2394540f5203"/> <!-- Tkes -->
@@ -10,12 +10,9 @@
     <author uuid="6c5d7783-27fd-4ac5-8a1d-ba35206edf53"/> <!-- _Nathy -->
     <author uuid="ec5ec930-5cf3-4f8a-ad9f-09056aeed71b"/> <!-- Tundren -->
 </authors>
-<broadcasts>
-    <alert after="1s" every="4m">Capture the flag at your spawn!</alert>
-</broadcasts>
 <teams>
-    <team id="blue" color="blue" max="5">Blue</team>
-    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -32,42 +29,42 @@
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
         </boots>
-        <effect duration="6" amplifier="255">resistance</effect>
+        <effect duration="2s" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-kit" force="true">
         <effect>slowness</effect>
     </kit>
     <kit id="reset-kit" force="true">
-        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0s">slowness</effect>
     </kit>
 </kits>
 <spawns>
     <default>
         <region yaw="90">
-            <cylinder base="53.5,48,0.5" radius="1" height="0"/>
+            <point>53.5,48,0.5</point>
         </region>
     </default>
     <spawn team="blue" kit="spawn-kit">
         <region yaw="90">
-            <point>5.5,8,31.5</point>
+            <point>5.5,10,31.5</point>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
         <region yaw="-90">
-            <point>-4.5,8,-30.5</point>
+            <point>-4.5,10,-30.5</point>
         </region>
     </spawn>
 </spawns>
 <filters>
-  <team id="only-blue">blue</team>
-  <team id="only-red">red</team>
-  <time id="flag-respawns">0</time>
+    <team id="only-blue">blue</team>
+    <team id="only-red">red</team>
+    <time id="flag-respawns">0</time>
 </filters>
 <regions>
     <union id="flag-nets">
-        <cuboid id="blue-net" min="7,8,30" max="4,10,33"/>
-        <cuboid id="red-net" min="6,8,-29" max="-3,10,-32"/>
+        <cylinder id="blue-net" base="25.5,12,42.5" height="2" radius="1"/>
+        <cylinder id="red-net" base="-24.5,12,-41.5" height="2" radius="1"/>
     </union>
     <apply block="never" use="never"/>
 </regions>
@@ -78,7 +75,7 @@
           color="blue"
           pickup-kit="flag-kit"
           drop-kit="reset-kit">
-        <post pickup-filter="only-red" recover-time="12s" respawn-time="10s">25.5,14,48.5</post>
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">25.5,12,42.5</post>
     </flag>
     <flag id="red-flag"
           name="Red Flag"
@@ -86,7 +83,7 @@
           color="red"
           pickup-kit="flag-kit"
           drop-kit="reset-kit">
-        <post pickup-filter="only-blue" recover-time="12s" respawn-time="10s">-24.5,14,-47.5</post>
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">-24.5,12,-41.5</post>
     </flag>
     <flags points="1">
         <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
@@ -117,6 +114,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

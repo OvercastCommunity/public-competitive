@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Jasper KotF</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -96,6 +96,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

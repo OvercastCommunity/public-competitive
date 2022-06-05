@@ -1,7 +1,7 @@
 <map proto="1.4.2">
-<name>Cobalt</name> <!-- Cobalt - Colorblind -->
-<version>2.2.4</version>
-<objective>Reach 1000 points before the opposing team!</objective>
+<name>Cobalt</name>
+<version>2.3.1</version>
+<objective>Reach 2500 points before the opposing team!</objective>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
 </authors>
@@ -21,11 +21,11 @@
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
-        <item slot="8" amount="12" material="arrow"/>
+        <item slot="8" amount="10" material="arrow"/>
         <helmet unbreakable="true" team-color="true" material="leather helmet"/>
         <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
-            <enchantment level="4">projectile_protection</enchantment>
+            <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
         <effect duration="4" amplifier="255">resistance</effect>
@@ -69,7 +69,7 @@
     <apply block="never"/>
 </regions>
 <king>
-    <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
+    <hills required="false" capture-time="5s" points="3" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
         <hill name="West Hill" capture="cap-region-west" progress="cap-region-west">
             <captured>
                 <cuboid min="259,34,92" max="266,41,99"/>
@@ -88,7 +88,7 @@
     </hills>
 </king>
 <score>
-    <limit>1000</limit>
+    <limit>2500</limit>
 </score>
 <spawners>
     <spawner id="gapple-spawner" spawn-region="mid-spawn-area" player-region="mid-spawn-radius" max-entities="9999" delay="6s">
@@ -106,6 +106,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -116,5 +118,5 @@
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="5s" auto="true" blackout="true"/>
+<respawn delay="5s" auto="true"/>
 </map>

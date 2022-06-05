@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Smoke KotH 5v5</name>
-<version>1.2.15</version>
+<version>1.2.16</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
@@ -104,6 +104,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -114,5 +116,5 @@
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="3s" auto="true" blackout="true"/>
+<respawn delay="3s" auto="true"/>
 </map>

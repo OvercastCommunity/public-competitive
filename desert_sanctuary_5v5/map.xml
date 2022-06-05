@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Desert Sanctuary 5v5</name>
-<version>1.1.6</version>
+<version>1.2.2</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -30,16 +30,17 @@
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
         </boots>
-        <effect duration="1" amplifier="0">health boost</effect>
-        <effect duration="2" amplifier="10">regeneration</effect>
+        <effect duration="1s" amplifier="0">health boost</effect>
+        <effect duration="2s" amplifier="10">regeneration</effect>
+        <effect duration="7.5s" amplifier="255">damage resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-kit" force="true">
         <effect amplifier="-3">health boost</effect>
-        <effect duration="3" amplifier="2">absorption</effect>
+        <effect duration="3s" amplifier="2">absorption</effect>
     </kit>
     <kit id="reset-health" force="true">
-        <effect duration="0" amplifier="0">health boost</effect>
+        <effect duration="0s" amplifier="0">health boost</effect>
     </kit>
 </kits>
 <spawns>
@@ -61,15 +62,28 @@
 </spawns>
 <filters>
     <any id="has-flag">
-        <carrying-flag>flag</carrying-flag>
+        <carrying-flag id="flag-carrier">flag</carrying-flag>
         <not>
             <same-team>
                 <carrying-flag>flag</carrying-flag>
             </same-team>
         </not>
     </any>
+    <deny id="deny-flag-carrier">
+        <filter id="flag-carrier"/>
+    </deny>
 </filters>
 <regions>
+    <complement id="spawn-sides">
+        <union>
+            <rectangle id="blue-left" min="23,-60" max="36,-47"/>
+            <rectangle id="blue-right" min="-35,-60" max="-22,-47"/>
+            <rectangle id="red-left" min="-22,48" max="-35,61"/>
+            <rectangle id="red-right" min="23,48" max="36,61"/>
+        </union>
+        <below y="0"/>
+    </complement>
+    <apply enter="deny-flag-carrier" region="spawn-sides" message="You may not enter the spawns with the flag."/>
     <apply block="never" use="never"/>
 </regions>
 <flags>
@@ -104,6 +118,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -111,7 +127,7 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
-<respawn delay="3s" spectate="true" auto="true">
+<respawn delay="4s" spectate="true" auto="true">
     <message>
         {"translate":"death.respawn.confirmed.waiting.flagDropped"}
     </message>

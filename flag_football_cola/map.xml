@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Flag Football: Cola</name>
-<version>1.1.5</version>
+<version>1.1.6</version>
 <objective>Capture the flag as many times as possible in eight minutes!</objective>
 <time result="score" overtime="1m" max-overtime="5m">8m</time>
 <gamemode>ffb</gamemode>
@@ -117,8 +117,11 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

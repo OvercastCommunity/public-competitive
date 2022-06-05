@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Command</name>
-<version>2.0.7</version>
+<version>2.0.8</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!-- Reshif -->
@@ -86,6 +86,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -93,7 +95,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="5s" auto="true" blackout="true"/>
+<respawn delay="5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

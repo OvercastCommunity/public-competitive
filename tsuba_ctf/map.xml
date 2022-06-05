@@ -1,8 +1,8 @@
 <map proto="1.4.2">
 <name>Tsuba CTF</name>
-<version>1.0</version>
+<version>1.0.2</version>
 <objective>Capture the enemy flag as many times as possible before time runs out!</objective>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="2ca8072f-74be-4798-85b8-bbce03aa91af"/> <!-- Tywnis -->
 </authors>
@@ -95,6 +95,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

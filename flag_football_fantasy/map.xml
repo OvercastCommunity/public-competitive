@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Flag Football: Fantasy</name>
-<version>1.0.10</version>
+<version>1.0.11</version>
 <objective>Score as many times as possible within eight minutes!</objective>
 <time result="score" overtime="1m" max-overtime="5m">8m</time>
 <gamemode>ffb</gamemode>
@@ -112,8 +112,11 @@
     <item>leather chestplate</item>
     <item>chainmail leggings</item>
     <item>iron boots</item>
+    <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

@@ -1,13 +1,13 @@
 <map proto="1.4.2">
 <name>Highrise</name>
-<version>2.1</version>
+<version>2.1.4</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!-- Blazy -->
 </authors>
 <teams>
-    <team id="blue-team" color="blue" max="5">Blue</team>
-    <team id="red-team" color="dark red" max="5">Red</team>
+    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -50,22 +50,18 @@
     <team id="only-red">red-team</team>
 </filters>
 <regions>
-    <union id="point-a">
-        <cuboid min="65,17,215" max="74,26,216"/>
-        <cuboid min="68,11,206" max="75,15,213"/>
-    </union>
+    <cuboid id="point-a" min="68,11,206" max="75,15,213"/>
+    <cuboid id="point-a-signal" min="65,17,215" max="74,26,216"/>
     <cuboid id="bottom" min="34,5,190" max="41,9,197"/>
-    <union id="point-b">
-        <cuboid min="59,17,221" max="60,26,230"/>
-        <cuboid min="50,11,224" max="57,15,231"/>
-    </union>
+    <cuboid id="point-b" min="50,11,224" max="57,15,231"/>
+    <cuboid id="point-b-signal" min="59,17,221" max="60,26,230"/>
     <apply use="never" block="never"/>
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
-        <hill name="Point A" capture="point-a" progress="point-a"/>
+        <hill name="Point A" capture="point-a" progress="point-a" captured="point-a-signal"/>
         <hill name="Bottom" capture="bottom" progress="bottom"/>
-        <hill name="Point B" capture="point-b" progress="point-b"/>
+        <hill name="Point B" capture="point-b" progress="point-b" captured="point-b-signal"/>
     </hills>
 </king>
 <score>
@@ -82,6 +78,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Industrial</name>
-<version>1.1.1</version>
+<version>1.4.1</version>
 <objective>Reach 750 points before the opposing team!</objective>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
@@ -25,7 +25,7 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="4" amplifier="255">resistance</effect>
+        <effect duration="4s" amplifier="255">resistance</effect>
     </kit>
 </kits>
 <spawns>
@@ -36,12 +36,12 @@
     </default>
     <spawn team="blue" kit="spawn-kit">
         <region yaw="90">
-            <block>42,6,-1</block>
+            <block>42,5,-1</block>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
         <region yaw="-90">
-            <block>-42,6,-1</block>
+            <block>-42,5,-1</block>
         </region>
     </spawn>
 </spawns>
@@ -56,13 +56,24 @@
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
         <hill name="North" capture="north-capture" progress="north-capture" captured="north-signal"/>
-        <hill name="Mid" capture="mid-capture" progress="mid-capture" captured="mid-capture"/>
+        <hill name="Middle" capture="mid-capture" progress="mid-capture" captured="mid-capture"/>
         <hill name="South" capture="south-capture" progress="south-capture" captured="south-signal"/>
     </hills>
 </king>
 <score>
     <limit>750</limit>
 </score>
+<spawners>
+    <spawner delay="9s" max-entities="1">
+        <spawn-region>
+            <point>0.5,4.1,-0.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="0.5,3,-0.5" height="4" radius="2.5"/>
+        </player-region>
+        <item material="golden apple"/>
+    </spawner>
+</spawners>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -74,6 +85,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

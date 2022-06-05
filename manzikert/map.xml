@@ -1,13 +1,13 @@
 <map proto="1.4.2">
 <name>Manzikert</name>
-<version>1.0.4</version>
+<version>1.0.7</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
     <author uuid="f70b7a8f-93b2-480f-9d54-88e21485a042"/> <!-- Diamyx -->
 </authors>
 <contributors>
-    <contributor uuid="75fd93dd-8e48-4698-81a2-97dae2ec5b5f" /> <!-- Pugzy -->
+    <contributor uuid="75fd93dd-8e48-4698-81a2-97dae2ec5b5f"/> <!-- Pugzy -->
 </contributors>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
@@ -28,16 +28,17 @@
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
         </boots>
-        <effect duration="1" amplifier="0">health boost</effect>
-        <effect duration="6" amplifier="255">resistance</effect>
+        <effect duration="1s" amplifier="0">health boost</effect>
+        <effect duration="2s" amplifier="10">regeneration</effect>
+        <effect duration="6s" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-kit" force="true">
         <effect amplifier="-3">health boost</effect>
-        <effect duration="3" amplifier="2">absorption</effect>
+        <effect duration="3s" amplifier="2">absorption</effect>
     </kit>
     <kit id="reset-health" force="true">
-        <effect duration="0" amplifier="0">health boost</effect>
+        <effect duration="0s" amplifier="0">health boost</effect>
     </kit>
 </kits>
 <spawns>
@@ -81,8 +82,8 @@
           flag-proximity-metric="none"
           show-respawn-on-pickup="true">
         <post return-time="0s" respawn-time="20s" sequential="true">
-            <post name="North Post">-44.5,13,2.5</post>
-            <post name="South Post">-44.5,13,42.5</post>
+            <post name="North Post" yaw="0">-44.5,13,2.5</post>
+            <post name="South Post" yaw="180">-44.5,13,42.5</post>
         </post>
     </flag>
 </flags>
@@ -101,6 +102,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

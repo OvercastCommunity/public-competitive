@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Let's Sell Discounts</name>
-<version>1.1.0</version>
+<version>1.1.2</version>
 <objective>Capture the enemy team's flag</objective>
 <time result="score" overtime="2m" max-overtime="6m">12m</time>
 <authors>
@@ -125,25 +125,32 @@
         <rectangle min="94,76" max="102,68"/>
     </union>
     <negative id="void-region">
-        <union id="map-region">
-            <rectangle min="22,64" max="106,148"/> <!-- middle -->
-            <rectangle min="67,49" max="93,65"/> <!-- blue right -->
-            <rectangle min="121,103" max="105,77"/> <!-- blue left -->
-            <rectangle min="61,163" max="35,147"/> <!-- red right -->
-            <rectangle min="7,109" max="23,135"/> <!-- red left -->
-        </union>
+        <complement id="map-region">
+            <union>
+                <rectangle min="22,64" max="106,148"/> <!-- middle -->
+                <rectangle min="67,46" max="95,65"/> <!-- blue right -->
+                <rectangle min="124,103" max="105,75"/> <!-- blue left -->
+                <rectangle min="62,166" max="33,147"/> <!-- red right -->
+                <rectangle min="4,109" max="23,137"/> <!-- red left -->
+            </union>
+            <rectangle min="70,100" max="58,112"/> <!-- center -->
+        </complement>
     </negative>
+    <rectangle id="blue-spawn" min="106,64" max="115,55"/>
+    <rectangle id="red-spawn" min="22,148" max="13,157"/>
     <apply block-place="not-void" region="spawn-drops" message="You may not modify the spawn drop water!"/>
     <apply block="never" lend-kit="flag-room-regen" region="flag-regions" message="You may not modify the flag area!"/>
     <apply block="never" region="flag-nets" message="You may not modify the flag capture area!"/>
     <apply block-break="never" block-place="not-void" region="spawns" message="You may not modify the spawn region!"/>
     <apply block="only-blocks" region="map-region" message="You may only interact with stained clay and stained glass."/>
     <apply block="never" region="void-region" message="You may not build in the void!"/>
+    <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy team's spawn!"/>
+    <apply enter="only-red" region="red-spawn" message="You may not enter the enemy team's spawn!"/>
 </regions>
 <flags flag-proximity-metric="none" net-proximity-metric="none" required="false" carry-message="Return the flag to your spawn!">
     <flag id="red-flag" name="Red Flag" owner="red-team" color="red" show-respawn-on-pickup="true" post="red-right-post" carry-kit="flag-pickup">
         <post recover-time="20s" respawn-time="15s" pickup-filter="only-blue" sequential="true">
-            <post id="red-right-post" name="Purple Post">53.5,17,155.5</post>
+            <post id="red-right-post" yaw="180" name="Purple Post">53.5,17,155.5</post>
             <post id="red-left-post" yaw="-90" name="Yellow Post">14.5,17,116.5</post>
         </post>
     </flag>
@@ -189,6 +196,7 @@
     <item>sapling</item>
     <item>seeds</item>
     <item>red rose</item>
+    <item>redstone</item>
 </itemremove>
 <itemkeep>
     <item>golden apple</item>

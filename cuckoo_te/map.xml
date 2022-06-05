@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
     <name>Cuckoo TE</name>
-    <version>1.5.3</version>
+    <version>1.5.4</version>
     <objective>Destroy the enemy's monuments</objective>
     <authors>
         <author uuid="f926e3b1-ce9c-4269-a5e8-e339d5056480"/> <!-- Matilaina -->
@@ -37,8 +37,8 @@
         </destroyables>
     </destroyables>
     <teams>
-        <team id="redTeam" color="dark red" max="5">Red</team>
-        <team id="blueTeam" color="blue" max="5">Blue</team>
+        <team id="redTeam" color="dark red" max="5" max-overfill="5">Red</team>
+        <team id="blueTeam" color="blue" max="5" max-overfill="5">Blue</team>
     </teams>
     <kits>
         <kit id="spawn" force="true">

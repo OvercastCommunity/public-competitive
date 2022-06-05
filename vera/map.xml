@@ -1,8 +1,8 @@
 <map proto="1.4.2">
 <name>Vera</name>
-<version>1.1.4</version>
+<version>1.1.7</version>
 <objective>Capture the enemy's flag!</objective>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
 </authors>
@@ -10,8 +10,8 @@
     <contributor uuid="d9f76ee6-975a-45ab-bbda-763600738a73" contribution="original XML"/> <!-- Aleeay -->
 </contributors>
 <teams>
-    <team id="blue" color="blue" max="5">Blue</team>
-    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -106,6 +106,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

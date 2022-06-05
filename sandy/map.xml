@@ -1,10 +1,10 @@
 <map proto="1.4.2">
 <name>Sandy</name>
-<version>1.1.1</version>
+<version>1.1.2</version>
 <objective>Be the first to 750 points</objective>
 <authors>
-    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383" /> <!-- Xuph -->
-    <author uuid="0b8f95fa-0f40-4f28-9fd0-b8e243bb6800" /> <!-- Fouled -->
+    <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383"/> <!-- Xuph -->
+    <author uuid="0b8f95fa-0f40-4f28-9fd0-b8e243bb6800"/> <!-- Fouled -->
 </authors>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
@@ -82,6 +82,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -89,7 +91,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="5s" auto="true" blackout="true"/>
+<respawn delay="5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

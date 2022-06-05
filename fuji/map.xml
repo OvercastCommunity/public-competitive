@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Fuji</name>
-<version>1.1.6</version>
+<version>1.1.7</version>
 <objective>Reach 750 points before the opposing team!</objective>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
@@ -84,6 +84,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -91,7 +93,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="3.5s" auto="true" blackout="true"/>
+<respawn delay="3.5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

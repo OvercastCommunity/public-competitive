@@ -1,18 +1,18 @@
 <map proto="1.4.2">
 <name>Ruins</name>
-<version>1.2</version>
+<version>1.4.2</version>
 <objective>Capture the enemy flag as many times as possible before time runs out!</objective>
 <created>2022-04-16</created>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="fe3608b7-d105-4029-8800-34b3147065b6"/> <!-- rockymine -->
 </authors>
 <contributors>
+    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
     <contributor uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e" contribution="Feedback"/> <!-- Blazy -->
     <contributor uuid="30401f63-f5bb-4f24-9a5a-0ecd5f706115" contribution="Feedback"/> <!-- dentmaged -->
     <contributor uuid="430ec559-364a-4363-ac7a-2529050440ac" contribution="XML template"/> <!-- mameBT -->
     <contributor uuid="75fd93dd-8e48-4698-81a2-97dae2ec5b5f" contribution="Feedback"/> <!-- Pugzy -->
-    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06" contribution="Feedback"/> <!-- Strangey -->
     <contributor uuid="2d372806-0e62-4e44-87f7-2394540f5203" contribution="Feedback"/> <!-- Tkes -->
     <contributor uuid="bbfac3db-dd46-4996-b936-0e2432f33285" contribution="Feedback"/> <!-- Valky -->
     <contributor uuid="d71152ca-187d-43c4-9901-ba001606c655" contribution="Feedback"/> <!-- wylt -->
@@ -36,14 +36,14 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="3.5" amplifier="255">resistance</effect>
+        <effect duration="3.5s" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
     </kit>
     <kit id="flag-reset" force="true">
-        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0s" amplifier="0">slowness</effect>
     </kit>
 </kits>
 <spawns>
@@ -74,28 +74,24 @@
     <apply block="never" use="never"/>
 </regions>
 <spawners>
-    <spawners>
-        <spawner delay="8s">
-            <spawn-region>
-                <point>-13.5,7.2,13.5</point>
-            </spawn-region>
-            <player-region>
-                <cylinder base="-13.5,6,13.5" height="4" radius="4"/>
-            </player-region>
-            <item material="golden apple"/>
-        </spawner>
-    </spawners>
-    <spawners>
-        <spawner delay="2s">
-            <spawn-region>
-                <point>7.5,9.2,-7.5</point>
-            </spawn-region>
-            <player-region>
-                <cylinder base="7.5,8,-7.5" height="4" radius="4"/>
-            </player-region>
-            <item material="arrow"/>
-        </spawner>
-    </spawners>
+    <spawner delay="8s">
+        <spawn-region>
+            <point>7.5,9.2,-7.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="7.5,8,-7.5" height="4" radius="3"/>
+        </player-region>
+        <item material="golden apple"/>
+    </spawner>
+    <spawner delay="2s">
+        <spawn-region>
+            <point>-13.5,7.2,13.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="-13.5,6,13.5" height="4" radius="3.5"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
 </spawners>
 <flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="blue-flag"
@@ -132,6 +128,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -139,7 +137,7 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
-<respawn delay="4.5s" auto="true"/>
+<respawn delay="7s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

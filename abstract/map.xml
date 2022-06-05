@@ -1,13 +1,13 @@
 <map proto="1.4.0">
 <name>Abstract</name>
-<version>1.1.2</version>
+<version>1.1.3</version>
 <objective>Capture the other team's wool to win!</objective>
 <authors>
     <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/> <!--  DoomyBoy  -->
 </authors>
 <teams>
-    <team id="red" color="dark red" max="5">Red</team>
-    <team id="blue" color="blue" max="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
 </teams>
 <respawn delay="6s" auto="true"/>
 <spawns>
@@ -269,7 +269,7 @@
     <apply block="in-cyan-wool" use="only-red-chest" region="cyan-wool" message="Only Red can modify nether brick fences here."/>
     <apply block="in-orange-wool" use="only-blue-chest" region="orange-wool" message="Only Blue can modify nether brick fences here."/>
     <apply block="no-spawners" region="spawners" message="You may not edit the spawners."/>
-    
+
     <apply block="no-nether-brick" message="You may not modify blocks outside the playing area.">
         <region>
             <region id="center-level-1"/>

@@ -1,18 +1,15 @@
 <map proto="1.4.2">
 <name>Hammerhead</name>
-<version>1.4.6</version>
+<version>1.4.9</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <gamemode>ctf</gamemode>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
 </authors>
 <contributors>
     <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
 </contributors>
-<broadcasts>
-    <tip after="5s">Tunnels are now open for the whole match!</tip>
-</broadcasts>
 <teams>
     <team id="green" color="green" max="5" max-overfill="5">Green</team>
     <team id="purple" color="dark purple" max="5" max-overfill="5">Purple</team>
@@ -30,13 +27,13 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="3" amplifier="255">resistance</effect>
+        <effect duration="3s" amplifier="255">resistance</effect>
     </kit>
     <kit id="flag-kit" force="true">
         <effect>slowness</effect>
     </kit>
     <kit id="reset-kit" force="true">
-        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0s" amplifier="0">slowness</effect>
     </kit>
 </kits>
 <spawns>
@@ -148,7 +145,7 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
-<respawn delay="8s" auto="true" blackout="true"/>
+<respawn delay="8s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

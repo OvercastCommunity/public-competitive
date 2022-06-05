@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Mago</name>
-<version>1.0.4</version>
+<version>1.2.1</version>
 <objective>First team to 750 points win!</objective>
 <authors>
     <author uuid="2d372806-0e62-4e44-87f7-2394540f5203"/> <!-- Tkes -->
@@ -10,11 +10,14 @@
     <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
 </contributors>
 <teams>
-    <team id="blue" color="blue" max="5">Blue</team>
-    <team id="red" color="dark red" max="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
-    <kit id="spawn-kit">
+    <kit id="spawn-drop">
+        <effect amplifier="255">jump</effect>
+    </kit>
+    <kit id="spawn-kit" parents="spawn-drop">
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
@@ -28,9 +31,14 @@
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
         </boots>
-        <effect duration="6" amplifier="255">resistance</effect>
+        <effect duration="6s" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
+    <take kit="spawn-drop">
+        <filter>
+            <grounded/>
+        </filter>
+    </take>
 </kits>
 <spawns>
     <default>
@@ -50,16 +58,22 @@
     </spawn>
 </spawns>
 <regions>
-    <cuboid id="east" min="33,10,-3" max="26,16,4"/>
-    <cuboid id="west" min="-32,10,4" max="-25,16,-3"/>
-    <cuboid id="mid" min="-3,17,4" max="4,20,-3"/>
+    <union id="west-signal">
+        <cuboid id="west-capture" min="-32,13,-3" max="-25,17,4"/>
+        <cuboid min="-26,10,-1" max="-25,11,2"/>
+    </union>
+    <cuboid id="mid" min="-3,17,-3" max="4,21,4"/>
+    <union id="east-signal">
+        <cuboid id="east-capture" min="26,13,-3" max="33,17,4"/>
+        <cuboid min="26,10,-1" max="27,11,2"/>
+    </union>
     <apply use="never" block="never"/>
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
-        <hill name="West Hill" id="west-point" capture="west" progress="west"/>
+        <hill name="West Hill" id="west-point" capture="west-capture" progress="west-signal"/>
         <hill name="Mid Hill" id="mid-point" capture="mid" progress="mid"/>
-        <hill name="East Hill" id="east-point" capture="east" progress="east"/>
+        <hill name="East Hill" id="east-point" capture="east-capture" progress="east-signal"/>
     </hills>
 </king>
 <score>
@@ -87,6 +101,8 @@
     <item>iron boots</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

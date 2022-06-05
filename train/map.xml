@@ -1,13 +1,13 @@
 <map proto="1.4.2">
 <name>Train</name>
-<version>1.0.2</version>
+<version>1.1.4</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!-- Blazy -->
 </authors>
 <teams>
-    <team id="blue-team" color="blue" max="5">Blue</team>
-    <team id="red-team" color="dark red" max="5">Red</team>
+    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -29,38 +29,46 @@
 <spawns>
     <default>
         <region yaw="90">
-            <point>68.5,25.1,-50.5</point>
+            <point>68.5,26,-50.5</point>
         </region>
     </default>
     <spawn team="blue-team" kit="spawn-kit">
         <region yaw="-90">
-            <point>31,5,-67.5</point>
+            <point>31,6,-67.5</point>
         </region>
     </spawn>
     <spawn team="red-team" kit="spawn-kit">
         <region yaw="-90">
-            <point>31,5,-33.5</point>
+            <point>31,6,-33.5</point>
         </region>
     </spawn>
 </spawns>
 <filters>
     <team id="only-blue">blue-team</team>
     <team id="only-red">red-team</team>
-    <deny id="no-use">
-        <material>trap door</material>
-    </deny>
 </filters>
 <regions>
-    <cuboid id="point-a" min="66,3,-33" max="73,7,-26"/>
-    <cuboid id="mid" min="29,9,-54" max="36,13,-47"/>
-    <cuboid id="point-b" min="66,3,-68" max="73,7,-75"/>
-    <apply use="no-use" block="never"/>
+    <cuboid id="point-blue" min="66,3,-68" max="73,7,-75"/>
+    <cuboid id="mid" min="29,10,-54" max="36,14,-47"/>
+    <cuboid id="point-red" min="66,3,-33" max="73,7,-26"/>
+    <apply use="never" block="never"/>
 </regions>
+<spawners>
+    <spawner delay="6s">
+        <spawn-region>
+            <block>68,9,-51</block>
+        </spawn-region>
+        <player-region>
+            <cylinder base="68.5,8,-50.5" height="4" radius="2"/>
+        </player-region>
+        <item material="golden apple"/>
+    </spawner>
+</spawners>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
-        <hill name="Point A" capture="point-a" progress="point-a"/>
-        <hill name="Middle" capture="mid" progress="mid"/>
-        <hill name="Point B" capture="point-b" progress="point-b"/>
+        <hill name="Blue's Hill" capture="point-blue" progress="point-blue"/>
+        <hill name="Mid Hill" capture="mid" progress="mid"/>
+        <hill name="Red's Hill" capture="point-red" progress="point-red"/>
     </hills>
 </king>
 <score>
@@ -76,6 +84,12 @@
     <item>chainmail leggings</item>
     <item>iron boots</item>
 </itemremove>
+<itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
 <kill-reward>
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>

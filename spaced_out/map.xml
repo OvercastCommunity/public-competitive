@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Spaced Out</name>
-<version>1.0.5</version>
+<version>1.0.6</version>
 <objective>Be the first team to 750 points to win!</objective>
 <authors>
     <author uuid="5198dc37-537f-4ea5-8ee8-1e0952d4a36b"/> <!-- _3Each -->
@@ -30,7 +30,7 @@
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="reset-resitance-kit" force="true">
-        <effect duration="0" amplifier="0">damage resistance</effect>
+        <effect duration="0s" amplifier="0">damage resistance</effect>
     </kit>
 </kits>
 <spawns>
@@ -121,7 +121,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn delay="3s" auto="true" blackout="true"/>
+<respawn delay="3s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

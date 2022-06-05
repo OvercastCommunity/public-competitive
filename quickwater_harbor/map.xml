@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
 <name>Quickwater Harbor</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Control the mid point and capture the wool to win!</objective>
 <authors>
   <author uuid="97d1cc45-0f69-482b-9974-09351aef9dfa"/> <!-- _lunaceee -->
@@ -18,8 +18,8 @@
   <tip after="2s">You may only enter the woolroom whilst you have control of mid</tip>
 </broadcasts>
 <teams>
-    <team id="red-team" color="red" min="2" max="5">Red</team>
-    <team id="blue-team" color="blue" min="2" max="5">Blue</team>
+    <team id="red-team" color="red" min="2" max="5" max-overfill="5">Red</team>
+    <team id="blue-team" color="blue" min="2" max="5" max-overfill="5">Blue</team>
 </teams>
 <respawn delay="3s"/>
 <spawns>

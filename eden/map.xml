@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Eden</name>
-<version>1.1.2</version>
+<version>1.1.5</version>
 <objective>Capture all five control points.</objective>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
@@ -137,16 +137,16 @@
 </regions>
 <control-points neutral-state="true" show-progress="true">
     <!-- Blue visual control points -->
-    <control-point initial-owner="blue" id="blue-last" required="false" name="Blue Last" capture-time="8s" points="0" incremental="true" capture="cp-blue-last" progress="cp-blue-last" player-filter="filter-blue-last"/>
-    <control-point initial-owner="blue" id="blue-2nd" required="false" name="Blue 2nd" capture-time="6s" points="0" incremental="true" capture="cp-blue-2nd" progress="cp-blue-2nd" player-filter="filter-blue-2nd"/>
+    <control-point initial-owner="blue" id="blue-last" required="false" name="Blue Last" capture-time="6s" points="0" time-multiplier="0.35" incremental="true" capture="cp-blue-last" progress="cp-blue-last" player-filter="filter-blue-last"/>
+    <control-point initial-owner="blue" id="blue-2nd" required="false" name="Blue 2nd" capture-time="6s" points="0" time-multiplier="0.35" incremental="true" capture="cp-blue-2nd" progress="cp-blue-2nd" player-filter="filter-blue-2nd"/>
     <!-- Mid -->
-    <control-point id="mid" required="false" name="Mid" capture-time="6s" points="2" incremental="true" capture="cp-mid" progress="cp-mid" player-filter="filter-mid"/>
+    <control-point id="mid" required="false" name="Mid" capture-time="6s" points="2" time-multiplier="0.35" incremental="true" capture="cp-mid" progress="cp-mid" player-filter="filter-mid"/>
     <!-- Orange visual control points -->
-    <control-point initial-owner="orange" id="orange-2nd" required="false" name="Orange 2nd" capture-time="6s" points="0" incremental="true" capture="cp-orange-2nd" progress="cp-orange-2nd" player-filter="filter-orange-2nd"/>
-    <control-point initial-owner="orange" id="orange-last" required="false" name="Orange Last" capture-time="8s" points="0" incremental="true" capture="cp-orange-last" progress="cp-orange-last" player-filter="filter-orange-last"/>
+    <control-point initial-owner="orange" id="orange-2nd" required="false" name="Orange 2nd" capture-time="6s" points="0" time-multiplier="0.35" incremental="true" capture="cp-orange-2nd" progress="cp-orange-2nd" player-filter="filter-orange-2nd"/>
+    <control-point initial-owner="orange" id="orange-last" required="false" name="Orange Last" capture-time="6s" points="0" time-multiplier="0.35" incremental="true" capture="cp-orange-last" progress="cp-orange-last" player-filter="filter-orange-last"/>
     <!-- Point-giving control points -->
-    <control-point id="orange-last-point" required="false" show="false" points="1" name="RL Point" capture-time="0s" capture="everywhere" player-filter="filter-last-point-blue" capture-filter="only-blue"/>
-    <control-point id="orange-2nd-point" required="false" show="false" points="1" name="R2 Point" capture-time="0s" capture="everywhere" player-filter="filter-2nd-point-blue" capture-filter="only-blue"/>
+    <control-point id="orange-last-point" required="false" show="false" points="1" name="OL Point" capture-time="0s" capture="everywhere" player-filter="filter-last-point-blue" capture-filter="only-blue"/>
+    <control-point id="orange-2nd-point" required="false" show="false" points="1" name="O2 Point" capture-time="0s" capture="everywhere" player-filter="filter-2nd-point-blue" capture-filter="only-blue"/>
     <control-point id="blue-2nd-point" required="false" show="false" points="1" name="B2 Point" capture-time="0s" capture="everywhere" player-filter="filter-2nd-point-orange" capture-filter="only-orange"/>
     <control-point id="blue-last-point" required="false" show="false" points="1" name="BL Point" capture-time="0s" capture="everywhere" player-filter="filter-last-point-orange" capture-filter="only-orange"/>
 </control-points>
@@ -176,7 +176,7 @@
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="7s" auto="true" blackout="true"/>
+<respawn delay="7s" auto="true"/>
 <world>
     <timeset>18000</timeset>
 </world>

@@ -1,11 +1,11 @@
 <map proto="1.4.2">
 <name>Rusteze</name>
-<version>1.1.8</version>
+<version>1.1.10</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <authors>
     <author uuid="0c44ca5a-6a42-49b7-81f2-58dc6d2ae3e9"/> <!-- Xerocoles -->
 </authors>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
     <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
@@ -122,6 +122,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
@@ -129,7 +131,7 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
-<respawn delay="3s" auto="true" blackout="true"/>
+<respawn delay="3s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

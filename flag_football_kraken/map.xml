@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Flag Football: Kraken</name>
-<version>1.1.5</version>
+<version>1.1.7</version>
 <objective>Capture the flag as many times as possible in eight minutes!</objective>
 <gamemode>ffb</gamemode>
 <authors>
@@ -12,8 +12,8 @@
     <contributor uuid="0a359aef-794b-4d88-97ca-5672d9421532"/> <!-- xTrina -->
 </contributors>
 <teams>
-    <team id="red-team" color="dark red" max="5">Red</team>
-    <team id="blue-team" color="blue" max="5">Blue</team>
+    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
+    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
 </teams>
 <kits>
     <kit id="spawn-kit">
@@ -123,8 +123,8 @@
     <proximity-alarm message="You are running to the wrong goal!" flare-radius="0" region="red-side" detect="blue-team-carrying-flag" notify="blue-team-carrying-flag"/>
 </proximity-alarms>
 <portals>
-    <portal filter="red-team-carrying-flag" region="red-net" destination="red-spawn-point" yaw="@180"/>
-    <portal filter="blue-team-carrying-flag" region="blue-net" destination="blue-spawn-point" yaw="@0"/>
+    <portal observers="never" filter="red-team-carrying-flag" region="red-net" destination="red-spawn-point" yaw="@180"/>
+    <portal observers="never" filter="blue-team-carrying-flag" region="blue-net" destination="blue-spawn-point" yaw="@0"/>
 </portals>
 <toolrepair>
     <item>stone sword</item>

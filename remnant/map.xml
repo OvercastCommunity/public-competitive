@@ -1,8 +1,8 @@
 <map proto="1.4.2">
 <name>Remnant</name>
-<version>1.0.2</version>
+<version>1.1.2</version>
 <objective>Capture the enemy flag.</objective>
-<time result="score" overtime="2m" max-overtime="6m">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
     <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!-- Blazy -->
 </authors>
@@ -42,9 +42,6 @@
     <team id="only-blue">blue</team>
     <team id="only-red">red</team>
     <time id="flag-respawns">0</time>
-    <deny id="no-use">
-        <material>trap door</material>
-    </deny>
 </filters>
 <regions>
     <cylinder id="spawn-obs" base="-82.5,10,64.5" radius="0.5" height="1"/>
@@ -58,7 +55,7 @@
     <cuboid id="blue-spawn-activation" min="-107,7,75" max="-104,11,72"/>
     <cuboid id="red-spawn-drop" min="-105.4,8.5,55.4" max="-105.6,8.5,55.6"/>
     <cuboid id="red-spawn-activation" min="-104,7,57" max="-107,11,54"/>
-    <apply block="never" use="no-use"/>
+    <apply use="never" block="never"/>
 </regions>
 <flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="blue-flag"
@@ -106,6 +103,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>

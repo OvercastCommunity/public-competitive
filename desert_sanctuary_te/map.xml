@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Desert Sanctuary TE</name>
-<version>1.5.1</version>
+<version>1.5.2</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -103,6 +103,8 @@
     <item>banner</item>
 </itemremove>
 <itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
     <item>golden apple</item>
     <item>arrow</item>
 </itemkeep>
