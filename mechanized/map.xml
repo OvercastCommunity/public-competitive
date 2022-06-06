@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Mechanized</name>
-<version>1.3.1</version>
+<version>1.3.2</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
 <authors>
