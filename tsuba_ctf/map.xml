@@ -2,7 +2,7 @@
 <name>Tsuba CTF</name>
 <version>1.0.2</version>
 <objective>Capture the enemy flag as many times as possible before time runs out!</objective>
-<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
+<time result="score" overtime="1m30s" max-overtime="4m30s">8m</time>
 <authors>
     <author uuid="2ca8072f-74be-4798-85b8-bbce03aa91af"/> <!-- Tywnis -->
 </authors>
