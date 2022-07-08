@@ -1,23 +1,19 @@
 <map proto="1.4.2">
-<name>Badlands 5v5</name>
-<version>2.3.5</version>
-<objective>Be the first team to gain 750 points.</objective>
+<name>Command: Classic</name>
+<version>1.0.5</version>
+<objective>Be the first team to reach 750 points!</objective>
 <authors>
-    <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- Nixani -->
-    <author uuid="f1352a57-4fe3-4f0c-b867-56b771fc1a0f" contribution="Gameplay updates and 5v5 edit"/> <!--  teagod  -->
+    <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!-- Reshif -->
 </authors>
-<contributors>
-    <contributor uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
-    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
-    <contributor uuid="9225421c-3c09-4d97-bb80-f6a77c1f360b"/> <!-- Jexel -->
-    <contributor uuid="a6955518-97b8-4c1d-8e76-e641b8f8822c"/> <!-- Qwuiblington -->
-</contributors>
 <teams>
-    <team id="blue-team" color="blue" max="5" max-overfill="5">Blue</team>
-    <team id="red-team" color="dark red" max="5" max-overfill="5">Red</team>
+    <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
+    <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
 </teams>
 <kits>
-    <kit id="spawn-kit">
+    <kit id="default-kit">
+        <effect>night vision</effect>
+    </kit>
+    <kit id="spawn-kit" parents="default-kit">
         <clear/>
         <item slot="0" unbreakable="true" material="stone sword"/>
         <item slot="1" unbreakable="true" material="bow"/>
@@ -28,41 +24,49 @@
         <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
-        <boots unbreakable="true" material="iron boots">
-            <enchantment>feather_falling</enchantment>
-        </boots>
+        <boots unbreakable="true" material="iron boots"/>
         <effect duration="4s" amplifier="255">resistance</effect>
+        <effect duration="4s" amplifier="255">regeneration</effect>
         <game-mode>adventure</game-mode>
     </kit>
 </kits>
 <spawns>
-    <default>
-        <region yaw="135">
-            <point>-14.5,28,-14.5</point>
+    <default kit="default-kit">
+        <region yaw="180">
+            <point>0.5,27,27.5</point>
         </region>
     </default>
-    <spawn team="blue-team" kit="spawn-kit">
-        <region yaw="180">
-            <point>-83.5,24,-25.5</point>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="90">
+            <point>37.5,10,0.5</point>
         </region>
     </spawn>
-    <spawn team="red-team" kit="spawn-kit">
-        <region yaw="90">
-            <point>-25.5,24,-83.5</point> 
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="-90">
+            <point>-36.5,10,0.5</point>
         </region>
     </spawn>
 </spawns>
 <regions>
-    <cuboid id="top" min="-75,30,-75" size="7,5,7"/>
-    <cuboid id="cliff" min="-55,24,-55" size="7,5,7"/>
-    <cuboid id="cave" min="-75,19,-75" size="7,5,7"/>
+    <union id="top">
+        <cuboid min="-2,9,21" max="3,12,28"/>
+        <cuboid min="4,9,27" max="-3,12,22"/>
+    </union>
+    <union id="mid">
+        <cuboid min="-2,6,-3" max="3,9,4"/>
+        <cuboid min="4,6,3" max="-3,9,-2"/>
+    </union>
+    <union id="bot">
+        <cuboid min="-2,4,-21" max="3,7,-14"/>
+        <cuboid min="4,4,-15" max="-3,7,-20"/>
+    </union>
     <apply block="never" use="never"/>
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
         <hill name="Top" capture="top" progress="top"/>
-        <hill name="Cliff" capture="cliff" progress="cliff"/>
-        <hill name="Cave" capture="cave" progress="cave"/>
+        <hill name="Middle" capture="mid" progress="mid"/>
+        <hill name="Bottom" capture="bot" progress="bot"/>
     </hills>
 </king>
 <score>
@@ -88,8 +92,8 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
+<respawn delay="5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="5s" auto="true"/>
 </map>
