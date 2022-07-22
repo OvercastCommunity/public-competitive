@@ -1,7 +1,7 @@
 ---
 name: Contest Submission
-about: Submit a map to OCC and BOLT's Ranked 5v5 Mapmaking Contest
-title: "[GAMEMODE/5v5] Map Name"
+about: Submit a map to OCC and BOLT's Ranked 3v3 Mapmaking Contest
+title: "[GAMEMODE/3v3] Map Name"
 labels: map, submission, contest
 assignees: ''
 
