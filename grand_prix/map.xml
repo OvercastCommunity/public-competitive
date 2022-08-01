@@ -1,0 +1,142 @@
+<map proto="1.4.2">
+<name>Grand Prix</name>
+<version>1.0</version>
+<objective>Capture the flag as many times as possible!</objective>
+<created>2022-07-25</created>
+<time result="score" overtime="1s" max-overtime="4m">8m</time>
+<broadcasts>
+    <alert after="8m2s">The match has entered overtime! The first team to capture the flag will win!</alert>
+</broadcasts>
+<authors>
+    <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
+    <author uuid="d9a0315d-44a6-45ad-bc8a-62eb7b373bc6"/> <!-- MCUnbreakable -->
+</authors>
+<contributors>
+    <contributor uuid="430ec559-364a-4363-ac7a-2529050440ac" contribution="XML"/> <!-- mameBT -->
+</contributors>
+<teams>
+    <team id="blue" color="blue" max="3" max-overfill="3">Blue</team>
+    <team id="red" color="dark red" max="3" max-overfill="3">Red</team>
+</teams>
+<kits>
+    <kit id="spawn-kit">
+        <clear/>
+        <item slot="0" unbreakable="true" material="stone sword"/>
+        <item slot="1" unbreakable="true" material="bow"/>
+        <item slot="2" material="golden apple"/>
+        <item slot="8" amount="8" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
+        <leggings unbreakable="true" material="chainmail leggings">
+            <enchantment level="3">projectile_protection</enchantment>
+        </leggings>
+        <boots unbreakable="true" material="iron boots"/>
+        <effect duration="2s" amplifier="255">resistance</effect>
+        <effect duration="1s" amplifier="20">regeneration</effect>
+        <effect duration="0s" amplifier="0">absorption</effect>
+        <game-mode>adventure</game-mode>
+    </kit>
+    <give kit="spawn-kit" filter="reset-kit"/>
+</kits>
+<spawns>
+    <default>
+        <region yaw="-90">
+            <point>-21.5,44,0.5</point>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="0">
+            <point id="blue-spawn">0.5,13,-26.5</point>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="180">
+            <point id="red-spawn">0.5,13,27.5</point>
+        </region>
+    </spawn>
+</spawns>
+<filters>
+    <deny id="deny-blue">
+        <team id="only-blue">blue</team>
+    </deny>
+    <deny id="deny-red">
+        <team id="only-red">red</team>
+    </deny>
+    <time id="flag-respawns">0</time>
+    <all id="reset-kit">
+        <flag-returned id="flag-capped">flag</flag-returned>
+        <participating/>
+    </all>
+    <any id="has-flag">
+        <carrying-flag id="flag-carrier">flag</carrying-flag>
+        <not>
+            <same-team>
+                <filter id="flag-carrier"/>
+            </same-team>
+        </not>
+    </any>
+    <deny id="deny-flag-carriers">
+        <filter id="flag-carrier"/>
+    </deny>
+</filters>
+<regions>
+    <cylinder id="blue-net" base="0.5,8,32.5" height="2" radius="1.25"/>
+    <cylinder id="red-net" base="0.5,8,-31.5" height="2" radius="1.25"/>
+    <apply block="never" use="never"/>
+</regions>
+<spawners>
+    <spawner delay="8s" max-entities="1">
+        <spawn-region>
+            <point>0.5,11.2,0.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="0.5,10,0.5" height="4" radius="2.5"/>
+        </player-region>
+        <item material="golden apple"/>
+    </spawner>
+</spawners>
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
+    <flag id="flag"
+          name="Flag"
+          color="white"
+          shared="true">
+        <post recover-time="oo" respawn-time="0.1s">0.5,6,0.5</post>
+    </flag>
+    <flags points="1">
+        <net region="blue-net" flag="flag" capture-filter="only-blue" respawn-filter="flag-respawns"/>
+        <net region="red-net" flag="flag" capture-filter="only-red" respawn-filter="flag-respawns"/>
+    </flags>
+</flags>
+<portals>
+    <portal observers="never" forward="flag-capped" destination="blue-spawn" filter="only-blue" yaw="@0"/>
+    <portal observers="never" forward="flag-capped" destination="red-spawn" filter="only-red" yaw="@180"/>
+</portals>
+<score>
+    <mercy>4</mercy>
+</score>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>chainmail leggings</item>
+    <item>iron boots</item>
+    <item>banner</item>
+</itemremove>
+<itemkeep>
+    <item>stone sword</item>
+    <item>bow</item>
+    <item>golden apple</item>
+    <item>arrow</item>
+</itemkeep>
+<kill-reward>
+    <item material="golden apple"/>
+    <item amount="3" material="arrow"/>
+</kill-reward>
+<respawn delay="4s" auto="true"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+</map>
