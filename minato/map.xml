@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Minato</name>
-<version>1.0.2</version>
+<version>1.1</version>
 <objective>Control the flag for 160 seconds to win!</objective>
 <created>2022-07-31</created>
 <gamemode>kotf</gamemode>
@@ -52,12 +52,12 @@
     </default>
     <spawn team="blue" kit="spawn-kit" filter="has-flag">
         <region yaw="90">
-            <point>40.5,6,1.5</point>
+            <point>40.5,7,1.5</point>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit" filter="has-flag">
         <region yaw="-90">
-            <point>-39.5,6,1.5</point>
+            <point>-39.5,7,1.5</point>
         </region>
     </spawn>
 </spawns>
@@ -80,7 +80,7 @@
             <point>0.5,6.2,1.5</point>
         </spawn-region>
         <player-region>
-            <cylinder base="0.5,5,1.5" height="4" radius="1.5"/>
+            <cylinder base="0.5,5,1.5" height="4" radius="2.5"/>
         </player-region>
         <item material="golden apple"/>
     </spawner>
