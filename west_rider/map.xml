@@ -1,12 +1,12 @@
 <map proto="1.4.2">
 <name>West Rider</name>
-<version>1.1.5</version>
+<version>1.1.6</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
     <author uuid="97d1cc45-0f69-482b-9974-09351aef9dfa"/> <!-- lunaceee -->
     <author uuid="ec5ec930-5cf3-4f8a-ad9f-09056aeed71b"/> <!-- Tundren -->
-    <author uuid="2ee523ce-6bf2-430f-aba5-2a2cd8608f64"/> <!-- Kazoha -->
+    <author uuid="38ef938a-7020-4c04-9d12-4875ed0598ca"/> <!-- Le0n4rdo fka Kazoha -->
     <author uuid="f6f5dce8-a158-461d-b26d-dc8acfaeedd7"/> <!-- Kallowy -->
 </authors>
 <contributors>
@@ -14,8 +14,8 @@
     <contributor uuid="430ec559-364a-4363-ac7a-2529050440ac" contribution="XML"/> <!-- mameBT -->
 </contributors>
 <broadcasts>
-    <alert after="1s" every="4m">Flag spawns depend on the team who last held the flag!</alert>
-    <alert after="2s" every="4m">If Blue holds the flag, it spawns at Red's flag post, and if Red holds the flag, it spawns at Blue's flag post.</alert>
+    <alert after="1s">Flag spawns depend on the team who last held the flag!</alert>
+    <alert after="2s">If Blue holds the flag, it spawns at Red's flag post, and if Red holds the flag, it spawns at Blue's flag post.</alert>
 </broadcasts>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
@@ -44,9 +44,15 @@
     <kit id="flag-kit" force="true">
         <effect amplifier="-3">health boost</effect>
         <effect duration="3s" amplifier="2">absorption</effect>
+        <action filter="blue-team">
+            <set var="flag_held_by" value="1"/>
+        </action>
+        <action filter="red-team">
+            <set var="flag_held_by" value="2"/>
+        </action>
     </kit>
     <kit id="reset-health" force="true">
-        <effect duration="0s" amplifier="0">health boost</effect>
+        <effect duration="0s">health boost</effect>
     </kit>
 </kits>
 <spawns>
@@ -66,7 +72,12 @@
         </region>
     </spawn>
 </spawns>
+<variables>
+    <variable id="flag_held_by" scope="match"/> <!-- blue sets 1, red sets 2 -->
+</variables>
 <filters>
+    <team id="blue-team">blue</team>
+    <team id="red-team">red</team>
     <any id="has-flag">
         <carrying-flag id="flag-carrier">flag</carrying-flag>
         <not>
@@ -78,8 +89,8 @@
     <deny id="deny-flag-carrier">
         <filter id="flag-carrier"/>
     </deny>
-    <objective id="dropped-by-blue" team="blue">kotf</objective>
-    <objective id="dropped-by-red" team="red">kotf</objective>
+    <variable id="held-by-blue" var="flag_held_by">1</variable>
+    <variable id="held-by-red" var="flag_held_by">2</variable>
 </filters>
 <regions>
     <union id="spawns">
@@ -104,18 +115,14 @@
           pickup-kit="flag-kit"
           drop-kit="reset-health"
           flag-proximity-metric="none"
-          show-respawn-on-pickup="false">
-        <!-- filtering makes respawn announce on pickup wrong initially -->
+          show-respawn-on-pickup="true">
         <post return-time="0s" respawn-time="20s">
             <post name="Mid Post" respawn-filter="never">4.5,17,1.5</post>
-            <post name="Blue's Post" respawn-filter="dropped-by-red" yaw="180">-14.5,14,14.5</post>
-            <post name="Red's Post" respawn-filter="dropped-by-blue" yaw="0">23.5,14,-11.5</post>
+            <post name="Blue's Post" respawn-filter="held-by-red" yaw="180">-14.5,14,14.5</post>
+            <post name="Red's Post" respawn-filter="held-by-blue" yaw="0">23.5,14,-11.5</post>
         </post>
     </flag>
 </flags>
-<control-points>
-    <control-point id="kotf" required="false" show="false" points="0" capture-time="0s" capture="everywhere" player-filter="flag-control" capture-filter="flag-control"/>
-</control-points>
 <score>
     <limit>200</limit>
 </score>
