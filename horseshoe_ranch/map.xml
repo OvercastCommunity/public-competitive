@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Horseshoe Ranch</name>
-<version>2.0.1</version>
+<version>2.0.2</version>
 <objective>Capture the other team's wool.</objective>
 <authors>
 	<author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc" contribution="Layout, Aethetics, and XML"/>
@@ -18,8 +18,8 @@
 <respawn delay="7s"/>
 <time result="objectives">20m</time>
 <teams>
-	<team id="red" color="dark red" max="7" max-overfill="7">Red Team</team>
-	<team id="blue" color="blue" max="7" max-overfill="7">Blue Team</team>
+	<team id="red" color="dark red" max="7" max-overfill="7">Red</team>
+	<team id="blue" color="blue" max="7" max-overfill="7">Blue</team>
 </teams>
 <kits>
 	<kit id="spawn" force="true">

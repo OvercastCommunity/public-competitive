@@ -1,12 +1,12 @@
 <map proto="1.4.2">
 <name>Versatile</name>
-<version>1.1.4</version>
+<version>1.1.6</version>
 <objective>Capture the opponent's flag as many times as possible in 12 minutes!</objective>
 <authors>
     <author uuid="a4266139-34f3-46c5-a730-f8828376a15a"/> <!-- LArrowHead -->
     <author uuid="dff980ed-9f69-491e-b79c-30c21350baf2"/> <!-- DoomRobotBoy -->
 </authors>
-<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
+<time result="score" overtime="1m" max-overtime="3m">12m</time>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
     <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
@@ -24,30 +24,29 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="4" amplifier="255">resistance</effect>
-        <effect duration="4" amplifier="255">regeneration</effect>
+        <effect duration="4s" amplifier="255">resistance</effect>
     </kit>
     <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
     </kit>
     <kit id="flag-drop" force="true">
-        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0s" amplifier="0">slowness</effect>
     </kit>
 </kits>
 <spawns>
     <default>
         <region yaw="180">
-            <block>-17,12,23</block>
+            <point>-16.5,12,23.5</point>
         </region>
     </default>
     <spawn team="blue" kit="spawn-kit">
         <region yaw="-90">
-            <block>-90,2,-14</block>
+            <point>-89.5,2,-13.5</point>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
         <region yaw="90">
-            <block>56,2,6</block>
+            <point>56.5,2,6.5</point>
         </region>
     </spawn>
 </spawns>
@@ -85,30 +84,30 @@
 </flags>
 <score/>
 <spawners>
-    <spawner id="mid-gapple" delay="8s">
+    <spawner id="mid-gapple" delay="7s">
         <spawn-region>
-            <block>-17,3,-4</block>
+            <point>-16.5,3.2,-3.5</point>
         </spawn-region>
         <player-region>
-            <cylinder base="-16.5,2,-3.5" height="4" radius="2.25"/>
+            <cylinder base="-16.5,2,-3.5" radius="2" height="4"/>
         </player-region>
         <item material="golden apple"/>
     </spawner>
     <spawner id="blue-arrow" delay="2s">
         <spawn-region>
-            <block>-31,6,0</block>
+            <point>-30.5,6.2,0.5</point>
         </spawn-region>
         <player-region>
-            <cylinder base="-30.5,5,0.4" height="4" radius="2.25"/>
+            <cylinder base="-30.5,5,0.5" radius="2" height="4"/>
         </player-region>
         <item material="arrow"/>
     </spawner>
     <spawner id="red-arrow" delay="2s">
         <spawn-region>
-            <block>-3,6,-8</block>
+            <point>-2.5,6.2,-7.5</point>
         </spawn-region>
         <player-region>
-            <cylinder base="-2.5,5,-7.5" height="4" radius="2.25"/>
+            <cylinder base="-2.5,5,-7.5" radius="2" height="4"/>
         </player-region>
         <item material="arrow"/>
     </spawner>

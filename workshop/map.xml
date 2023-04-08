@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Workshop</name>
-<version>2.0.4</version>
+<version>2.0.5</version>
 <objective>Control the hills to be first to 2500 points!</objective>
 <authors>
     <author uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c"/> <!-- Blaszczak -->
@@ -26,8 +26,7 @@
             <enchantment level="4">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="4" amplifier="10">resistance</effect>
-        <effect duration="4" amplifier="10">regeneration</effect>
+        <effect duration="4s" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
 </kits>
@@ -64,7 +63,7 @@
 </spawners>
 <king>
     <hills required="false" capture-time="5s" points="3" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
-        <hill name="Point A">
+        <hill name="Hill A">
             <capture>
                 <cuboid min="-3,13,-32" max="4,18,-25"/>
             </capture>
@@ -75,7 +74,7 @@
                 <cuboid min="-2,28,-25" max="3,33,-24"/>
             </captured>
         </hill>
-        <hill name="Centre">
+        <hill name="Middle">
             <capture>
                 <cuboid min="-4,15,-7" max="5,20,2"/>
             </capture>
@@ -86,7 +85,7 @@
                 <cuboid min="-4,12,-7" max="5,16,2"/>
             </captured>
         </hill>
-        <hill name="Point B">
+        <hill name="Hill B">
             <capture>
                 <cuboid min="-3,13,20" max="4,18,27"/>
             </capture>

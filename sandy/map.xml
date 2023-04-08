@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Sandy</name>
-<version>1.1.2</version>
+<version>1.1.3</version>
 <objective>Be the first to 750 points</objective>
 <authors>
     <author uuid="9116d3fa-1400-4ada-aecd-2eae1d73e383"/> <!-- Xuph -->
@@ -23,8 +23,7 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="4" amplifier="255">resistance</effect>
-        <effect duration="4" amplifier="255">regeneration</effect>
+        <effect duration="4s" amplifier="255">resistance</effect>
     </kit>
 </kits>
 <spawns>
@@ -63,9 +62,9 @@
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
-        <hill name="Point A" capture="a-capture" progress="a-capture" captured="a-captured"/>
+        <hill name="Hill A" capture="a-capture" progress="a-capture" captured="a-captured"/>
         <hill name="Middle" capture="mid-capture" progress="mid-capture"/>
-        <hill name="Point B" capture="b-capture" progress="b-capture" captured="b-captured"/>
+        <hill name="Hill B" capture="b-capture" progress="b-capture" captured="b-captured"/>
     </hills>
 </king>
 <score>

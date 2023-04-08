@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.4.0">
     <name>Rocky Top</name>
-    <version>1.2.1</version>
+    <version>1.2.2</version>
     <objective>Capture both of the enemy team's wools</objective>
     <gamemode>ctw</gamemode>
     <time overtime="1m" max-overtime="45m">45m</time>
@@ -13,8 +13,8 @@
         <contribuor uuid="510cf71c-0f8a-44b6-87c2-b1ed9c197040">finshu</contribuor>
     </contributors>
     <teams>
-        <team color="blue" max="8" id="blue-team">Blue Team</team>
-        <team color="dark red" max="8" id="red-team">Red Team</team>
+        <team color="blue" max="8" id="blue-team">Blue</team>
+        <team color="dark red" max="8" id="red-team">Red</team>
     </teams>
     <timelock>on</timelock>
     <kits>

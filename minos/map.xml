@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Minos</name>
-<version>1.0.6</version>
+<version>1.0.7</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="a9373ae5-37c7-4319-95d8-867d011bcdee"/> <!-- jam0828 -->
@@ -27,8 +27,7 @@
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
         </boots>
-        <effect duration="3" amplifier="255">resistance</effect>
-        <effect duration="3" amplifier="255">regeneration</effect>
+        <effect duration="3s" amplifier="255">resistance</effect>
     </kit>
 </kits>
 <spawns>
@@ -63,9 +62,9 @@
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
-        <hill name="Point A" capture="point-a" progress="point-a"/>
+        <hill name="Hill A" capture="point-a" progress="point-a"/>
         <hill name="Middle" capture="mid" progress="mid"/>
-        <hill name="Point B" capture="point-b" progress="point-b"/>
+        <hill name="Hill B" capture="point-b" progress="point-b"/>
     </hills>
 </king>
 <score>

@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Highrise</name>
-<version>2.1.4</version>
+<version>2.1.5</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="b8add1ba-8e13-4673-bc73-4e3ed524d40e"/> <!-- Blazy -->
@@ -24,8 +24,7 @@
         <boots unbreakable="true" material="iron boots">
             <enchantment>feather_falling</enchantment>
         </boots>
-        <effect duration="3" amplifier="255">resistance</effect>
-        <effect duration="3" amplifier="255">regeneration</effect>
+        <effect duration="3s" amplifier="255">resistance</effect>
     </kit>
 </kits>
 <spawns>
@@ -59,9 +58,9 @@
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
-        <hill name="Point A" capture="point-a" progress="point-a" captured="point-a-signal"/>
+        <hill name="Hill A" capture="point-a" progress="point-a" captured="point-a-signal"/>
         <hill name="Bottom" capture="bottom" progress="bottom"/>
-        <hill name="Point B" capture="point-b" progress="point-b" captured="point-b-signal"/>
+        <hill name="Hill B" capture="point-b" progress="point-b" captured="point-b-signal"/>
     </hills>
 </king>
 <score>

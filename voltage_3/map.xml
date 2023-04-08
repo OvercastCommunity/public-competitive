@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Voltage 3</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Eliminate the other team in 1v1 sumo matches.</objective>
 <gamemode>blitz</gamemode>
 <authors>
@@ -33,7 +33,7 @@
             <cuboid min="74.5,39,133.5" max="76.5,39,131.5"/>
         </region>
     </default>
-    <spawn spread="true" team="red" kit="red-kit" yaw="90">
+    <spawn spread-teammates="true" team="red" kit="red-kit" yaw="90">
         <regions>
             <point>90.5,9.1,116.5</point>
             <point>90.5,9.1,124.5</point>
@@ -42,7 +42,7 @@
             <point>90.5,9.1,148.5</point>
         </regions>
     </spawn>
-    <spawn spread="true" team="blue" kit="blue-kit" yaw="-90">
+    <spawn spread-teammates="true" team="blue" kit="blue-kit" yaw="-90">
         <regions>
             <point>60.5,9.1,148.5</point>
             <point>60.5,9.1,140.5</point>

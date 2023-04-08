@@ -1,12 +1,17 @@
 <map proto="1.4.2">
 <name>Basilica</name>
-<version>1.1.16</version>
+<version>2.1.7</version>
 <objective>Capture the enemy flag as many times as possible before time runs out!</objective>
-<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
+<time result="score" overtime="1m" max-overtime="3m">12m</time>
 <authors>
-    <author uuid="cbdc7b1d-7a07-465b-bebb-4f20bfb8ebd8"/> <!-- Cratain -->
     <author uuid="459fd919-0d58-401a-9601-6cab1eb721ab"/> <!-- Reshif -->
+    <author uuid="cbdc7b1d-7a07-465b-bebb-4f20bfb8ebd8"/> <!-- Cratain -->
 </authors>
+<contributors>
+    <contributor uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06" contribution="2.0 update, aesthetics"/> <!-- Strangey -->
+    <contributor uuid="13d54b8b-4abf-46a7-b3ad-f12d5dd74bc3" contribution="Aesthetics"/> <!-- BlueSnowflakes -->
+    <contributor uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d" contribution="Aesthetics"/> <!-- Claf -->
+</contributors>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
     <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
@@ -21,46 +26,48 @@
         <item slot="1" unbreakable="true" material="bow"/>
         <item slot="2" material="golden apple"/>
         <item slot="8" amount="12" material="arrow"/>
+        <helmet unbreakable="true" team-color="true" material="leather helmet"/>
+        <chestplate unbreakable="true" team-color="true" material="leather chestplate"/>
         <leggings unbreakable="true" material="chainmail leggings">
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="2" amplifier="10">resistance</effect>
+        <effect duration="2s" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
-    </kit>
-    <kit id="blue-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="0066cc" material="leather helmet"/>
-        <chestplate unbreakable="true" color="0066cc" material="leather chestplate"/>
-    </kit>
-    <kit id="red-kit" parents="spawn-kit">
-        <helmet unbreakable="true" color="cd0000" material="leather helmet"/>
-        <chestplate unbreakable="true" color="cd0000" material="leather chestplate"/>
     </kit>
     <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
     </kit>
     <kit id="flag-reset" force="true">
-        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0s">slowness</effect>
     </kit>
 </kits>
+<spawns>
+    <default kit="default-kit">
+        <region yaw="0">
+            <cylinder base="0.5,14,-23.5" height="0" radius="1"/>
+        </region>
+    </default>
+    <spawn team="blue" kit="spawn-kit">
+        <region yaw="90">
+            <cylinder base="38,8,-17" height="0" radius="1"/>
+        </region>
+    </spawn>
+    <spawn team="red" kit="spawn-kit">
+        <region yaw="-90">
+            <cylinder base="-37,8,-17" height="0" radius="1"/>
+        </region>
+    </spawn>
+</spawns>
 <filters>
     <team id="only-blue">blue</team>
     <team id="only-red">red</team>
-    <time id="flag-respawns">0</time>
 </filters>
 <regions>
-    <cylinder id="obs-spawn" base="0.5,14,-23.5" radius="1.5" height="1"/>
-    <cylinder id="blue-spawn" base="38,8.5,-17" radius="2" height="1"/>
-    <cylinder id="red-spawn" base="-37,8.5,-17" radius="2" height="1"/>
-    <cuboid id="blue-net" min="24.5,8,13.5" max="22.5,oo,11.5"/>
-    <cuboid id="red-net" min="-21.5,8,11.5" max="-23.5,oo,13.5"/>
+    <cuboid id="blue-net" min="22,7,11" size="3,5,3"/>
+    <cuboid id="red-net" min="-24,7,11" size="3,5,3"/>
     <apply block="never" use="never"/>
 </regions>
-<spawns>
-    <default kit="default-kit" region="obs-spawn" yaw="0"/>
-    <spawn team="blue" kit="blue-kit" region="blue-spawn" yaw="90"/>
-    <spawn team="red" kit="red-kit" region="red-spawn" yaw="-90"/>
-</spawns>
 <flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="blue-flag"
           name="Blue Flag"
@@ -68,7 +75,8 @@
           color="blue"
           pickup-kit="flag-pickup"
           drop-kit="flag-reset">
-        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">23,8,12</post>
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">23.5,8,12.5</post>
+        <net region="red-net" points="1"/>
     </flag>
     <flag id="red-flag"
           name="Red Flag"
@@ -76,14 +84,49 @@
           color="red"
           pickup-kit="flag-pickup"
           drop-kit="flag-reset">
-        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">-23,8,12</post>
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">-22.5,8,12.5</post>
+        <net region="blue-net" points="1"/>
     </flag>
-    <flags points="1">
-        <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
-        <net region="red-net" flag="blue-flag" respawn-filter="flag-respawns"/>
-    </flags>
 </flags>
 <score/>
+<spawners>
+    <spawner id="arrow-blue" delay="2s">
+        <spawn-region>
+            <point>13.5,11.2,-3.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="13.5,10,-3.5" height="4" radius="2"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
+    <spawner id="arrow-red" delay="2s">
+        <spawn-region>
+            <point>-12.5,11.2,-3.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="-12.5,10,-3.5" height="4" radius="2"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
+    <spawner id="arrow-cove" delay="1.8s">
+        <spawn-region>
+            <point>0.5,9.2,-26.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="0.5,8,-26.5" height="4" radius="2"/>
+        </player-region>
+        <item material="arrow"/>
+    </spawner>
+    <spawner id="golden-apple" delay="6s">
+        <spawn-region>
+            <point>0.5,10.2,12.5</point>
+        </spawn-region>
+        <player-region>
+            <cylinder base="0.5,10,12.5" height="4" radius="2.5"/>
+        </player-region>
+        <item material="golden apple"/>
+    </spawner>
+</spawners>
 <toolrepair>
     <tool>stone sword</tool>
     <tool>bow</tool>
@@ -105,50 +148,8 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
+<respawn delay="4.5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="4.5s" auto="true"/>
-<!--
-<filters>
-    <not id="spawn-1">
-        <time>2m</time>
-    </not>
-    <all id="spawn-2">
-        <time>2m</time>
-        <not>
-            <time>4m</time>
-        </not>
-    </all>
-    <all id="spawn-3">
-        <time>4m</time>
-        <not>
-            <time>6m</time>
-        </not>
-    </all>
-    <all id="spawn-4">
-        <time>6m</time>
-        <not>
-            <time>8m</time>
-        </not>
-    </all>
-    <all id="spawn-5">
-        <time>8m</time>
-        <not>
-            <time>10m</time>
-        </not>
-    </all>
-    <all id="spawn-6">
-        <time>10m</time>
-    </all>
-</filters>
-<respawns>
-    <respawn delay="3s" auto="true" blackout="true" filter="spawn-1"/>
-    <respawn delay="3.5s" auto="true" blackout="true" filter="spawn-2"/>
-    <respawn delay="4s" auto="true" blackout="true" filter="spawn-3"/>
-    <respawn delay="4.5s" auto="true" blackout="true" filter="spawn-4"/>
-    <respawn delay="5s" auto="true" blackout="true" filter="spawn-5"/>
-    <respawn delay="5.5s" auto="true" blackout="true" filter="spawn-6"/>
-</respawns>
--->
 </map>

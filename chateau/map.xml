@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Chateau</name>
-<version>1.0</version>
+<version>1.1</version>
 <objective>Capture the flag as many times as possible!</objective>
 <created>2022-07-31</created>
 <time result="score" overtime="1s" max-overtime="4m">8m</time>

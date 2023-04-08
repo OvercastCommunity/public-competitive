@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Industrial</name>
-<version>1.4.2</version>
+<version>1.4.3</version>
 <objective>Reach 750 points before the opposing team!</objective>
 <authors>
     <author uuid="74948888-fdb8-4446-9340-f7688c2435cc"/> <!-- Zero_Frosty -->
@@ -31,17 +31,17 @@
 <spawns>
     <default>
         <region yaw="-90">
-            <block>-57,69,-1</block>
+            <point>-56.5,69,-0.5</point>
         </region>
     </default>
     <spawn team="blue" kit="spawn-kit">
         <region yaw="90">
-            <block>42,5,-1</block>
+            <point>42.5,5,-0.5</point>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
         <region yaw="-90">
-            <block>-42,5,-1</block>
+            <point>-41.5,5,-0.5</point>
         </region>
     </spawn>
 </spawns>
@@ -56,7 +56,7 @@
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" recovery="1" decay="0" permanent="false">
         <hill name="North" capture="north-capture" progress="north-capture" captured="north-signal"/>
-        <hill name="Middle" capture="mid-capture" progress="mid-capture" captured="mid-capture"/>
+        <hill name="Middle" capture="mid-capture" progress="mid-capture"/>
         <hill name="South" capture="south-capture" progress="south-capture" captured="south-signal"/>
     </hills>
 </king>
@@ -66,7 +66,7 @@
 <spawners>
     <spawner delay="9s" max-entities="1">
         <spawn-region>
-            <point>0.5,4.1,-0.5</point>
+            <point>0.5,4.2,-0.5</point>
         </spawn-region>
         <player-region>
             <cylinder base="0.5,3,-0.5" height="4" radius="2.5"/>

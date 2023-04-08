@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <map proto="1.3.3">
 <name>Golden Drought TE</name>
-<version>1.1.1</version>
+<version>1.1.2</version>
 <objective>Take the wool from the enemy wool rooms and place it on your victory monument while defending your own wool.</objective>
 <authors>
     <author>Reshif</author>
@@ -74,8 +74,8 @@
     </stage>
 </tutorial>
 <teams>
-    <team color="blue" max="32">Blue Team</team>
-    <team color="dark red" max="32">Red Team</team>
+    <team color="blue" max="32">Blue</team>
+    <team color="dark red" max="32">Red</team>
 </teams>
 <kits>
     <kit name="spawn">

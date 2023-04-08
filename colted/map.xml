@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Colted</name>
-<version>1.0</version>
+<version>1.1.1</version>
 <objective>Capture the flag as many times as possible!</objective>
 <created>2022-07-31</created>
 <time result="score" overtime="1s" max-overtime="4m">8m</time>
@@ -46,12 +46,12 @@
     </default>
     <spawn team="blue" kit="spawn-kit">
         <region yaw="-90">
-            <point id="blue-spawn">-22.5,8,-27.5</point>
+            <point id="blue-spawn">-22.5,8,30.5</point>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
         <region yaw="-90">
-            <point id="red-spawn">-22.5,8,30.5</point>
+            <point id="red-spawn">-22.5,8,-27.5</point>
         </region>
     </spawn>
 </spawns>
@@ -75,21 +75,11 @@
             </same-team>
         </not>
     </any>
-    <deny id="deny-flag-carriers">
-        <filter id="flag-carrier"/>
-    </deny>
 </filters>
 <regions>
-    <union id="spawns">
-        <cuboid id="blue-spawn-entry" min="-26,0,-31" max="-17,oo,-24"/>
-        <cuboid id="red-spawn-entry" min="-26,0,27" max="-17,oo,34"/>
-    </union>
-    <cylinder id="blue-net" base="4.5,10,36.5" height="2" radius="1.25"/>
-    <cylinder id="red-net" base="4.5,10,-33.5" height="2" radius="1.25"/>
+    <cylinder id="blue-net" base="4.5,10,-33.5" height="2" radius="1.25"/>
+    <cylinder id="red-net" base="4.5,10,36.5" height="2" radius="1.25"/>
     <apply block="never" use="never"/>
-    <apply enter="deny-blue" region="red-spawn-entry" message="You may not enter the enemy's spawn!"/>
-    <apply enter="deny-red" region="blue-spawn-entry" message="You may not enter the enemy's spawn!"/>
-    <apply enter="deny-flag-carriers" region="spawns" message="You may not carry the flag into spawn!"/>
 </regions>
 <spawners>
     <spawner delay="8s" max-entities="1">

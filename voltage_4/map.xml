@@ -1,6 +1,6 @@
 <map proto="1.4.0">
 <name>Voltage 4</name>
-<version>1.0.2</version>
+<version>1.0.3</version>
 <objective>Eliminate the other team in 1v1s of variouts kits.</objective>
 <gamemode>blitz</gamemode>
 <authors>
@@ -85,7 +85,7 @@
             <cuboid min="-22.5,39,133.5" max="-20.5,39,131.5"/>
         </region>
     </default>
-    <spawn spread="true" team="red" yaw="90">
+    <spawn spread-teammates="true" team="red" yaw="90">
         <regions>
             <point>-6.5,10.1,116.5</point>
             <point>-6.5,10.1,124.5</point>
@@ -94,7 +94,7 @@
             <point>-6.5,10.1,148.5</point>
         </regions>
     </spawn>
-    <spawn spread="true" team="blue" yaw="-90">
+    <spawn spread-teammates="true" team="blue" yaw="-90">
         <regions>
             <point>-36.5,10.1,148.5</point>
             <point>-36.5,10.1,140.5</point>

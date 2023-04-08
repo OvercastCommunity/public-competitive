@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Mush</name>
-<version>1.0.8</version>
+<version>1.0.10</version>
 <objective>Capture the hills to be the first to reach 2500 points!</objective>
 <authors>
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
@@ -32,15 +32,23 @@
         </boots>
         <game-mode>adventure</game-mode>
     </kit>
-    <kit id="jump">
-        <effect amplifier="255">jump</effect>
+    <kit id="jump-pad-fall-damage">
+        <effect>water_breathing</effect>
     </kit>
-    <take kit="jump">
+    <take kit="jump-pad-fall-damage">
         <filter>
             <grounded/>
         </filter>
     </take>
 </kits>
+<damage>
+    <deny>
+        <all>
+            <cause>fall</cause>
+            <effect>water_breathing</effect>
+        </all>
+    </deny>
+</damage>
 <spawns>
     <default>
         <region yaw="-45">
@@ -59,6 +67,14 @@
     </spawn>
 </spawns>
 <regions>
+    <union id="hill-regions">
+        <cuboid id="hill-a" min="-432,10,-304" max="-424,14,-296"/>
+        <cuboid id="hill-a-signal" min="-450,16,-320" max="-408,29,-278"/>
+        <cuboid id="middle" min="-408,10,-329" max="-399,14,-320"/>
+        <cuboid id="middle-signal" min="-407,24,-328" max="-400,29,-321"/>
+        <cuboid id="hill-b" min="-383,10,-353" max="-375,14,-345"/>
+        <cuboid id="hill-b-signal" min="-399,16,-371" max="-357,29,-329"/>
+    </union>
     <union id="launchpads">
         <cuboid id="a-left-to-mid" min="-443,12,-324" max="-440,13,-327"/>
         <cuboid id="a-right-to-mid" min="-404,12,-285" max="-401,13,-288"/>
@@ -81,44 +97,14 @@
     <apply region="mid-to-a-left" velocity="-3.2,0.8,3.2"/>
     <apply region="a-bottom" velocity="-0.2,1.7,0.2"/>
     <apply region="b-bottom" velocity="0.2,1.7,-0.2"/>
-    <apply kit="jump" region="launchpads"/>
-    <apply block="never"/>
+    <apply kit="jump-pad-fall-damage" region="launchpads"/>
+    <apply block="never" use="never"/>
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="3" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
-        <hill name="Point A">
-            <capture>
-                <cuboid min="-432,11,-296" max="-424,15,-304"/>
-            </capture>
-            <progress>
-                <cuboid min="-432,10,-296" max="-424,15,-304"/>
-            </progress>
-            <captured>
-                <cuboid min="-408,16,-278" max="-450,29,-320"/>
-            </captured>
-        </hill>
-        <hill name="Middle">
-            <capture>
-                <cuboid min="-399,11,-329" max="-408,15,-320"/>
-            </capture>
-            <progress>
-                <cuboid min="-399,10,-329" max="-408,15,-320"/>
-            </progress>
-            <captured>
-                <cuboid min="-400,24,-328" max="-407,29,-321"/>
-            </captured>
-        </hill>
-        <hill name="Point B">
-            <capture>
-                <cuboid min="-375,11,-353" max="-383,15,-345"/>
-            </capture>
-            <progress>
-                <cuboid min="-375,10,-353" max="-383,15,-345"/>
-            </progress>
-            <captured>
-                <cuboid min="-399,16,-371" max="-357,29,-329"/>
-            </captured>
-        </hill>
+        <hill name="Hill A" capture="hill-a" progress="hill-a" captured="hill-a-signal"/>
+        <hill name="Middle" capture="middle" progress="middle" captured="middle-signal"/>
+        <hill name="Hill B" capture="hill-b" progress="hill-b" captured="hill-b-signal"/>
     </hills>
 </king>
 <score>
@@ -144,8 +130,8 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
+<respawn delay="4s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
-<respawn delay="4s" auto="true"/>
 </map>

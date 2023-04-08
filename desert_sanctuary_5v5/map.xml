@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Desert Sanctuary 5v5</name>
-<version>1.2.2</version>
+<version>1.2.3</version>
 <objective>Control the flag for 200 seconds to win!</objective>
 <gamemode>kotf</gamemode>
 <authors>
@@ -97,7 +97,7 @@
           flag-proximity-metric="none"
           show-respawn-on-pickup="true">
         <post return-time="0s" respawn-time="20s">
-            <post name="Mid Post">0.5,9,0.5</post>
+            <post name="Mid Post" respawn-filter="never">0.5,9,0.5</post>
             <post name="East Post" yaw="-90">23.5,14,0.5</post>
             <post name="West Post" yaw="90">-22.5,14,0.5</post>
         </post>

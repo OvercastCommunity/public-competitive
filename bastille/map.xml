@@ -1,17 +1,14 @@
 <map proto="1.4.2">
 <name>Bastille</name>
-<version>2.1.5</version>
+<version>3.0.1</version>
 <objective>Capture the enemy flag.</objective>
-<time result="score" overtime="1m30s" max-overtime="4m30s">12m</time>
+<time result="score" overtime="1m" max-overtime="3m">12m</time>
 <authors>
     <author uuid="2958ea4c-3501-404e-88cc-12e8632f68cc"/> <!-- NixaniaXi -->
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
     <author uuid="6bec5c3a-4934-4b19-9aa8-c7c569820f7d"/> <!-- Claf -->
     <author uuid="9929437a-9b7d-4d7a-b05d-e22fe93ac042"/> <!-- triplezko -->
 </authors>
-<contributors>
-    <contributor uuid="2df2bef6-6f50-4e4e-a891-048990bf1f5c" contribution="2.0 update"/> <!-- Blaszczak -->
-</contributors>
 <teams>
     <team id="blue" color="blue" max="5" max-overfill="5">Blue</team>
     <team id="red" color="dark red" max="5" max-overfill="5">Red</team>
@@ -29,29 +26,30 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
+        <effect duration="2s" amplifier="255">resistance</effect>
         <game-mode>adventure</game-mode>
     </kit>
     <kit id="flag-pickup" force="true">
         <effect>slowness</effect>
     </kit>
     <kit id="flag-drop" force="true">
-        <effect duration="0" amplifier="0">slowness</effect>
+        <effect duration="0s" amplifier="0">slowness</effect>
     </kit>
 </kits>
 <spawns>
     <default>
         <region yaw="0">
-            <block>0,9,-13</block>
+            <point>0.5,9,-12.5</point>
         </region>
     </default>
     <spawn team="blue" kit="spawn-kit">
-        <region yaw="-45">
-            <block>-33,4,15</block>
+        <region yaw="180">
+            <point>-32.5,5,28.5</point>
         </region>
     </spawn>
     <spawn team="red" kit="spawn-kit">
-        <region yaw="45">
-            <block>33,4,15</block>
+        <region yaw="180">
+            <point>33.5,5,28.5</point>
         </region>
     </spawn>
 </spawns>
@@ -61,18 +59,18 @@
     <time id="flag-respawns">0</time>
 </filters>
 <regions>
-    <cuboid id="blue-net" min="-44,8,-8" max="-41,11,-11"/>
-    <cuboid id="red-net" min="42,8,-8" max="45,11,-11"/>
+    <cuboid id="blue-net" min="-44,9,-8" size="3,2,3"/>
+    <cuboid id="red-net" min="42,9,-8" size="3,2,3"/>
     <apply block="never" use="never"/>
 </regions>
-<flags flag-proximity-metric="none" net-proximity-metric="none" required="false" drop-on-water="false">
+<flags flag-proximity-metric="none" net-proximity-metric="none" required="false">
     <flag id="blue-flag"
           name="Blue Flag"
           owner="blue"
           color="blue"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">-42.5,8,-9.5</post>
+        <post pickup-filter="only-red" recover-time="15s" respawn-time="10s">-42.5,9,-6.5</post>
     </flag>
     <flag id="red-flag"
           name="Red Flag"
@@ -80,7 +78,7 @@
           color="red"
           pickup-kit="flag-pickup"
           drop-kit="flag-drop">
-        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">43.5,8,-9.5</post>
+        <post pickup-filter="only-blue" recover-time="15s" respawn-time="10s">43.5,9,-6.5</post>
     </flag>
     <flags points="1">
         <net region="blue-net" flag="red-flag" respawn-filter="flag-respawns"/>
@@ -89,30 +87,30 @@
 </flags>
 <score/>
 <spawners>
-    <spawner id="mid-gapple" delay="8s">
+    <spawner id="mid-gapple" delay="7s">
         <spawn-region>
-            <block>0,4,-3</block>
+            <point>0.5,4.2,-2.5</point>
         </spawn-region>
         <player-region>
-            <cylinder base="0.5,3,-2.5" height="4" radius="2.25"/>
+            <cylinder base="0.5,3,-2.5" radius="2.5" height="4"/>
         </player-region>
         <item material="golden apple"/>
     </spawner>
-    <spawner id="blue-arrow" delay="2s">
+    <spawner id="blue-arrow" delay="3s">
         <spawn-region>
-            <block>-18,14,-10</block>
+            <point>-17.5,14.2,-9.5</point>
         </spawn-region>
         <player-region>
-            <cylinder base="-17.5,13,-9.5" height="4" radius="2.25"/>
+            <cylinder base="-17.5,13,-9.5" radius="2" height="4"/>
         </player-region>
         <item material="arrow"/>
     </spawner>
-    <spawner id="red-arrow" delay="2s">
+    <spawner id="red-arrow" delay="3s">
         <spawn-region>
-            <block>18,14,-10</block>
+            <point>18.5,14.2,-9.5</point>
         </spawn-region>
         <player-region>
-            <cylinder base="18.5,13,-9.5" height="4" radius="2.25"/>
+            <cylinder base="18.5,13,-9.5" radius="2" height="4"/>
         </player-region>
         <item material="arrow"/>
     </spawner>
@@ -138,7 +136,7 @@
     <item material="golden apple"/>
     <item amount="6" material="arrow"/>
 </kill-reward>
-<respawn delay="6s" auto="true"/>
+<respawn delay="6.5s" auto="true"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>

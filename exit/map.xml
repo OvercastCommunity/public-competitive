@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Exit</name>
-<version>3.1.4</version>
+<version>3.1.5</version>
 <objective>Be the first team to reach 750 points!</objective>
 <authors>
     <author uuid="5198dc37-537f-4ea5-8ee8-1e0952d4a36b"/> <!--_3Each-->
@@ -30,8 +30,7 @@
             <enchantment level="3">projectile_protection</enchantment>
         </leggings>
         <boots unbreakable="true" material="iron boots"/>
-        <effect duration="4" amplifier="255">resistance</effect>
-        <effect duration="4" amplifier="255">regeneration</effect>
+        <effect duration="4s" amplifier="255">resistance</effect>
     </kit>
 </kits>
 <spawns>
@@ -66,9 +65,9 @@
 </regions>
 <king>
     <hills required="false" capture-time="5s" points="1" time-multiplier="0" show-progress="true" neutral-state="true" incremental="true" permanent="false">
-        <hill name="Point A" capture="base-a" progress="base-a" captured="captured-a"/>
+        <hill name="Hill A" capture="base-a" progress="base-a" captured="captured-a"/>
         <hill name="Middle" capture="base-middle" progress="base-middle" captured="captured-middle"/>
-        <hill name="Point B" capture="base-b" progress="base-b" captured="captured-b"/>
+        <hill name="Hill B" capture="base-b" progress="base-b" captured="captured-b"/>
     </hills>
 </king>
 <score>
