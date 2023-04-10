@@ -1,11 +1,14 @@
 <map proto="1.4.2">
 <include id="4-team-bedwars"/>
-<version>0.1.6</version>
+<version>1.0</version>
 <name>Sagojn</name>
 <created>2022-11-10</created>
 <authors>
     <author uuid="9d4779a8-d35f-45d2-b51c-95de7a77e128"/> <!-- zzuf -->
 </authors>
+<contributors>
+    <contributor uuid="6863869b-4b8c-4445-b778-a8e016775ae4" contribution="Bed Wars include and XML template"/> <!-- Cazadorian -->
+</contributors>
 <teams>
     <team id="team-one" color="blue" max="4">Blue</team> <!-- Default is blue -->
     <team id="team-two" color="red" max="4">Red</team> <!-- Default is red -->
@@ -19,6 +22,11 @@
     <spawn team="team-four" kit="default" region="team-four-spawn" yaw="-45"/>
     <default region="obs-spawn" yaw="90"/>
 </spawns>
+<filters>
+    <deny id="deny-beacon">
+        <material>beacon</material>
+    </deny>
+</filters>
 <regions>
     <union id="team-beds">
         <cuboid id="team-one-bed" min="44,31,44" max="46,32,45"/>
@@ -44,7 +52,7 @@
     </union>
     <point id="obs-spawn">0.5,83.5,0.5</point>
     <union id="team-chests">
-        <block id="team-one-chest">-50,31,-51</block>
+        <block id="team-one-chest">50,31,51</block>
         <block id="team-two-chest">51,31,-50</block>
         <block id="team-three-chest">-51,31,50</block>
         <block id="team-four-chest">-50,31,-51</block>
@@ -93,6 +101,7 @@
     <apply region="zf-beacon-protection" block="never" message="You may not obstruct the beacon beam!"/>
     <above y="74" id="zf-obs-spawn"/>
     <apply region="zf-obs-spawn" block="never"/>
+    <apply use="deny-beacon"/>
 </regions>
 <destroyables completion="25%" required="false" repairable="false" show="true" sparks="true" materials="bed_block">  <!-- If you have renamed the teams, change the destroyable name otherwise leave untouched -->
     <destroyable name="§9Blue §9Bed" owner="team-one" region="team-one-bed" id="team-one-bed-broken" scoreboard-filter="team-one-scoreboard-filter"/>
