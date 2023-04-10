@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <include id="4-team-bedwars"/>
-<version>1.0</version>
+<version>1.0.1</version>
 <name>Karesansui</name>
 <created>2022-12-19</created>
 <authors>
@@ -107,5 +107,11 @@
         <shopkeeper yaw="180">-81.5,17,5.5</shopkeeper> <!-- Team Four -->
     </shopkeepers>
 </shopkeepers>
+<!-- Map-specific ItemRemove -->
+<itemremove>
+    <item>string</item>
+    <item>carpet</item>
+    <item>rails</item>
+</itemremove>
 <maxbuildheight>47</maxbuildheight>
 </map>
