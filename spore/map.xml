@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <include id="8-team-bedwars"/>
-<version>1.0</version>
+<version>1.0.1</version>
 <name>Spore</name>
 <created>2022-10-08</created>
 <authors>
@@ -164,5 +164,9 @@
         <shopkeeper yaw="180">-111.5,22,-28.5</shopkeeper> <!-- Team Eight -->
     </shopkeepers>
 </shopkeepers>
+<!-- Map-specific ItemRemove -->
+<itemremove>
+    <item>melon seeds</item>
+</itemremove>
 <maxbuildheight>51</maxbuildheight>
 </map>
