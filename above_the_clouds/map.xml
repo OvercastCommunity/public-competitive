@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <include id="8-team-bedwars"/>
-<version>1.0</version>
+<version>1.0.1</version>
 <name>Above the Clouds</name>
 <created>2023-01-09</created>
 <authors>
@@ -162,5 +162,9 @@
         <shopkeeper yaw="-90">367.5,44,523.5</shopkeeper> <!-- Team Eight -->
     </shopkeepers>
 </shopkeepers>
+<!-- Map-specific ItemRemove -->
+<itemremove>
+    <item>iron trapdoor</item>
+</itemremove>
 <maxbuildheight>58</maxbuildheight>
 </map>
