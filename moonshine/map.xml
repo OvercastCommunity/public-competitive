@@ -1,6 +1,6 @@
 <map proto="1.4.2">
 <name>Moonshine</name>
-<version>1.2.2</version>
+<version>1.2.3</version>
 <objective>Score 6 points to win!</objective>
 <authors>
     <author uuid="621b2aa8-4e5f-4ed8-bd36-0ae2f8952a06"/> <!-- Strangey -->
@@ -43,8 +43,8 @@
         <effect duration="0s">absorption</effect>
         <game-mode>adventure</game-mode>
     </kit>
-    <give kit="waiting-kit" filter="team-scored"/>
-    <give kit="spawn-kit" filter="waiting-boxes-occupied"/>
+    <give kit="waiting-kit" filter="round-pending"/>
+    <give kit="spawn-kit" filter="round-start"/>
     <take kit="spawn-resistance" filter="not-spawns"/>
 </kits>
 <spawns>
@@ -77,64 +77,12 @@
 <filters>
     <team id="only-blue">blue</team>
     <team id="only-red">red</team>
-    <!-- If a team scores, we filter everyone who is participating for teleportation to the waiting boxes. -->
-    <all id="team-scored">
-        <participating/>
-        <any>
-            <objective any="true">hill</objective>
-            <objective any="true">full-control-point</objective>
-        </any>
-    </all>
-    <!-- The waiting box control points can only be captured when no players are alive in the playing field. -->
-    <not id="playing-field-not-occupied">
-        <any>
-            <players id="blue-in-playing-field">
-                <all>
-                    <filter id="only-blue"/>
-                    <all id="alive-in-playing-field">
-                        <region id="outside-waiting-box"/>
-                        <alive/>
-                    </all>
-                </all>
-            </players>
-            <players id="red-in-playing-field">
-                <all>
-                    <filter id="only-red"/>
-                    <filter id="alive-in-playing-field"/>
-                </all>
-            </players>
-        </any>
-    </not>
-    <!-- Filter the control points to prevent a team from capturing both the main hill and the full control hill in the event that the enemy team is eliminated -->
-    <all id="playing-field-occupied-by-both-teams">
-        <filter id="blue-in-playing-field"/>
-        <filter id="red-in-playing-field"/>
-    </all>
-    <!-- Once both waiting boxes are occupied, we filter all participating players and teleport them to their actual spawn points. -->
-    <all id="waiting-boxes-occupied">
-        <not>
-            <countdown duration="10s" message="The next round begins in {0}">
-                <all>
-                    <players id="all-blue-in-box">
-                        <all>
-                            <alive/>
-                            <filter id="only-blue"/>
-                            <region id="blue-waiting-box"/>
-                        </all>
-                    </players>
-                    <players id="all-red-in-box">
-                        <all>
-                            <alive/>
-                            <filter id="only-red"/>
-                            <region id="red-waiting-box"/>
-                        </all>
-                    </players>
-                </all>
-            </countdown>
-        </not>
-        <participating/>
-    </all>
-    <!-- When a team scores, these filters are used to trigger a chat message stating who won the round -->
+    <!-- If the round is over, set a variable to indicate as such. -->
+    <any id="round-over">
+        <objective any="true">hill</objective>
+        <objective any="true">full-control-point</objective>
+    </any>
+    <!-- Trigger message actions to announce the winner of a round in chat. -->
     <any id="score-blue">
         <objective team="blue">hill</objective>
         <objective team="blue">full-control-point</objective>
@@ -143,15 +91,67 @@
         <objective team="red">hill</objective>
         <objective team="red">full-control-point</objective>
     </any>
-    <!-- Spawn players at the default spawn at match start -->
+    <!-- Prevent both control points being captured at once; you can only capture the main hill if both teams are present in the playing field. -->
+    <all id="playing-field-occupied-by-both-teams">
+        <players>
+            <all>
+                <filter id="only-blue"/>
+                <all id="alive-in-playing-field">
+                    <alive/>
+                    <region id="outside-waiting-box"/>
+                </all>
+            </all>
+        </players>
+        <players>
+            <all>
+                <filter id="only-red"/>
+                <filter id="alive-in-playing-field"/>
+            </all>
+        </players>
+        <!-- Hills can only be captured when a round isn't considered finished. -->
+        <variable id="round-in-progress" var="round_over">0</variable>
+    </all>
+    <!-- When a team scores from either hill, teleport living players to the waiting box. Also do so if they manage to be outside of the box while the round is finished. -->
+    <all id="round-pending">
+        <alive/>
+        <participating/>
+        <region id="outside-waiting-box"/>
+        <variable var="round_over">1</variable>
+    </all>
+    <!-- Reset the round_over variable to 0 when a round starts. This happens after 10 seconds when at least 1 player from any team exists in their respective waiting box. -->
+    <all id="round-start">
+        <participating/>
+        <not>
+            <countdown duration="10s" message="The next round begins in {0}">
+                <any>
+                    <players>
+                        <all>
+                            <alive/>
+                            <filter id="only-blue"/>
+                            <region id="blue-waiting-box"/>
+                        </all>
+                    </players>
+                    <players>
+                        <all>
+                            <alive/>
+                            <filter id="only-red"/>
+                            <region id="red-waiting-box"/>
+                        </all>
+                    </players>
+                </any>
+            </countdown>
+        </not>
+    </all>
+    <!-- Spawn players at the correct spawn point in the beginning of the match. -->
     <not id="match-start">
         <time id="after-1s">1s</time>
     </not>
-    <!-- If a player dies during a round, they will be able to spectate in the respawn screen until the round is over -->
+    <!-- Wait until the round is over to respawn players if they die mid-round, and spawn them at their respective waiting boxes after the fact. -->
     <all id="pending-respawn">
         <filter id="after-1s"/>
-        <filter id="playing-field-not-occupied"/>
+        <variable var="round_over">1</variable>
     </all>
+    <!-- Other misc map filters -->
     <all id="not-spawns">
         <participating/>
         <not>
@@ -163,15 +163,24 @@
         <entity>arrow</entity>
     </any>
 </filters>
+<variables>
+    <variable id="round_over" scope="player" default="0"/>
+</variables>
 <actions>
-    <!-- Clear dropped items and shot arrows when a round is over -->
+    <!-- Clear dropped items and shot arrows when a round is over. -->
     <kill-entities id="clear-items" filter="items-and-arrows"/>
-    <trigger filter="playing-field-not-occupied" trigger="clear-items" scope="match"/>
-    <!-- Replace hill capture messages with messages stating which team won the round -->
+    <trigger filter="round-over" trigger="clear-items" scope="match"/>
+    <!-- Replace hill capture messages with messages stating which team won the round. -->
     <message id="blue-score" text="`9Blue`f has won the round!"/>
     <message id="red-score" text="`4Red`f has won the round!"/>
     <trigger filter="score-blue" trigger="blue-score" scope="match"/>
     <trigger filter="score-red" trigger="red-score" scope="match"/>
+    <!-- Set a player-scoped variable when a round is over. -->
+    <set id="set-round-over" var="round_over" value="1" scope="player"/>
+    <trigger filter="round-over" trigger="set-round-over" scope="player"/>
+    <!-- Reset the above variable to 0 when a match starts. -->
+    <set id="new-round-start" var="round_over" value="0" scope="player"/>
+    <trigger filter="round-start" trigger="new-round-start" scope="player"/>
 </actions>
 <regions>
     <cuboid id="hill-region" min="-7,7,-6" max="7,11,8"/>
@@ -200,22 +209,22 @@
     <control-point id="hill" name="Hill" capture="hill-region" progress="hill-region" player-filter="playing-field-occupied-by-both-teams"/>
 </control-points>
 <control-points show="false" decay-rate="0.1" recovery-rate="1" owned-decay-rate="0.5" capture-time="0.5s" show-progress="true" neutral-state="true" points="1" required="false">
-    <control-point id="full-control-point" name="Full Control" capture="outside-waiting-box"/>
+    <control-point id="full-control-point" name="Full Control" capture="outside-waiting-box" player-filter="round-in-progress"/>
 </control-points>
 <score>
     <limit>6</limit>
 </score>
 <!-- These portals teleport players to the waiting box at the end of a round, and then to the spawn point once the waiting box filter is valid. -->
 <portals sound="false" observers="never">
-    <portal forward="team-scored" filter="only-blue" destination="blue-pending-spawn" yaw="@-90"/>
-    <portal forward="team-scored" filter="only-red" destination="red-pending-spawn" yaw="@90"/>
-    <portal forward="waiting-boxes-occupied" filter="only-blue" destination="blue-spawn" yaw="@-90"/>
-    <portal forward="waiting-boxes-occupied" filter="only-red" destination="red-spawn" yaw="@90"/>
+    <portal forward="round-pending" filter="only-blue" destination="blue-pending-spawn" yaw="@-90"/>
+    <portal forward="round-pending" filter="only-red" destination="red-pending-spawn" yaw="@90"/>
+    <portal forward="round-start" filter="only-blue" destination="blue-spawn" yaw="@-90"/>
+    <portal forward="round-start" filter="only-red" destination="red-spawn" yaw="@90"/>
 </portals>
 <spawners>
     <spawner max-entities="1" delay="7s">
         <spawn-region>
-            <point>0,7.2,23</point>
+            <point>0,7.1,23</point>
         </spawn-region>
         <player-region>
             <cylinder base="0,6,23" height="4" radius="2.5"/>
@@ -224,7 +233,7 @@
     </spawner>
     <spawner max-entities="1" delay="7s">
         <spawn-region>
-            <point>0,10.2,-22</point>
+            <point>0,10.1,-22</point>
         </spawn-region>
         <player-region>
             <cylinder base="0,9,-22" height="4" radius="2.5"/>
@@ -252,7 +261,7 @@
     <item material="golden apple"/>
     <item amount="5" material="arrow"/>
 </kill-reward>
-<respawn auto="true" spectate="true" message="You will respawn when the round is over!"/>
+<respawn delay="1s" auto="true" spectate="true" message="You will respawn when the round is over!"/>
 <hunger>
     <depletion>off</depletion>
 </hunger>
